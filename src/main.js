@@ -16,6 +16,7 @@ Vue.use(Vant)
 axios.defaults.baseURL = 'http://127.0.0.1:3000'
 Vue.prototype.axios = axios;
 Vue.config.productionTip = false;
+Vue.prototype.qs=qs
 
 new Vue({
   router,

@@ -1,10 +1,10 @@
-const express=require("express");
+const express = require("express");
 
 //加载MD5模块
 const md5 = require('md5');
 
-const router=express.Router();
-const pool=require("../pool");
+const router = express.Router();
+const pool = require("../pool");
 
 // 用户注册的接口
 router.post('/register', (req, res) => {
@@ -59,4 +59,27 @@ router.post('/login', (req, res) => {
     }
   });
 });
-module.exports=router;
+
+//客服消息接口
+router.get("/service", (req, res) => {
+  let user_id = req.query.user_id
+  var sql = "select content,is_send,created_at from xn_service_messeage where user_id=? ";
+  pool.query(sql, [user_id], (err, result) => {
+    if (err) throw err;
+    res.send({ code: 200, message: "登录", result: result })
+  })
+})
+//客服消息插入数据库
+router.post("/insertNew", (req, res) => {
+  let obj = req.body;
+  var sql = "INSERT INTO xn_service_messeage SET ?";
+  pool.query(sql, [obj], (err, result) => {
+    if (err) throw err;
+    if (result.affectedRows > 0) {
+      res.send({ code: 200, message: "插入成功" })
+    } else {
+      res.send({ code: 201, message: "插入失败" })
+    }
+  })
+})
+module.exports = router;

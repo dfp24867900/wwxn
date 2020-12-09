@@ -3,28 +3,40 @@ const express = require("express");
 //加载MD5模块
 const md5 = require('md5');
 
+<<<<<<< HEAD
+=======
+// var qs = require("querystring")
+>>>>>>> f2e18bd0e85bb8378e937044ebf1bfca6b18ffe0
 const router = express.Router();
 const pool = require("../pool");
 
 // 用户注册的接口
 router.post('/register', (req, res) => {
   //获取用户名和密码
-  let username = req.body.username;
-  let password = req.body.password;
+  let username = req.body.uname;
+  let password = req.body.upwd;
+  let phone = req.body.phone;
+  let email = req.body.email;
   //查找用户是否存在
-  let sql = 'SELECT * FROM user WHERE uname= ?';
+  let sql = 'SELECT * FROM bride_user WHERE uname= ?';
   pool.query(sql, [username], (error, result) => {
-    console.log(result);
     if (error) throw error;
     //如果用户不存在,则插入记录
     if (result.length == 0) {
-      sql = 'INSERT INTO user(uname,upwd) VALUES(?,MD5(?))';
-      pool.query(sql, [username, password], (error, result) => {
+      sql = 'INSERT INTO bride_user(uname,upwd,phone,email) VALUES(?,md5(?),?,?)';
+      pool.query(sql, [username, password, phone, email], (error, result) => {
         if (error) throw error;
-        res.send({
-          message: '注册成功',
-          code: 1
-        });
+        if (result.affectedRows > 0) {
+          res.send({
+            message: '注册成功',
+            code: 1
+          });
+        } else {
+          res.send({
+            message: '注册失败',
+            code: 0
+          })
+        }
       })
     } else { //否则产生合理的错误提示
       res.send({
@@ -35,16 +47,19 @@ router.post('/register', (req, res) => {
   })
 });
 
-
 //用户登录的接口
 router.post('/login', (req, res) => {
   //获取用户名和密码
-  let username = req.body.username;
-  let password = req.body.password;
+  var obj = req.body
+  console.log(obj)
+  let username = req.body.uname;
+  let password = md5(req.body.upwd);
+  console.log(username, password)
   //以用户名和密码为条件进行查找
-  let sql = 'SELECT uname,upwd FROM user WHERE uname=? AND upwd=MD5(?)';
+  let sql = 'SELECT uname,upwd FROM bride_user WHERE uname=? AND upwd=?';
   pool.query(sql, [username, password], (error, result) => {
     if (error) throw error;
+    console.log(result)
     if (result.length == 0) {
       res.send({
         message: '登录失败',
@@ -59,6 +74,7 @@ router.post('/login', (req, res) => {
     }
   });
 });
+<<<<<<< HEAD
 
 //客服消息接口
 router.get("/service", (req, res) => {
@@ -82,4 +98,6 @@ router.post("/insertNew", (req, res) => {
     }
   })
 })
+=======
+>>>>>>> f2e18bd0e85bb8378e937044ebf1bfca6b18ffe0
 module.exports = router;

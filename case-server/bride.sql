@@ -9,4 +9,8 @@ CREATE table bride_user(
    upwd varchar(128),
    phone varchar(16),
    email varchar(32) 
+<<<<<<< HEAD
 );
+=======
+);
+>>>>>>> f2e18bd0e85bb8378e937044ebf1bfca6b18ffe0

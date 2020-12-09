@@ -2,8 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import axios from 'axios'
-import qs from 'qs'
+
 // 导入MintUI模块
 import MintUI from 'mint-ui';
 // 导入样式文件
@@ -13,8 +12,7 @@ import 'vant/lib/index.css';
 // 通过Vue.use()方法将MintUI注册为插件
 Vue.use(MintUI);
 Vue.use(Vant)
-axios.defaults.baseURL = 'http://127.0.0.1:3000'
-Vue.prototype.axios = axios;
+
 Vue.config.productionTip = false;
 Vue.prototype.qs=qs
 

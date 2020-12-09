@@ -11,7 +11,11 @@ const pool = mysql.createPool({
    //密码
    password:"",
    //数据库名称
+<<<<<<< HEAD
    database:"wwxn",
+=======
+   database:"bride",
+>>>>>>> f2e18bd0e85bb8378e937044ebf1bfca6b18ffe0
    //最大连接数
    connectionLimit:15
 });

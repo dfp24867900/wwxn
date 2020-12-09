@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import qs from 'qs'
+import axios from 'axios'
 
 // 导入MintUI模块
 import MintUI from 'mint-ui';
@@ -15,6 +17,7 @@ Vue.use(Vant)
 
 Vue.config.productionTip = false;
 Vue.prototype.qs=qs
+Vue.prototype.axios=axios
 
 new Vue({
   router,

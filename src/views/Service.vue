@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import API from "@/util/api.js";
 export default {
   data() {
     return {
@@ -74,20 +75,18 @@ export default {
         informations.is_send = 1;
         informations.user_id = 1;
         this.messeages.push(informations);
-        //将数据插入到数据库中
+        将数据插入到数据库中
         this.axios
           .post("/user/insertNew", this.qs.stringify(informations))
           .then((res) => {
             //重置消息输入框
             this.information = "";
-            // var div = document.getElementById("main"); // 获取对象
-            // div.scrollTop = div.scrollHeight; // 滚动高度
           });
       }
     },
   },
   //页面初次加载时
-  mounted() {
+  mounted() { 
     this.axios.get("/user/service", { params: { user_id: 1 } }).then((res) => {
       this.messeages = res.data.result;
     });

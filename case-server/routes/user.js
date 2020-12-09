@@ -3,10 +3,7 @@ const express = require("express");
 //加载MD5模块
 const md5 = require('md5');
 
-<<<<<<< HEAD
-=======
 // var qs = require("querystring")
->>>>>>> f2e18bd0e85bb8378e937044ebf1bfca6b18ffe0
 const router = express.Router();
 const pool = require("../pool");
 
@@ -74,15 +71,15 @@ router.post('/login', (req, res) => {
     }
   });
 });
-<<<<<<< HEAD
 
 //客服消息接口
 router.get("/service", (req, res) => {
   let user_id = req.query.user_id
+  console.log(user_id)
   var sql = "select content,is_send,created_at from xn_service_messeage where user_id=? ";
   pool.query(sql, [user_id], (err, result) => {
     if (err) throw err;
-    res.send({ code: 200, message: "登录", result: result })
+    res.send({ code: 200, message: "查询成功", result: result })
   })
 })
 //客服消息插入数据库
@@ -98,6 +95,4 @@ router.post("/insertNew", (req, res) => {
     }
   })
 })
-=======
->>>>>>> f2e18bd0e85bb8378e937044ebf1bfca6b18ffe0
 module.exports = router;

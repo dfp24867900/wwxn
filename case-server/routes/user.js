@@ -75,8 +75,7 @@ router.post('/login', (req, res) => {
 //客服消息接口
 router.get("/service", (req, res) => {
   let user_id = req.query.user_id
-  console.log(user_id)
-  var sql = "select content,is_send,created_at from xn_service_messeage where user_id=? ";
+  var sql = "select content,is_send,created_at from bride_service_messeage where user_id=? ";
   pool.query(sql, [user_id], (err, result) => {
     if (err) throw err;
     res.send({ code: 200, message: "查询成功", result: result })
@@ -85,7 +84,7 @@ router.get("/service", (req, res) => {
 //客服消息插入数据库
 router.post("/insertNew", (req, res) => {
   let obj = req.body;
-  var sql = "INSERT INTO xn_service_messeage SET ?";
+  var sql = "INSERT INTO bride_service_messeage SET ?";
   pool.query(sql, [obj], (err, result) => {
     if (err) throw err;
     if (result.affectedRows > 0) {

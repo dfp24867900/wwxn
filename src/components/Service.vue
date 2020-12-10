@@ -2,17 +2,17 @@
   <div class="app">
     <!-- 客服头标题 -->
     <div class="xw-header">
-      <div class="xw-header-back">
-        <span class="xw-header-title" @click="back"
-          >返回&nbsp;&nbsp;&nbsp;</span
+      
+      <div class="xw-header-content" @touchstart="showInfo">
+        <div class="xw-header-back">
+        <mt-button icon="back" class="xw-header-title" @click="back"
+          ></mt-button
         >
       </div>
-      <div class="xw-header-content" @touchstart="showInfo">
         <div
           v-if="!toShowMaskInfo"
           :class="[toShowMaskInfo ? '' : 'bounceInRight', 'animated']"
         >
-          <img src="../assets/image/service/logo.jpg" class="xw-header-avatar" />
           <div class="xw-header-title-wrap">
             <div class="xw-header-title">小蜜客服</div>
           </div>
@@ -28,7 +28,7 @@
         ]"
       >
         <div class="xw-logo">
-          <h4>小蜜客服</h4>
+          <h4>客服</h4>
         </div>
         <div class="xw-header-info">
           <p class="animated bounceInLeft">
@@ -555,14 +555,14 @@ ul {
 .xw-header {
   z-index: 2;
   max-height: 360px;
-  background: #ed4858;
+  background: #ffe4fb;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 .xw-header-content {
-  position: relative;
   overflow: hidden;
-  padding: 0px 16px;
-  min-height: 50px;
+  text-align: center;
+  min-height: 45px;
+  width: 100%;
 }
 
 .xw-chat-servicer:after,
@@ -588,18 +588,22 @@ ul {
   margin-top: 5px;
 }
 .xw-header-title-wrap {
-  padding: 6px 0;
-  float: left;
-  width: 60px;
+  position: relative;
 }
 .xw-header-title {
   font-size: 14px;
-  color: #fff;
-  margin-top: 10px;
+  color: #000;
+  line-height: 45px;
+  position: relative;
 }
 .xw-header-back {
-  padding: 18px 0;
-  float: right;
+  float: left;
+  
+}
+.xw-header-back button{
+  margin-left: 15px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.0);
 }
 .xw-chat-wrap {
   overflow: auto;

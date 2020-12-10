@@ -16,7 +16,14 @@ const api= {
   // 首页接口
   index(){
     return request('index/index')
-  }
+  },
+  // 
+  service(data) {
+    return request('user/service', data,"get")
+  },
+  insertNew(data) {
+    return request('user/insertNew', data)
+  },
 }
 
 export default api

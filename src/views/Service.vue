@@ -9,7 +9,10 @@
     <!-- 消息展示 -->
     <div id="main">
       <div class="" v-for="(messeage, i) of messeages" :key="i">
-        <div v-if="messeage.is_send == 0">
+        <p class="messeage_time">
+          {{ moment.unix(messeage.created_at / 1000).format("lll") }}
+        </p>
+        <div v-if="messeage.is_send == 0" class="left_align">
           <div class="avatar">
             <img src="../assets/image/avatar/logo.png" alt="" />
           </div>
@@ -25,11 +28,7 @@
     </div>
     <!-- 底部消息发送框 -->
     <div class="footer">
-      <textarea 
-        class=""
-        placeholder="发送消息"
-        v-model="information"
-      ></textarea >
+      <textarea class="" placeholder="发送消息" v-model="information"></textarea>
       <div class="expression">
         <div>
           <img @click="face" src="../assets/image/icon/expression.png" alt="" />
@@ -43,17 +42,13 @@
         </button>
 
         <!-- 表情区域 -->
-            <div class="browBox" v-if="faceShow">
-              <ul>
-                <li
-                  v-for="(item, index) in faceList"
-                  :key="index"
-                  @click="getBrow(index)"
-                >
-                  {{ item }}
-                </li>
-              </ul>
-            </div>
+        <div class="browBox" v-if="faceShow">
+          <ul>
+            <li v-for="(item, index) in faceList" :key="index" @click="getBrow(index)">
+              {{ item }}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -72,17 +67,28 @@ export default {
       information: "",
       // showNarrowPopVal: false,//点击切换成小窗口
       faceShow: false,
-      faceList:[]
+      faceList: [],
+      testContents: [
+        "你想咨询点什么",
+        "这些价格上都是有差异的",
+        "这个问题还没遇到过",
+        "你说什么，我听不明白",
+        "我们尽快为您解决",
+        "请稍后--",
+        "当前客服忙",
+        "您还有什么咨询的吗",
+        "正在查询",
+        "gone with the wind",
+      ],
     };
   },
   methods: {
     // 表情事件
-    face(){
+    face() {
       this.faceShow = !this.faceShow;
       if (this.faceShow == true) {
         for (let i in appData) {
           this.faceList.push(appData[i].char);
-          console.log(1)
         }
       } else {
         this.faceList = [];
@@ -99,7 +105,9 @@ export default {
     },
     //发送消息时
     sendNew() {
-      // this.faceShow = !this.faceShow;
+      if(this.faceShow){
+        this.faceShow = !this.faceShow;
+      }
       //判断是否为空
       if (this.information.trim() == "") {
         this.$toast({
@@ -112,32 +120,46 @@ export default {
         let informations = {};
         informations.content = this.information;
         informations.created_at = Date.now();
-        informations.is_send = 1;
+        informations.is_send = 1;//1，客户
         informations.user_id = 1;
         this.messeages.push(informations);
-        window.setTimeout(()=>{
-          let div1=document.getElementById("main")
-        let lastdiv=div1.lastElementChild
-        console.log(lastdiv)
-        lastdiv.scrollIntoView(true)
-        },100)
+        window.setTimeout(() => {
+          let div1 = document.getElementById("main");
+          let lastdiv = div1.lastElementChild;
+          lastdiv.scrollIntoView(true);
+        }, 100);
         // 将数据插入到数据库中
-        API.insertNew(informations)
-          .then((res) => {
-            //重置消息输入框
-            this.information = "";
-          });
+        API.insertNew(informations).then((res) => {
+          //重置消息输入框
+          this.information = "";
+        });
+        setTimeout(() => {
+        // this.hint();
+        let customer_service={}
+        customer_service.content = this.testContents[Math.floor(Math.random() * 9)];
+        customer_service.created_at = Date.now();
+        customer_service.is_send = 0;//0，客服
+        customer_service.user_id = 1;
+        this.messeages.push(customer_service);
+        // 将数据插入到数据库中
+        API.insertNew(customer_service).then((res) => {
+        });
+        window.setTimeout(() => {
+          let div1 = document.getElementById("main");
+          let lastdiv = div1.lastElementChild;
+          lastdiv.scrollIntoView(true);
+        }, 100);
+      }, 1000);
       }
     },
   },
   //页面初次加载时
-  mounted() { 
-    var data={ user_id: 1 }
+  mounted() {
+    var data = { user_id: 1 };
     API.service(data).then((res) => {
       this.messeages = res.data;
       // this.messeages[0].content=Math.ceil(Math.random*50)+this.messeages[0].content
-      console.log(res.result)
-      this.messeages=res.result
+      this.messeages = res.result;
     });
   },
 };
@@ -154,6 +176,11 @@ export default {
   padding-bottom: 95px;
   overflow: hidden;
   background-color: #fff;
+}
+#service .messeage_time {
+  text-align: center;
+  padding: 5px 0px;
+  font-size: 14px;
 }
 #service #main > div > div {
   padding: 0px 20px;
@@ -183,13 +210,14 @@ export default {
   float: right;
 }
 #service .footer {
+  height: 95px;
   width: 100%;
   position: fixed;
   bottom: 0;
   border-top: 1px solid #ccc;
   background-color: #fff;
 }
-#service .footer textarea  {
+#service .footer textarea {
   width: 80%;
   line-height: 20px;
   border: 0px;
@@ -209,20 +237,18 @@ export default {
   border: 0;
   background-color: #fff;
 }
-/* #service .xw-chat-tool-item{
-  padding: 8px 10px;
-  width: 6%;
-} */
 #service .footer .send img {
   width: 110%;
 }
 .browBox {
-    width: 100%;
-    height: 200px;
-    background: #f5f5f5;
-    position: absolute;
-    bottom: 95px;
-    overflow: scroll;
+  width: 100%;
+  height: 200px;
+  background: #f5f5f5;
+  position: absolute;
+  bottom: 95px;
+  overflow: scroll;
+  border: 1px solid #999;
+  border-bottom: 0px;
 }
 .browBox ul {
   display: flex;

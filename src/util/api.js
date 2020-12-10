@@ -5,7 +5,7 @@ import request from '@/request'
 const api= {
   // 登录
   login(data) {
-     console.log(data)
+    //  console.log(data)
      return request('user/login', data)
      
   },

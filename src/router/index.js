@@ -6,6 +6,8 @@ import List from '../views/List.vue'
 import Service from '../views/Service.vue'
 import Login from '../views/Login.vue'
 import Service1 from '../components/Service.vue'
+import Search from '../views/Search.vue'
+
 
 Vue.use(VueRouter)
 
@@ -15,6 +17,7 @@ const routes = [
   {path:"/list",component:List},
   {path: '/service',name: 'Service',component: Service},
   {path: '/service1',name: 'Service',component: Service1},
+  {path: '/Search', name: 'Search', component: Search },
   {
     path: '/about',
     name: 'About',

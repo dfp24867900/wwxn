@@ -5,6 +5,7 @@ import Address from '../components/Address.vue'
 import List from '../views/List.vue'
 import Service from '../views/Service.vue'
 import Login from '../views/Login.vue'
+import Service1 from '../components/Service.vue'
 
 Vue.use(VueRouter)
 
@@ -13,6 +14,7 @@ const routes = [
   {path:"/address",component:Address},
   {path:"/list",component:List},
   {path: '/service',name: 'Service',component: Service},
+  {path: '/service1',name: 'Service',component: Service1},
   {
     path: '/about',
     name: 'About',

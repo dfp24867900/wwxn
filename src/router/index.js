@@ -14,7 +14,7 @@ import Message from '../components/Message.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  {path: '/', name: 'Home', component: Home },
+  {path: '/11', name: 'Home', component: Home },
   {path:"/address",component:Address},
   {path:"/list",component:List},
   {path: '/service',name: 'Service',component: Service},

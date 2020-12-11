@@ -22,7 +22,7 @@ export default function request(url, data = {}, method = 'post') {
     }
     // console.log(options)
     service(options)
-      .then(res => {
+       n(res => {
         resolve(res.data)
       })
       .catch(error => {

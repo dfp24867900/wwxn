@@ -5,14 +5,65 @@ import Address from '../components/Address.vue'
 import List from '../views/List.vue'
 import Service from '../views/Service.vue'
 import Login from '../views/Login.vue'
+import Shopping from '../views/Shopping.vue'
+import Sitecollect from '../views/Sitecollect.vue'
+import Site from '../views/Site.vue'
+import Sitenote from '../views/Sitenote.vue'
+import Sitemsg from '../views/Sitemsg.vue'
+import Join from '../views/Join.vue'
+import Personal from '../views/Personal.vue'
+import Sitegold from '../views/Sitegold.vue'
+import Siteset from '../views/Siteset.vue'
+import Siteback from '../views/Siteback.vue'
+
 
 Vue.use(VueRouter)
 
 const routes = [
-  {path: '/', name: 'Home', component: Home },
-  {path:"/address",component:Address},
-  {path:"/list",component:List},
-  {path: '/service',name: 'Service',component: Service},
+  {
+    path: '/siteback',
+    component: Siteback
+  },
+  {
+    path: '/siteset',
+    component: Siteset
+  },
+  {
+    path: '/sitegold',
+    component: Sitegold
+  },
+  {
+    path: '/personal',
+    component: Personal
+  },
+  {
+    path: '/join',
+    component: Join
+  },
+  {
+    path: '/sitemsg',
+    component: Sitemsg
+  },
+  {
+    path: '/sitenote',
+    component: Sitenote
+  },
+  {
+    path: '/site',
+    component: Site
+  },
+  {
+    path: '/siteshopping',
+    component: Shopping
+  },
+  {
+    path: '/sitecollect',
+    component: Sitecollect
+  },
+  { path: '/', name: 'Home', component: Home },
+  { path: "/address", component: Address },
+  { path: "/list", component: List },
+  { path: '/service', name: 'Service', component: Service },
   {
     path: '/about',
     name: 'About',
@@ -21,7 +72,7 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
-  {path:"/login",component:Login},
+  { path: "/login", component: Login },
 ]
 
 const router = new VueRouter({

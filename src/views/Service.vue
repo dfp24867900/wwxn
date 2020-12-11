@@ -3,7 +3,7 @@
     <!-- 顶部栏 -->
     <mt-header title="在线客服" fixed>
       <router-link slot="left" to="/">
-        <mt-button type="primary" icon="back"></mt-button>
+        <mt-button icon="back"></mt-button>
       </router-link>
     </mt-header>
     <!-- 消息展示 -->
@@ -167,7 +167,7 @@ export default {
 
 <style>
 #service header {
-  background-color: #fff;
+  background-color: #fad1db;
   color: black;
   border-bottom: 1px solid #ccc;
 }
@@ -187,9 +187,6 @@ export default {
   display: flex;
   margin-bottom: 10px;
 }
-#service #main > div > div > div {
-  background-color: #eee;
-}
 #service .avatar {
   width: 40px;
   height: 40px;
@@ -205,6 +202,12 @@ export default {
   border-radius: 5px;
   margin: 0px 10px;
   word-break: break-all;
+}
+#service .left_align .message  {
+  background-color: #eee;
+}
+#service .right_align .message {
+  background-color: #eee;
 }
 #service .right_align div {
   float: right;

@@ -20,6 +20,7 @@ Vue.use(Vant)
 Vue.config.productionTip = false;
 Vue.prototype.qs=qs
 Vue.prototype.axios=axios
+axios.defaults.baseURL = 'http://127.0.0.1:3000'
 Vue.prototype.moment=moment
 
 

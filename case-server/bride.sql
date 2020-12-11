@@ -35,7 +35,7 @@ CREATE TABLE bride_case_list(
    -- 案例标题
    title VARCHAR(64) UNIQUE NOT NULL COMMENT '案例标题,唯一且不为空',
    -- 价格
-   price VARCHAR(128) COMMENT '价格',
+   price decimal(8,2) COMMENT '价格',
    -- 首页图片
    pic VARCHAR(128) COMMENT '首页缩略图片',
    -- 详细说明
@@ -60,7 +60,7 @@ INSERT INTO bride_case_list
 VALUES(
       1,
       '氤氲',
-      "28430",
+      28430,
       "list3.jpg",
       "这场蓝色，是灵性与童话兼具的色彩，给人耳目一新的印象，明度高的浅蓝展现出大海和天空般的舒畅开阔感，它象征清新余宁静，一副静谧，柔和的画面氤氲出幸福感",
       10,
@@ -75,7 +75,7 @@ INSERT INTO bride_case_list
 VALUES(
       NULL,
       '爱与无穷',
-      "21561",
+      21561,
       "list4.jpg",
       "秀场风婚礼以'∞'符号主题设计的婚礼。",
       25,
@@ -90,7 +90,7 @@ INSERT INTO bride_case_list
 VALUES(
       NULL,
       'The Soul',
-      "15322",
+      15322,
       "list9.jpg",
       "山水一程，风雨一更，三生有幸，共度余生，不偏不倚，刚好是你，往后余生，有你足矣！",
       200,
@@ -105,7 +105,7 @@ INSERT INTO bride_case_list
 VALUES(
       NULL,
       '梦回唐朝',
-      "14948",
+      14948,
       "list7.jpg",
       "凤冠霞帔，许你一世长安",
       500,
@@ -120,7 +120,7 @@ INSERT INTO bride_case_list
 VALUES(
       NULL,
       '暖暖午后',
-      "16590",
+      16590,
       "list8.jpg",
       "一场暖色小清新户外婚礼，木质搭建为主，配合回暖黄的华裔，自由活泼，温暖惬意",
       320,

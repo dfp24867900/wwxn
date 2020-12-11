@@ -16,6 +16,11 @@ import Sitegold from '../views/Sitegold.vue'
 import Siteset from '../views/Siteset.vue'
 import Siteback from '../views/Siteback.vue'
 
+import Register from '../views/Register.vue'
+import Search from '../views/Search.vue'
+import Index from '../views/Index.vue'
+import Album from '../views/Album.vue'
+import Message from '../components/Message.vue'
 
 Vue.use(VueRouter)
 
@@ -64,6 +69,11 @@ const routes = [
   { path: "/address", component: Address },
   { path: "/list", component: List },
   { path: '/service', name: 'Service', component: Service },
+  {path: '/', name: 'Home', component: Home },
+  {path:"/address",component:Address},
+  {path:"/list",component:List},
+  {path: '/service',name: 'Service',component: Service},
+  {path: '/Search', name: 'Search', component: Search },
   {
     path: '/about',
     name: 'About',
@@ -73,6 +83,21 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   { path: "/login", component: Login },
+  {path:"/login",component:Login},
+  {path:"/register",component:Register},
+  {
+    path:'/message',
+    component: Message
+  },
+  
+  {
+    path:'/album/:id',
+    component: Album
+  },
+  {
+    path: '/',
+    component: Index
+  }
 ]
 
 const router = new VueRouter({

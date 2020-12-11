@@ -20,9 +20,9 @@ export default function request(url, data = {}, method = 'post') {
     } else { //检查一下，post 请求没有进来？s
       options.data = qs.stringify(data) 
     }
-    console.log(options)
+    // console.log(options)
     service(options)
-      .then(res => {
+       n(res => {
         resolve(res.data)
       })
       .catch(error => {

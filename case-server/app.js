@@ -13,6 +13,7 @@ app.listen(3000);
 // 引入路由
 const user =require('./routes/user')
 const index =require('./routes/index')
+const list =require('./routes/list')
 
 //使用body-parser中间件
 app.use(bodyParser.urlencoded({
@@ -26,3 +27,4 @@ app.use(cors({
 /*使用路由器来管理路由*/
 app.use("/user", user);
 app.use("/index",index)
+app.use("/list",list);

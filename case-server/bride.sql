@@ -35,7 +35,7 @@ CREATE TABLE bride_case_list(
    -- 案例标题
    title VARCHAR(64) UNIQUE NOT NULL COMMENT '案例标题,唯一且不为空',
    -- 价格
-   price VARCHAR(128) COMMENT '价格',
+   price DECIMAL(8,2) COMMENT '价格',
    -- 首页图片
    pic VARCHAR(128) COMMENT '首页缩略图片',
    -- 详细说明
@@ -60,14 +60,14 @@ INSERT INTO bride_case_list
 VALUES(
       1,
       '氤氲',
-      "28430",
-      "list3.jpg",
+      28430,
+      "list1.jpg",
       "这场蓝色，是灵性与童话兼具的色彩，给人耳目一新的印象，明度高的浅蓝展现出大海和天空般的舒畅开阔感，它象征清新余宁静，一副静谧，柔和的画面氤氲出幸福感",
       10,
       1,
       "梦幻",
-      "室内",
-      "蓝色",
+      "户外",
+      "白色",
       111111111111,
       "友豪锦江酒店"
    );
@@ -75,8 +75,8 @@ INSERT INTO bride_case_list
 VALUES(
       NULL,
       '爱与无穷',
-      "21561",
-      "list4.jpg",
+      21561,
+      "list2.jpg",
       "秀场风婚礼以'∞'符号主题设计的婚礼。",
       25,
       2,
@@ -90,8 +90,8 @@ INSERT INTO bride_case_list
 VALUES(
       NULL,
       'The Soul',
-      "15322",
-      "list9.jpg",
+      15322,
+      "list3.jpg",
       "山水一程，风雨一更，三生有幸，共度余生，不偏不倚，刚好是你，往后余生，有你足矣！",
       200,
       3,
@@ -105,8 +105,8 @@ INSERT INTO bride_case_list
 VALUES(
       NULL,
       '梦回唐朝',
-      "14948",
-      "list7.jpg",
+      14948,
+      "list4.jpg",
       "凤冠霞帔，许你一世长安",
       500,
       5,
@@ -120,18 +120,62 @@ INSERT INTO bride_case_list
 VALUES(
       NULL,
       '暖暖午后',
-      "16590",
-      "list8.jpg",
+      16590,
+      "list5.jpg",
       "一场暖色小清新户外婚礼，木质搭建为主，配合回暖黄的华裔，自由活泼，温暖惬意",
       320,
       2,
-      "小清新",
-      "户外",
-      "绿色",
+      "森系",
+      "室内",
+      "复古",
       111111111111,
       "恒苑山庄"
    );
-
+INSERT INTO bride_case_list
+VALUES(
+   NULL,
+   "是约定,是誓言,是一生",
+   7623,
+   "list9.jpg",
+   "裸粉色的小户外,清新雅致",
+   "607",
+    56,
+    "唯美",
+    "室内",
+    "绿色",
+    222222222222,
+   "天来酒店"
+);
+INSERT INTO bride_case_list
+VALUES(
+   NULL,
+   "小确幸",
+   6998,
+   "list11.jpg",
+   "时光匆匆,青春易老",
+   "245",
+   23,
+   "森系",
+   "室内",
+   "蓝色",
+   111111111111,
+   "华生园"
+);
+INSERT INTO bride_case_list
+VALUES(
+   NULL,
+   "Youth",
+   5000,
+   "list8.jpg",
+   "许你一世承诺",
+   "25",
+   23,
+   "小清新",
+   "户外",
+   "橙色",
+   111111111111,
+   "家园国际户外"
+);
 
 
 -- 创建客服消息表

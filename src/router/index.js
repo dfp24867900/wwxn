@@ -5,7 +5,7 @@ import Address from '../components/Address.vue'
 import List from '../views/List.vue'
 import Service from '../views/Service.vue'
 import Login from '../views/Login.vue'
-import Service1 from '../components/Service.vue'
+import Register from '../views/Register.vue'
 import Search from '../views/Search.vue'
 
 
@@ -16,7 +16,6 @@ const routes = [
   {path:"/address",component:Address},
   {path:"/list",component:List},
   {path: '/service',name: 'Service',component: Service},
-  {path: '/service1',name: 'Service',component: Service1},
   {path: '/Search', name: 'Search', component: Search },
   {
     path: '/about',
@@ -27,6 +26,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {path:"/login",component:Login},
+  {path:"/register",component:Register},
 ]
 
 const router = new VueRouter({

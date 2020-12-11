@@ -5,9 +5,7 @@ import request from '@/request'
 const api= {
   // 登录
   login(data) {
-    //  console.log(data)
      return request('user/login', data)
-     
   },
 //注册接口
   register(data){
@@ -15,9 +13,9 @@ const api= {
   },
   // 首页接口
   index(){
-    return request('index/index')
+    return request('index/index',"get")
   },
-  // 
+  // 客服
   service(data) {
     return request('user/service', data,"get")
   },

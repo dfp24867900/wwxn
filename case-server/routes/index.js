@@ -17,4 +17,23 @@ router.get('/index',(req,res)=>{
    })
 })
 
+//查询首页主内容信息
+server.get('/art',(req,res)=>{
+  let id = req.query.id;
+  let sql = `SELECT id,img,description,author,vip,header_img,like_up FROM bride_header WHERE category_id=?`;
+  pool.query(sql,[id],(err,results)=>{
+    if(err) throw err;
+    res.send({code:200,message:'请求成功',results:results});
+  })
+})
+//获取活动页和专辑页的图片
+server.get('/alb',(req,res)=>{
+  let id = req.query.id;
+  let sql = 'SELECT id,img FROM bride_activity WHERE activity_id=?';
+  pool.query(sql,[id],(err,result)=>{
+    if(err) throw err;
+    res.send({code:200,message:'请求成功',result:result});
+  
+  })
+})
 module.exports=router;

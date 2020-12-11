@@ -7,7 +7,9 @@ import Service from '../views/Service.vue'
 import Login from '../views/Login.vue'
 import Service1 from '../components/Service.vue'
 import Search from '../views/Search.vue'
-
+import Index from '../views/Index.vue'
+import Album from '../views/Album.vue'
+import Message from '../components/Message.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +29,19 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {path:"/login",component:Login},
+  {
+    path:'/message',
+    component: Message
+  },
+  
+  {
+    path:'/album/:id',
+    component: Album
+  },
+  {
+    path: '/',
+    component: Index
+  }
 ]
 
 const router = new VueRouter({

@@ -84,7 +84,11 @@ router.get("/searchlist", (req, res) => {
               result.forEach(ele => {
                 array.push(ele)
               })
-              res.send(array)
+              if(array.length>0){
+                res.send({ message: "查询成功", code: 200, result: array })
+              }else{
+                res.send({ message: "查询失败", code: 201})
+              }
             })
           })
         })

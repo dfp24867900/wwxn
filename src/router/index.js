@@ -70,24 +70,12 @@ const routes = [
     path: '/sitecollect',
     component: Sitecollect
   },
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-  {path: '/', name: 'Home', component: Home },
-=======
-  // { path: '/', name: 'Home', component: Home },
->>>>>>> eaabc23c8d76948a043407aef95bd2956f23464c
   { path: "/address", component: Address },
   { path: "/searchlist/:keyword", component: SearchList },
   { path: "/list/:keyword", component: List },
   { path: '/service', name: 'Service', component: Service },
-<<<<<<< HEAD
-=======
-  // {path: '/', name: 'Home', component: Home },
->>>>>>> 3f98037cedda4a1825b5e67af13bcfc78577b9e1
   {path:"/address",component:Address},
   {path:"/list",component:List},
->>>>>>> eaabc23c8d76948a043407aef95bd2956f23464c
   {path: '/service',name: 'Service',component: Service},
   {path: '/search', name: 'Search', component: Search },
   {

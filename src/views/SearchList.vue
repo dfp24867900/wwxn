@@ -1,14 +1,20 @@
 <template>
   <div id="searchList">
     <!-- 顶部导航开始 -->
-    <div class="header">
-      <router-link to="/"
+    <div class="myheader">
+      <div class="header">
+      <router-link to="/search"
         ><img src="../assets/image/icon/back.png" alt=""
-      /></router-link>
-      <input v-model="keyword" type="text" placeholder="请输入关键字" @keydown.13="searchwrod"/>
-      <button @click="searchwrod" >搜索</button>
+        /></router-link>
+        <input v-model="keyword" type="text" placeholder="请输入关键字" @keydown.13="searchwrod"/>
+        <button @click="searchwrod" >搜索</button>
+      </div>
     </div>
+    <!-- 顶部导航栏结束 -->
+    <!-- 列表详情开始 -->
+    <p class="not_found" v-show="found==1">没有搜索到合适的！下面的说不定能找到呦</p>
     <div class="list" v-for="(detail, i) of lists" :key="i">
+      
       <div><img :src="detail.pic" alt=""/></div>
       <div class="mycontent">
         <p>{{ detail.title }}</p>
@@ -26,7 +32,7 @@
         </p>
       </div>
     </div>
-    <!-- 顶部导航结束 -->
+    <!-- 列表详情结束 -->
   </div>
 </template>
 
@@ -36,9 +42,11 @@ export default {
     return {
       keyword: "",
       lists: [],
+      found:1
     };
   }, 
   methods: {
+    //搜索按钮事件
     searchwrod() {
       if (this.keyword == "") {
         this.$toast({
@@ -51,18 +59,32 @@ export default {
         this.search();
       }
     },
+    //查找关键字相关的数据
     search() {
       this.addhistoryword()
       this.axios
         .get("/list/searchlist", { params: { keyword: this.keyword } })
         .then((result) => {
-          let lists = result.data;
-          lists.forEach((list) => {
-            list.pic = require("../assets/image/list/" + list.pic);
-            this.lists.push(list);
-          });
+          if(result.data.code==200){
+            this.found=0
+            let lists = result.data.result;
+            lists.forEach((list) => {
+              list.pic = require("../assets/image/list/" + list.pic);
+              this.lists.push(list);
+            });
+          }else{
+            this.found=1
+            this.axios.get("/list/defaults").then(result=>{
+              let lists = result.data.results;
+              lists.forEach((list) => {
+                list.pic = require("../assets/image/list/" + list.pic);
+                this.lists.push(list);
+              });
+            })
+          }
         });
     },
+    //添加搜索历史到数据库
     addhistoryword(){
       this.axios
         .post("/list/addhistoryword", `history_word=${this.keyword}`)
@@ -70,7 +92,9 @@ export default {
         });
     }
   },
+  //初次加载页面
   mounted() {
+    //从地址栏获取传递的参数
     this.keyword = this.$route.params.keyword;
     this.search();
   },
@@ -78,15 +102,20 @@ export default {
 </script>
 
 <style>
-#searchList .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+#searchList .myheader{
   height: 45px;
+}
+#searchList .header {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   border: 0px;
+  position: fixed;
 }
 #searchList .header input {
-  width: 70%;
+  width: 60%;
   background-color: #eee;
   height: 33px;
   border: 0px;
@@ -97,7 +126,6 @@ export default {
 #searchList .header button,
 #searchList .header a {
   display: block;
-  width: 15%;
   height: 45px;
   font-size: 14px;
   line-height: 45px;
@@ -109,6 +137,13 @@ export default {
 #searchList .header a > img {
   margin-top: 12px;
   width: 20px;
+}
+#searchList .not_found{
+  text-align: center;
+  font-size: 14px;
+  padding: 20px 0px;
+  border-top: 5px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 #searchList .list {
   display: flex;
@@ -163,5 +198,6 @@ export default {
 #searchList .mycontent p:nth-child(3) span:first-child {
   font-weight: bold;
   color: #f00;
+  font-size: 14px;
 }
 </style>

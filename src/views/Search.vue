@@ -109,9 +109,9 @@ export default {
   display: block;
   text-align: center;
   height: 28px;
-  line-height: 28px;
+  line-height: 30px;
   font-size: 14px;
-  width: 65px;
+  padding: 0px 15px;
   border-radius: 28px;
   background-color: #eee;
   margin: 5px;

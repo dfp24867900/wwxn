@@ -1,0 +1,167 @@
+<template>
+  <div id="searchList">
+    <!-- 顶部导航开始 -->
+    <div class="header">
+      <router-link to="/"
+        ><img src="../assets/image/icon/back.png" alt=""
+      /></router-link>
+      <input v-model="keyword" type="text" placeholder="请输入关键字" @keydown.13="searchwrod"/>
+      <button @click="searchwrod" >搜索</button>
+    </div>
+    <div class="list" v-for="(detail, i) of lists" :key="i">
+      <div><img :src="detail.pic" alt=""/></div>
+      <div class="mycontent">
+        <p>{{ detail.title }}</p>
+        <p>
+          <span>#{{ detail.manner }}</span>
+          <span>#{{ detail.scene }}</span>
+          <span>#{{ detail.color }}</span>
+        </p>
+        <p class="price">
+          <span>¥{{ detail.price }}</span>
+          <span>
+            <div><img src="/img/icon/icon.png" alt="" /></div>
+            <span>{{ detail.visits }}人浏览</span>
+          </span>
+        </p>
+      </div>
+    </div>
+    <!-- 顶部导航结束 -->
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      keyword: "",
+      lists: [],
+    };
+  }, 
+  methods: {
+    searchwrod() {
+      if (this.keyword == "") {
+        this.$toast({
+          message: "请输入关键字",
+          position: "middle",
+          duration: 1000,
+        });
+      } else {
+        this.lists = [];
+        this.search();
+      }
+    },
+    search() {
+      this.addhistoryword()
+      this.axios
+        .get("/list/searchlist", { params: { keyword: this.keyword } })
+        .then((result) => {
+          let lists = result.data;
+          lists.forEach((list) => {
+            list.pic = require("../assets/image/list/" + list.pic);
+            this.lists.push(list);
+          });
+        });
+    },
+    addhistoryword(){
+      this.axios
+        .post("/list/addhistoryword", `history_word=${this.keyword}`)
+        .then((result) => {
+        });
+    }
+  },
+  mounted() {
+    this.keyword = this.$route.params.keyword;
+    this.search();
+  },
+};
+</script>
+
+<style>
+#searchList .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 45px;
+  border: 0px;
+}
+#searchList .header input {
+  width: 70%;
+  background-color: #eee;
+  height: 33px;
+  border: 0px;
+  border-radius: 45px;
+  padding: 0px 15px;
+  font-size: 14px;
+}
+#searchList .header button,
+#searchList .header a {
+  display: block;
+  width: 15%;
+  height: 45px;
+  font-size: 14px;
+  line-height: 45px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0px;
+  color: #666;
+}
+#searchList .header a > img {
+  margin-top: 12px;
+  width: 20px;
+}
+#searchList .list {
+  display: flex;
+  padding: 5px 15px;
+}
+#searchList .list > div:first-child {
+  margin-right: 10px;
+  width: 45%;
+  height: 90px;
+  overflow: hidden;
+}
+#searchList .list > div:nth-child(2) {
+  width: 55%;
+  height: 90px;
+
+}
+#searchList .list > div img {
+  width: 100%;
+  border-radius: 5px;
+}
+#searchList .list span div {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 5px;
+}
+#searchList .price {
+  display: flex;
+  justify-content: space-between;
+}
+#searchList .price span:last-child {
+  display: flex;
+}
+#searchList .mycontent p {
+  margin: 8px 0;
+}
+#searchList .mycontent p:nth-child(2) > span {
+  padding-right: 10px;
+}
+#searchList .mycontent p:first-child {
+  font-size: 18px;
+}
+#searchList .mycontent p:not(:first-child) {
+  font-size: 13px;
+  color: #666;
+}
+#searchList .mycontent p:nth-child(3) {
+  margin-top: 20px;
+}
+#searchList .mycontent p:nth-child(3) span {
+  line-height: 15px;
+}
+#searchList .mycontent p:nth-child(3) span:first-child {
+  font-weight: bold;
+  color: #f00;
+}
+</style>

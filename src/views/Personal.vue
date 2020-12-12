@@ -11,7 +11,7 @@
     </mt-header>
     <!-- 正文区域 -->
     <div id="personal">
-      <div class="personal"> 
+      <div class="personal" @click="choose"> 
         <p>头像</p>
         <p>
           <img src="../assets/image/site/site_right.png" alt="">
@@ -19,51 +19,25 @@
         <img src="../assets/image/site/site_avatar.jpg" alt="">
       </div>
       <div class="personal">
-        <p>昵称</p>
-        <p> 
-          <img src="../assets/image/site/site_right.png" alt="">
-        </p>
-        <p>Z-sum</p>
-      </div>
-      <div class="personal">
         <p>电话号码</p>
         <p>15988755642</p>
       </div>
-      <div class="personal">
-        <p>性别</p>
-        <p> 
-          <img src="../assets/image/site/site_right.png" alt=""> 
-        </p>
-        <p>请选择</p>
-      </div>
-      <div class="personal">
-        <p>角色</p>
+      <div class="personal" v-for="(p,i) in list" :key="i">
+        <p>{{p.p}}</p>
         <p> 
           <img src="../assets/image/site/site_right.png" alt="">
         </p>
-        <p>未知</p>
+        <p>{{p.pp}}</p>
       </div>
-      <div class="personal">
-        <p>举办日期</p>
-        <p> 
-          <img src="../assets/image/site/site_right.png" alt="">
-        </p>
-        <p>请选择</p>
-      </div>
-      <div class="personal">
-        <p>举办城市</p>
-        <p> 
-          <img src="../assets/image/site/site_right.png" alt="">
-        </p>
-        <p>请选择</p>
-      </div>
-      <div class="personal">
-        <p>婚礼风格</p>
-        <p> 
-          <img src="../assets/image/site/site_right.png" alt="">
-        </p>
-        <p>请选择</p>
-      </div>
+      <mt-popup
+      v-model="chooseavatar"
+      position="bottom">
+        <div>
+          <p>头像选择</p>
+          <p>从相册选取</p>
+          <p>取消</p>
+        </div>
+      </mt-popup>
     </div>
   </div>
 </template>
@@ -115,10 +89,25 @@
 
 <script>
 export default {
-  data(){
-    return{
+  data() {
+    return {
+      list:[
+        {p:'昵称',pp:'Z-sum'},
+        {p:'性别',pp:'请选择'},
+        {p:'角色',pp:'未知'},
+        {p:'举办日期',pp:'请选择'},
+        {p:'举办城市',pp:'请选择'},
+        {p:'婚礼风格',pp:'请选择'}
+        ],
+      chooseavatar:false,
       ud:1
+    };
+  },
+
+  methods: {
+    choose(){
+      this.chooseavatar=true;
     }
-  }
-}
+  },
+};
 </script>

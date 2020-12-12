@@ -22,9 +22,15 @@ import Index from '../views/Index.vue'
 import Album from '../views/Album.vue'
 import Message from '../components/Message.vue'
 
+import Detail from '../views/Detail.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/detail',
+    component: Detail
+  },
   {
     path: '/siteback',
     component: Siteback
@@ -65,10 +71,6 @@ const routes = [
     path: '/sitecollect',
     component: Sitecollect
   },
-  { path: '/', name: 'Home', component: Home },
-  { path: "/address", component: Address },
-  { path: "/list", component: List },
-  { path: '/service', name: 'Service', component: Service },
   {path: '/', name: 'Home', component: Home },
   {path:"/address",component:Address},
   {path:"/list",component:List},

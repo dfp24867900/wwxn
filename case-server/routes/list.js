@@ -27,5 +27,21 @@ router.get("/price_desc",(req,res)=>{
       if(err) throw err;
       res.send({message:"查询成功",code:200,results:result});
   })
+});
+//获取按照浏览量升序的列表信息
+router.get("/vistis_asc",(req,res)=>{
+  let sql="select cid,pic,visits,price,scene,title,manner,scene,color from bride_case_list order by visits asc"
+  pool.query(sql,(err,result)=>{
+    if(err) throw error;
+    res.send({message:"查询成功",code:200,results:result});
+  })
+});
+//获取按照浏览量降序的列表信息
+router.get("/vistis_desc",(req,res)=>{
+  let sql="select cid,pic,visits,price,scene,title,manner,scene,color from bride_case_list order by visits desc"
+  pool.query(sql,(err,result)=>{
+    if(err) throw error;
+    res.send({message:"查询成功",code:200,results:result});
+  })
 })
 module.exports=router;

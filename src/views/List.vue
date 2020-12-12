@@ -27,51 +27,30 @@
            </mt-tab-item>
          </mt-navbar>
          <van-action-sheet v-model="show" title="案例筛选">
+           <!-- 案例筛内容 -->
             <div class="content1">
               <span class="title">场景</span>
                 <div class="flex-row">
-                  <router-link class="item" to="#">草坪</router-link>
-                  <router-link class="item" to="#">教堂</router-link>
-                  <router-link class="item" to="#">户外</router-link>
-                  <router-link class="item" to="#">室内</router-link>
-                  <router-link class="item" to="#">其他</router-link>
+                  <button v-for="(item,index) of scene" :key="index" @click="screen_1(index)" class="item">{{item}}</button>
                 </div>
                 <span class="title">风格</span>
                 <div class="flex-row">
-                   <router-link class="item" to="#">复古</router-link>
-                   <router-link class="item" to="#">梦幻</router-link>
-                   <router-link class="item" to="#">大气</router-link>
-                   <router-link class="item" to="#">主题</router-link>
-                   <router-link class="item" to="#">简洁</router-link>
-                   <router-link class="item" to="#">新中式</router-link>
-                   <router-link class="item" to="#">小清新</router-link>
-                   <router-link class="item" to="#">唯美</router-link>
-                   <router-link class="item" to="#">韩式</router-link>
-                   <router-link class="item" to="#">森系</router-link>
-                   <router-link class="item" to="#">西式</router-link>
-                   <router-link class="item" to="#">传统中式</router-link>
+                   <button v-for="(item,index) of manner" :key="index"  @click="screen_2(index)" class="item">{{item}}</button>
                 </div>
                 <span class="title">颜色</span>
                   <div class="flex-row">
-                   <router-link class="item" to="#" style=" background-color: #ff0; opacity: 0.5;"></router-link>
-                   <router-link class="item" to="#" style=" background-color: #ffa8bc; opacity: 0.5;"></router-link>
-                   <router-link class="item" to="#" style=" background-color: #ff5d00; opacity: 0.5;"></router-link>
-                   <router-link class="item" to="#" style=" background-color: #3767ea; opacity: 0.5;"></router-link>
-                   <router-link class="item" to="#" style=" background-color: #49bcc3; opacity: 0.5;"></router-link>
-                   <router-link class="item" to="#" style=" background-color: #009000; opacity: 0.5;"></router-link>
+                   <button v-for="(item,index) of color" :key="index" @click="screen_3(index)" class="item"  :style="{background:item}"></button>
                   </div>
                  <span class="title">价格</span>
                  <div class="flex-row">
-                  <router-link class="item" to="#">5千以下</router-link>
-                  <router-link class="item" to="#">5千-1万</router-link>
-                  <router-link class="item" to="#">1万-2万</router-link>
-                  <router-link class="item" to="#">2万-3万</router-link>
+                  <button v-for="(item,index) of price" :key="index" @click="screen_4(index)" class="item">{{item}}</button>
                 </div>
                 <mt-tabbar>
-                  <button class="reset">重置</button>
-                  <button class="confirm">确定</button>
+                  <button class="reset" @click="reset">重置</button>
+                  <button class="confirm" @click="confirm">确定</button>
                 </mt-tabbar>
             </div>
+            <!-- 案例筛选内容结束 -->
          </van-action-sheet>
        </div>
        <!-- 顶部导航栏结束 -->
@@ -89,17 +68,12 @@
                </p>
                <p>
                  <span>#{{item.manner}}&nbsp;&nbsp;#{{item.scene}}&nbsp;&nbsp;#{{item.color}}</span>
-                
-                   <img src="/img/icon/icon.png" class="watch_icon">
-                   <span class="my_span">{{item.visits}}</span>
-                 
-               </p>
+                 <img src="/img/icon/icon.png" class="watch_icon">
+                 <span class="my_span">{{item.visits}}</span>
+                  </p>
               </div>
            </router-link>
          </mt-tab-container-item>
-         <!-- <mt-tab-container-item id="2">22</mt-tab-container-item>
-         <mt-tab-container-item id="3">33</mt-tab-container-item>
-         <mt-tab-container-item id="4">44</mt-tab-container-item> -->
        </mt-tab-container>
      </div>
   </div>
@@ -112,7 +86,17 @@ export default {
       icon_toggle:true,
       icon_vistis:true,
       show:false,
-      list:[]
+      list:[],
+      //保存场景
+      scene:["草坪","教堂","户外","室内","其他"],
+      //保存风格
+      manner:["复古","梦幻","大气","主题","简洁","新中式","小清新","唯美","韩式","森系","西式","传统"],
+      //保存颜色
+      color:["#ff0","#ffa8bc","#ff5d00","#3767ea","#49bcc3","#009000"],
+      //保存价格
+      price:["5千以下","5千-1万","1万-2万","2万-3万"],
+      //保存选中的数据
+      screen:[]
     }
   },
   methods:{
@@ -170,8 +154,32 @@ export default {
           this.list.push(elem);
         })
       })
-}
   },
+  //确认触发按钮事件
+  confirm(){
+    console.log(this.screen);
+  },
+  //重置触发按钮事件
+  reset(){
+
+  },
+  screen_1(value){
+    this.screen.push(this.scene[value]);
+    console.log(this.screen);
+  },
+  screen_2(value){
+    console.log(value);
+    this.screen.push(this.manner[value]);
+  },
+  screen_3(value){
+    console.log(value);
+    this.screen.push(this.color[value]);
+  },
+  screen_4(value){
+    console.log(value);
+    this.screen.push(this.price[value]);
+  }
+},
   mounted(){
     this.axios.get("/list/defaults").then(result=>{
       console.log(result.data);
@@ -222,9 +230,11 @@ export default {
   background: #f1f1f1;
   border-radius: 100px;
   text-align: center;
-  line-height: 35px;
+  line-height: 30px;
   margin:0px  10px 15px 5px;
   color: #999999;
+  padding: 0;
+  border: 0;
 }
 .title{
   display: inline-block;
@@ -289,7 +299,7 @@ export default {
   font-size: 18px;
   color: rgb(231, 46, 46);
   font-weight: bold;
-  margin-left: 5.7rem;
+  margin-left: 4.7rem;
 }
 .content>p:nth-child(3){
   margin-top: 10px;
@@ -304,6 +314,9 @@ export default {
   width: 1rem;
   height: 1rem;
   vertical-align: top;
-  margin-left: 7rem;
+  margin-left: 5rem;
+}
+router-link-active{
+  z-index: 777 !important; 
 }
 </style>

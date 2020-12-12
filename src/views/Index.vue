@@ -33,7 +33,7 @@
           <span>专辑</span>
         </li>
         <li>
-          <router-link to="/" class="nav-item"
+          <router-link to="/list" class="nav-item"
             ><span class="color-c3 iconfont icon-shipin1"></span
           ></router-link>
           <span>案例</span>

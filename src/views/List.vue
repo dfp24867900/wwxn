@@ -31,7 +31,7 @@
             <div class="content1">
               <span class="title">场景</span>
                 <div class="flex-row">
-                  <button v-for="(item,index) of scene" :key="index" @click="screen_1(index)" class="item">{{item}}</button>
+                  <button v-for="(item,index) of scene" :key="index" @click="screen_1($event,index)" data-scene="item" class="item list1" :style="{background:my_color}">{{item}}</button>
                 </div>
                 <span class="title">风格</span>
                 <div class="flex-row">
@@ -86,6 +86,7 @@ export default {
       icon_toggle:true,
       icon_vistis:true,
       show:false,
+      my_color:"#f1f1f1",
       list:[],
       //保存场景
       scene:["草坪","教堂","户外","室内","其他"],
@@ -155,17 +156,33 @@ export default {
         })
       })
   },
-  //确认触发按钮事件
+  //确认触发按钮事件,获取后台信息
   confirm(){
-    console.log(this.screen);
+   this.list=[];
+   let arr=this.screen;//是一个数组
+   arr.forEach(elem=>{
+     this.axios.get("/list/scene",{params:{
+       alt:elem
+     }}).then(result=>{
+      this.list=result.data.results;
+     })
+   })
   },
   //重置触发按钮事件
   reset(){
 
   },
-  screen_1(value){
+  screen_1(e,value){
+    //e.target获取当前正在点击的元素
+    e.target.style.backgroundColor="red";
+    e.target.style.color="#fff";
     this.screen.push(this.scene[value]);
     console.log(this.screen);
+    // var btns=document.querySelectorAll(".list1");
+    // console.log(btns);
+    // btns.forEach(elem=>{
+    //   console.log(elem.getAttribute("style"));
+    // })
   },
   screen_2(value){
     console.log(value);

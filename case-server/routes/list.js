@@ -112,5 +112,13 @@ router.post("/addhistoryword", (req, res) => {
     if (err) throw error;
     res.send({ message: "插入成功", code: 200, result: result });
   })
+});
+router.get("/scene",(req,res)=>{
+  let scene=req.query.alt;
+  let sql="select cid,pic,visits,price,scene,title,manner,scene,color from bride_case_list where scene like ? ";
+  pool.query(sql,[scene],(err,result)=>{
+    if(err) console.log(err);
+    res.send({message:"查询成功",code:200,results:result});
+  })
 })
 module.exports = router;

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="te">
     <!-- 页面顶部位置的内容区域 -->
     <div id="siteheader">
       <!-- 头像区域 -->

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="teback">
     <!-- 页面头部 -->
     <mt-header
       title="意见反馈"
@@ -21,37 +21,43 @@
       <p>
         <input type="text" placeholder="联系方式">
       </p>
+      <div>
+        <p>图片(最多四张)</p>
+        <p>
+          <van-uploader :after-read="afterRead" />
+        </p>
+      </div>
     </div>
     <mt-button size='large'>提交</mt-button>
   </div>
 </template>
 <style>
-  .back_header{
+  #teback>.back_header{
     background-color: #ffffff!important;
     color: #333 !important;
     font-family:"Microsoft Yahei";
     font-size: 16px !important;
     border-bottom: 1px solid #ccc;
   }
-  #siteback{
+  #teback>#siteback{
     width: 100%;
     height: 585px;
     background: rgb(243, 240, 240);
   }
-  #siteback>p{
+  #teback>#siteback>div>p,#siteback>p{
     width: 96%;
     font-size: 14px;
     color:#33332d;
     padding: 5px;
   }
-  #siteback>p:nth-child(2){
+  #teback>#siteback>p:nth-child(2){
     width: 97%;
     height: 25%;
     padding: 5px;
     color: #aaa;
     background-color: #fff;
   }
-  #siteback>p>input{
+  #teback>#siteback>p>input{
     width: 100%;
     height: 20px;
     padding: 5px;
@@ -59,4 +65,20 @@
     border:0;  
     color: #aaa;
   }
+  #teback>#siteback>div>p:nth-child(2){
+    width: 97%;
+    height: 14%;
+    background-color: #fff;
+  }
 </style>
+
+<script>
+export default {
+   methods: {
+    afterRead(file) {
+      // 此时可以自行将文件上传至服务器
+      console.log(file);
+    },
+  },
+}
+</script>

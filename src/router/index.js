@@ -65,10 +65,6 @@ const routes = [
     path: '/sitecollect',
     component: Sitecollect
   },
-  { path: '/', name: 'Home', component: Home },
-  { path: "/address", component: Address },
-  { path: "/list", component: List },
-  { path: '/service', name: 'Service', component: Service },
   {path: '/', name: 'Home', component: Home },
   {path:"/address",component:Address},
   {path:"/list",component:List},

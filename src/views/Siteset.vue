@@ -1,5 +1,5 @@
 <template>
-  <div> 
+  <div id="teset"> 
     <!-- 页头 -->
     <mt-header
       title="设置"
@@ -18,20 +18,27 @@
           <mt-switch v-model="news" ></mt-switch>
         </p> 
       </div>
-      <div class="siteset">
+      <div class="siteset" @click="clear">
         <p>清除缓存</p>
         <p> 
           <img src="../assets/image/site/site_right.png" alt=""> 
         </p>
         <p>37.95M</p>
       </div>
-      <div class="siteset">
+      <div class="siteset" @click="about">
         <p>关于我们</p>
         <p> 
           <img src="../assets/image/site/site_right.png" alt=""> 
         </p>
         <p></p>
       </div>
+      <van-action-sheet
+  v-model="setclear"
+  :actions="actions"
+  cancel-text="取消"
+  description="确定清除缓存?"
+  close-on-click-action
+/>
       <mt-button size='large'>
         退出登录
       </mt-button>
@@ -111,7 +118,20 @@
 export default {
   data(){
     return{
-      news:true
+      news:true,
+       actions: [
+        { name: '清除缓存' },
+      ],
+      // action sheet 默认不显示，为false。操作sheetVisible可以控制显示与隐藏
+      setclear: false,
+    }
+  },
+   methods:{
+    clear(){
+      this.setclear=true
+    },
+    about(){
+      this.$router.push('/about')
     }
   }
 }

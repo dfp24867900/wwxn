@@ -76,7 +76,7 @@
           <div class="page" v-for="(item,index) of articles" :key="index">
             <!-- 图片 -->
                         <div>
-                            <router-link to="/message">
+                            <router-link :to="`/message/${item.id}`">
                                 <img v-lazy="item.img" alt="">
                                 <p class="span4">{{item.description}}</p>
                             </router-link>
@@ -269,13 +269,12 @@ export default {
   methods:{
     load(){
        /* 获取主内容的信息 */
-      this.axios.get('/art',{
+      this.axios.get('/index/art',{
         params:{
           id:this.active
         }
       }).then(res=>{
         this.articles = res.data.results;
-        
       })
     }
   },

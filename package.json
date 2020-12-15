@@ -12,14 +12,9 @@
     "mint-ui": "^2.2.13",
     "moment": "^2.29.1",
     "qs": "^6.9.4",
-    "sass-loader": "^10.1.0",
     "socket.io-client": "^3.0.3",
-<<<<<<< HEAD
-=======
     "v-viewer": "^1.5.1",
->>>>>>> e685d908a1624d1964fe3854de4f49ac9dda2a7d
-    "vant": "^2.11.2",
-    "vant-ui": "^2.1.7",
+    "vant": "^2.11.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vue-socket.io": "^3.0.10",

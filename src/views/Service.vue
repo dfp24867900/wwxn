@@ -33,9 +33,9 @@
         <div>
           <img @click="face" src="../assets/image/icon/expression.png" alt="" />
           <img src="../assets/image/icon/Photo.png" alt="" />
-          <img src="../assets/image/icon/photograph.png" alt="" />
+          <!-- <img src="../assets/image/icon/photograph.png" alt="" />
           <img src="../assets/image/icon/voice.png" alt="" />
-          <img src="../assets/image/icon/thumbs-up.png" alt="" />
+          <img src="../assets/image/icon/thumbs-up.png" alt="" /> -->
         </div>
         <button class="send">
           <img @click="sendNew" src="../assets/image/icon/send.png" alt="" />
@@ -224,7 +224,7 @@ export default {
 }
 #service .expression div:first-child img {
   padding: 8px 10px;
-  width: 6%;
+  width: 15%;
 }
 #service .footer .expression {
   display: flex;
@@ -237,7 +237,7 @@ export default {
   background-color: #fff;
 }
 #service .footer .send img {
-  width: 110%;
+  width: 100%;
 }
 .browBox {
   width: 100%;

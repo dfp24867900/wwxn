@@ -47,38 +47,38 @@ router.get("/vistis_desc", (req, res) => {
 //模糊搜索列表页
 router.get("/searchlist", (req, res) => {
   let keyword = "%"+req.query.keyword+"%";
-  let array = [];
-  let sql = "select pic,visits,price,scene,title,manner,color from bride_case_list where title like ?"
+  let array = []; 
+  let sql = "select cid,pic,visits,price,scene,title,manner,color from bride_case_list where title like ?"
   pool.query(sql, [keyword], (err, result) => {
     if (err) throw error;
     result.forEach(ele => {
       array.push(ele)
     })
-    sql = "select pic,visits,price,scene,title,manner,color from bride_case_list where visits like ?"
+    sql = "select cid,pic,visits,price,scene,title,manner,color from bride_case_list where visits like ?"
     pool.query(sql, [keyword], (err, result) => {
       if (err) throw error;
       result.forEach(ele => {
         array.push(ele)
       })
-      sql = "select pic,visits,price,scene,title,manner,color from bride_case_list where manner like ?"
+      sql = "select cid,pic,visits,price,scene,title,manner,color from bride_case_list where manner like ?"
       pool.query(sql, [keyword], (err, result) => {
         if (err) throw error;
         result.forEach(ele => {
           array.push(ele)
         })
-        sql = "select pic,visits,price,scene,title,manner,color from bride_case_list where scene like ?"
+        sql = "select cid,pic,visits,price,scene,title,manner,color from bride_case_list where scene like ?"
         pool.query(sql, [keyword], (err, result) => {
           if (err) throw error;
           result.forEach(ele => {
             array.push(ele)
           })
-          sql = "select pic,visits,price,scene,title,manner,color from bride_case_list where case_address like ?"
+          sql = "select cid,pic,visits,price,scene,title,manner,color from bride_case_list where case_address like ?"
           pool.query(sql, [keyword], (err, result) => {
             if (err) throw error;
             result.forEach(ele => {
               array.push(ele)
             })
-            sql = "select pic,visits,price,scene,title,manner,color from bride_case_list where color like ?"
+            sql = "select cid,pic,visits,price,scene,title,manner,color from bride_case_list where color like ?"
             pool.query(sql, [keyword], (err, result) => {
               if (err) throw error;
               result.forEach(ele => {

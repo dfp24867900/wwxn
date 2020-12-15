@@ -3,34 +3,42 @@
     <!-- 顶部导航开始 -->
     <div class="myheader">
       <div class="header">
-      <router-link to="/search"
-        ><img src="../assets/image/icon/back.png" alt=""
+        <router-link to="/search"
+          ><img src="../assets/image/icon/back.png" alt=""
         /></router-link>
-        <input v-model="keyword" type="text" placeholder="请输入关键字" @keydown.13="searchwrod"/>
-        <button @click="searchwrod" >搜索</button>
+        <input
+          v-model="keyword"
+          type="text"
+          placeholder="请输入关键字"
+          @keydown.13="searchwrod"
+        />
+        <button @click="searchwrod">搜索</button>
       </div>
     </div>
     <!-- 顶部导航栏结束 -->
     <!-- 列表详情开始 -->
-    <p class="not_found" v-show="found==1">没有搜索到合适的！下面的说不定能找到呦</p>
+    <p class="not_found" v-show="found == 1">
+      没有搜索到合适的！下面的说不定能找到呦
+    </p>
     <div class="list" v-for="(detail, i) of lists" :key="i">
-      
-      <div><img :src="detail.pic" alt=""/></div>
-      <div class="mycontent">
-        <p>{{ detail.title }}</p>
-        <p>
-          <span>#{{ detail.manner }}</span>
-          <span>#{{ detail.scene }}</span>
-          <span>#{{ detail.color }}</span>
-        </p>
-        <p class="price">
-          <span>¥{{ detail.price }}</span>
-          <span>
-            <div><img src="/img/icon/icon.png" alt="" /></div>
-            <span>{{ detail.visits }}人浏览</span>
-          </span>
-        </p>
-      </div>
+      <router-link :to="`/detail/${detail.cid}`">
+        <div><img :src="detail.pic" alt="" /></div>
+        <div class="mycontent">
+          <p>{{ detail.title }}</p>
+          <p>
+            <span>#{{ detail.manner }}</span>
+            <span>#{{ detail.scene }}</span>
+            <span>#{{ detail.color }}</span>
+          </p>
+          <p class="price">
+            <span>¥{{ detail.price.toFixed(2) }}</span>
+            <span>
+              <div><img src="/img/icon/icon.png" alt="" /></div>
+              <span>{{ detail.visits }}人浏览</span>
+            </span>
+          </p>
+        </div>
+      </router-link>
     </div>
     <!-- 列表详情结束 -->
   </div>
@@ -42,9 +50,11 @@ export default {
     return {
       keyword: "",
       lists: [],
-      found:1
+      found: 1,
+      historySearchs: [],
+      history_word: [],
     };
-  }, 
+  },
   methods: {
     //搜索按钮事件
     searchwrod() {
@@ -61,36 +71,47 @@ export default {
     },
     //查找关键字相关的数据
     search() {
-      this.addhistoryword()
+      this.addhistoryword();
       this.axios
         .get("/list/searchlist", { params: { keyword: this.keyword } })
         .then((result) => {
-          if(result.data.code==200){
-            this.found=0
+          if (result.data.code == 200) {
+            this.found = 0;
             let lists = result.data.result;
             lists.forEach((list) => {
               list.pic = require("../assets/image/list/" + list.pic);
               this.lists.push(list);
             });
-          }else{
-            this.found=1
-            this.axios.get("/list/defaults").then(result=>{
+          } else {
+            this.found = 1;
+            this.axios.get("/list/defaults").then((result) => {
               let lists = result.data.results;
               lists.forEach((list) => {
                 list.pic = require("../assets/image/list/" + list.pic);
                 this.lists.push(list);
               });
-            })
+            });
           }
         });
     },
     //添加搜索历史到数据库
-    addhistoryword(){
+    addhistoryword() {
+      //从数据库查找历史搜索
       this.axios
-        .post("/list/addhistoryword", `history_word=${this.keyword}`)
+        .get("/list/historyword", { params: { keyword: this.keyword } })
         .then((result) => {
+          this.historySearchs = result.data.result;
+          // console.log(result.data.result)
+          result.data.result.forEach((aa) => {
+            this.history_word.push(aa.history_word);
+          });
+          if (this.history_word.indexOf(this.keyword) == -1) {
+            this.axios
+              .post("/list/addhistoryword", `history_word=${this.keyword}`)
+              .then((result) => {});
+          }
         });
-    }
+    },
   },
   //初次加载页面
   mounted() {
@@ -102,7 +123,7 @@ export default {
 </script>
 
 <style>
-#searchList .myheader{
+#searchList .myheader {
   height: 45px;
 }
 #searchList .header {
@@ -138,33 +159,32 @@ export default {
   margin-top: 12px;
   width: 20px;
 }
-#searchList .not_found{
+#searchList .not_found {
   text-align: center;
   font-size: 14px;
   padding: 20px 0px;
   border-top: 5px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
-#searchList .list {
+#searchList .list > a {
   display: flex;
-  padding: 5px 15px;
+  padding: 8px 15px;
 }
-#searchList .list > div:first-child {
+#searchList .list > a > div:first-child {
   margin-right: 10px;
-  width: 45%;
+  width: 50%;
   height: 90px;
   overflow: hidden;
 }
-#searchList .list > div:nth-child(2) {
-  width: 55%;
+#searchList .list > a > div:nth-child(2) {
+  width: 50%;
   height: 90px;
-
 }
-#searchList .list > div img {
+#searchList .list > a > div img {
   width: 100%;
   border-radius: 5px;
 }
-#searchList .list span div {
+#searchList .list > a span div {
   width: 1rem;
   height: 1rem;
   margin-right: 5px;
@@ -184,10 +204,14 @@ export default {
 }
 #searchList .mycontent p:first-child {
   font-size: 18px;
+  color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 #searchList .mycontent p:not(:first-child) {
   font-size: 13px;
-  color: #666;
+  color: #999;
 }
 #searchList .mycontent p:nth-child(3) {
   margin-top: 20px;

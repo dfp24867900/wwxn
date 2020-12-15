@@ -27,7 +27,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/detail',
+    path: '/detail/:lid',
     component: Detail
   },
   {

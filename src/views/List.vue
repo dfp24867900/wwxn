@@ -35,15 +35,15 @@
                 </div>
                 <span class="title">风格</span>
                 <div class="flex-row">
-                   <button v-for="(item,index) of manner" :key="index"  @click="screen_2($event,index)" class="item">{{item}}</button>
+                   <button v-for="(item,index) of manner" :key="index"  @click="screen_2($event,index)" class="item list1">{{item}}</button>
                 </div>
                 <span class="title">颜色</span>
                   <div class="flex-row">
-                   <button v-for="(item,index) of color" :key="index" @click="screen_3(index)" class="item"  :style="{background:item}"></button>
+                   <button v-for="(item,index) of color" :key="index" @click="screen_3(index)" class="item list1"  :style="{background:item}"></button>
                   </div>
                  <span class="title">价格</span>
                  <div class="flex-row">
-                  <button v-for="(item,index) of price" :key="index" @click="screen_4(index)" class="item">{{item}}</button>
+                  <button v-for="(item,index) of price" :key="index" @click="screen_4(index)" class="item list1">{{item}}</button>
                 </div>
                 <mt-tabbar>
                   <button class="reset" @click="reset">重置</button>
@@ -63,7 +63,7 @@
              <img src="/img/icon/icon5.png">
              <p>找不到该案例</p>
            </div>
-           <router-link to="/" v-for="(item,index) of list" :key="index">
+           <router-link :to="`/detail/${item.cid}`" v-for="(item,index) of list" :key="index">
               <div class="content">
                <img class="content_img" :src="`/img/list/${item.pic}`">
                <p>
@@ -170,12 +170,13 @@ export default {
   confirm(){
    this.list=[];
    let arr=this.screen;//是一个数组
-   arr.forEach(elem=>{
-     console.log(elem);
+   if(arr.length>0){
+     arr.forEach(elem=>{
      this.axios.get("/list/scene",{params:{
        alt:elem
      }}).then(result=>{
         if(result.data.code==200){
+          this.found=false;
           this.list=result.data.results;
         }else{
           this.list=[];
@@ -183,6 +184,12 @@ export default {
         }
      })
    })
+   }else{
+      this.found=false;
+      this.axios.get("/list/defaults").then(result=>{
+      this.list=result.data.results;
+    })
+   }
   },
   //重置触发按钮事件
   reset(){
@@ -193,19 +200,31 @@ export default {
     let btn=e.target;
     this.i++
    if(this.i%2==0){
-      console.log(1);
       btn.style.backgroundColor="#57d2cd";
       btn.style.color="#fff";
-      this.screen.push(this.scene[value]);
-      console.log(this.screen);
+      $(e.target).siblings().css("background","#f1f1f1");
+      $(e.target).siblings().css("color","#999");
+      if(this.screen.indexOf(this.scene[value])==-1){
+          this.screen.push(this.scene[value]);
+      }
      }else{
       btn.style.backgroundColor="#f1f1f1";
       btn.style.color="#999";
+      let item=this.scene[value];
+      //改变元素取消该元素的选择
+      //查找当前要删除的元素
+      this.screen.findIndex((item,i,arr)=>{
+        console.log(i);
+        arr.splice(i,1);
+      });
      }
+     console.log(this.screen);
   },
   screen_2(e,value){
+    console.log(value);
     let btn=e.target;
-    this.i++
+    this.i++;
+    //let arr=this.screen;
    if(this.i%2==0){
     console.log(1);
     btn.style.backgroundColor="#57d2cd";
@@ -295,7 +314,7 @@ export default {
   margin-left: 10px;
 }
 .content1{
-    padding: 16px 16px 160px;
+  padding: 16px 16px 160px;
 }
 .mint-header{
   background-color: #c8caee !important;
@@ -308,7 +327,6 @@ export default {
   top: 0;
   right: 0;
   left: 0;
-  bottom: 0;
   z-index: 333;
 }
 /* 图标的样式 */

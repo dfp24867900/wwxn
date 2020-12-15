@@ -39,23 +39,6 @@
               <p> <img src="../assets/image/site/collect/collect_eye.png" alt=""> 1445人浏览</p>
             </div>
           </div>
-          <div class="collect_community">
-            <!-- 上方图片位置 -->
-            <div>
-              <img src="../assets/image/site/collect/collect_sur.jpg" alt="">
-            </div>
-            <!-- 下方文字描述 -->
-            <div>
-              <!-- 标题 -->
-              <p>氤氲</p>
-              <!-- 标签 -->
-              <p>#梦幻#大气#唯美#室内</p>
-              <!-- 价格 -->
-              <p>¥28,430</p>
-              <!-- 浏览数量 -->
-              <p> <img src="../assets/image/site/collect/collect_eye.png" alt=""> 1445人浏览</p>
-            </div>
-          </div>
         </mt-tab-container-item>
         <mt-tab-container-item id="collect_2">
           <!-- 外层位置 -->

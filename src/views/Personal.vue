@@ -8,8 +8,12 @@
     </mt-header>
     <!-- 正文区域 -->
     <div id="personal">
+<<<<<<< HEAD
       <!-- 头像 -->
       <div class="personal" @click="choose">
+=======
+      <div class="personal" @click="choose"> 
+>>>>>>> e685d908a1624d1964fe3854de4f49ac9dda2a7d
         <p>头像</p>
         <p>
           <img src="../assets/image/site/site_right.png" alt="" />
@@ -21,6 +25,7 @@
       </mt-actionsheet>
       <!-- 昵称-->
       <div class="personal">
+<<<<<<< HEAD
         <p>昵称</p>
         <p>
           <img src="../assets/image/site/site_right.png" alt="" />
@@ -117,6 +122,27 @@
       <p id="declaration">
        婚礼宣言
       </p>
+=======
+        <p>电话号码</p>
+        <p>15988755642</p>
+      </div>
+      <div class="personal" v-for="(p,i) in list" :key="i">
+        <p>{{p.p}}</p>
+        <p> 
+          <img src="../assets/image/site/site_right.png" alt="">
+        </p>
+        <p>{{p.pp}}</p>
+      </div>
+      <mt-popup
+      v-model="chooseavatar"
+      position="bottom">
+        <div>
+          <p>头像选择</p>
+          <p>从相册选取</p>
+          <p>取消</p>
+        </div>
+      </mt-popup>
+>>>>>>> e685d908a1624d1964fe3854de4f49ac9dda2a7d
     </div>
   </div>
 </template>
@@ -203,6 +229,7 @@ import { Toast } from "vant";
 export default {
   data() {
     return {
+<<<<<<< HEAD
       manifesto:'',
       say:false,
       ud: 1,
@@ -274,10 +301,23 @@ export default {
       ],
       wstyle: false,
       ws: "请选择",
+=======
+      list:[
+        {p:'昵称',pp:'Z-sum'},
+        {p:'性别',pp:'请选择'},
+        {p:'角色',pp:'未知'},
+        {p:'举办日期',pp:'请选择'},
+        {p:'举办城市',pp:'请选择'},
+        {p:'婚礼风格',pp:'请选择'}
+        ],
+      chooseavatar:false,
+      ud:1
+>>>>>>> e685d908a1624d1964fe3854de4f49ac9dda2a7d
     };
   },
 
   methods: {
+<<<<<<< HEAD
     // 城市选择
     citty(value, index) {
       this.addre = `${value[0]}-${value[1]}-${value[2]}`;
@@ -330,6 +370,10 @@ export default {
     refer(){
       document.getElementById('declaration').innerHTML=this.manifesto;
       this.say = false;
+=======
+    choose(){
+      this.chooseavatar=true;
+>>>>>>> e685d908a1624d1964fe3854de4f49ac9dda2a7d
     }
   },
 };

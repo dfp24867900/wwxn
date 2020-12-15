@@ -66,7 +66,7 @@ VALUES(
       10,
       1,
       "梦幻",
-      "户外",
+      "室内",
       "白色",
       111111111111,
       "友豪锦江酒店"
@@ -178,28 +178,24 @@ VALUES(
 );
 
 
+-- 创建搜索历史表
+CREATE TABLE bride_search_history(
+   mid INT UNSIGNED NOT NULL KEY AUTO_INCREMENT COMMENT '主键ID',
+   history_word TEXT NOT NULL COMMENT '搜索历史记录'
+);
+INSERT INTO bride_search_history VALUE(1,"唯美");
+INSERT INTO bride_search_history VALUE(null,"中式");
+INSERT INTO bride_search_history VALUE(null,"西式");
+INSERT INTO bride_search_history VALUE(null,"草坪");
+
 -- 创建客服消息表
 CREATE TABLE bride_service_messeage(
    mid INT UNSIGNED NOT NULL KEY AUTO_INCREMENT COMMENT '主键ID',
    content TEXT NOT NULL COMMENT '消息内容',
    user_id INT UNSIGNED NOT NULL COMMENT '外键,参照bride_user表',
    is_send INT NOT NULL COMMENT "是否自己发送 1：是 0：不是",
-   created_at INT UNSIGNED NOT NULL COMMENT '消息发送的时间毫秒值'
+   created_at BIGINT UNSIGNED NOT NULL COMMENT '消息发送的时间毫秒值'
 );
 -- 插入客服消息
 INSERT bride_service_messeage(content, user_id, is_send, created_at)
-VALUES('估计特朗普下台后凶多吉少。', 1, 0, 0);
-INSERT bride_service_messeage(content, user_id, is_send, created_at)
-VALUES('这是要清算大统领吗？', 1, 1, 1);
-INSERT bride_service_messeage(content, user_id, is_send, created_at)
-VALUES('墙倒众人推啊，建国同志辛苦了', 1, 0, 2);
-INSERT bride_service_messeage(content, user_id, is_send, created_at)
-VALUES('呵呵查吧查吧……我看热闹不嫌事儿大……', 1, 1, 3);
-INSERT bride_service_messeage(content, user_id, is_send, created_at)
-VALUES('嗯。把底层人民当猪养啊。。。', 1, 0, 4);
-INSERT bride_service_messeage(content, user_id, is_send, created_at)
-VALUES('非也！是当狗养！', 1, 0, 5);
-INSERT bride_service_messeage(content, user_id, is_send, created_at)
-VALUES('真是把民众当成讨好美国的宠物啊', 1, 1, 6);
-INSERT bride_service_messeage(content, user_id, is_send, created_at)
-VALUES('哪些金融机构可以配合地方政府变相举债？？？', 1, 0, 7);
+VALUES('欢迎来到微微新娘，如果您在使用的过程中有任何的问题或建议，可以在设置里提交意见反馈哦~', 1, 0, 1607763687542);

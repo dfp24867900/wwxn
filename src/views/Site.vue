@@ -10,7 +10,7 @@
         <p>
           <router-link to="/join">
             <img src="../assets/image/site/site_add.png" alt="" />
-          </router-link> 
+          </router-link>
         </p>
         <p>Z-sum</p>
         <p>布拉市|2522年12月</p>
@@ -34,7 +34,11 @@
         </router-link>
         <router-link to="/sitecollect">
           <mt-tab-item>
-            <img src="../assets/image/site/site_collect.png" alt="" slot="icon" />
+            <img
+              src="../assets/image/site/site_collect.png"
+              alt=""
+              slot="icon"
+            />
             收藏
           </mt-tab-item>
         </router-link>
@@ -50,65 +54,65 @@
     <div id="site_carousel">
       <mt-swipe :show-indicators="false">
         <mt-swipe-item>
-          <img src="../assets/image/site/site_carousel_1.png" alt="">
+          <img src="../assets/image/site/site_carousel_1.png" alt="" />
         </mt-swipe-item>
         <mt-swipe-item>
-          <img src="../assets/image/site/site_carousel_2.jpg" alt="">
+          <img src="../assets/image/site/site_carousel_2.jpg" alt="" />
         </mt-swipe-item>
       </mt-swipe>
     </div>
     <!-- 下方菜单选项区 -->
     <div id="site_menu">
       <!-- 我的订单 -->
-      <div>
-        <img src="../assets/image/site/site_order.png" alt="" />
-        <p>
-          我的订单
-          <router-link to="/siteshopping">
-            <img src="../assets/image/site/site_right.png" alt="">
-          </router-link>
-        </p>
-      </div>
+      <router-link to="/siteshopping">
+        <div>
+          <img src="../assets/image/site/site_order.png" alt="" />
+          <p>
+            我的订单
+            <img src="../assets/image/site/site_right.png" alt="" />
+          </p>
+        </div>
+      </router-link>
       <!-- 我的钱包 -->
-      <div>
-        <img src="../assets/image/site/site_wallet.png" alt="" />
-        <p>
-          我的钱包
-          <router-link to="/sitegold">
-            <img src="../assets/image/site/site_right.png" alt="">
-          </router-link>
-        </p>
-      </div>
+      <router-link to="/sitegold">
+        <div>
+          <img src="../assets/image/site/site_wallet.png" alt="" />
+          <p>
+            我的钱包
+            <img src="../assets/image/site/site_right.png" alt="" />
+          </p>
+        </div>
+      </router-link>
       <!-- 我的客服 -->
-      <div>
-        <img src="../assets/image/site/site_service.png" alt="" />
-        <p>
-          我的客服
-          <router-link to="/siteshopping">
-            <img src="../assets/image/site/site_right.png" alt="">
-          </router-link>
-        </p>
-      </div>
+      <router-link to="/service">
+        <div>
+          <img src="../assets/image/site/site_service.png" alt="" />
+          <p>
+            我的客服
+            <img src="../assets/image/site/site_right.png" alt="" />
+          </p>
+        </div>
+      </router-link>
       <!-- 意见反馈 -->
-      <div>
-        <img src="../assets/image/site/site_back.png" alt="" />
-        <p>
-          意见反馈
-          <router-link to="/siteback">
-            <img src="../assets/image/site/site_right.png" alt="">
-          </router-link>
-        </p>
-      </div>
+      <router-link to="/siteback">
+        <div>
+          <img src="../assets/image/site/site_back.png" alt="" />
+          <p>
+            意见反馈
+            <img src="../assets/image/site/site_right.png" alt="" />
+          </p>
+        </div>
+      </router-link>
       <!-- 设置 -->
-      <div>
-        <img src="../assets/image/site/site_set.png" alt="" />
-        <p>
-          设置
-          <router-link to="/siteset">
-            <img src="../assets/image/site/site_right.png" alt="">
-          </router-link>
-        </p>
-      </div>
+      <router-link to="/siteset">
+        <div>
+          <img src="../assets/image/site/site_set.png" alt="" />
+          <p>
+            设置
+            <img src="../assets/image/site/site_right.png" alt="" />
+          </p>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -154,7 +158,7 @@
   border-radius: 50%;
   z-index: 7;
 }
-#siteheader > div:first-child > p:nth-child(2)   img {
+#siteheader > div:first-child > p:nth-child(2) img {
   position: absolute;
   top: 12px;
   left: 12px;
@@ -181,20 +185,20 @@
   width: 23%;
   height: 12%;
   padding: 4px 10px 2px 10px;
-  border-radius: 20px;  
+  border-radius: 20px;
   position: absolute;
   left: 66%;
   top: 33%;
   border: 1px solid #f5f5f5;
 }
-#siteheader > div:last-child img{
+#siteheader > div:last-child img {
   position: absolute;
   top: 23%;
 }
-#siteheader > div:last-child>a>p{
+#siteheader > div:last-child > a > p {
   position: absolute;
   color: #f5f5f5;
-  top:23%;
+  top: 23%;
   left: 27%;
 }
 
@@ -206,16 +210,16 @@
   width: 94%;
   position: absolute;
   top: 150px;
-  left:3%;
+  left: 3%;
   border-radius: 5px;
   z-index: 10;
 }
-.site_nav>a{
+.site_nav > a {
   width: 33%;
 }
 
 /* 轮播区域的样式 */
-#site_carousel{
+#site_carousel {
   width: 94%;
   height: 140px;
   position: absolute;
@@ -227,13 +231,13 @@
   overflow: hidden;
   z-index: 10;
 }
-#site_carousel img{
+#site_carousel img {
   width: 100%;
   border: 0;
 }
 
 /* 下方菜单区域的样式 */
-#site_menu{
+#site_menu {
   width: 93%;
   height: 400px;
   margin-bottom: 55px;
@@ -243,17 +247,17 @@
   top: 380px;
   left: 3%;
 }
-#site_menu>div{
+#site_menu > a > div {
   position: relative;
   width: 100%;
   height: 12%;
 }
-#site_menu>div>img{
+#site_menu > a > div > img {
   position: absolute;
   top: 30%;
   left: 3%;
 }
-#site_menu>div>p{
+#site_menu > a > div > p {
   position: absolute;
   width: 90%;
   top: 30%;
@@ -261,11 +265,10 @@
   color: #333;
   font-family: "Microsoft Yahei";
 }
-#site_menu>div>p>a>img{ 
+#site_menu > a > div > p > img {
   position: absolute;
   left: 90%;
 }
-
 </style>
 
 <script>

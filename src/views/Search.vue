@@ -3,7 +3,7 @@
     <!-- 顶部导航开始 -->
     <div class="header">
       <router-link to="/"><img src="../assets/image/icon/back.png" alt="" /></router-link>
-      <input v-model="keyword" type="text" placeholder="请输入关键字" />
+      <input v-model="keyword" type="text" placeholder="请输入关键字" @keydown.13="search"/>
       <button @click="search">搜索</button>
     </div>
     <!-- 顶部导航结束 -->
@@ -11,7 +11,7 @@
     <div class="history_search">
       <p>历史搜索</p>
       <div>
-        <router-link to="`list/${historySearch}`" v-for="(historySearch,i) of historySearchs" :key="i">{{historySearch}}</router-link>
+        <router-link :to="`searchlist/${historySearch.history_word}`" v-for="(historySearch,i) of historySearchs" :key="i">{{historySearch.history_word}}</router-link>
       </div>
     </div>
     <!-- 历史搜索结束 -->
@@ -19,7 +19,7 @@
     <div class="hot_search">
       <p>热门搜索</p>
       <div>
-        <router-link to="`list/${hotSearch}`" v-for="(hotSearch,i) of hotSearchs" :key="i">{{hotSearch}}</router-link>
+        <router-link :to="`searchlist/${hotSearch}`" v-for="(hotSearch,i) of hotSearchs" :key="i">{{hotSearch}}</router-link>
       </div>
     </div>
     <!-- 热门搜索结束 -->
@@ -30,7 +30,7 @@ export default {
   data(){
     return {
       keyword:"",
-      historySearchs:["中式","西式","草坪"],
+      historySearchs:[],
       hotSearchs:["户外","草坪","粉色","唯美","小清新"]
     }
   },
@@ -43,10 +43,16 @@ export default {
           duration: 1000,
         });
       }else{
-        console.log(this.keyword)
-        this.$router.push(`list/${this.keyword}`)
+        this.$router.push(`searchlist/${this.keyword}`)
       }
-    }
+    },
+  },
+  mounted(){
+    this.axios
+        .get("/list/historyword", { params: { keyword: this.keyword } })
+        .then((result) => {
+          this.historySearchs=result.data.result
+        });
   }
 }
 </script>
@@ -103,9 +109,9 @@ export default {
   display: block;
   text-align: center;
   height: 28px;
-  line-height: 28px;
+  line-height: 30px;
   font-size: 14px;
-  width: 65px;
+  padding: 0px 15px;
   border-radius: 28px;
   background-color: #eee;
   margin: 5px;

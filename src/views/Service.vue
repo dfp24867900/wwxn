@@ -10,7 +10,7 @@
     <div id="main">
       <div class="" v-for="(messeage, i) of messeages" :key="i">
         <p class="messeage_time">
-          {{ moment.unix(messeage.created_at / 1000).format("lll") }}
+          {{ moment.unix(messeage.created_at/1000).format("lll") }}
         </p>
         <div v-if="messeage.is_send == 0" class="left_align">
           <div class="avatar">
@@ -33,14 +33,13 @@
         <div>
           <img @click="face" src="../assets/image/icon/expression.png" alt="" />
           <img src="../assets/image/icon/Photo.png" alt="" />
-          <img src="../assets/image/icon/photograph.png" alt="" />
+          <!-- <img src="../assets/image/icon/photograph.png" alt="" />
           <img src="../assets/image/icon/voice.png" alt="" />
-          <img src="../assets/image/icon/thumbs-up.png" alt="" />
+          <img src="../assets/image/icon/thumbs-up.png" alt="" /> -->
         </div>
         <button class="send">
           <img @click="sendNew" src="../assets/image/icon/send.png" alt="" />
         </button>
-
         <!-- 表情区域 -->
         <div class="browBox" v-if="faceShow">
           <ul>
@@ -134,7 +133,6 @@ export default {
           this.information = "";
         });
         setTimeout(() => {
-        // this.hint();
         let customer_service={}
         customer_service.content = this.testContents[Math.floor(Math.random() * 9)];
         customer_service.created_at = Date.now();
@@ -157,8 +155,6 @@ export default {
   mounted() {
     var data = { user_id: 1 };
     API.service(data).then((res) => {
-      this.messeages = res.data;
-      // this.messeages[0].content=Math.ceil(Math.random*50)+this.messeages[0].content
       this.messeages = res.result;
     });
   },
@@ -228,7 +224,7 @@ export default {
 }
 #service .expression div:first-child img {
   padding: 8px 10px;
-  width: 6%;
+  width: 15%;
 }
 #service .footer .expression {
   display: flex;
@@ -241,7 +237,7 @@ export default {
   background-color: #fff;
 }
 #service .footer .send img {
-  width: 110%;
+  width: 100%;
 }
 .browBox {
   width: 100%;

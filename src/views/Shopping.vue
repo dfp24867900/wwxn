@@ -28,17 +28,11 @@
             单价:<span>¥23850.00</span>
           </p> 
         </div>
-        <!-- 右下加减按钮 -->
-        <div>
-          <button>-</button>
-          <input type="text" value="3">
-          <button>+</button>
-        </div>
       </div>
     </div> 
     <!-- 页尾 -->
     <div class="shopfoot">
-      <p><input type="checkbox"/> 全选</p>
+      <p><van-checkbox v-model="checked">复选框</van-checkbox></p>
       <p>
         合计:
         <span>¥23850.00</span>
@@ -88,7 +82,7 @@
   }
   .shop>div:last-child>div:first-child{
     width: 96%;
-    height: 60%;
+    height: 98%;
     background-color: #fff;
     position: absolute;
     top: 2%;
@@ -97,58 +91,32 @@
   .shop>div:last-child>div:first-child>p:first-child{
     width: 80%;
     font-weight: 600;
+    font-size: 20px;
     position: absolute;
     top: 5%;
     left: 2%;
   }
   .shop>div:last-child>div:first-child>p:nth-child(2){
     width: 96%;
-    font-size: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #393939;
     position: absolute;
     top: 30%;
     left: 2%;
   }
   .shop>div:last-child>div:first-child>p:last-child{
-    width: 60%;
-    font-weight: 600;
+    width: 90%;
+    font-weight: 700;
+    font-size: 16px;
     position: absolute;
-    left: 38%;
+    left: 10%;
     top: 70%;
   }
   .shop>div:last-child>div:first-child>p:last-child>span{
     color: #900;
-  }
-  .shop>div:last-child>div:last-child{
-    width: 50%;
-    height: 35%;
-    position: absolute;
-    top: 60%;
-    left: 48%;
-  }
-  .shop>div:last-child>div:last-child>button{
-    display: inline-block;
-    width: 32%;
-    height: 80%;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    background-color: transparent;
-    position: absolute;
-    top: 20%;
-    left: 0;
-  }
-  .shop>div:last-child>div:last-child>button:first-child{
-    left: 64%;
-  }
-  .shop>div:last-child>div:last-child>input{
-    display: inline-block;
-    width: 25%;
-    height: 70%;
-    border: 0;
-    padding: 3px;
-    position: absolute;
-    top: 20%;
-    left: 32%;
-
+    font-style: italic;
+    font-size: 22px;
   }
   .shopfoot{
     width: 100%;
@@ -159,10 +127,10 @@
   }
   .shopfoot>p:first-child{
     font-weight: 600;
-    width: 20%;
+    width: 30%;
     height: 80%;
     position: absolute;
-    top: 30%;
+    top: 32%;
     left:2%;
   }
   .shopfoot>p:nth-child(2){
@@ -175,6 +143,7 @@
   }
   .shopfoot>p:nth-child(2)>span{
     color: #900;
+    font-style: italic;
   }
   .shopfoot>button{
     width: 25%;
@@ -188,3 +157,13 @@
     left: 75%;
   }
 </style>
+
+<script>
+export default {
+   data() {
+    return {
+      checked: true,
+    };
+  },
+}
+</script>

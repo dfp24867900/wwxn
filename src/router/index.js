@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// import Home from '../views/Home.vue'
 import Address from '../components/Address.vue'
 import List from '../views/List.vue'
 import Service from '../views/Service.vue'
@@ -15,7 +14,7 @@ import Personal from '../views/Personal.vue'
 import Sitegold from '../views/Sitegold.vue'
 import Siteset from '../views/Siteset.vue'
 import Siteback from '../views/Siteback.vue'
-
+import SearchList from '../views/SearchList.vue'
 import Register from '../views/Register.vue'
 import Search from '../views/Search.vue'
 import Index from '../views/Index.vue'
@@ -28,7 +27,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/detail',
+    path: '/detail/:lid',
     component: Detail
   },
   {
@@ -71,6 +70,7 @@ const routes = [
     path: '/sitecollect',
     component: Sitecollect
   },
+<<<<<<< HEAD
   // {path: '/', name: 'Home', component: Home },
   // { path: '/', name: 'Home', component: Home },
   { path: "/address", component: Address },
@@ -78,6 +78,16 @@ const routes = [
   { path: '/service', name: 'Service', component: Service },
   // {path: '/', name: 'Home', component: Home },
   {path: '/search', name: 'Search', component: Search },
+=======
+  { path: "/address", component: Address },
+  { path: "/searchlist/:keyword", component: SearchList },
+  { path: "/list/:keyword", component: List },
+  { path: '/service', name: 'Service', component: Service },
+  { path: "/address", component: Address },
+  { path: "/list", component: List },
+  { path: '/service', name: 'Service', component: Service },
+  { path: '/search', name: 'Search', component: Search },
+>>>>>>> 578020edcad33d231f4dfcb1a437fc50f70cec6b
   {
     path: '/about',
     name: 'About',
@@ -87,14 +97,19 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   { path: "/login", component: Login },
+<<<<<<< HEAD
   {path:"/register",component:Register},
+=======
+  { path: "/login", component: Login },
+  { path: "/register", component: Register },
+>>>>>>> 578020edcad33d231f4dfcb1a437fc50f70cec6b
   {
-    path:'/message',
+    path: '/message',
     component: Message
   },
-  
+
   {
-    path:'/album/:id',
+    path: '/album/:id',
     component: Album
   },
   {

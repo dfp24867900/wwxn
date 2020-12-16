@@ -31,19 +31,19 @@
             <div class="content1">
               <span class="title">场景</span>
                 <div class="flex-row">
-                  <button v-for="(item,index) of scene" :key="index" @click="screen_1(index)" class="item">{{item}}</button>
+                  <button v-for="(item,index) of scene" :key="index" @click="screen_1($event,index)" data-scene="item" class="item list1" :style="{background:my_color}">{{item}}</button>
                 </div>
                 <span class="title">风格</span>
                 <div class="flex-row">
-                   <button v-for="(item,index) of manner" :key="index"  @click="screen_2(index)" class="item">{{item}}</button>
+                   <button v-for="(item,index) of manner" :key="index"  @click="screen_2($event,index)" class="item list1">{{item}}</button>
                 </div>
                 <span class="title">颜色</span>
                   <div class="flex-row">
-                   <button v-for="(item,index) of color" :key="index" @click="screen_3(index)" class="item"  :style="{background:item}"></button>
+                   <button v-for="(item,index) of color" :key="index" @click="screen_3(index)" class="item list1"  :style="{background:item}"></button>
                   </div>
                  <span class="title">价格</span>
                  <div class="flex-row">
-                  <button v-for="(item,index) of price" :key="index" @click="screen_4(index)" class="item">{{item}}</button>
+                  <button v-for="(item,index) of price" :key="index" @click="screen_4(index)" class="item list1">{{item}}</button>
                 </div>
                 <mt-tabbar>
                   <button class="reset" @click="reset">重置</button>
@@ -59,7 +59,11 @@
      <div class="main">
        <mt-tab-container v-model="active">
          <mt-tab-container-item :id="active">
-           <router-link to="/" v-for="(item,index) of list" :key="index">
+           <div v-show="found" class="not_found">
+             <img src="/img/icon/icon5.png">
+             <p>找不到该案例</p>
+           </div>
+           <router-link :to="`/detail/${item.cid}`" v-for="(item,index) of list" :key="index">
               <div class="content">
                <img class="content_img" :src="`/img/list/${item.pic}`">
                <p>
@@ -86,6 +90,7 @@ export default {
       icon_toggle:true,
       icon_vistis:true,
       show:false,
+      my_color:"#f1f1f1",
       list:[],
       //保存场景
       scene:["草坪","教堂","户外","室内","其他"],
@@ -96,7 +101,10 @@ export default {
       //保存价格
       price:["5千以下","5千-1万","1万-2万","2万-3万"],
       //保存选中的数据
-      screen:[]
+      screen:[],
+      found:false,
+      //变量控制当前按钮
+      i:1
     }
   },
   methods:{
@@ -127,6 +135,7 @@ export default {
       this.show=true;
     },
     defaults(){
+      this.found=false;
       this.list=[];
       this.axios.get("/list/defaults").then(result=>{
       console.log(result.data);
@@ -135,6 +144,7 @@ export default {
     },
     //浏览量升序
     vistis_asc(){
+      this.found=false;
        this.list=[];
        this.icon_vistis=false;
        this.axios.get("/list/vistis_asc").then(result=>{
@@ -146,6 +156,7 @@ export default {
     },
     //浏览量降序
     vistis_desc(){
+      this.found=false;
       this.list=[];
       this.icon_vistis=true;
       this.axios.get("/list/vistis_desc").then(result=>{
@@ -155,21 +166,74 @@ export default {
         })
       })
   },
-  //确认触发按钮事件
+  //确认触发按钮事件,获取后台信息
   confirm(){
-    console.log(this.screen);
+   this.list=[];
+   let arr=this.screen;//是一个数组
+   if(arr.length>0){
+     arr.forEach(elem=>{
+     this.axios.get("/list/scene",{params:{
+       alt:elem
+     }}).then(result=>{
+        if(result.data.code==200){
+          this.found=false;
+          this.list=result.data.results;
+        }else{
+          this.list=[];
+          this.found=true;
+        }
+     })
+   })
+   }else{
+      this.found=false;
+      this.axios.get("/list/defaults").then(result=>{
+      this.list=result.data.results;
+    })
+   }
   },
   //重置触发按钮事件
   reset(){
 
   },
-  screen_1(value){
-    this.screen.push(this.scene[value]);
-    console.log(this.screen);
+  screen_1(e,value){
+     //e.target获取当前正在点击的元素 
+    let btn=e.target;
+    this.i++
+   if(this.i%2==0){
+      btn.style.backgroundColor="#57d2cd";
+      btn.style.color="#fff";
+      $(e.target).siblings().css("background","#f1f1f1");
+      $(e.target).siblings().css("color","#999");
+      if(this.screen.indexOf(this.scene[value])==-1){
+          this.screen.push(this.scene[value]);
+      }
+     }else{
+      btn.style.backgroundColor="#f1f1f1";
+      btn.style.color="#999";
+      let item=this.scene[value];
+      //改变元素取消该元素的选择
+      //查找当前要删除的元素
+      this.screen.findIndex((item,i,arr)=>{
+        console.log(i);
+        arr.splice(i,1);
+      });
+     }
+     console.log(this.screen);
   },
-  screen_2(value){
+  screen_2(e,value){
     console.log(value);
+    let btn=e.target;
+    this.i++;
+    //let arr=this.screen;
+   if(this.i%2==0){
+    console.log(1);
+    btn.style.backgroundColor="#57d2cd";
+    btn.style.color="#fff";
     this.screen.push(this.manner[value]);
+   }else{
+      btn.style.backgroundColor="#f1f1f1";
+      btn.style.color="#999";
+   }
   },
   screen_3(value){
     console.log(value);
@@ -181,6 +245,7 @@ export default {
   }
 },
   mounted(){
+    this.found=false;
     this.axios.get("/list/defaults").then(result=>{
       console.log(result.data);
       this.list=result.data.results;
@@ -189,7 +254,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+/* 不能发现案例 */
+.not_found{
+  text-align: center;
+  margin-top: 170px;
+}
 .my_span{
   color: #999;
 }
@@ -244,7 +314,7 @@ export default {
   margin-left: 10px;
 }
 .content1{
-    padding: 16px 16px 160px;
+  padding: 16px 16px 160px;
 }
 .mint-header{
   background-color: #c8caee !important;
@@ -257,7 +327,6 @@ export default {
   top: 0;
   right: 0;
   left: 0;
-  bottom: 0;
   z-index: 333;
 }
 /* 图标的样式 */

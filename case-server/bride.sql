@@ -198,6 +198,7 @@ CREATE TABLE bride_service_messeage(
 );
 -- 插入客服消息
 INSERT bride_service_messeage(content, user_id, is_send, created_at)
+<<<<<<< HEAD
 VALUES('欢迎来到微微新娘，如果您在使用的过程中有任何的问题或建议，可以在设置里提交意见反馈哦~', 1, 0, 1607763687542);
 
 -- 详情婚礼团队
@@ -231,3 +232,6 @@ CREATE TABLE bribe_details(
 
 
 );
+=======
+VALUES('欢迎来到微微新娘，如果您在使用的过程中有任何的问题或建议，可以在设置里提交意见反馈哦~', 1, 0, 1607763687542);
+>>>>>>> 578020edcad33d231f4dfcb1a437fc50f70cec6b

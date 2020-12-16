@@ -198,4 +198,40 @@ CREATE TABLE bride_service_messeage(
 );
 -- 插入客服消息
 INSERT bride_service_messeage(content, user_id, is_send, created_at)
+<<<<<<< HEAD
 VALUES('欢迎来到微微新娘，如果您在使用的过程中有任何的问题或建议，可以在设置里提交意见反馈哦~', 1, 0, 1607763687542);
+
+-- 详情婚礼团队
+CREATE TABLE bribe_details_ weddingTeam(
+   weid INT UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT'id且主键',
+   avatar varchar(50) NOT NULL  '员工头像',
+   wname VARCHAR(16) COMMENT '艺名',
+   position VARCHAR(16) COMMENT '职位',
+   price DECIMAL(6,2) COMMENT '价格',
+);
+
+-- 报价明细表
+CREATE TABLE bribe_details_quotations(
+   quid INT UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT'id且主键',
+   
+);
+
+-- 详情表
+CREATE TABLE bribe_details(
+   deid INT UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT 'ID且主键',
+  list_id INT UNSIGNED NOT NULL COMMENT '外键,参照bride_case_list表',
+  carousel VARCHAR(512) NOT NULL COMMENT '轮播图'
+  bType VARCHAR(20) COMMENT  '详情风格类型',
+  showTime DATE NOT NULL COMMENT '时间' ,
+  effectPic VARCHAR(512) COMMENT '设计效果图',
+  director VARCHAR(16) COMMENT '主管言论',
+  intro VARCHAR(512) COMMENT '简介',
+  mPhoto VARCHAR(512) COMMENT '简介搭配图',
+  weTe_id INT UNSIGNED NOT NULL COMMENT '外键,参照bribe_details_ weddingTeam表',
+
+
+
+);
+=======
+VALUES('欢迎来到微微新娘，如果您在使用的过程中有任何的问题或建议，可以在设置里提交意见反馈哦~', 1, 0, 1607763687542);
+>>>>>>> 578020edcad33d231f4dfcb1a437fc50f70cec6b

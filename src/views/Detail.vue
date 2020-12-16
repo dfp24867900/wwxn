@@ -65,7 +65,7 @@
         <!-- 酒店 -->
         <div class='detail-hotel'>
             <img src="../assets/image/icon/jiudian.png">
-            <span>友豪锦江酒店</span>
+            <p>友豪锦江酒店</p>
         </div> 
         </div>
         <!-- 设计效果图 -->
@@ -97,10 +97,17 @@
         <div class="rich-content" >
             <p>打破香槟系婚礼靠花艺的堆砌，用线条感制造质感，且多用线条花材，使花艺不显油腻，设计平滑的喷绘吊顶，让低层高的厅吊顶也不显压抑，打造出高级简约的质感泰式婚礼</p>
         </div>
-          <!-- 图片详图开始 -->
-          <img v-for="(img,index) in imageList" :key="index" v-lazy="img"  class="lazyImages"
+        <div>
+            <!-- 图片详图开始 -->
+          <img v-for="(img,index) in imageList" :key="index" v-lazy="img"  class="lazyImages"  
           />
           <!-- 图片详图结束 -->
+          <div class="comments-more"  >
+            <span >加载更多</span>
+          </div>
+       
+        </div>
+        
       <!--内容简述开始 结束 -->
       </div>
           <div class="team">
@@ -346,8 +353,10 @@
                   height="2rem"
                   src="https://img.yzcdn.cn/vant/cat.jpeg"/>
               <!-- 昵称 -->
-                  <p>新人：A.m***</p>
-                  <p>对本场婚礼的评价</p>
+                  <div>
+                    <p>新人：A.m***</p>
+                    <p>对本场婚礼的评价</p>
+                  </div>
               </div>
               <div class='comment-mark'>
                       <van-row>
@@ -355,14 +364,18 @@
                         对 策划师-Aliao 说
                       </van-col>
                       <van-col span="12">
-                      <van-rate
+                      <!-- <van-rate
                         v-model="value"
                         :size="15"
                         color="#ffd21e"
                         void-icon="star"
-                        void-color="#999" />
+                        void-color="#999" /> -->
+                         <span class="comments-item-head-star star5"> </span>
                         </van-col>
                       </van-row>
+                      <div>
+                        <p>aliao是我朋友给我力荐的策划师，跟他的交流很顺畅。他能知道我们需要什么，作为水瓶座的女生，我有一些天马行空的想法。他耐心倾听我的叙述，从我的描述中提取的关键词很准确。最终效果图一出来，我们的感觉就有了！这是一次就通过的方案，没有任何改动。我觉得实景比图纸还要美。我站在台上感觉已经进入了aliao为我们构建的梦里。我的金色婚纱在这个梦里熠熠生辉，每一个人都赞美我的婚纱绝美。但我知道，它能把它的美散发的淋漓尽致是因为有这个舞台的加持。我相信我的丈夫会一辈子记得那天我站在他身后，他转身回眸的一瞬间，眼睛里都是我第一次身着金纱最美的模样。我也永远不会忘记他那一刻的热泪。谢谢aliao</p>
+                      </div>
               </div>
                
             </div>
@@ -401,36 +414,29 @@
   font-size:18px ;
   padding-top:2px
 }
-
 /* 轮播图 */
   .carouse{
     margin-top: 41px;
     width:100%;
     height:185px;
   }
-
    .carouse img{
       width:100%;
       height:185px;
    }
-
    /* 导航栏 */
 .mint-navbar .mint-tab-item{
   padding: 9px 0
 }
-
 .mint-navbar .mint-tab-item.is-selected {
     border-bottom: 2px solid #d44026;
     color: #ec5114;
     background:linear-gradient(to top, #fcfbfa, #fcf4f5);
   }
-
 .mint-navbar{
   margin-top: 1px;
 }
-
 /* 面板区 */
-
 .details-main{
   margin-top: 4px;
   margin-bottom: 50px;
@@ -438,46 +444,36 @@
   color: #a9a3a3;
   background: #f1ecec;
 }
-
-.detail-top,.detail-content,.detail-footer{
+.detail-top,.detail-content,.detail-footer,.comment-container{
   padding: 23px 20px 2px;
   margin-bottom: 8px;
   background: white;
 }
-
 .detail-footer{margin-bottom: 5px;}
-
 .detail-content{
   padding-top:10px
 }
-
 .details-main  .van-row{
   font-size:22px;
   color:rgb(61, 59, 59);
    margin-top:10px;
 }
-
 .detail-price>.van-col:first-child{
  color:rgb(228, 60, 30);
  font-weight: 600;
 }
-
 .van-col--8,.detail-price>.van-col:nth-child(2) {
   text-align: right;
 }
-
 .details-main .van-row  span,.details-main  .detail-time span{
   font-size:12px;
   vertical-align:middle;
   padding-left:3px
 }
-
 .van-icon::before{vertical-align:middle;}
-
 .van-icon-eye-o::before {
     vertical-align: text-top;
 }
-
 .details-main .detail-main-from{
   display: inline-block;
   width:40px;
@@ -491,41 +487,35 @@
   line-height:1.5;
   color:#8a8787
 }
-
 .details-main .detail-time{
   margin-top:5px;
   margin-bottom:5px;
 }
-
 .van-rate{
   vertical-align: middle;
 }
-
 .details-main  .detail-hotel{
  margin-top: 15px;
+ display: flex;
+ align-items: center;
 }
-
 .details-main  .detail-hotel>img{
   width:20px;
   height:20px;
   padding:3px;
 }
-
 .detail-content{
   padding-bottom: 15px;
 }
-
 .detail-content::after{
   content:'';
   clear: both;
   display: block;
 }
-
 .detail-content>p,.detail-info-nickname,.team>p{
   font-size:18px;
   color:rgb(63, 61, 61);
 }
-
  .detail-content  img{
    width: 102px;
    height:78px;
@@ -533,34 +523,29 @@
    border-radius: 3px;
    float: left;
  }
-
  .lazyImages{
    width:100%;
    height:218px;
    border-radius: 3px;
    margin-bottom:5px
  }
-
  /* 婚礼团队 */
  .info{
    width:94%;
    background: #f7f4f4;
    padding:10px
  }
-
 .detail-info-avatar,.detail-item-avatar{
     position: relative;
     top: 5px;
     left: 4px;
   }
-
 .detail-info-nickname{
     font-size: 15px;
     margin-bottom:6px;
      margin-left:10px;
      /* vertical-align: middle; */
 }
-
 .rich-content {
     padding: 5px 0;
     line-height: 1.7;
@@ -568,11 +553,37 @@
     color:rgb(29, 28, 28)
 }
 
+.comments-more {
+  text-align: center;
+  padding: 5px 1px;
+}
+.comments-more:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.comments-more > span {
+  display: inline-block;
+  font-size: 0.85714286rem;
+  border: 1px solid #232628;
+  padding: 0.28571429rem 0.57142857rem;
+  border-radius: 0.14285714rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #f7f9fa;
+  color :#232628;
+  border-radius: 20px;
+}
+
+
 .team>p{
   margin-top:22px;
   margin-bottom: 18px;
 }
-
 .team .van-row>.van-col{
   width:160px;
   height:49px;
@@ -582,24 +593,20 @@
    margin-bottom:4px;
   display: flex;
 }
-
 .team .van-row>.van-col div{
     font-size:14px;
     padding:4px 2px ;
     line-height:1.2;
 }
-
 .team .van-row>.van-col div>p+span{
   color:#8a8686;
   padding-left: 0px;
   
 }
-
 .team .van-row>.van-col div>span+span{
   padding-left:15px;
   font-weight: 600;
 }
-
 /* 报价明细 */
 .details-price{
   font-size:18px;
@@ -607,43 +614,77 @@
   color:#302e2e;
   padding:13px 16px
 }
-
-.details-price-title,.comment-container p:first-child{
+.details-price-title{
   padding-bottom: 5px;
    padding-top: 5px;
 }
-
 .van-cell__title{
   font-size:16px
 }
-
 .price .van-cell__value {
   color:#d44026
 }
-
 /* 新人评价 */
-.comment-container p:first-child{
+.comment-container>p:first-child{
   font-size: 18px;
   color: #666;
   text-align: center;
-  margin-top:15px;
-  margin-bottom:20px
+  padding-top:25px;
+  padding-bottom:25px
 }
-
 .comment-container{
   padding:0px 27px
 }
-
 .comment-info{
  display: flex;
  align-items: center;
 }
-
 .comment-info>p{
   margin:4px
 }
 
+.comment-info>div:nth-child(2){
+  margin-left:5px;
+  line-height: 18px;
+}
 
+.comment-info>div:nth-child(2)>p:nth-child(2){
+    color: #979797;
+    font-size: 14px;
+}
+
+.comment-mark{
+  border-bottom: 3px dashed rgba(0,0,0,.1);
+}
+
+.comment-mark  .van-row{
+    margin-top:30px;
+    font-size: 16px;
+    clear: both;
+}
+
+.comment-mark>div:nth-child(2)>p{
+    font-size: 12px;
+    padding-top: 16px;
+    padding-bottom: 15px;
+    line-height: 20px;
+    color: #666;
+}
+
+.comments-item-head-star {
+  display: block;
+  width: 13.285714rem;
+  max-width: 13.285714rem;
+  min-width: 4.28571429rem;
+  height: 0.64285714rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+.comments-item-head-star.star5 {
+  background-image: url("../assets/picture/star5.png");
+}
 
 </style>
 <script>
@@ -653,6 +694,8 @@ export default {
     return {
       active:"1",
       imageList:[
+        'https://img.izhaowo.com/img/70cfa27c-36e0-4f5c-9270-d77a90b76de8.jpg?x-oss-process=image/resize,m_lfit,w_662,limit_0,g_center/watermark,image_5qiq5ZCR5rC05Y2wMi5wbmc_eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsUF8xMDA,t_100,g_center&',
+        'https://img.izhaowo.com/img/70cfa27c-36e0-4f5c-9270-d77a90b76de8.jpg?x-oss-process=image/resize,m_lfit,w_662,limit_0,g_center/watermark,image_5qiq5ZCR5rC05Y2wMi5wbmc_eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsUF8xMDA,t_100,g_center&',
         'https://img.izhaowo.com/img/70cfa27c-36e0-4f5c-9270-d77a90b76de8.jpg?x-oss-process=image/resize,m_lfit,w_662,limit_0,g_center/watermark,image_5qiq5ZCR5rC05Y2wMi5wbmc_eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsUF8xMDA,t_100,g_center&',
         'https://img.izhaowo.com/img/b5195971-fc2d-4295-9f0a-1cf61613ff19.jpg?x-oss-process=image/resize,m_lfit,w_662,limit_0,g_center/watermark,image_5qiq5ZCR5rC05Y2wMi5wbmc_eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsUF8xMDA,t_100,g_center&',
         'https://img.izhaowo.com/img/ee2b425f-537a-4046-8d87-a1fcfc1c3fdd.jpg?x-oss-process=image/resize,m_lfit,w_662,limit_0,g_center/watermark,image_5qiq5ZCR5rC05Y2wMi5wbmc_eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsUF8xMDA,t_100,g_center&',
@@ -666,10 +709,13 @@ export default {
       ],
       value:3,
      activeNames: [''],
+  
+
     }
   },
-   methods: {
-   
-  },
+
+  methods: {
+    
+  }
 }
 </script>

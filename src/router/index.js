@@ -71,18 +71,12 @@ const routes = [
     path: '/sitecollect',
     component: Sitecollect
   },
-<<<<<<< HEAD
-  {path: '/', name: 'Home', component: Home },
-=======
+  // {path: '/', name: 'Home', component: Home },
   // { path: '/', name: 'Home', component: Home },
   { path: "/address", component: Address },
   { path: "/list", component: List },
   { path: '/service', name: 'Service', component: Service },
   // {path: '/', name: 'Home', component: Home },
->>>>>>> 3f98037cedda4a1825b5e67af13bcfc78577b9e1
-  {path:"/address",component:Address},
-  {path:"/list",component:List},
-  {path: '/service',name: 'Service',component: Service},
   {path: '/search', name: 'Search', component: Search },
   {
     path: '/about',
@@ -93,7 +87,6 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   { path: "/login", component: Login },
-  {path:"/login",component:Login},
   {path:"/register",component:Register},
   {
     path:'/message',

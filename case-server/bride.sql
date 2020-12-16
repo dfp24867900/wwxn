@@ -198,22 +198,76 @@ CREATE TABLE bride_service_messeage(
 );
 -- 插入客服消息
 INSERT bride_service_messeage(content, user_id, is_send, created_at)
-<<<<<<< HEAD
-VALUES('欢迎来到微微新娘，如果您在使用的过程中有任何的问题或建议，可以在设置里提交意见反馈哦~', 1, 0, 1607763687542);
+
 
 -- 详情婚礼团队
 CREATE TABLE bribe_details_ weddingTeam(
-   weid INT UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT'id且主键',
+   weid INT UNSIGNED PRIMARY KEY 'id',
    avatar varchar(50) NOT NULL  '员工头像',
    wname VARCHAR(16) COMMENT '艺名',
-   position VARCHAR(16) COMMENT '职位',
-   price DECIMAL(6,2) COMMENT '价格',
+   position VARCHAR(16) COMMENT '职位', 
+   price DECIMAL(6,2) COMMENT '价格', 
+   
+); 
+
+INSERT INTO bribe_details_ weddingTeam VALUES(2001,'21.png','大钊','策划师',1890);
+INSERT INTO bribe_details_ weddingTeam VALUES(1021,'01.jpg','Sky','摄影师',1750);
+INSERT INTO bribe_details_ weddingTeam VALUES(1022,'02.jpg','大师兄','摄影师',2485);
+INSERT INTO bribe_details_ weddingTeam VALUES(1717,'03.jpg','安琪','化妆师',1170);
+INSERT INTO bribe_details_ weddingTeam VALUES(1111,'05.jpg','Ann','化妆师',1660);
+INSERT INTO bribe_details_ weddingTeam VALUES(2213,'06.jpg','阿甘','主持人',2980);
+INSERT INTO bribe_details_ weddingTeam VALUES(1202,'08.jpg','叶帅','主持人',1500);
+INSERT INTO bribe_details_ weddingTeam VALUES(0109,'12.jpg','娜娜红','策划师',2400);
+INSERT INTO bribe_details_ weddingTeam VALUES(0200,'17.jpg','千寻','策划师',2500);
+INSERT INTO bribe_details_ weddingTeam VALUES(5521,'21.jpg','Sky','摄影师',1750);
+
+--报价明细表种类
+CREATE TABLE bribe_details_classify(
+   clid INT UNSIGNED PRIMARY KEY  COMMENT'id',
+   cuname VARCHAR(8) COMMENT '分类',
 );
+INSERT INTO bribe_details_classify VALUES (001,'执行人员');
+INSERT INTO bribe_details_classify VALUES (002,'迎宾区');
+INSERT INTO bribe_details_classify VALUES (003,'仪式区');
+INSERT INTO bribe_details_classify VALUES (004,'灯光舞美');
+INSERT INTO bribe_details_classify VALUES (005,'其他');
 
 -- 报价明细表
 CREATE TABLE bribe_details_quotations(
    quid INT UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT'id且主键',
-   
+  item VARCHAR(15) COMMENT '项目',
+  serContent VARCHAR(30) COMMENT '服务内容',
+  servicelevel VARCHAR(30) COMMENT '服务水平',
+  univalence DECIMAL(6,2)   COMMENT '单价',
+  amount SMALLINT COMMENT '数量',
+  unit  VARCHAR(5) COMMENT '单位',
+  classify_id INT UNSIGNED NOT NULL COMMENT '外键,参照bribe_details_classify表',
+);
+
+INSERT INTO bribe_details_quotations VALUES(NULL,'平面设计师','呈现婚礼的画面样式，设计KT和场景的配合','专业中级',200,1,'人',001);
+INSERT INTO bribe_details_quotations VALUES(NULL,'高级花艺师','呈现婚礼各区域场景花艺设计、细节','专业',800,2,'人',001);
+INSERT INTO bribe_details_quotations VALUES(NULL,'场布师','呈现婚礼区域场景布置样式，细节','专业',400,5,'人',001);
+INSERT INTO bribe_details_quotations VALUES(NULL,'花桌','桌花+桌布+背景花艺','专业',400,5,'个',002);
+INSERT INTO bribe_details_quotations VALUES(NULL,'装饰品','桌牌+支架+装饰品','专业',80,5,'个',002);
+INSERT INTO bribe_details_quotations VALUES(NULL,'喷绘','户外喷绘',220,1,'个',002);
+INSERT INTO bribe_details_quotations VALUES(NULL,'造型','吊顶+花艺+布幔+灯带+烛台','专业',2800,1,'个',003);
+INSERT INTO bribe_details_quotations VALUES(NULL,'支架','所有支架','专业',600,5,'个',003);
+INSERT INTO bribe_details_quotations VALUES(NULL,'球','波波球+网沙花+金属球+摩天轮','专业',1400,1,'人',003);
+INSERT INTO bribe_details_quotations VALUES(NULL,'面光灯','面光灯+光束灯','专业',330,24,'台',004);
+INSERT INTO bribe_details_quotations VALUES(NULL,'P3B','呈现婚礼区域场景布置样式，细节','专业',30,15,'台',004);
+INSERT INTO bribe_details_quotations VALUES(NULL,'音响','呈现婚礼区域场景布置样式，细节','专业',800,1,'套',004);
+INSERT INTO bribe_details_quotations VALUES(NULL,'工作餐','工作人员工作餐','专业',20,8,'份',005);
+INSERT INTO bribe_details_quotations VALUES(NULL,'消耗品','花泥+扎带+小胶+大胶','专业',220,1,'套',005);
+INSERT INTO bribe_details_quotations VALUES(NULL,'胸花+手捧花','常规','专业',300,1,'套',005);
+
+-- 客户评价表
+CREATE TABLE bribe_details_evaluate(
+   evid INT UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT'id且主键',
+   avatar varchar(128) DEFAULT  COMMENT '用户头像',
+    user_name varchar(32)  COMMENT '用户昵称',
+    obj varchar(16)  COMMENT '评价对象',
+    content varchar(512)  COMMENT '评价内容',
+     score varchar(32) COMMENT '评星',
 );
 
 -- 详情表
@@ -224,14 +278,12 @@ CREATE TABLE bribe_details(
   bType VARCHAR(20) COMMENT  '详情风格类型',
   showTime DATE NOT NULL COMMENT '时间' ,
   effectPic VARCHAR(512) COMMENT '设计效果图',
-  director VARCHAR(16) COMMENT '主管言论',
+  director VARCHAR(16) COMMENT '代表人',
   intro VARCHAR(512) COMMENT '简介',
   mPhoto VARCHAR(512) COMMENT '简介搭配图',
   weTe_id INT UNSIGNED NOT NULL COMMENT '外键,参照bribe_details_ weddingTeam表',
-
-
+  
+   evaluate_id INT UNSIGNED NOT NULL COMMENT '外键,参照bribe_details_evaluate表',
 
 );
-=======
-VALUES('欢迎来到微微新娘，如果您在使用的过程中有任何的问题或建议，可以在设置里提交意见反馈哦~', 1, 0, 1607763687542);
->>>>>>> 578020edcad33d231f4dfcb1a437fc50f70cec6b
+

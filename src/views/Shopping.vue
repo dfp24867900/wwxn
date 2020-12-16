@@ -32,7 +32,6 @@
     </div> 
     <!-- 页尾 -->
     <div class="shopfoot">
-      <p><van-checkbox v-model="checked">复选框</van-checkbox></p>
       <p>
         合计:
         <span>¥23850.00</span>
@@ -126,23 +125,16 @@
     top: 94%;
   }
   .shopfoot>p:first-child{
-    font-weight: 600;
-    width: 30%;
-    height: 80%;
-    position: absolute;
-    top: 32%;
-    left:2%;
-  }
-  .shopfoot>p:nth-child(2){
     width: 50%;
     height: 10%;
     line-height: 80%;
     position: absolute;
-    left: 40%;
+    left: 5%;
     top: 40%;
   }
-  .shopfoot>p:nth-child(2)>span{
+  .shopfoot>p:first-child>span{
     color: #900;
+    font-weight: 600;
     font-style: italic;
   }
   .shopfoot>button{

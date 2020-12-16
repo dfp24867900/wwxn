@@ -49,23 +49,24 @@ router.post('/login', (req, res) => {
   //获取用户名和密码
   var obj = req.body
   console.log(obj)
-  let username = req.body.uname;
-  let password = md5(req.body.upwd);
+  let username = obj.username;
+  let password = obj.password;
+  // let password = md5(req.body.upwd);
   console.log(username, password)
   //以用户名和密码为条件进行查找
-  let sql = 'SELECT uname,upwd FROM bride_user WHERE uname=? AND upwd=?';
+  let sql = 'SELECT * FROM bride_user WHERE uname=? AND upwd=?';
   pool.query(sql, [username, password], (error, result) => {
     if (error) throw error;
     console.log(result)
     if (result.length == 0) {
       res.send({
         message: '登录失败',
-        code: 0
+        code: 201
       });
     } else {
       res.send({
         message: '登录成功',
-        code: 1,
+        code: 200,
         userInfo: result
       });
     }

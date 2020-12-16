@@ -39,7 +39,7 @@
   description="确定清除缓存?"
   close-on-click-action
 />
-      <mt-button size='large'>
+      <mt-button size='large' @click="logout">
         退出登录
       </mt-button>
     </div>
@@ -115,6 +115,7 @@
   }
 </style>
 <script>
+import {mapMutations} from 'vuex';
 export default {
   data(){
     return{
@@ -127,6 +128,14 @@ export default {
     }
   },
    methods:{
+     ...mapMutations([
+      'logoutMutation'
+    ]),
+     // 用户注销
+    logout(){      
+      localStorage.clear();
+      this.logoutMutation();
+    },
     clear(){
       this.setclear=true
     },

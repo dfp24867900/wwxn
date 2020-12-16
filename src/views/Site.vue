@@ -3,7 +3,20 @@
     <!-- 页面顶部位置的内容区域 -->
     <div id="siteheader">
       <!-- 头像区域 -->
-      <div>
+      <div v-if='isLogined == 0'>
+        <p>
+          <img src="../assets/image/site/site_avatar.jpg" alt="" />
+        </p>
+        <p>
+          <router-link to="/join">
+            <img src="../assets/image/site/site_add.png" alt="" />
+          </router-link>
+        </p>
+        <p>Z-sum</p>
+        <p>布拉市|2522年12月</p>
+      </div>
+      <!-- 头像区域的影子 -->
+      <div v-else>
         <p>
           <img src="../assets/image/site/site_avatar.jpg" alt="" />
         </p>
@@ -272,9 +285,14 @@
 </style>
 
 <script>
+import {mapState} from 'vuex';
 export default {
+  computed:{
+    ...mapState(['isLogined','info']),
+  },
   data() {
-    return {};
+    return {
+    };
   },
 };
-</script>>
+</script>

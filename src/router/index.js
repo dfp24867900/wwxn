@@ -27,7 +27,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/detail/:lid',
+    path: '/detail',
     component: Detail
   },
   {
@@ -74,10 +74,10 @@ const routes = [
   { path: "/searchlist/:keyword", component: SearchList },
   { path: "/list/:keyword", component: List },
   { path: '/service', name: 'Service', component: Service },
-  {path:"/address",component:Address},
-  {path:"/list",component:List},
-  {path: '/service',name: 'Service',component: Service},
-  {path: '/search', name: 'Search', component: Search },
+  { path: "/address", component: Address },
+  { path: "/list", component: List },
+  { path: '/service', name: 'Service', component: Service },
+  { path: '/search', name: 'Search', component: Search },
   {
     path: '/about',
     name: 'About',
@@ -87,15 +87,15 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   { path: "/login", component: Login },
-  {path:"/login",component:Login},
-  {path:"/register",component:Register},
+  { path: "/login", component: Login },
+  { path: "/register", component: Register },
   {
-    path:'/message',
+    path: '/message',
     component: Message
   },
-  
+
   {
-    path:'/album/:id',
+    path: '/album/:id',
     component: Album
   },
   {

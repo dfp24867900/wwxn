@@ -23,7 +23,7 @@
       </p>
       <div>
         <p>图片(最多四张)</p>
-        <p>
+        <p id="photo">
           <van-uploader :after-read="afterRead" />
         </p>
       </div>

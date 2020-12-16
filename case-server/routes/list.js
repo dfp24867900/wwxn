@@ -114,16 +114,29 @@ router.post("/addhistoryword", (req, res) => {
   })
 });
 router.get("/scene",(req,res)=>{
-  let scene=req.query.alt;
-  console.log(scene);
-  let sql="select cid,pic,visits,price,scene,title,manner,scene,color from bride_case_list where scene like ? ";
-  pool.query(sql,[scene],(err,result)=>{
-    if(err) console.log(err);
-    if(result.length>0){
-      res.send({message:"查询成功",code:200,results:result});
-    }else{
-      res.send({message:"查询失败",code:400});
-    }
-  })
-})
-module.exports = router;
+  let keyword="%"+req.query.alter;
+  console.log(keyword)
+  //let arr=[];
+  let sql="select cid,pic,visits,price,scene,title,manner,scene,color from bride_case_list where concat_ws(',','scene','manner',price) like ?"
+  pool.query(sql,[keyword],(err,result)=>{
+    if(err) throw error;
+    res.send({message:"查询成功",code:200,results:result});
+    // result.forEach(elem=>{
+    //   arr.push(elem);
+    // });
+    // sql="select cid,pic,visits,price,scene,title,manner,scene,color from bride_case_list where manner like ?";
+    // pool.query(sql,[keyword],(err,result)=>{
+    //   if(err) throw error;
+    //   result.forEach(elem=>{
+    //     arr.push(elem);
+    //   });
+    //   if(arr.length>0){
+    //     console.log(arr);
+    //     res.send({message:"查询成功",code:200,results:arr});
+    //   }else{
+    //     res.send({message:"查询失败",code:400});
+    //   }
+    // });
+  });
+});
+module.exports=router;

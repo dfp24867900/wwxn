@@ -31,19 +31,19 @@
             <div class="content1">
               <span class="title">场景</span>
                 <div class="flex-row">
-                  <button v-for="(item,index) of scene" :key="index" @click="screen_1($event,index)" data-scene="item" class="item list1" :style="{background:my_color}">{{item}}</button>
+                  <button v-for="(item,index) of scene" :key="index" @click="screen_1($event,index)" data-scene="item" class="item"  :style="{background:my_color}">{{item}}</button>
                 </div>
                 <span class="title">风格</span>
                 <div class="flex-row">
-                   <button v-for="(item,index) of manner" :key="index"  @click="screen_2($event,index)" class="item list1">{{item}}</button>
+                   <button v-for="(item,index) of manner" :key="index"  @click="screen_2($event,index)" class="item" >{{item}}</button>
                 </div>
                 <span class="title">颜色</span>
                   <div class="flex-row">
-                   <button v-for="(item,index) of color" :key="index" @click="screen_3(index)" class="item list1"  :style="{background:item}"></button>
+                   <button v-for="(item,index) of color" :key="index"  class="item1"  :style="{background:item}"></button>
                   </div>
                  <span class="title">价格</span>
                  <div class="flex-row">
-                  <button v-for="(item,index) of price" :key="index" @click="screen_4(index)" class="item list1">{{item}}</button>
+                  <button v-for="(item,index) of price" :key="index" @click="screen_3($event,index)" class="item" >{{item}}</button>
                 </div>
                 <mt-tabbar>
                   <button class="reset" @click="reset">重置</button>
@@ -65,13 +65,13 @@
            </div>
            <router-link :to="`/detail/${item.cid}`" v-for="(item,index) of list" :key="index">
               <div class="content">
-               <img class="content_img" :src="`/img/list/${item.pic}`">
+               <img class="content_img" v-lazy="`/img/list/${item.pic}`">
                <p>
                  <span>{{item.title}}</span>
                  <span>￥{{item.price}}</span>
                </p>
                <p>
-                 <span>#{{item.manner}}&nbsp;&nbsp;#{{item.scene}}&nbsp;&nbsp;#{{item.color}}</span>
+                 <span>#{{item.manner}}#{{item.scene}}#{{item.color}}</span>
                  <img src="/img/icon/icon.png" class="watch_icon">
                  <span class="my_span">{{item.visits}}</span>
                   </p>
@@ -102,25 +102,38 @@ export default {
       price:["5千以下","5千-1万","1万-2万","2万-3万"],
       //保存选中的数据
       screen:[],
-      found:false,
-      //变量控制当前按钮
-      i:1
+      screen1:"",
+      screen2:"",
+      screen3:"",
+      found:false
     }
   },
   methods:{
+    load(){
+      this.$indicator.open({
+      text:'加载中...',
+      spinnerType:'fading-circle'
+    });
+    setTimeout(()=>{
+    this.$indicator.close();
+    },100)
+    },
     //价格升序
     price_asc(){
+      this.load();
       this.list=[];
       this.icon_toggle=false;
       this.axios.get("/list/price_asc").then(result=>{
         let arr=result.data.results;
         arr.forEach(elem=>{
           this.list.push(elem);
-        })
+        });
+        this.$indicator.close();
       })
     },
     //价格降序
     price_desc(){
+      this.load();
       this.list=[];
       this.icon_toggle=true;
       this.axios.get("/list/price_desc").then(result=>{
@@ -135,6 +148,7 @@ export default {
       this.show=true;
     },
     defaults(){
+      this.load();
       this.found=false;
       this.list=[];
       this.axios.get("/list/defaults").then(result=>{
@@ -144,6 +158,7 @@ export default {
     },
     //浏览量升序
     vistis_asc(){
+      this.load();
       this.found=false;
        this.list=[];
        this.icon_vistis=false;
@@ -156,6 +171,7 @@ export default {
     },
     //浏览量降序
     vistis_desc(){
+      this.load();
       this.found=false;
       this.list=[];
       this.icon_vistis=true;
@@ -168,83 +184,119 @@ export default {
   },
   //确认触发按钮事件,获取后台信息
   confirm(){
-   this.list=[];
-   let arr=this.screen;//是一个数组
-   if(arr.length>0){
-     arr.forEach(elem=>{
-     this.axios.get("/list/scene",{params:{
-       alt:elem
-     }}).then(result=>{
+    this.load();
+    this.show=false;
+    this.list=[];
+    this.screen=[];
+    if(this.screen1!=""){
+      this.screen.push(this.screen1);
+    }
+    if(this.screen2!=""){
+      this.screen.push(this.screen2);
+    }
+    if(this.screen3!=""){
+      this.screen.push(this.screen3);
+    }
+    console.log(this.screen);
+   //声明一个空数组
+    let arr1=[];
+   //数组去重
+    for(var i=0;i<this.screen.length;i++){
+      if(arr1.indexOf(this.screen[i])==-1){
+        arr1.push(this.screen[i]);
+      }
+    }
+    if(arr1.length>0){
+     // arr1.forEach(elem=>{
+        //向后台发请求,获取后台数据
+      this.axios.get("/list/scene",{params:{
+        alter:arr1
+      }}).then(result=>{
         if(result.data.code==200){
-          this.found=false;
+          console.log(result.data.results);
           this.list=result.data.results;
+          this.found=false;
         }else{
-          this.list=[];
-          this.found=true;
-        }
-     })
-   })
-   }else{
-      this.found=false;
-      this.axios.get("/list/defaults").then(result=>{
-      this.list=result.data.results;
-    })
-   }
+          console.log(1);
+         this.list=[];
+         this.found=true;
+        } 
+      })
+    //})
+    }else{
+       this.found=false;
+       this.$toast({
+         message:"请选择要筛选的内容",
+         position: 'center',
+         duration: 3000
+       });
+    }
   },
   //重置触发按钮事件
   reset(){
-
+    //点击重置,所有按钮全部变回最初的样子
+    this.screen1="";
+    this.screen2="";
+    this.screen3="";
+    var btns=document.querySelectorAll(".item")
+    for(var btn of btns){
+      btn.style.backgroundColor="#f1f1f1";
+      btn.style.color="#999";
+    }
   },
   screen_1(e,value){
      //e.target获取当前正在点击的元素 
     let btn=e.target;
-    this.i++
-   if(this.i%2==0){
+    if(this.screen1!=this.scene[value]){
+       btn.style.backgroundColor="#57d2cd";
+       btn.style.color="#fff";
+       $(e.target).siblings().css("background","#f1f1f1");
+       $(e.target).siblings().css("color","#999");
+       this.screen1=this.scene[value];
+       console.log(this.screen1);
+    }else if(this.screen1!=""){
+       this.screen1="";
+       btn.style.backgroundColor="#f1f1f1";
+       btn.style.color="#999";
+    }
+  },
+  screen_2(e,value){
+    let btn=e.target;
+    if(this.screen2!=this.manner[value]){
       btn.style.backgroundColor="#57d2cd";
       btn.style.color="#fff";
       $(e.target).siblings().css("background","#f1f1f1");
       $(e.target).siblings().css("color","#999");
-      if(this.screen.indexOf(this.scene[value])==-1){
-          this.screen.push(this.scene[value]);
-      }
-     }else{
+      this.screen2=this.manner[value];
+   }else if(this.screen2!=""){
+      this.screen2=""
       btn.style.backgroundColor="#f1f1f1";
       btn.style.color="#999";
-      let item=this.scene[value];
-      //改变元素取消该元素的选择
-      //查找当前要删除的元素
-      this.screen.findIndex((item,i,arr)=>{
-        console.log(i);
-        arr.splice(i,1);
-      });
-     }
-     console.log(this.screen);
+    }
   },
-  screen_2(e,value){
-    console.log(value);
+  screen_3(e,value){
     let btn=e.target;
-    this.i++;
-    //let arr=this.screen;
-   if(this.i%2==0){
-    console.log(1);
-    btn.style.backgroundColor="#57d2cd";
-    btn.style.color="#fff";
-    this.screen.push(this.manner[value]);
-   }else{
+    if(this.screen3!=this.price[value]){
+      btn.style.backgroundColor="#57d2cd";
+      btn.style.color="#fff";
+      $(e.target).siblings().css("background","#f1f1f1");
+      $(e.target).siblings().css("color","#999");
+      this.screen3=this.price[value];
+   }else if(this.screen3!=""){
+      this.screen3=""
       btn.style.backgroundColor="#f1f1f1";
       btn.style.color="#999";
-   }
-  },
-  screen_3(value){
-    console.log(value);
-    this.screen.push(this.color[value]);
-  },
-  screen_4(value){
-    console.log(value);
-    this.screen.push(this.price[value]);
+    }
   }
 },
   mounted(){
+    this.$indicator.open({
+      text:'加载中...',
+      spinnerType:'fading-circle'
+    });
+    setTimeout(()=>{
+      this.$indicator.close();
+    },500)
     this.found=false;
     this.axios.get("/list/defaults").then(result=>{
       console.log(result.data);
@@ -293,7 +345,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
 }
-.item{
+.item,.item1{
   display: inline-block;
   height: 30px;
   width: 70px;
@@ -384,8 +436,5 @@ export default {
   height: 1rem;
   vertical-align: top;
   margin-left: 5rem;
-}
-router-link-active{
-  z-index: 777 !important; 
 }
 </style>

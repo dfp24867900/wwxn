@@ -46,8 +46,8 @@ router.get("/vistis_desc", (req, res) => {
 })
 //模糊搜索列表页
 router.get("/searchlist", (req, res) => {
-  let keyword = "%"+req.query.keyword+"%";
-  let array = []; 
+  let keyword = "%" + req.query.keyword + "%";
+  let array = [];
   let sql = "select cid,pic,visits,price,scene,title,manner,color from bride_case_list where title like ?"
   pool.query(sql, [keyword], (err, result) => {
     if (err) throw error;
@@ -84,10 +84,10 @@ router.get("/searchlist", (req, res) => {
               result.forEach(ele => {
                 array.push(ele)
               })
-              if(array.length>0){
+              if (array.length > 0) {
                 res.send({ message: "查询成功", code: 200, result: array })
-              }else{
-                res.send({ message: "查询失败", code: 201})
+              } else {
+                res.send({ message: "查询失败", code: 201 })
               }
             })
           })
@@ -106,37 +106,37 @@ router.get("/historyword", (req, res) => {
 })
 //插入查询记录
 router.post("/addhistoryword", (req, res) => {
-  let history_word=req.body.history_word
+  let history_word = req.body.history_word
   let sql = "insert bride_search_history(history_word) values(?)"
-  pool.query(sql,[history_word],(err, result) => {
+  pool.query(sql, [history_word], (err, result) => {
     if (err) throw error;
     res.send({ message: "插入成功", code: 200, result: result });
   })
 });
-router.get("/scene",(req,res)=>{
-  let keyword="%"+req.query.alter;
-  console.log(keyword)
-  //let arr=[];
-  let sql="select cid,pic,visits,price,scene,title,manner,scene,color from bride_case_list where concat_ws(',','scene','manner',price) like ?"
-  pool.query(sql,[keyword],(err,result)=>{
-    if(err) throw error;
-    res.send({message:"查询成功",code:200,results:result});
-    // result.forEach(elem=>{
-    //   arr.push(elem);
-    // });
-    // sql="select cid,pic,visits,price,scene,title,manner,scene,color from bride_case_list where manner like ?";
-    // pool.query(sql,[keyword],(err,result)=>{
-    //   if(err) throw error;
-    //   result.forEach(elem=>{
-    //     arr.push(elem);
-    //   });
-    //   if(arr.length>0){
-    //     console.log(arr);
-    //     res.send({message:"查询成功",code:200,results:arr});
-    //   }else{
-    //     res.send({message:"查询失败",code:400});
-    //   }
-    // });
-  });
+router.get("/scene", (req, res) => {
+  let arr = req.query.alter;
+  let arr1 = [];
+  arr.forEach(elem => {
+    let sql = "select cid,pic,visits,price,scene,title,manner,scene,color from bride_case_list where scene=?"
+    console.log(sql)
+    new Promise(resolve => {
+      pool.query(sql, [elem], (err, result) => {
+        if (err) throw err;
+        result.forEach(elem => {
+          //console.log(elem);
+          arr1.push(elem);
+        });
+      });
+      resolve(arr1)
+    }).then((arr1) => {
+      // console.log(1)
+      console.log(arr1);
+      if (arr1.length > 0) {
+        //console.log(arr1);
+        res.send({ message: "查询成功", code: 200, results: arr1 });
+      } else {
+        res.send({ message: "查询失败", code: 400 });
+      }
+    })
 });
-module.exports=router;
+module.exports = router;

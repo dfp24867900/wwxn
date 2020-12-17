@@ -8,7 +8,11 @@ router.get("/defaults", (req, res) => {
   let sql = "select cid,pic,visits,price,scene,title,manner,scene,color from bride_case_list";
   pool.query(sql, (err, result) => {
     if (err) throw err;
-    res.send({ message: "查询成功", code: 200, results: result });
+    res.send({
+      message: "查询成功",
+      code: 200,
+      results: result
+    });
   })
 });
 
@@ -17,7 +21,11 @@ router.get("/price_asc", (req, res) => {
   let sql = "select cid,pic,visits,price,scene,title,manner,scene,color from bride_case_list order by price asc";
   pool.query(sql, (err, result) => {
     if (err) throw err;
-    res.send({ message: "查找成功", code: 200, results: result });
+    res.send({
+      message: "查找成功",
+      code: 200,
+      results: result
+    });
   })
 });
 //获取按照价格降序的列表信息
@@ -25,7 +33,11 @@ router.get("/price_desc", (req, res) => {
   let sql = "select cid,pic,visits,price,scene,title,manner,scene,color from bride_case_list order by price desc";
   pool.query(sql, (err, result) => {
     if (err) throw err;
-    res.send({ message: "查询成功", code: 200, results: result });
+    res.send({
+      message: "查询成功",
+      code: 200,
+      results: result
+    });
   })
 });
 //获取按照浏览量升序的列表信息
@@ -33,7 +45,11 @@ router.get("/vistis_asc", (req, res) => {
   let sql = "select cid,pic,visits,price,scene,title,manner,scene,color from bride_case_list order by visits asc"
   pool.query(sql, (err, result) => {
     if (err) throw error;
-    res.send({ message: "查询成功", code: 200, results: result });
+    res.send({
+      message: "查询成功",
+      code: 200,
+      results: result
+    });
   })
 });
 //获取按照浏览量降序的列表信息
@@ -41,7 +57,11 @@ router.get("/vistis_desc", (req, res) => {
   let sql = "select cid,pic,visits,price,scene,title,manner,scene,color from bride_case_list order by visits desc"
   pool.query(sql, (err, result) => {
     if (err) throw error;
-    res.send({ message: "查询成功", code: 200, results: result });
+    res.send({
+      message: "查询成功",
+      code: 200,
+      results: result
+    });
   })
 })
 //模糊搜索列表页
@@ -85,9 +105,16 @@ router.get("/searchlist", (req, res) => {
                 array.push(ele)
               })
               if (array.length > 0) {
-                res.send({ message: "查询成功", code: 200, result: array })
+                res.send({
+                  message: "查询成功",
+                  code: 200,
+                  result: array
+                })
               } else {
-                res.send({ message: "查询失败", code: 201 })
+                res.send({
+                  message: "查询失败",
+                  code: 201
+                })
               }
             })
           })
@@ -101,7 +128,11 @@ router.get("/historyword", (req, res) => {
   let sql = "select history_word from bride_search_history order by mid desc limit 8"
   pool.query(sql, (err, result) => {
     if (err) throw error;
-    res.send({ message: "查询成功", code: 200, result: result });
+    res.send({
+      message: "查询成功",
+      code: 200,
+      result: result
+    });
   })
 })
 //插入查询记录
@@ -110,33 +141,42 @@ router.post("/addhistoryword", (req, res) => {
   let sql = "insert bride_search_history(history_word) values(?)"
   pool.query(sql, [history_word], (err, result) => {
     if (err) throw error;
-    res.send({ message: "插入成功", code: 200, result: result });
+    res.send({
+      message: "插入成功",
+      code: 200,
+      result: result
+    });
   })
 });
 router.get("/scene", (req, res) => {
   let arr = req.query.alter;
-  let arr1 = [];
-  arr.forEach(elem => {
-    let sql = "select cid,pic,visits,price,scene,title,manner,scene,color from bride_case_list where scene=?"
-    console.log(sql)
-    new Promise(resolve => {
-      pool.query(sql, [elem], (err, result) => {
-        if (err) throw err;
-        result.forEach(elem => {
-          //console.log(elem);
-          arr1.push(elem);
-        });
+  let b = []
+  arr.forEach(ele => {
+    b.push(JSON.parse(ele))
+  })
+  var scene, manner, price;
+  b.forEach(elem => {
+    scene = elem.scene;
+    manner = elem.manner;
+    price = elem.price
+  })
+  var price1 = price.split('-')[0]
+  var price2 = price.split('-')[1]
+  var sql = `SELECT cid,pic,visits,price,scene,title,manner,scene,color FROM bride_case_list  WHERE scene='${scene}'  or manner= '${manner}'  or price BETWEEN ${price1} AND ${price2}`
+  pool.query(sql, (err, result) => {
+    if (err) throw err;
+    if (result.length > 0) {
+      res.send({
+        message: "查询成功",
+        code: 200,
+        results: result
       });
-      resolve(arr1)
-    }).then((arr1) => {
-      // console.log(1)
-      console.log(arr1);
-      if (arr1.length > 0) {
-        //console.log(arr1);
-        res.send({ message: "查询成功", code: 200, results: arr1 });
-      } else {
-        res.send({ message: "查询失败", code: 400 });
-      }
-    })
-});
+    } else {
+      res.send({
+        message: "查询失败",
+        code: 400
+      });
+    }
+  })
+})
 module.exports = router;

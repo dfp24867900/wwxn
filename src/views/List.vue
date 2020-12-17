@@ -207,7 +207,7 @@ export default {
       }
     }
     if(arr1.length>0){
-     // arr1.forEach(elem=>{
+     //arr1.forEach(elem=>{
         //向后台发请求,获取后台数据
       this.axios.get("/list/scene",{params:{
         alter:arr1

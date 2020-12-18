@@ -189,29 +189,27 @@ export default {
     this.list=[];
     this.screen=[];
     if(this.screen1!=""){
-      this.screen.push(this.screen1);
+      this.screen.push({scene:this.screen1});
     }
     if(this.screen2!=""){
-      this.screen.push(this.screen2);
+      this.screen.push({manner:this.screen2});
     }
     if(this.screen3!=""){
-      this.screen.push(this.screen3);
+      this.screen.push({price:this.screen3});
     }
     console.log(this.screen);
    //声明一个空数组
     let arr1=[];
    //数组去重
-    for(var i=0;i<this.screen.length;i++){
-      if(arr1.indexOf(this.screen[i])==-1){
-        arr1.push(this.screen[i]);
-      }
-    }
-    if(arr1.length>0){
+    // for(var i=0;i<this.screen.length;i++){
+    //   if(arr1.indexOf(this.screen[i])==-1){
+    //     arr1.push(this.screen[i]);
+    //   }
+    // }
+    if(this.screen.length>0){
      //arr1.forEach(elem=>{
         //向后台发请求,获取后台数据
-      this.axios.get("/list/scene",{params:{
-        alter:arr1
-      }}).then(result=>{
+      this.axios.get("/list/scene",{params:{alter:this.screen}}).then(result=>{
         if(result.data.code==200){
           console.log(result.data.results);
           this.list=result.data.results;
@@ -281,7 +279,18 @@ export default {
       btn.style.color="#fff";
       $(e.target).siblings().css("background","#f1f1f1");
       $(e.target).siblings().css("color","#999");
-      this.screen3=this.price[value];
+      switch(value){
+        case 0 : this.screen3='0-5000';
+        break; 
+         case 1 :this.screen3='5000-10000';
+        break; 
+         case 2 :this.screen3='10000-20000';
+        break; 
+         case 3 :this.screen3='20000-30000';
+        break; 
+        default:return;
+      }
+      
    }else if(this.screen3!=""){
       this.screen3=""
       btn.style.backgroundColor="#f1f1f1";

@@ -1,5 +1,5 @@
 <template>
-<div>
+<div >
     <!-- 页面头部 -->
     <mt-header
       title="我的订单"
@@ -10,22 +10,22 @@
       </router-link> 
     </mt-header>
     <!-- 商品模块 -->
-    <div class="shop">
+    <div class="shop" >
       <!-- 左侧照片 -->
       <div>
-        <img src="../assets/image/site/collect/collect_sur.jpg" alt="">
+        <img :src="require(`../assets/image/site/collect/${info.collimg}`)" alt="">
       </div>
       <!-- 右侧文字描述 -->
       <div>
         <!-- 右上文字描述 -->
         <div>
           <!-- 标题 -->
-          <p>简约+质感泰式</p>
+          <p>{{info.shoptitle}}</p>
           <!-- 描述 -->
-          <p>这是一条假的描述语段,仅仅是占着位置而已</p>
+          <p>{{info.shopdes}}</p>
           <!-- 单价 -->
           <p>
-            单价:<span>¥23850.00</span>
+            单价:<span>¥{{info.shopprice}}</span>
           </p> 
         </div>
       </div>
@@ -34,7 +34,7 @@
     <div class="shopfoot">
       <p>
         合计:
-        <span>¥23850.00</span>
+        <span>¥{{info.shopprice}}</span>
       </p>
       <button>结算</button>  
     </div>
@@ -151,7 +151,11 @@
 </style>
 
 <script>
+import {mapState} from 'vuex';
 export default {
+  computed:{
+    ...mapState(['isLogined','info']),
+  },
    data() {
     return {
       checked: true,

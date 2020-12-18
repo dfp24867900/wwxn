@@ -1,38 +1,35 @@
 <template>
   <div id="te">
     <!-- 页面顶部位置的内容区域 -->
-    <div id="siteheader">
+    <div id="siteheader" v-if='isLogined == 1'>
       <!-- 头像区域 -->
-      <div v-if='isLogined == 0'>
+      <div >
         <p>
-          <img src="../assets/image/site/site_avatar.jpg" alt="" />
+          <img :src="require(`../assets/image/site/avatar/${info.avatar}`)" alt="" />
         </p>
         <p>
           <router-link to="/join">
             <img src="../assets/image/site/site_add.png" alt="" />
           </router-link>
         </p>
-        <p>Z-sum</p>
-        <p>布拉市|2522年12月</p>
-      </div>
-      <!-- 头像区域的影子 -->
-      <div v-else>
-        <p>
-          <img src="../assets/image/site/site_avatar.jpg" alt="" />
-        </p>
-        <p>
-          <router-link to="/join">
-            <img src="../assets/image/site/site_add.png" alt="" />
-          </router-link>
-        </p>
-        <p>Z-sum</p>
-        <p>布拉市|2522年12月</p>
+        <p>{{info.nickname}}</p>
+        <p>{{info.address}}|{{info.data}}</p>
       </div>
       <!-- 编辑资料 -->
       <div>
         <router-link to="/personal">
           <img src="../assets/image/site/site_alter.png" />
           <p>编辑资料</p>
+        </router-link>
+      </div>
+    </div>
+    <div id="sitehea" v-else>
+      <div>
+        <router-link to="/login">
+          <p>登录</p>
+        </router-link>
+        <router-link to="/register">
+          <p>注册</p>
         </router-link>
       </div>
     </div>
@@ -45,7 +42,17 @@
             笔记
           </mt-tab-item>
         </router-link>
-        <router-link to="/sitecollect">
+        <router-link to="/sitecollect" v-if='isLogined == 1'>
+          <mt-tab-item>
+            <img
+              src="../assets/image/site/site_collect.png"
+              alt=""
+              slot="icon"
+            />
+            收藏
+          </mt-tab-item>
+        </router-link>
+        <router-link to="/" v-else>
           <mt-tab-item>
             <img
               src="../assets/image/site/site_collect.png"
@@ -77,7 +84,16 @@
     <!-- 下方菜单选项区 -->
     <div id="site_menu">
       <!-- 我的订单 -->
-      <router-link to="/siteshopping">
+      <router-link to="/siteshopping" v-if='isLogined == 1'>
+        <div>
+          <img src="../assets/image/site/site_order.png" alt="" />
+          <p>
+            我的订单
+            <img src="../assets/image/site/site_right.png" alt="" />
+          </p>
+        </div>
+      </router-link>
+      <router-link to="/" v-else>
         <div>
           <img src="../assets/image/site/site_order.png" alt="" />
           <p>
@@ -132,7 +148,7 @@
 
 <style>
 /* 顶部内容区域 */
-#siteheader {
+#siteheader,#sitehea{
   position: absolute;
   top: 0;
   left: 0;
@@ -141,12 +157,25 @@
   background-color: #ff93a0;
   z-index: 8;
 }
-#siteheader > div:first-child {
+#siteheader > div:first-child ,#sitehea > div  {
   width: 220px;
   height: 60px;
   position: absolute;
   top: 40px;
   left: 20px;
+}
+#sitehea > div > a > p{
+  width: 30%;
+  height: 50%;
+  text-align: center;
+  font-size: 24px;
+  color: #f5f5f5;
+  position: absolute;
+  top: 30%;
+  left: 80%;
+}
+#sitehea > div > a:first-child > p{
+  left: 50%;
 }
 #siteheader > div:first-child > p:first-child {
   position: absolute;

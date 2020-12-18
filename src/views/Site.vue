@@ -36,7 +36,13 @@
     <!-- 中间选项区 -->
     <div>
       <mt-navbar class="site_nav">
-        <router-link to="/sitenote">
+        <router-link to="/sitenote" v-if='isLogined == 1'>
+          <mt-tab-item>
+            <img src="../assets/image/site/site_note.png" alt="" slot="icon" />
+            笔记
+          </mt-tab-item>
+        </router-link>
+        <router-link to="/login" v-else>
           <mt-tab-item>
             <img src="../assets/image/site/site_note.png" alt="" slot="icon" />
             笔记
@@ -52,7 +58,7 @@
             收藏
           </mt-tab-item>
         </router-link>
-        <router-link to="/" v-else>
+        <router-link to="/login" v-else>
           <mt-tab-item>
             <img
               src="../assets/image/site/site_collect.png"
@@ -62,7 +68,13 @@
             收藏
           </mt-tab-item>
         </router-link>
-        <router-link to="/sitemsg">
+        <router-link to="/sitemsg" v-if='isLogined == 1'>
+          <mt-tab-item>
+            <img src="../assets/image/site/site_news.png" alt="" slot="icon" />
+            消息
+          </mt-tab-item>
+        </router-link>
+        <router-link to="/login" v-else>
           <mt-tab-item>
             <img src="../assets/image/site/site_news.png" alt="" slot="icon" />
             消息
@@ -93,7 +105,7 @@
           </p>
         </div>
       </router-link>
-      <router-link to="/" v-else>
+      <router-link to="/login" v-else>
         <div>
           <img src="../assets/image/site/site_order.png" alt="" />
           <p>
@@ -103,7 +115,16 @@
         </div>
       </router-link>
       <!-- 我的钱包 -->
-      <router-link to="/sitegold">
+      <router-link to="/sitegold" v-if='isLogined == 1'>
+        <div>
+          <img src="../assets/image/site/site_wallet.png" alt="" />
+          <p>
+            我的钱包
+            <img src="../assets/image/site/site_right.png" alt="" />
+          </p>
+        </div>
+      </router-link>
+      <router-link to="/login" v-else>
         <div>
           <img src="../assets/image/site/site_wallet.png" alt="" />
           <p>
@@ -113,7 +134,16 @@
         </div>
       </router-link>
       <!-- 我的客服 -->
-      <router-link to="/service">
+      <router-link to="/service" v-if='isLogined == 1'>
+        <div>
+          <img src="../assets/image/site/site_service.png" alt="" />
+          <p>
+            我的客服
+            <img src="../assets/image/site/site_right.png" alt="" />
+          </p>
+        </div>
+      </router-link>
+      <router-link to="/login" v-else>
         <div>
           <img src="../assets/image/site/site_service.png" alt="" />
           <p>
@@ -123,7 +153,16 @@
         </div>
       </router-link>
       <!-- 意见反馈 -->
-      <router-link to="/siteback">
+      <router-link to="/siteback" v-if='isLogined == 1'>
+        <div>
+          <img src="../assets/image/site/site_back.png" alt="" />
+          <p>
+            意见反馈
+            <img src="../assets/image/site/site_right.png" alt="" />
+          </p>
+        </div>
+      </router-link>
+      <router-link to="/login" v-else>
         <div>
           <img src="../assets/image/site/site_back.png" alt="" />
           <p>
@@ -133,7 +172,16 @@
         </div>
       </router-link>
       <!-- 设置 -->
-      <router-link to="/siteset">
+      <router-link to="/siteset" v-if='isLogined == 1'>
+        <div>
+          <img src="../assets/image/site/site_set.png" alt="" />
+          <p>
+            设置
+            <img src="../assets/image/site/site_right.png" alt="" />
+          </p>
+        </div>
+      </router-link>
+      <router-link to="/login" v-else>
         <div>
           <img src="../assets/image/site/site_set.png" alt="" />
           <p>

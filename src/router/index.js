@@ -63,11 +63,11 @@ const routes = [
     component: Site
   },
   {
-    path: '/siteshopping',
+    path: '/siteshopping/:uid',
     component: Shopping
   },
   {
-    path: '/sitecollect',
+    path: '/sitecollect/:uid',
     component: Sitecollect
   },
   { path: "/address", component: Address },

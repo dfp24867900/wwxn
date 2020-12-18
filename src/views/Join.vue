@@ -14,9 +14,10 @@
       </div>
       <!-- 头像连接 -->
       <div>
-        <img src="../assets/image/site/site_avatar.jpg" alt="" />
+        <img :src="require(`../assets/image/site/avatar/${info.avatar}`)" alt="" />
         <img src="../assets/image/site/site_dian.png" alt="" />
-        <img src="../assets/image/site/site_other.png" alt="" />
+        <img v-if="c == 1" :src="require(`../assets/image/site/avatar/${avatar.avatar}`)" alt="">
+        <img v-else src="../assets/image/site/site_other.png" alt="" />
       </div>
       <!-- 号码输入框 -->
       <div>
@@ -36,7 +37,7 @@
       <!-- 文本描述 -->
       <p>绑定账号后另一半可同步查看备婚计划和婚礼账本花费哦!</p>
       <!-- 按钮 -->
-      <button :class="{act:act}">邀请</button>
+      <button :class="{act:act}" @click="join">邀请</button>
     </div>
   </div>
 </template>
@@ -136,13 +137,43 @@
 </style>
 
 <script>
+import qs from 'qs'
+import {mapState} from 'vuex';
 export default {
+  computed:{
+    ...mapState(['isLogined','info']),
+  },
   data() {
     return {
       show: false,
       phone: "",
-      act:false
+      act:false,
+      avatar:{},
+      c:0
     };
+  },
+  methods:{
+    join(){
+      if(this.phone.length == 11){
+        // let phone = this.phone;
+        // console.log(phone)
+        // let data={phone:this.phone}
+        this.axios.get(`/user/join?phone=${this.phone}`).then(res=>{
+          if(res.data.code == 0){
+             this.$toast({
+              message: "手机号码错误/该人未注册",
+              position: "middle",
+              duration: 2500,
+            });
+          } else {
+            console.log(res.data)
+            this.avatar=res.data.result
+            this.phone="";
+            this.c=1
+          }
+        })
+      }
+    }
   },
   watch:{
     phone(a){

@@ -135,6 +135,7 @@ export default {
     logout(){      
       localStorage.clear();
       this.logoutMutation();
+      this.$router.push('/site')
     },
     clear(){
       this.setclear=true

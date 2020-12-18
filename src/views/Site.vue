@@ -114,6 +114,8 @@
         </div>
       </router-link>
     </div>
+        <!-- 主内容区域结束-->
+    <my-footer></my-footer>
   </div>
 </template>
 

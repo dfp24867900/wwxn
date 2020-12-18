@@ -77,10 +77,8 @@ export default {
         }).then(res=>{
             this.msgImgArr.push(res.data.result.imgOne);
             this.msgImgArr.push(res.data.result.imgTwo);
-            
-        
         })
-        console.log(this.msgImgArr);
+     
     }
 }
 </script>

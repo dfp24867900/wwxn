@@ -80,6 +80,8 @@
          </mt-tab-container-item>
        </mt-tab-container>
      </div>
+         <!-- 主内容区域结束-->
+    <my-footer></my-footer>
   </div>
 </template>
 <script>
@@ -235,16 +237,16 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 /* 不能发现案例 */
-.not_found{
+.bride_list .not_found{
   text-align: center;
   margin-top: 170px;
 }
-.my_span{
+.bride_list .my_span{
   color: #999;
 }
-.reset{
+.bride_list .reset{
   margin-left: 25px;
   height: 40px;
   width: 150px;
@@ -255,7 +257,7 @@ export default {
   outline: nonr;
   border-radius: 5px;
 }
-.confirm{
+.bride_list .confirm{
   height: 40px;
   width: 150px;
   background:#57d2cd ;
@@ -265,16 +267,16 @@ export default {
   color: #fff;
   margin-left: 25px;
 }
-.mint-tabbar{
+.bride_list .mint-tabbar{
   background-image: none !important;
   background: transparent !important;
 }
-.flex-row{
+.bride_list .flex-row{
   margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
 }
-.item{
+.bride_list .item{
   display: inline-block;
   height: 30px;
   width: 70px;
@@ -287,23 +289,23 @@ export default {
   padding: 0;
   border: 0;
 }
-.title{
+.bride_list .title{
   display: inline-block;
   font-size: 18px;
   font-weight: bold;
   text-align: left !important;
   margin-left: 10px;
 }
-.content1{
+.bride_list .content1{
     padding: 16px 16px 160px;
 }
-.mint-header{
+.bride_list .mint-header{
   background-color: #c8caee !important;
   font-size: 19px !important;
   color: #000;
   font-weight: bold;
 }
-.top{
+.bride_list .top{
   position: fixed;
   top: 0;
   right: 0;
@@ -312,56 +314,56 @@ export default {
   z-index: 333;
 }
 /* 图标的样式 */
-.icon_img{
+.bride_list .icon_img{
   width: 0.7rem;
   height: 0.7rem;
   vertical-align: top;
 }
-.icon_img1{
+.bride_list .icon_img1{
   width: 0.6rem;
   height: 0.6rem;
   vertical-align: baseline;
 }
-.mint-navbar .mint-tab-item{
+.bride_list .mint-navbar .mint-tab-item{
   font-size: 15px;
   font-weight: bold;
 }
-.main{
+.bride_list .main{
   margin-top: 87px;
 }
 .content{
   padding: 10px 20px;
 }
-.content_img{
+.bride_list .content_img{
   width: 335px;
   height: 200px;
 }
-.content>p:nth-child(2){
+.bride_list .content>p:nth-child(2){
   margin-top: 10px;
 }
-.content>p:nth-child(2)>span:first-child{
+.bride_list .content>p:nth-child(2)>span:first-child{
   display: inline-block;
   width: 11rem;
   font-size: 18px;
   font-weight: bold;
   color: #333;
 }
-.content>p:nth-child(2)>span:nth-child(2){
+.bride_list .content>p:nth-child(2)>span:nth-child(2){
   font-size: 18px;
   color: rgb(231, 46, 46);
   font-weight: bold;
   margin-left: 4.7rem;
 }
-.content>p:nth-child(3){
+.bride_list .content>p:nth-child(3){
   margin-top: 10px;
 }
-.content>p:nth-child(3)>span:first-child{
+.bride_list .content>p:nth-child(3)>span:first-child{
   display: inline-block;
   width: 11rem;
   font-size: 12px;
   color: #999999;
 }
-.watch_icon{
+.bride_list .watch_icon{
   width: 1rem;
   height: 1rem;
   vertical-align: top;

@@ -113,17 +113,17 @@ router.post("/addhistoryword", (req, res) => {
     res.send({ message: "插入成功", code: 200, result: result });
   })
 });
-router.get("/scene",(req,res)=>{
-  let scene=req.query.alt;
-  console.log(scene);
-  let sql="select cid,pic,visits,price,scene,title,manner,scene,color from bride_case_list where scene like ? ";
-  pool.query(sql,[scene],(err,result)=>{
-    if(err) console.log(err);
-    if(result.length>0){
-      res.send({message:"查询成功",code:200,results:result});
-    }else{
-      res.send({message:"查询失败",code:400});
-    }
-  })
-})
+// router.get("/scene",(req,res)=>{
+//   let scene=req.query.alt;
+//   console.log(scene);
+//   let sql="select cid,pic,visits,price,scene,title,manner,scene,color from bride_case_list where scene like ? ";
+//   pool.query(sql,[scene],(err,result)=>{
+//     if(err) console.log(err);
+//     if(result.length>0){
+//       res.send({message:"查询成功",code:200,results:result});
+//     }else{
+//       res.send({message:"查询失败",code:400});
+//     }
+//   })
+// })
 module.exports = router;

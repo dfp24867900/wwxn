@@ -21,14 +21,14 @@ import Index from '../views/Index.vue'
 import Album from '../views/Album.vue'
 import Message from '../components/Message.vue'
 
-import Detail from '../views/Detail.vue'
+import Details from '../views/Details.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/detail',
-    component: Detail
+    path: '/details/:id',
+    component: Details
   },
   {
     path: '/siteback',

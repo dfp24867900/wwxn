@@ -23,9 +23,12 @@
   <nav>
       <van-sticky :offset-top="40">
     <mt-navbar v-model="active"> 
-      <mt-tab-item id="1">商品详情</mt-tab-item>
-      <mt-tab-item id="2">价格明细</mt-tab-item>
-      <mt-tab-item id="3">客户评论</mt-tab-item>
+      <mt-tab-item 
+      :id="item.id.toString()" 
+      v-for="(item,index) of category"
+      :key="index">
+      {{item.category_name}}
+      </mt-tab-item>
     </mt-navbar>
   </van-sticky>
   </nav>
@@ -709,6 +712,9 @@ export default {
       ],
       value:3,
      activeNames: [''],
+    // 存储请求获取的分类数据,数组类型
+    category:[],
+    details:{}
   
 
     }
@@ -716,6 +722,28 @@ export default {
 
   methods: {
     
-  }
+  },
+
+  // 向后台发送请求
+  mounted() {
+    // 发送HTTP请求以获取服务器详情页导航分类
+    this.axios.get("/details/category").then(res=>{
+      // 获取服务器返回的结果；
+      let results =  res.data.results;
+       // 将服务器返回结果存储到category变量中
+       this.category = results;
+    });
+    
+    // 获取分类下包含的信息数据
+    this.axios.get('/details/information',{
+      params: {
+        id:this.active
+      }
+    }).then(res=>{
+      
+      
+    });
+     
+  },
 }
 </script>

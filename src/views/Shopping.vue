@@ -10,22 +10,22 @@
       </router-link> 
     </mt-header>
     <!-- 商品模块 -->
-    <div class="shop" >
+    <div class="shop" v-for="(shop,index) in shops " :key="index">
       <!-- 左侧照片 -->
       <div>
-        <img :src="require(`../assets/image/site/collect/${info.collimg}`)" alt="">
+        <img :src="require(`../assets/image/site/collect/${shop.shopimg}`)" alt="">
       </div>
       <!-- 右侧文字描述 -->
       <div>
         <!-- 右上文字描述 -->
         <div>
           <!-- 标题 -->
-          <p>{{info.shoptitle}}</p>
+          <p>{{shop.shoptitle}}</p>
           <!-- 描述 -->
-          <p>{{info.shopdes}}</p>
+          <p>{{shop.shopdes}}</p>
           <!-- 单价 -->
           <p>
-            单价:<span>¥{{info.shopprice}}</span>
+            单价:<span>¥{{shop.shopprice}}</span>
           </p> 
         </div>
       </div>
@@ -34,7 +34,7 @@
     <div class="shopfoot">
       <p>
         合计:
-        <span>¥{{info.shopprice}}</span>
+        <span>¥</span>
       </p>
       <button>结算</button>  
     </div>
@@ -151,15 +151,29 @@
 </style>
 
 <script>
-import {mapState} from 'vuex';
 export default {
-  computed:{
-    ...mapState(['isLogined','info']),
-  },
    data() {
     return {
       checked: true,
+      shops:[]
     };
   },
+  methods:{
+   
+  }
+  ,
+  mounted(){        
+       //获取地址栏中的参数
+       let uid = this.$route.params.uid;
+       //向服务器发送请求以获取指定ID的文章信息
+       this.axios.get('/user/siteshopping',{
+           params:{
+               uid:uid
+           }
+       }).then(res=>{
+            this.shops.push(res.data.result);
+            console.log(this.shops)           
+       });
+    }
 }
 </script>

@@ -54,7 +54,7 @@ router.post('/login', (req, res) => {
   // let password = md5(req.body.upwd);
   console.log(username, password)
   //以用户名和密码为条件进行查找
-  let sql = 'SELECT * FROM bride_user,bride_collect,bride_shop WHERE bride_user.uid=bride_collect.uid=bride_shop.uid=(SELECT uid FROM bride_user WHERE uname=? AND upwd=?)';
+  let sql = 'SELECT * FROM bride_user WHERE uname=? AND upwd=?';
   pool.query(sql, [username, password], (error, result) => {
     if (error) throw error;
     console.log(result)
@@ -64,15 +64,38 @@ router.post('/login', (req, res) => {
         code: 201
       });
     } else {
-      console.log(result[0].uid);
-      let id=result[0].uid;
-
       res.send({
         message: '登录成功',
         code: 200,
         info: result[0]
       });
     }
+  });
+});
+
+// 收藏界面接口
+router.get('/sitecollect', (req, res) => {
+  // 获取地址栏的URL参数 -- 文章ID
+  let uid = req.query.uid;
+  // 查询特定记录的SQL语句
+  let sql = 'SELECT * FROM bride_collect WHERE uid=?';
+  // 执行SQL语句
+  pool.query(sql, [uid], (error, results) => {
+    if (error) throw error;
+    res.send({ code: 200, message: "查询成功", result: results[0] });
+  });
+});
+
+// 订单界面接口
+router.get('/siteshopping', (req, res) => {
+  // 获取地址栏的URL参数 -- 文章ID
+  let uid = req.query.uid;
+  // 查询特定记录的SQL语句
+  let sql = 'SELECT * FROM bride_shop WHERE uid=?';
+  // 执行SQL语句
+  pool.query(sql, [uid], (error, results) => {
+    if (error) throw error;
+    res.send({ code: 200, message: "查询成功", result: results[0] });
   });
 });
 

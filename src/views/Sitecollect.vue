@@ -22,21 +22,21 @@
       <mt-tab-container v-model="collect_active">
         <mt-tab-container-item id="collect_1" >
           <!-- 外层位置 -->
-          <div class="collect_community">
+          <div class="collect_community" v-for="(article,index) in articles" :key="index">
             <!-- 上方图片位置 -->
             <div>
-              <img :src="require(`../assets/image/site/collect/${info.collimg}`)" alt="">
+              <img :src="require(`../assets/image/site/collect/${article.collimg}`)" alt="">
             </div>
             <!-- 下方文字描述 -->
             <div>
               <!-- 标题 -->
-              <p>{{info.colltitle}}</p>
+              <p>{{article.colltitle}}</p>
               <!-- 标签 -->
-              <p>{{info.collfea}}</p>
+              <p>{{article.collfea}}</p>
               <!-- 价格 -->
-              <p>¥{{info.collprice}}</p>
+              <p>¥{{article.collprice}}</p>
               <!-- 浏览数量 -->
-              <p> <img src="../assets/image/site/collect/collect_eye.png" alt=""> {{info.collvis}}人浏览</p>
+              <p> <img src="../assets/image/site/collect/collect_eye.png" alt=""> {{article.collvis}}人浏览</p>
             </div>
           </div>
         </mt-tab-container-item>
@@ -188,15 +188,26 @@
 </style>
 
 <script>
-import {mapState} from 'vuex';
 export default {
-   computed:{
-    ...mapState(['isLogined','info']),
-  },
-  data(){
-    return{
-      collect_active:"collect_1"
+    data(){
+        return {
+            //存储收藏信息
+            articles:[],
+            collect_active:"collect_1"
+        }
+    },
+    mounted(){        
+       //获取地址栏中的参数
+       let uid = this.$route.params.uid;
+       //向服务器发送请求以获取指定ID的文章信息
+       this.axios.get('/user/sitecollect',{
+           params:{
+               uid:uid
+           }
+       }).then(res=>{
+            this.articles.push(res.data.result);
+            console.log(this.articles)           
+       });
     }
-  }
 }
 </script>

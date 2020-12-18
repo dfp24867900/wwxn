@@ -42,7 +42,7 @@
             笔记
           </mt-tab-item>
         </router-link>
-        <router-link to="/sitecollect" v-if='isLogined == 1'>
+        <router-link :to="`/sitecollect/${info.uid}`" v-if='isLogined == 1'>
           <mt-tab-item>
             <img
               src="../assets/image/site/site_collect.png"
@@ -84,7 +84,7 @@
     <!-- 下方菜单选项区 -->
     <div id="site_menu">
       <!-- 我的订单 -->
-      <router-link to="/siteshopping" v-if='isLogined == 1'>
+      <router-link :to="`/siteshopping/${info.uid}`" v-if='isLogined == 1'>
         <div>
           <img src="../assets/image/site/site_order.png" alt="" />
           <p>

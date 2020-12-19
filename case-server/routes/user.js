@@ -118,7 +118,7 @@ router.get("/join", (req, res) => {
 //客服消息接口
 router.get("/service", (req, res) => {
   let user_id = req.query.user_id
-  var sql = "select content,is_send,created_at from bride_service_messeage where user_id=? ";
+  var sql = "select avatar,content,is_send,created_at from bride_service_messeage inner join bride_user on user_id=uid where user_id=? ";
   pool.query(sql, [user_id], (err, result) => {
     if (err) throw err;
     res.send({ code: 200, message: "查询成功", result: result })

@@ -7,28 +7,28 @@
       </router-link>
     </mt-header>
     <!-- 消息展示 -->
-    <div id="main">
+    <div id="main" @click="faseclose">
       <div class="" v-for="(messeage, i) of messeages" :key="i">
         <p class="messeage_time">
           {{ moment.unix(messeage.created_at/1000).format("lll") }}
         </p>
         <div v-if="messeage.is_send == 0" class="left_align">
           <div class="avatar">
-            <img src="../assets/image/avatar/logo.png" alt="" />
+            <img src="..\assets\image\avatar\05.png" alt="" />
           </div>
           <div class="message">{{ messeage.content }}</div>
         </div>
         <div v-else class="right_align">
-          <div class="message">{{ messeage.content }}</div>
           <div class="avatar">
-            <img src="../assets/image/avatar/logo.png" alt="" />
+            <img :src="avatar" alt="" />
           </div>
+          <div class="message">{{ messeage.content }}</div>
         </div>
       </div>
     </div>
     <!-- 底部消息发送框 -->
     <div class="footer">
-      <textarea class="" placeholder="发送消息" v-model="information"></textarea>
+      <textarea class="" placeholder="发送消息" v-model="information" @keydown.13="sendNew"></textarea>
       <div class="expression">
         <div>
           <img @click="face" src="../assets/image/icon/expression.png" alt="" />
@@ -54,10 +54,14 @@
 </template>
 
 <script>
+import {mapState} from 'vuex';
 import API from "@/util/api.js";
 // 导入JSON格式的表情库
 const appData = require("@/assets/emojis.json");
 export default {
+  computed:{
+    ...mapState(['isLogined','info']),
+  },
   data() {
     return {
       //保存从后端获取的数据
@@ -79,6 +83,7 @@ export default {
         "正在查询",
         "gone with the wind",
       ],
+      avatar:""
     };
   },
   methods: {
@@ -120,7 +125,7 @@ export default {
         informations.content = this.information;
         informations.created_at = Date.now();
         informations.is_send = 1;//1，客户
-        informations.user_id = 1;
+        informations.user_id = this.info.uid;
         this.messeages.push(informations);
         window.setTimeout(() => {
           let div1 = document.getElementById("main");
@@ -137,7 +142,7 @@ export default {
         customer_service.content = this.testContents[Math.floor(Math.random() * 9)];
         customer_service.created_at = Date.now();
         customer_service.is_send = 0;//0，客服
-        customer_service.user_id = 1;
+        customer_service.user_id = this.info.uid;
         this.messeages.push(customer_service);
         // 将数据插入到数据库中
         API.insertNew(customer_service).then((res) => {
@@ -150,12 +155,20 @@ export default {
       }, 1000);
       }
     },
+    faseclose(){
+      this.faceShow = false;
+    },
   },
+  
   //页面初次加载时
   mounted() {
-    var data = { user_id: 1 };
+    var data = { user_id: this.info.uid };
     API.service(data).then((res) => {
-      this.messeages = res.result;
+      let messeages=res.result;
+      messeages.forEach(element => {
+        this.avatar=require("../assets/image/site/avatar/"+element.avatar)
+        this.messeages.push(element)
+      });
     });
   },
 };
@@ -163,15 +176,14 @@ export default {
 
 <style>
 #service header {
-  background-color: #fad1db;
+  background-color: #fff;
   color: black;
   border-bottom: 1px solid #ccc;
 }
 #service #main {
-  margin-top: 50px;
+  margin-top: 40px;
   padding-bottom: 95px;
   overflow: hidden;
-  background-color: #fff;
 }
 #service .messeage_time {
   text-align: center;
@@ -189,27 +201,25 @@ export default {
   border-radius: 5px;
 }
 #service .avatar img {
-  width: 100%;
+  width: 40px;
+  border-radius: 20px;
 }
 #service .message {
-  width: 80%;
   line-height: 30px;
   padding: 5px 10px;
   border-radius: 5px;
   margin: 0px 10px;
   word-break: break-all;
 }
-#service .left_align .message  {
-  background-color: #eee;
+#service .right_align {
+  display: flex;
+  flex-direction: row-reverse;
 }
-#service .right_align .message {
-  background-color: #eee;
-}
-#service .right_align div {
-  float: right;
+#service .left_align .message,#service .right_align .message   {
+  background-color: #ddd;
 }
 #service .footer {
-  height: 95px;
+  height: 85px;
   width: 100%;
   position: fixed;
   bottom: 0;
@@ -217,10 +227,11 @@ export default {
   background-color: #fff;
 }
 #service .footer textarea {
+  height: 30px;
   width: 80%;
-  line-height: 20px;
+  line-height: 30px;
   border: 0px;
-  padding: 10px 15px 0px;
+  padding: 8px 15px 0px;
 }
 #service .expression div:first-child img {
   padding: 8px 10px;
@@ -242,11 +253,10 @@ export default {
 .browBox {
   width: 100%;
   height: 200px;
-  background: #f5f5f5;
+  background: #eee;
   position: absolute;
-  bottom: 95px;
+  bottom: 86px;
   overflow: scroll;
-  border: 1px solid #999;
   border-bottom: 0px;
 }
 .browBox ul {
@@ -255,7 +265,7 @@ export default {
   padding: 10px;
 }
 .browBox ul li {
-  width: 10%;
+  width: 12%;
   height: 30px;
   font-size: 20px;
   list-style: none;

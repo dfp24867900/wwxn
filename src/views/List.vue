@@ -109,18 +109,12 @@ export default {
     }
   },
   methods:{
-    load(){
+    //价格升序
+    price_asc(){
       this.$indicator.open({
       text:'加载中...',
       spinnerType:'fading-circle'
     });
-    setTimeout(()=>{
-    this.$indicator.close();
-    },100)
-    },
-    //价格升序
-    price_asc(){
-      this.load();
       this.list=[];
       this.icon_toggle=false;
       this.axios.get("/list/price_asc").then(result=>{
@@ -133,14 +127,18 @@ export default {
     },
     //价格降序
     price_desc(){
-      this.load();
+     this.$indicator.open({
+      text:'加载中...',
+      spinnerType:'fading-circle'
+    });
       this.list=[];
       this.icon_toggle=true;
       this.axios.get("/list/price_desc").then(result=>{
         let arr=result.data.results;
         arr.forEach(elem=>{
           this.list.push(elem)
-        })
+        });
+        this.$indicator.close();
       })
     },
     //筛选分类
@@ -148,17 +146,24 @@ export default {
       this.show=true;
     },
     defaults(){
-      this.load();
+      this.$indicator.open({
+      text:'加载中...',
+      spinnerType:'fading-circle'
+    });
       this.found=false;
       this.list=[];
       this.axios.get("/list/defaults").then(result=>{
       console.log(result.data);
       this.list=result.data.results;
+      this.$indicator.close();
     })
     },
     //浏览量升序
     vistis_asc(){
-      this.load();
+     this.$indicator.open({
+      text:'加载中...',
+      spinnerType:'fading-circle'
+    });
       this.found=false;
        this.list=[];
        this.icon_vistis=false;
@@ -167,11 +172,16 @@ export default {
         arr.forEach(elem=>{
           this.list.push(elem);
         })
+        this.$indicator.close();
        })
     },
     //浏览量降序
     vistis_desc(){
-      this.load();
+      // this.load();
+      this.$indicator.open({
+      text:'加载中...',
+      spinnerType:'fading-circle'
+    });
       this.found=false;
       this.list=[];
       this.icon_vistis=true;
@@ -179,12 +189,16 @@ export default {
         let arr=result.data.results;
         arr.forEach(elem=>{
           this.list.push(elem);
-        })
+        });
+        this.$indicator.close();
       })
   },
   //确认触发按钮事件,获取后台信息
   confirm(){
-    this.load();
+   this.$indicator.open({
+      text:'加载中...',
+      spinnerType:'fading-circle'
+    });
     this.show=false;
     this.list=[];
     this.screen=[];
@@ -198,8 +212,6 @@ export default {
       this.screen.push({price:this.screen3});
     }
     console.log(this.screen);
-   //声明一个空数组
-    let arr1=[];
    //数组去重
     // for(var i=0;i<this.screen.length;i++){
     //   if(arr1.indexOf(this.screen[i])==-1){
@@ -218,7 +230,8 @@ export default {
           console.log(1);
          this.list=[];
          this.found=true;
-        } 
+        }
+        this.$indicator.close();
       })
     //})
     }else{
@@ -242,6 +255,7 @@ export default {
       btn.style.color="#999";
     }
   },
+  //场景
   screen_1(e,value){
      //e.target获取当前正在点击的元素 
     let btn=e.target;
@@ -258,6 +272,7 @@ export default {
        btn.style.color="#999";
     }
   },
+  //风格
   screen_2(e,value){
     let btn=e.target;
     if(this.screen2!=this.manner[value]){
@@ -272,6 +287,7 @@ export default {
       btn.style.color="#999";
     }
   },
+  //价格
   screen_3(e,value){
     let btn=e.target;
     if(this.screen3!=this.price[value]){
@@ -282,7 +298,7 @@ export default {
       switch(value){
         case 0 : this.screen3='0-5000';
         break; 
-         case 1 :this.screen3='5000-10000';
+        case 1 :this.screen3='5000-10000';
         break; 
          case 2 :this.screen3='10000-20000';
         break; 
@@ -303,13 +319,14 @@ export default {
       text:'加载中...',
       spinnerType:'fading-circle'
     });
-    setTimeout(()=>{
-      this.$indicator.close();
-    },500)
+    // setTimeout(()=>{
+    //   this.$indicator.close();
+    // },500)
     this.found=false;
     this.axios.get("/list/defaults").then(result=>{
       console.log(result.data);
       this.list=result.data.results;
+      this.$indicator.close();
     })
   }
 }

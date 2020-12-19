@@ -17,6 +17,7 @@ router.get('/index',(req,res)=>{
    })
 })
 
+
 //查询首页主内容信息
 router.get('/art',(req,res)=>{
   let id = req.query.id;
@@ -35,5 +36,16 @@ router.get('/alb',(req,res)=>{
     res.send({code:200,message:'请求成功',result:result});
   
   })
+})
+//获取主页详情页的图片
+router.get('/msg',(req,res)=>{
+  let id = req.query.id;
+  // let id = req.params.id;
+
+  let sql = 'SELECT imgOne,imgTwo FROM bride_message WHERE id=?';
+  pool.query(sql,[id],(err,result)=>{
+    if(err) throw err;
+    res.send({code:200,message:'请求成功',result:result[0]});
+  }) 
 })
 module.exports=router;

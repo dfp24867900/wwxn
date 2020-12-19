@@ -84,7 +84,7 @@ export default {
   text-align: center;
   background-color: rgba(0, 0, 0, 0);
   border: 0px;
-  color: #ffc0cb;
+  color: #000;
 }
 #search .header a > img {
   margin-top: 12px;

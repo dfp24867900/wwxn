@@ -371,7 +371,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
 }
-.item,.item1{
+ .bride_list .item,.item1{
   display: inline-block;
   height: 30px;
   width: 70px;
@@ -391,12 +391,12 @@ export default {
   text-align: left !important;
   margin-left: 10px;
 }
-.content1{
+.bride_list .content1{
   padding: 16px 16px 160px;
 }
 .bride_list .mint-header{
-  background-color: #c8caee !important;
-  font-size: 19px !important;
+  background-color: #ffc0cb !important;
+  font-size: 16px !important;
   color: #000;
   font-weight: bold;
 }
@@ -425,7 +425,7 @@ export default {
 .bride_list .main{
   margin-top: 87px;
 }
-.content{
+.bride_list .content{
   padding: 10px 20px;
 }
 .bride_list .content_img{

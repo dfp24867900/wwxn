@@ -1,5 +1,5 @@
 <template>
-<div>
+<div >
     <!-- 页面头部 -->
     <mt-header
       title="我的订单"
@@ -10,22 +10,22 @@
       </router-link> 
     </mt-header>
     <!-- 商品模块 -->
-    <div class="shop">
+    <div class="shop" v-for="(shop,index) in shops " :key="index">
       <!-- 左侧照片 -->
       <div>
-        <img src="../assets/image/site/collect/collect_sur.jpg" alt="">
+        <img :src="require(`../assets/image/site/collect/${shop.shopimg}`)" alt="">
       </div>
       <!-- 右侧文字描述 -->
       <div>
         <!-- 右上文字描述 -->
         <div>
           <!-- 标题 -->
-          <p>简约+质感泰式</p>
+          <p>{{shop.shoptitle}}</p>
           <!-- 描述 -->
-          <p>这是一条假的描述语段,仅仅是占着位置而已</p>
+          <p>{{shop.shopdes}}</p>
           <!-- 单价 -->
           <p>
-            单价:<span>¥23850.00</span>
+            单价:<span>¥{{shop.shopprice}}</span>
           </p> 
         </div>
       </div>
@@ -34,7 +34,7 @@
     <div class="shopfoot">
       <p>
         合计:
-        <span>¥23850.00</span>
+        <span>¥</span>
       </p>
       <button>结算</button>  
     </div>
@@ -155,7 +155,25 @@ export default {
    data() {
     return {
       checked: true,
+      shops:[]
     };
   },
+  methods:{
+   
+  }
+  ,
+  mounted(){        
+       //获取地址栏中的参数
+       let uid = this.$route.params.uid;
+       //向服务器发送请求以获取指定ID的文章信息
+       this.axios.get('/user/siteshopping',{
+           params:{
+               uid:uid
+           }
+       }).then(res=>{
+            this.shops.push(res.data.result);
+            console.log(this.shops)           
+       });
+    }
 }
 </script>

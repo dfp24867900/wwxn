@@ -67,11 +67,53 @@ router.post('/login', (req, res) => {
       res.send({
         message: '登录成功',
         code: 200,
-        userInfo: result
+        info: result[0]
       });
     }
   });
 });
+
+// 收藏界面接口
+router.get('/sitecollect', (req, res) => {
+  // 获取地址栏的URL参数 -- 文章ID
+  let uid = req.query.uid;
+  // 查询特定记录的SQL语句
+  let sql = 'SELECT * FROM bride_collect WHERE uid=?';
+  // 执行SQL语句
+  pool.query(sql, [uid], (error, results) => {
+    if (error) throw error;
+    res.send({ code: 200, message: "查询成功", result: results[0] });
+  });
+});
+
+// 订单界面接口
+router.get('/siteshopping', (req, res) => {
+  // 获取地址栏的URL参数 -- 文章ID
+  let uid = req.query.uid;
+  // 查询特定记录的SQL语句
+  let sql = 'SELECT * FROM bride_shop WHERE uid=?';
+  // 执行SQL语句
+  pool.query(sql, [uid], (error, results) => {
+    if (error) throw error;
+    res.send({ code: 200, message: "查询成功", result: results[0] });
+  });
+});
+
+//邀请界面接口
+router.get("/join", (req, res) => {
+  let phone = req.query.phone
+  var sql = "select * from bride_user where phone=? ";
+  pool.query(sql, [phone], (err, result) => {
+    if (err) throw err;
+    console.log(result.length)
+    if(result.length==1){
+      res.send({ code: 1, message: "查询成功", result: result[0] }) 
+    }else{
+      res.send({code:0,message:'查无此人'})
+    }
+   
+  })
+})
 
 //客服消息接口
 router.get("/service", (req, res) => {

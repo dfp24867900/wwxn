@@ -8,29 +8,54 @@
     </mt-header>
     <!-- 正文区域 -->
     <div id="personal">
+<<<<<<< HEAD
+      <div class="personal" @click="choose"> 
+=======
       <!-- 头像 -->
       <div class="personal" @click="choose">
+>>>>>>> c11f75e28af21f1036ab6629f8a5a6c04e97d679
         <p>头像</p>
         <p>
           <img src="../assets/image/site/site_right.png" alt="" />
         </p>
-        <img src="../assets/image/site/site_avatar.jpg" alt="" />
+        <img :src="require(`../assets/image/site/avatar/${info.avatar}`)" alt="" />
       </div>
       <!-- 头像选择 -->
       <mt-actionsheet :actions="actions" v-model="chooseavatar">
       </mt-actionsheet>
       <!-- 昵称-->
       <div class="personal">
+<<<<<<< HEAD
+        <p>电话号码</p>
+        <p>15988755642</p>
+      </div>
+      <div class="personal" v-for="(p,i) in list" :key="i">
+        <p>{{p.p}}</p>
+        <p> 
+          <img src="../assets/image/site/site_right.png" alt="">
+        </p>
+        <p>{{p.pp}}</p>
+      </div>
+      <mt-popup
+      v-model="chooseavatar"
+      position="bottom">
+        <div>
+          <p>头像选择</p>
+          <p>从相册选取</p>
+          <p>取消</p>
+        </div>
+      </mt-popup>
+=======
         <p>昵称</p>
         <p>
           <img src="../assets/image/site/site_right.png" alt="" />
         </p>
-        <p>Z-sum</p>
+        <p>{{info.nickname}}</p>
       </div>
       <!-- 电话 -->
       <div class="personal">
         <p>电话号码</p>
-        <p>15988755642</p>
+        <p>{{info.phone}}</p>
       </div>
       <!-- 性别 -->
       <div class="personal" @click="sex = true">
@@ -117,6 +142,7 @@
       <p id="declaration">
        婚礼宣言
       </p>
+>>>>>>> c11f75e28af21f1036ab6629f8a5a6c04e97d679
     </div>
   </div>
 </template>
@@ -200,9 +226,25 @@ textarea{
 
 <script>
 import { Toast } from "vant";
+import {mapState} from 'vuex';
 export default {
+  computed:{
+    ...mapState(['isLogined','info']),
+  },
   data() {
     return {
+<<<<<<< HEAD
+      list:[
+        {p:'昵称',pp:'Z-sum'},
+        {p:'性别',pp:'请选择'},
+        {p:'角色',pp:'未知'},
+        {p:'举办日期',pp:'请选择'},
+        {p:'举办城市',pp:'请选择'},
+        {p:'婚礼风格',pp:'请选择'}
+        ],
+      chooseavatar:false,
+      ud:1
+=======
       manifesto:'',
       say:false,
       ud: 1,
@@ -274,10 +316,15 @@ export default {
       ],
       wstyle: false,
       ws: "请选择",
+>>>>>>> c11f75e28af21f1036ab6629f8a5a6c04e97d679
     };
   },
 
   methods: {
+<<<<<<< HEAD
+    choose(){
+      this.chooseavatar=true;
+=======
     // 城市选择
     citty(value, index) {
       this.addre = `${value[0]}-${value[1]}-${value[2]}`;
@@ -330,6 +377,7 @@ export default {
     refer(){
       document.getElementById('declaration').innerHTML=this.manifesto;
       this.say = false;
+>>>>>>> c11f75e28af21f1036ab6629f8a5a6c04e97d679
     }
   },
 };

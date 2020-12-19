@@ -73,12 +73,14 @@ const routes = [
   { path: "/list/:keyword", component: List },
   { path: '/service', name: 'Service', component: Service },
   { path: "/list", component: List },
+  { path: '/service', name: 'Service', component: Service },
   { path: '/search', name: 'Search', component: Search },
   {
     path: '/about',
     name: 'About',
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
+  { path: "/login", component: Login },
   { path: "/login", component: Login },
   { path: "/register", component: Register },
   {

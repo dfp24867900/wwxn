@@ -150,19 +150,25 @@ router.post("/addhistoryword", (req, res) => {
 });
 router.get("/scene", (req, res) => {
   let arr = req.query.alter;
+  console.log(arr);
   let b = []
   arr.forEach(ele => {
     b.push(JSON.parse(ele))
-  })
-  var scene, manner, price;
+  });
+  console.log(b);
+  var scene, manner, price,price1,price2;
   b.forEach(elem => {
     scene = elem.scene;
     manner = elem.manner;
     price = elem.price
-  })
-  var price1 = price.split('-')[0]
-  var price2 = price.split('-')[1]
-  var sql = `SELECT cid,pic,visits,price,scene,title,manner,scene,color FROM bride_case_list  WHERE scene='${scene}'  or manner= '${manner}'  or price BETWEEN ${price1} AND ${price2}`
+  });
+  console.log(price);
+  if(price){
+     price1= price.split('-')[0]
+     price2 = price.split('-')[1]
+  }
+  var sql = `SELECT cid,pic,visits,price,scene,title,manner,scene,color FROM bride_case_list  WHERE scene='${scene}'  or manner= '${manner}'  or price BETWEEN '${price1}' AND '${price2}'`
+  console.log(sql);
   pool.query(sql, (err, result) => {
     if (err) throw err;
     if (result.length > 0) {

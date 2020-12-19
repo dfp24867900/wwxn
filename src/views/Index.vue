@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <mt-header title="微微新娘" fixed class="my-header">
-      <router-link to="/" slot="right"
+      <router-link to="/search" slot="right"
         ><span class="left iconfont icon-fangdajing"></span
       ></router-link>
        <span slot="left">

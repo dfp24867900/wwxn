@@ -271,9 +271,6 @@ VALUES('欢迎来到微微新娘，如果您在使用的过程中有任何的问
 
 
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 -- -- 报价明细表
 CREATE TABLE bribe_details_quotations(
    quid INT UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT'id且主键',
@@ -325,8 +322,7 @@ CREATE TABLE bribe_category(
 INSERT INTO bribe_category VALUES(1,'商品详情');
 INSERT INTO bribe_category VALUES(2,'价格明细');
 INSERT INTO bribe_category VALUES(3,'客户评论');
-=======
->>>>>>> c11f75e28af21f1036ab6629f8a5a6c04e97d679
+
 -- 创建主页数据表
 CREATE TABLE `bride_header` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主内容ID,主键且自增',
@@ -470,9 +466,6 @@ INSERT INTO `bride_message` (`id`,`imgOne`,`imgTwo`,`message_id`) VALUES
 (35,'','',3),
 (36,'','',3);
 
-<<<<<<< HEAD
-
-=======
 -- 创建收藏信息表   id  图片  标题  价格  特色   浏览数
 DROP TABLE IF EXISTS `bride_collect`;
 CREATE TABLE `bride_collect`(
@@ -487,7 +480,6 @@ CREATE TABLE `bride_collect`(
 INSERT INTO `bride_collect` (`collid`,`collimg`,`colltitle`,`collprice`,`collfea`,`collvis`,`uid`) VALUES 
 (1,'collect_sur.jpg','氤氲','28,430.00','#梦幻#大气#唯美#室内',1456,1),
 (2,'10.jpg','阿巴阿巴','28,430.00','#梦幻#大气#唯美#室内',1456,2);
->>>>>>> 3b8f3c2032e3a9cd720bc7789ec723a75675dce7
 
 -- 创建订单表  id  图片   标题  描述 价格
 DROP TABLE IF EXISTS `bride_shop`;
@@ -502,4 +494,4 @@ CREATE TABLE `bride_shop`(
 INSERT INTO `bride_shop` (`shopid`,`shopimg`,`shoptitle`,`shopprice`,`shopdes`,`uid`) VALUES 
 (1,'collect_sur.jpg','简约+质感泰式','28,430.00','这是一条假的描述语段,仅仅是占着位置而已',1),
 (2,'10.jpg','乌拉乌拉','28,430.00','这是一条假的描述语段,仅仅是占着位置而已',2);
->>>>>>> c11f75e28af21f1036ab6629f8a5a6c04e97d679
+

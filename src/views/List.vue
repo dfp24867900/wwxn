@@ -354,11 +354,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
 }
-<<<<<<< HEAD
-.bride_list .item{
-=======
 .item,.item1{
->>>>>>> c11f75e28af21f1036ab6629f8a5a6c04e97d679
   display: inline-block;
   height: 30px;
   width: 70px;
@@ -378,13 +374,8 @@ export default {
   text-align: left !important;
   margin-left: 10px;
 }
-<<<<<<< HEAD
-.bride_list .content1{
-    padding: 16px 16px 160px;
-=======
 .content1{
   padding: 16px 16px 160px;
->>>>>>> c11f75e28af21f1036ab6629f8a5a6c04e97d679
 }
 .bride_list .mint-header{
   background-color: #c8caee !important;

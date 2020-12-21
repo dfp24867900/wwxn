@@ -14,7 +14,7 @@
         <div>
           <van-swipe :autoplay='3000' class="carouse">
             <van-swipe-item v-for="(image,index) in images" :key="index">
-              <img v-lazy="image">
+              <img src="/img/details/yinyun/31.jpg">
             </van-swipe-item>
           </van-swipe>
         </div>

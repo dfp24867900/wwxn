@@ -22,7 +22,7 @@
     </p>
     <div class="list" v-for="(detail, i) of lists" :key="i">
       <router-link :to="`/detail/${detail.cid}`">
-        <div><img :src="detail.pic" alt="" /></div>
+        <div><img v-lazy="detail.pic" alt="" /></div>
         <div class="mycontent">
           <p>{{ detail.title }}</p>
           <p>
@@ -136,7 +136,7 @@ export default {
   position: fixed;
 }
 #searchList .header input {
-  width: 60%;
+  width: 70%;
   background-color: #eee;
   height: 33px;
   border: 0px;
@@ -147,13 +147,14 @@ export default {
 #searchList .header button,
 #searchList .header a {
   display: block;
+  width: 15%;
   height: 45px;
   font-size: 14px;
   line-height: 45px;
   text-align: center;
   background-color: rgba(0, 0, 0, 0);
   border: 0px;
-  color: #666;
+  color: #000;
 }
 #searchList .header a > img {
   margin-top: 12px;

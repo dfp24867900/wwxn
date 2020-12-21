@@ -322,6 +322,10 @@ CREATE TABLE bribe_category(
 INSERT INTO bribe_category VALUES(1,'商品详情');
 INSERT INTO bribe_category VALUES(2,'价格明细');
 INSERT INTO bribe_category VALUES(3,'客户评论');
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7aa06ec09b581357f67b5c07e170432efbc9ecc3
 -- 创建主页数据表
 CREATE TABLE `bride_header` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主内容ID,主键且自增',
@@ -472,10 +476,16 @@ CREATE TABLE `bride_collect`(
    pid int(10) unsigned  NOT NULL COMMENT '商品id',
    uid int(10) unsigned NOT NULL COMMENT '用户id'
 );
+<<<<<<< HEAD
 INSERT INTO `bride_collect` (`collid`,`pid`,`uid`) VALUES 
 (1,'1',1),
 (2,'2',2),
 (3,'3',1);
+=======
+INSERT INTO `bride_collect` (`collid`,`collimg`,`colltitle`,`collprice`,`collfea`,`collvis`,`uid`) VALUES 
+(1,'collect_sur.jpg','氤氲','28,430.00','#梦幻#大气#唯美#室内',1456,1),
+(2,'10.jpg','阿巴阿巴','28,430.00','#梦幻#大气#唯美#室内',1456,2);
+>>>>>>> 7aa06ec09b581357f67b5c07e170432efbc9ecc3
 
 -- 创建订单表  id  商品id 用户id
 DROP TABLE IF EXISTS `bride_shop`;
@@ -484,6 +494,13 @@ CREATE TABLE `bride_shop`(
    pid int(10) unsigned NOT NULL COMMENT '用户id',
    uid int(10) unsigned NOT NULL COMMENT '用户id'
 );
+<<<<<<< HEAD
 INSERT INTO `bride_shop` (`shopid`,`pid`,`uid`) VALUES 
 (1,'1',1),
 (2,'2',2);
+=======
+INSERT INTO `bride_shop` (`shopid`,`shopimg`,`shoptitle`,`shopprice`,`shopdes`,`uid`) VALUES 
+(1,'collect_sur.jpg','简约+质感泰式','28,430.00','这是一条假的描述语段,仅仅是占着位置而已',1),
+(2,'10.jpg','乌拉乌拉','28,430.00','这是一条假的描述语段,仅仅是占着位置而已',2);
+
+>>>>>>> 7aa06ec09b581357f67b5c07e170432efbc9ecc3

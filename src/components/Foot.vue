@@ -1,27 +1,27 @@
 <template>
     <div class="foot">
         <mt-tabbar fixed v-model="selected" class="tabbar">
-            <mt-tab-item :id="1">
+            <mt-tab-item id="MianPage">
                 <div class="iconfont icon-shouye"></div>
                 <span>首页</span>
             </mt-tab-item>
 
-            <mt-tab-item :id="2">
+            <mt-tab-item id="Case">
                 <div class="iconfont icon-xingqiu2"></div>
-                <span>商城</span>
+                <span>案例</span>
             </mt-tab-item>
 
-            <mt-tab-item :id="3">
+            <mt-tab-item id="3">
                 <div class="iconfont icon-zuoyi"></div>
                 <span>社交</span>
             </mt-tab-item>
 
-            <mt-tab-item :id="4">
+            <mt-tab-item id="4">
                 <div class="iconfont icon-linggan"></div>
                 <span>灵感</span>
             </mt-tab-item>
 
-            <mt-tab-item :id="5">
+            <mt-tab-item id="Mine">
                 <div class="iconfont icon-wo"></div>
                 <span>我的</span>
             </mt-tab-item>
@@ -33,7 +33,7 @@
         color: #888;
     }
     .mint-tabbar>.mint-tab-item.is-selected{
-        color: #c3ac66;
+        color: pink;
     }
      .foot>.tabbar .iconfont{
          font-size: 22px;
@@ -47,7 +47,14 @@
 export default {
     data(){
         return{
-            selected:"1"
+            selected:'MinePage'
+        }
+    },
+    watch:{
+        selected(){
+            if(this.selected=='MinePage') this.$router.push('/');
+            if(this.selected=='Case') this.$router.push('/list');
+            if(this.selected=='Mine') this.$router.push('/site');
         }
     }
 }

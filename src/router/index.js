@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Address from '../components/Address.vue'
 import List from '../views/List.vue'
 import Service from '../views/Service.vue'
 import Login from '../views/Login.vue'
@@ -70,20 +69,15 @@ const routes = [
     path: '/sitecollect/:uid',
     component: Sitecollect
   },
-  { path: "/address", component: Address },
   { path: "/searchlist/:keyword", component: SearchList },
   { path: "/list/:keyword", component: List },
   { path: '/service', name: 'Service', component: Service },
-  { path: "/address", component: Address },
   { path: "/list", component: List },
   { path: '/service', name: 'Service', component: Service },
   { path: '/search', name: 'Search', component: Search },
   {
     path: '/about',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   { path: "/login", component: Login },

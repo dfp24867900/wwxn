@@ -166,7 +166,6 @@ export default {
               duration: 2500,
             });
           } else {
-            console.log(res.data)
             this.avatar=res.data.result
             this.phone="";
             this.c=1

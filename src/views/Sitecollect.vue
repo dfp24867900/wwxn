@@ -23,21 +23,23 @@
         <mt-tab-container-item id="collect_1" >
           <!-- 外层位置 -->
           <div class="collect_community" v-for="(article,index) in articles" :key="index">
+            <router-link :to='`/details/${article.cid}`'>           
             <!-- 上方图片位置 -->
             <div>
-              <img :src="require(`../assets/image/site/collect/${article.collimg}`)" alt="">
+              <img :src="`/img/list/${article.pic}`" alt="">
             </div>
             <!-- 下方文字描述 -->
             <div>
               <!-- 标题 -->
-              <p>{{article.colltitle}}</p>
+              <p>{{article.title}}</p>
               <!-- 标签 -->
-              <p>{{article.collfea}}</p>
+              <p>{{article.manner}}</p>
               <!-- 价格 -->
-              <p>¥{{article.collprice}}</p>
+              <p>¥{{article.price}}</p>
               <!-- 浏览数量 -->
-              <p> <img src="../assets/image/site/collect/collect_eye.png" alt=""> {{article.collvis}}人浏览</p>
+              <p> <img src="../assets/image/site/collect/collect_eye.png" alt=""> {{article.visits}}人浏览</p>
             </div>
+            </router-link>
           </div>
         </mt-tab-container-item>
         <mt-tab-container-item id="collect_2">
@@ -99,7 +101,7 @@
     position: relative;
   }
   /* 案例上方图片部分的位置 */
-  .collect_community>div:first-child{
+  .collect_community>a>div:first-child{
     width: 100%;
     height: 70%;
     overflow: hidden;
@@ -108,45 +110,45 @@
     left: 4%;
     top: 6%;
   }
-  .collect_community>div:first-child>img{
+  .collect_community>a>div:first-child>img{
     width: 92%;
     border-radius: 5px;
   }
   /* 设置案例文字位置 */
-  .collect_community>div:last-child{
+  .collect_community>a>div:last-child{
     width: 92%;
     height: 50px;
     position: absolute;
     left: 4%;
     top: 80%;
   }
-  .collect_community>div:last-child>p:first-child{
+  .collect_community>a>div:last-child>p:first-child{
     position: absolute;
     top: 0px;
     left: 2px;
     color: #333;
   }
-  .collect_community>div:last-child>p:last-child,.collect_community>div:last-child>p:nth-child(2){
+  .collect_community>a>div:last-child>p:last-child,.collect_community>a>div:last-child>p:nth-child(2){
     position: absolute;
     top: 22px;
     left: 2px;
     font-size: 12px;
     color: rgb(83, 78, 78);
   }
-  .collect_community>div:last-child>p:nth-child(3){
+  .collect_community>a>div:last-child>p:nth-child(3){
     position: absolute;
     top: 5px;
     left: 80%;
     font-size: 16px;
     color: #900;
   }
-  .collect_community>div:last-child>p:last-child{
+  .collect_community>a>div:last-child>p:last-child{
     position: absolute;
     top: 22px;
     left: 73%;
     line-height: 14px;
   }
-  .collect_community>div:last-child>p:last-child>img{
+  .collect_community>a>div:last-child>p:last-child>img{
     width: 12px;
     height: 12px;
     margin-top: 2px;
@@ -206,8 +208,7 @@ export default {
                uid:uid
            }
        }).then(res=>{
-            this.articles.push(res.data.result);
-            console.log(this.articles)           
+         this.articles=res.data;
        });
     }
 }

@@ -1,12 +1,19 @@
 <template>
   <div class="index">
-    <mt-header title="时尚新娘" fixed class="my-header">
-      <router-link to="/" slot="left"
+    <mt-header title="微微新娘" fixed class="my-header">
+      <router-link to="/search" slot="right"
         ><span class="left iconfont icon-fangdajing"></span
       ></router-link>
-      <router-link to="/" slot="right"
-        ><span class="right iconfont icon-xinxi"></span
-      ></router-link>
+       <span slot="left">
+         <!-- 设置is-link属性后会在单元格右侧显示箭头 -->
+         <van-cell is-link @click="showPopup" class="details_address"  arrow-direction="down">
+           <span v-if="!province">全国</span>{{province}} {{city}}  {{country}}
+         </van-cell>
+         <van-popup v-model="show" position="top" :style="{ height: '50%' }">
+         <van-area :area-list="areaList" :columns-num="3" ref="myArea"
+            @confirm="onConfirm" @cancel="onCancel"  @change="onChange" title="请选择婚礼举办地"  />  
+        </van-popup> 
+      </span> 
     </mt-header>
 
     <!-- 轮播图开始 -->
@@ -76,7 +83,7 @@
           <div class="page" v-for="(item,index) of articles" :key="index">
             <!-- 图片 -->
                         <div>
-                            <router-link to="/message">
+                            <router-link :to="`/message/${item.id}`">
                                 <img v-lazy="item.img" alt="">
                                 <p class="span4">{{item.description}}</p>
                             </router-link>
@@ -113,11 +120,13 @@
 .index > .my-header {
   background-color: #fff;
   color: pink;
+
 }
-.index > .my-header .left {
-  font-weight: 1000;
-  font-size: 18px;
-  margin-left: 10px;
+.index .details_address{
+  color:#666;
+  width: 100px;
+  padding: 9px 18px;
+
 }
 .index > .my-header .right {
   font-weight: 900;
@@ -179,12 +188,9 @@
 
 .index > .tabbar {
   width: 100%;
-  
   padding-top: 10px;
-  position: sticky;
-  top: 0px;
-  z-index: 100;
 }
+
 .index .tabbar > .tab-bar {
   box-sizing: border-box;
   padding: 8px 0;
@@ -257,26 +263,57 @@
 
 </style>
 <script>
+import areaList from '../assets/area.js';
+import { Toast } from 'vant';
 export default {
   data() {
     return {
       active: "0",
       category: ["推荐", "时尚星闻", "主题婚礼", "婚纱礼服"],
       articles:[],
-      Z1:[1,2]
+      Z1:[1,2],
+      height:"",
+      show:false,
+      province:"",
+      city:"",
+      country:"",
+      areaList
     }
   },
   methods:{
     load(){
        /* 获取主内容的信息 */
-      this.axios.get('/art',{
+      this.axios.get('/index/art',{
         params:{
           id:this.active
         }
       }).then(res=>{
         this.articles = res.data.results;
-        
       })
+    },
+      //点击取消按钮时触发
+			onCancel() {
+        this.show = false;
+        //通过 ref 可以获取到 Area 实例并调用实例方法
+        //reset()根据 code 重置所有选项，若不传 code，则重置到第一项
+        this.$refs.myArea.reset()
+        },
+  //点击右上方确认按钮时触发
+		 onConfirm(val) {
+        this.province= val[0].name,
+        this.city=val[1].name,
+        this.country=val[2].name;
+        this.show = false;
+     },
+    //选项改变时触发
+			onChange(picker) {
+        let val = picker.getValues();
+        return val;
+      },
+      showPopup() {
+        //点击表单时下方的选项框显示
+        this.show = true;
+        //this.overlay = true;
     }
   },
   mounted(){

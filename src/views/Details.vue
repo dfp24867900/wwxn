@@ -13,8 +13,13 @@
        <!-- 轮播图开始 -->
         <div>
           <van-swipe :autoplay='3000' class="carouse">
+<<<<<<< HEAD
             <van-swipe-item v-for="(img,index) of images" :key="index">
               <img  :src='`/${img}`'>
+=======
+            <van-swipe-item v-for="(image,index) in images" :key="index">
+              <img src="/img/details/yinyun/31.jpg">
+>>>>>>> 2f0fa3e6e2755e0aff13854906f67cc0721be2ff
             </van-swipe-item>
           </van-swipe>
         </div>

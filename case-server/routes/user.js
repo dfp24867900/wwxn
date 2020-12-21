@@ -52,12 +52,10 @@ router.post('/login', (req, res) => {
   let username = obj.username;
   let password = obj.password;
   // let password = md5(req.body.upwd);
-  console.log(username, password)
   //以用户名和密码为条件进行查找
   let sql = 'SELECT * FROM bride_user WHERE uname=? AND upwd=?';
   pool.query(sql, [username, password], (error, result) => {
     if (error) throw error;
-    console.log(result)
     if (result.length == 0) {
       res.send({
         message: '登录失败',
@@ -75,29 +73,57 @@ router.post('/login', (req, res) => {
 
 // 收藏界面接口
 router.get('/sitecollect', (req, res) => {
-  // 获取地址栏的URL参数 -- 文章ID
+  // 获取地址栏的URL参数 -- 用户ID
   let uid = req.query.uid;
+  let coll=[];
+  let sq='?'
   // 查询特定记录的SQL语句
-  let sql = 'SELECT * FROM bride_collect WHERE uid=?';
+  let sql = 'SELECT pid FROM bride_collect WHERE uid=?';
   // 执行SQL语句
   pool.query(sql, [uid], (error, results) => {
     if (error) throw error;
-    res.send({ code: 200, message: "查询成功", result: results[0] });
+    results.forEach(element => {
+      coll.push(element.pid);
+    });
+    console.log(coll)
+    for(i=0;i<coll.length-1;i++){
+      sq+=',?'
+    }
+    sql = `SELECT * FROM bride_case_list where cid in (${sq})`
+    pool.query(sql,coll,(err,results)=>{
+      if(err) throw err;
+      res.send(results);
+    })
+    
   });
 });
 
 // 订单界面接口
 router.get('/siteshopping', (req, res) => {
-  // 获取地址栏的URL参数 -- 文章ID
-  let uid = req.query.uid;
-  // 查询特定记录的SQL语句
-  let sql = 'SELECT * FROM bride_shop WHERE uid=?';
-  // 执行SQL语句
-  pool.query(sql, [uid], (error, results) => {
-    if (error) throw error;
-    res.send({ code: 200, message: "查询成功", result: results[0] });
-  });
-});
+   // 获取地址栏的URL参数 -- 用户ID
+   let uid = req.query.uid;
+   let coll=[];
+   let sq='?'
+   // 查询特定记录的SQL语句
+   let sql = 'SELECT pid FROM bride_collect WHERE uid=?';
+   // 执行SQL语句
+   pool.query(sql, [uid], (error, results) => {
+     if (error) throw error;
+     results.forEach(element => {
+       coll.push(element.pid);
+     });
+     console.log(coll)
+     for(i=0;i<coll.length-1;i++){
+       sq+=',?'
+     }
+     sql = `SELECT * FROM bride_case_list where cid in (${sq})`
+     pool.query(sql,coll,(err,results)=>{
+       if(err) throw err;
+       res.send(results);
+     })
+     
+   });
+ });
 
 //邀请界面接口
 router.get("/join", (req, res) => {
@@ -118,7 +144,7 @@ router.get("/join", (req, res) => {
 //客服消息接口
 router.get("/service", (req, res) => {
   let user_id = req.query.user_id
-  var sql = "select content,is_send,created_at from bride_service_messeage where user_id=? ";
+  var sql = "select avatar,content,is_send,created_at from bride_service_messeage inner join bride_user on user_id=uid where user_id=? ";
   pool.query(sql, [user_id], (err, result) => {
     if (err) throw err;
     res.send({ code: 200, message: "查询成功", result: result })

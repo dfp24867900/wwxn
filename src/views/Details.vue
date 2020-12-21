@@ -13,13 +13,8 @@
        <!-- 轮播图开始 -->
         <div>
           <van-swipe :autoplay='3000' class="carouse">
-<<<<<<< HEAD
             <van-swipe-item v-for="(img,index) of images" :key="index">
               <img  :src='`/${img}`'>
-=======
-            <van-swipe-item v-for="(image,index) in images" :key="index">
-              <img src="/img/details/yinyun/31.jpg">
->>>>>>> 2f0fa3e6e2755e0aff13854906f67cc0721be2ff
             </van-swipe-item>
           </van-swipe>
         </div>
@@ -64,7 +59,7 @@
         <!-- 价格明细 -->
         <div>
           <van-row class="detail-price">
-            <van-col span="12">¥{{briMsg.price}}</van-col>
+            <van-col span="12">¥{{parseInt(briMsg.price).toFixed(2)}}</van-col>
             <van-col span="12">
              <van-rate v-model="value" icon="like" void-icon="like-o" />
             </van-col>
@@ -79,11 +74,7 @@
         <!-- 设计效果图 -->
         <div class="detail-content" >
           <p>设计效果图</p> 
-            <!-- <div v-for="(image,index) in images" :key="index" @click="browse">
-              <img v-lazy="image" >
-            </div> -->
-
-            <viewer :images="effectPic">
+           <viewer :images="effectPic">
           <img v-for="(src,index) in effectPic" :src="`/${src}`" :key="index" >
           </viewer>
         </div>
@@ -121,13 +112,14 @@
             <p>婚礼团队:</p>
           <van-row type="flex" justify="space-between">
             <van-col span="9" v-for="(team,index) of weddingteam" :key="index">
+              
               <van-image
-                width="35"
-                height="33"
-                lazy-load
-                 round
-                 :src="team.portrait"
-              />
+                  round
+                  width="2rem"
+                  height="2rem"
+                  lazy-load
+                   :src="require(`../assets/image/avatar${team.portrait}`)"
+                  />
               <div >
                 <p>{{team.tname}}</p>  
                 <span>{{team.job}}</span>
@@ -189,22 +181,21 @@
       </mt-tab-container-item>
       <!-- 新人评价 -->
       <mt-tab-container-item id='3' >
-        <div class="comment-container">
+        <div class="comment-container" v-if="comments.length>0">
             <!-- 标题 -->
             <p>———— · 新人评价 ·———— </p> 
             <!-- 新人信息开始 -->
             <div v-for="(comment,index) of comments" :key="index">
               <div class="comment-info">
                 <!-- 头像 -->
-                <!-- <van-image
+                <van-image
                   round
                   width="2rem"
                   height="2rem"
                   lazy-load
-                   :src="comment.usericon"
-                  /> -->
-                  <img :src="comment.usericon" style="width:42px;height:42px">
-
+                   :src="require(`../assets/image/avatar${comment.usericon}`)"
+                  />
+                
               <!-- 昵称 -->
                   <div> 
                     <p>新人:{{comment.mName}}</p>
@@ -242,11 +233,10 @@
   <footer>
     <van-goods-action v-show='isShow'>
       <van-goods-action-icon  icon='chat-o' text='客服' color="#ee0a24" to='/service' dot/>
-      <van-goods-action-icon icon='star-o' text='收藏' to='/sitecollect/${briMsg.cid}' />
-      <van-goods-action-button  color="#969799" text='加入收藏' @click="addtofavorites"
+      <van-goods-action-button  color="#969799" text='加入收藏' @click="addtofavorites(info.uid)"
      
       />
-      <van-goods-action-button type="danger" text='立即订购'   />
+      <van-goods-action-button type="danger" text='立即订购' @click="addtoshop(info.uid)"  />
     </van-goods-action>
   </footer>
   <!-- 底部导航栏结束 -->
@@ -589,6 +579,7 @@
 <script>
 import {Rate , NavBar,Lazyload,Col, Row, VanImage,ImagePreview ,Collapse, CollapseIte,Toast} from 'vant';
 import {mapState} from 'vuex';
+import {mapMutations} from 'vuex';
 export default {
   computed:{
     ...mapState(['isLogined','info']),
@@ -611,8 +602,8 @@ export default {
     isShow:true,
     show:false,
     sum:0,
-    uid:info.uid,
-    dateTime:3
+    dateTime:3,
+    uid:''
     }
   },
 
@@ -625,17 +616,54 @@ export default {
     close(){//让话框隐藏
           this.show=false;
    },
+  // 立即预定
+  addtoshop(b){
+    this.uid=b
+    if(this.$store.state.isLogined == 1){
+        //获取地址栏中的参数
+      let id = this.$route.params.id;
+      // console.log(this.$route.params.id)
+     this.axios.get('/details/shop?',{
+       params:{
+         id: id,
+         uid:this.uid
+        //  uid:urid
+       }
+     }).then(res=>{
+        let cart = res.data;
+        if(cart.code == 1){
+          Toast(cart.message);
+
+        } else {
+          Toast(cart.message)
+        }
+     });
+    
+      }else{
+        tishi.style.display="block";
+        var time = setInterval(() => {
+          if (this.dateTime <= 0) {
+            this.$router.push("/login");
+            clearInterval(time);
+          } else {
+            this.dateTime -= 1;
+          }
+        }, 1000);
+      }
+  },
+
     // 添加收藏
-    addtofavorites() {
+    addtofavorites(a) {
+      this.uid=a
       if(this.$store.state.isLogined == 1){
         //获取地址栏中的参数
-      let proid = this.$route.params.id;
-      
-     console.log(uid)
-     this.axios.get('/details/collection',{
+      let id = this.$route.params.id;
+      // console.log(this.$route.params.id)
+     this.axios.get('/details/collection?',{
        params:{
-         id: proid,
-         uid:uid
+         id: id,
+         uid:this.uid
+        //  uid:urid
        }
      }).then(res=>{
         let cart = res.data;
@@ -729,9 +757,8 @@ export default {
          } 
        }).then(res=>{
          this.comments=res.data.results;
-       console.log(res.data.results)
+       console.log("--",res.data.results)
 
-        this.comments.usericon=require(comments.usericon)
       
        });
   },

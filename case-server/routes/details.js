@@ -62,17 +62,39 @@ pool.query(sql,[id],(err,results)=>{
 
 // 添加收藏
 router.get('/collection',(req,res)=>{
-  let id = req.query.proid;
+  let id = req.query.id;
+
   let uid = req.query.uid;
-  let sql = 'SELECT title,price,pic,visits,manner FROM bride_case_list  INNER JOIN bride_collect where collid=?';
-  pool.query(sql,[proid,uid],(err,results)=>{
-    if(err) throw err;
-    if(results.affectedRows>0){
-      res.send({code:1,message: '添加成功'});
-    } else {
-      res.send({code:0,message: '添加失败'})
-    }
-  })
+  let sql = `INSERT INTO bride_collect (collid,pid,uid)VALUES (NULL,?,?)`
+      pool.query(sql,[id,uid],(err,results)=>{
+        if(err) throw err
+        if(results.affectedRows>0){
+          res.send({code:1,message: '添加成功'});
+        } else {
+          res.send({code:0,message: '添加失败'})
+        }
+      })
+    
+   
+
+});
+
+// 立即预定
+router.get('/shop',(req,res)=>{
+  let id = req.query.id;
+  let uid = req.query.uid;
+  let sql = `INSERT INTO bride_shop (shopid,pid,uid)VALUES (NULL,?,?)`
+      pool.query(sql,[id,uid],(err,results)=>{
+        if(err) throw err
+        if(results.affectedRows>0){
+          res.send({code:1,message: '加入订单'});
+        } else {
+          res.send({code:0,message: '订单加入失败'})
+        }
+      })
+    
+   
+
 });
 
 

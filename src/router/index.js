@@ -69,10 +69,7 @@ const routes = [
     path: '/sitecollect/:uid',
     component: Sitecollect
   },
-<<<<<<< HEAD
-  { path: "/address",             component: Address },
-=======
->>>>>>> 2f0fa3e6e2755e0aff13854906f67cc0721be2ff
+  // { path: "/address",             component: Address },
   { path: "/searchlist/:keyword", component: SearchList },
   { path: "/list/:keyword",component: List },
   { path: '/service', name: 'Service', component: Service },

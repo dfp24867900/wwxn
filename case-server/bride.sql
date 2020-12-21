@@ -277,27 +277,24 @@ CREATE TABLE bride_wedding_team(
    emolument DECIMAL(6,2)   COMMENT '薪酬',
    bride_list_id smallint(5) unsigned NOT NULL COMMENT '外键,bride_case_list的ID'
 );
-INSERT INTO  bride_wedding_team VALUES(NULL,'大钊','../assets/image/avatar/15.jpg','策划师',1890,1);
-INSERT INTO  bride_wedding_team VALUES(NULL,'晴子','../assets/image/avatar/14.jpg','化妆师',1990,1);
-INSERT INTO  bride_wedding_team VALUES(NULL,'BOBO','../assets/image/avatar/09.jpg','摄影师',1820,1);
-INSERT INTO  bride_wedding_team VALUES(NULL,'元凯','../assets/image/avatar/16.jpg','策划师',2890,2);
-INSERT INTO  bride_wedding_team VALUES(NULL,'TOM','../assets/image/avatar/22.jpg','摄影师',1790,2);
-INSERT INTO  bride_wedding_team VALUES(NULL,'露露','../assets/image/avatar/25.jpg','化妆师',1234,2);
-INSERT INTO  bride_wedding_team VALUES(NULL,'lala','../assets/image/avatar/01.jpg','策划师',1777,3);
-INSERT INTO  bride_wedding_team VALUES(NULL,'mfrank','../assets/image/avatar/05.png','化妆师',1890,3);
-INSERT INTO  bride_wedding_team VALUES(NULL,'陈小红','../assets/image/avatar/06.jpg','摄影师',2890,3);
-INSERT INTO  bride_wedding_team VALUES(NULL,'南充刘东','../assets/image/avatar/07.jpg','策划师',1790,4);
-INSERT INTO  bride_wedding_team VALUES(NULL,'momo','../assets/image/avatar/03.jpg','摄影师',1890,4);
-INSERT INTO  bride_wedding_team VALUES(NULL,'小太','../assets/image/avatar/08.jpg','化妆师',1840,4);
-INSERT INTO  bride_wedding_team VALUES(NULL,'程雨','../assets/image/avatar/02.jpg','策划师',1887,5);
-INSERT INTO  bride_wedding_team VALUES(NULL,'rose','../assets/image/avatar/10.jpg','摄影师',1980,5);
-INSERT INTO  bride_wedding_team VALUES(NULL,'莎莎','../assets/image/avatar/17.jpg','化妆师',2890,5);
-
-<<<<<<< HEAD
-=======
+INSERT INTO  bride_wedding_team VALUES(NULL,'大钊','/15.jpg','策划师',1890,1);
+INSERT INTO  bride_wedding_team VALUES(NULL,'晴子','/14.jpg','化妆师',1990,1);
+INSERT INTO  bride_wedding_team VALUES(NULL,'BOBO','/09.jpg','摄影师',1820,1);
+INSERT INTO  bride_wedding_team VALUES(NULL,'元凯','/16.jpg','策划师',2890,2);
+INSERT INTO  bride_wedding_team VALUES(NULL,'TOM','/22.jpg','摄影师',1790,2);
+INSERT INTO  bride_wedding_team VALUES(NULL,'露露','/25.jpg','化妆师',1234,2);
+INSERT INTO  bride_wedding_team VALUES(NULL,'lala','/01.jpg','策划师',1777,3);
+INSERT INTO  bride_wedding_team VALUES(NULL,'mfrank','/05.png','化妆师',1890,3);
+INSERT INTO  bride_wedding_team VALUES(NULL,'陈小红','/06.jpg','摄影师',2890,3);
+INSERT INTO  bride_wedding_team VALUES(NULL,'南充刘东','/07.jpg','策划师',1790,4);
+INSERT INTO  bride_wedding_team VALUES(NULL,'momo','/03.jpg','摄影师',1890,4);
+INSERT INTO  bride_wedding_team VALUES(NULL,'小太','/08.jpg','化妆师',1840,4);
+INSERT INTO  bride_wedding_team VALUES(NULL,'程雨','/02.jpg','策划师',1887,5);
+INSERT INTO  bride_wedding_team VALUES(NULL,'rose','/10.jpg','摄影师',1980,5);
+INSERT INTO  bride_wedding_team VALUES(NULL,'莎莎','/17.jpg','化妆师',2890,5);
 
 
->>>>>>> 2f0fa3e6e2755e0aff13854906f67cc0721be2ff
+
 -- -- 报价明细表
 CREATE TABLE bribe_details_quotations(
    quid INT UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT'id且主键',
@@ -346,19 +343,19 @@ CREATE TABLE bribe_details_evaluate(
    score VARCHAR(32) COMMENT "评星",
    bride_list_id smallint(5) unsigned NOT NULL COMMENT '外键,bride_case_list的ID'
 );
-INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/15.jpg','白小白','策划师-大钊','aliao是我朋友给我力荐的策划师，跟他的交流很顺畅。他能知道我们需要什么，作为水瓶座的女生，我有一些天马行空的想法。他耐心倾听我的叙述，从我的描述中提取的关键词很准确。最终效果图一出来，我们的感觉就有了！这是一次就通过的方案，没有任何改动。我觉得实景比图纸还要美。我站在台上感觉已经进入了aliao为我们构建的梦里。我的金色婚纱在这个梦里熠熠生辉，每一个人都赞美我的婚纱绝美。但我知道，它能把它的美散发的淋漓尽致是因为有这个舞台的加持。我相信我的丈夫会一辈子记得那天我站在他身后，他转身回眸的一瞬间，眼睛里都是我第一次身着金纱最美的模样。我也永远不会忘记他那一刻的热泪。谢谢aliao','star5.png',3);
-INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/16.jpg','Arey','主持人-凯元',' 凯哥堪称性价比之王了～声音超好听，是配音级别的，不论是场控还是现场音乐的选择都是一流的，非常好沟通，是一名优秀的主持人^_^','star5.png',3);
-INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/14.jpg','BoBo','化妆师-琴子','技术超好的琴子，擅长日系清新的妆容，虽然说的是化妆师，但琴子更是一名优秀的造型师，服化一体，不论是服装还是妆容都给出了非常专业的建议，并且在婚礼当天让我成为了最美的新娘','star5.png',3);
-INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/09.jpg','tom','摄影师-Alo','摄像小哥哥人很幽默，拍摄的视频，光是预告片都爱了。很期待婚礼的成片！摄影师选择兆恒！肯定会是不会错的！！推荐给大家！','star5.png',1);
-INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/22.jpg','露露','化妆师-安琪','从选择了sunny 到我试妆 婚礼当天的妆 我都非常满意！试妆那天可能花了有四个小时，sunny化妆化的很仔细，很认真，及时跟我沟通妆容各种小细节。sunny很温柔🧏🏻 婚礼当天，sunny准时到了酒店开始给我化妆，真的是超级超级喜欢！爱了爱了！当天我们拍外景，天气也很热，sunny真的是随时随地都在帮我整理我的造型！太感谢sunny了 给我化了这么好看的妆容！！！！我！很！喜！欢！','star5.png',1);
-INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/25.jpg','杨','统筹师-莎莎','从刚开始不理解为什么有统筹师这个选择，到最后真的发现，没有莎莎我可怎么办，不论是事前的准备，还是婚礼当天的各种繁琐事项，安排人员，准备早餐，莎莎都完美的安排好了，真的是省了太多的心，很多事伴娘根本没办法事无巨细，但是莎莎的存在就是让你只管美美的，而且性格也超好，特别好相处，如果我有朋友结婚的话，一定会推荐她选择莎莎。','star5.png',1);
-INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/23.jpg','rose','策划师-啦啦','我啦姐还有啥可说的！简直不能用语言来形容我对啦姐的感情！这场婚礼是在啦啦的努力和帮助下才能办的如此超乎我想象的浪漫和美好，感激感谢这样的话都显得太肤浅了！作为焦虑新娘的代表……我忘记好多事情，好多事情也想不起来，啦啦在我筹备婚礼的整个过程里，作为策划师给了我超级多信心和实现自己对婚礼的期待的勇气～说真的，遇见啦啦之前，我从来没想过自己真的可以实现一场这样的婚礼，我爱啦姐！（唯一就是那个炸鸡，我没吃完很不开心哼～）','star5.png',2);
-INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/24.png','momo','化妆师-苡苡','化出的妆容很自然，人也很亲和，很nice的小姐姐，大早上就准时到酒店，化妆造型都很仔细，每套衣服都会换不同的发型，审美很在线额，搭配的饰品也很多，超级满意的','star5.png',2);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'/15.jpg','白小白','策划师-大钊','aliao是我朋友给我力荐的策划师，跟他的交流很顺畅。他能知道我们需要什么，作为水瓶座的女生，我有一些天马行空的想法。他耐心倾听我的叙述，从我的描述中提取的关键词很准确。最终效果图一出来，我们的感觉就有了！这是一次就通过的方案，没有任何改动。我觉得实景比图纸还要美。我站在台上感觉已经进入了aliao为我们构建的梦里。我的金色婚纱在这个梦里熠熠生辉，每一个人都赞美我的婚纱绝美。但我知道，它能把它的美散发的淋漓尽致是因为有这个舞台的加持。我相信我的丈夫会一辈子记得那天我站在他身后，他转身回眸的一瞬间，眼睛里都是我第一次身着金纱最美的模样。我也永远不会忘记他那一刻的热泪。谢谢aliao','star5.png',3);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'/16.jpg','Arey','主持人-凯元',' 凯哥堪称性价比之王了～声音超好听，是配音级别的，不论是场控还是现场音乐的选择都是一流的，非常好沟通，是一名优秀的主持人^_^','star5.png',3);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'/14.jpg','BoBo','化妆师-琴子','技术超好的琴子，擅长日系清新的妆容，虽然说的是化妆师，但琴子更是一名优秀的造型师，服化一体，不论是服装还是妆容都给出了非常专业的建议，并且在婚礼当天让我成为了最美的新娘','star5.png',3);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'/09.jpg','tom','摄影师-Alo','摄像小哥哥人很幽默，拍摄的视频，光是预告片都爱了。很期待婚礼的成片！摄影师选择兆恒！肯定会是不会错的！！推荐给大家！','star5.png',1);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'/22.jpg','露露','化妆师-安琪','从选择了sunny 到我试妆 婚礼当天的妆 我都非常满意！试妆那天可能花了有四个小时，sunny化妆化的很仔细，很认真，及时跟我沟通妆容各种小细节。sunny很温柔🧏🏻 婚礼当天，sunny准时到了酒店开始给我化妆，真的是超级超级喜欢！爱了爱了！当天我们拍外景，天气也很热，sunny真的是随时随地都在帮我整理我的造型！太感谢sunny了 给我化了这么好看的妆容！！！！我！很！喜！欢！','star5.png',1);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'/25.jpg','杨','统筹师-莎莎','从刚开始不理解为什么有统筹师这个选择，到最后真的发现，没有莎莎我可怎么办，不论是事前的准备，还是婚礼当天的各种繁琐事项，安排人员，准备早餐，莎莎都完美的安排好了，真的是省了太多的心，很多事伴娘根本没办法事无巨细，但是莎莎的存在就是让你只管美美的，而且性格也超好，特别好相处，如果我有朋友结婚的话，一定会推荐她选择莎莎。','star5.png',1);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'/23.jpg','rose','策划师-啦啦','我啦姐还有啥可说的！简直不能用语言来形容我对啦姐的感情！这场婚礼是在啦啦的努力和帮助下才能办的如此超乎我想象的浪漫和美好，感激感谢这样的话都显得太肤浅了！作为焦虑新娘的代表……我忘记好多事情，好多事情也想不起来，啦啦在我筹备婚礼的整个过程里，作为策划师给了我超级多信心和实现自己对婚礼的期待的勇气～说真的，遇见啦啦之前，我从来没想过自己真的可以实现一场这样的婚礼，我爱啦姐！（唯一就是那个炸鸡，我没吃完很不开心哼～）','star5.png',2);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'/24.png','momo','化妆师-苡苡','化出的妆容很自然，人也很亲和，很nice的小姐姐，大早上就准时到酒店，化妆造型都很仔细，每套衣服都会换不同的发型，审美很在线额，搭配的饰品也很多，超级满意的','star5.png',2);
 
-INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/26.jpg','H小太','策划师-陈渝','从第一次和陈老师相处 就很投缘 我喜欢的点他都get得到 很多时候就是一点就通 很灵性 我喜欢的风格是黑白绿 这种风格能驾驭出来就是高级 但是一不小心就会翻车 陈老师从我们3次沟通后 呈现出来的景和效果图一模一样 现场简直是超级爱 非常感谢他 是美的','star5.png',4);
-INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/27.jpg','mfrank','主持人-南充刘东','谢谢刘东老师高水平的组织，我们十分满意，谢谢了！','star5.png',4);
-INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/28.jpg','二娃分','策划师-南充麦子','今天儿子的婚礼答谢宴非常圆满，感谢麦子的精心策划，感谢刘东老师高水平的组织，几位老师工作尽心尽责，我们全家人都很满意！感谢感谢！','star5.png',5);
-INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/29.jpg','山豆根','统筹师-陈小红','在平台上看了喜欢的布置风格后就直接选定了梦梦，最后婚礼的效果太满意啦，当时的选择完全没有错～ 梦梦沟通特别耐心，布置上的一些小细节我突如其来想修改，她都耐心帮我一起构思。 现场效果就是我想要的那种，清新自然，显得高级，非常棒，推荐大家选梦梦！','star5.png',5);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'/26.jpg','H小太','策划师-陈渝','从第一次和陈老师相处 就很投缘 我喜欢的点他都get得到 很多时候就是一点就通 很灵性 我喜欢的风格是黑白绿 这种风格能驾驭出来就是高级 但是一不小心就会翻车 陈老师从我们3次沟通后 呈现出来的景和效果图一模一样 现场简直是超级爱 非常感谢他 是美的','star5.png',4);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'/27.jpg','mfrank','主持人-南充刘东','谢谢刘东老师高水平的组织，我们十分满意，谢谢了！','star5.png',4);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'/28.jpg','二娃分','策划师-南充麦子','今天儿子的婚礼答谢宴非常圆满，感谢麦子的精心策划，感谢刘东老师高水平的组织，几位老师工作尽心尽责，我们全家人都很满意！感谢感谢！','star5.png',5);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'/29.jpg','山豆根','统筹师-陈小红','在平台上看了喜欢的布置风格后就直接选定了梦梦，最后婚礼的效果太满意啦，当时的选择完全没有错～ 梦梦沟通特别耐心，布置上的一些小细节我突如其来想修改，她都耐心帮我一起构思。 现场效果就是我想要的那种，清新自然，显得高级，非常棒，推荐大家选梦梦！','star5.png',5);
 
 -- 详情页面导航栏
 CREATE TABLE bribe_category(
@@ -368,13 +365,7 @@ CREATE TABLE bribe_category(
 INSERT INTO bribe_category VALUES(1,'商品详情');
 INSERT INTO bribe_category VALUES(2,'价格明细');
 INSERT INTO bribe_category VALUES(3,'客户评论');
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
 
->>>>>>> 7aa06ec09b581357f67b5c07e170432efbc9ecc3
->>>>>>> 2f0fa3e6e2755e0aff13854906f67cc0721be2ff
 -- 创建主页数据表
 CREATE TABLE `bride_header` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主内容ID,主键且自增',
@@ -525,19 +516,13 @@ CREATE TABLE `bride_collect`(
    pid int(10) unsigned  NOT NULL COMMENT '商品id',
    uid int(10) unsigned NOT NULL COMMENT '用户id'
 );
-<<<<<<< HEAD
+
 INSERT INTO `bride_collect` (`collid`,`pid`,`uid`) VALUES 
 (1,'1',1),
 (2,'2',2),
 (3,'3',1);
-=======
-INSERT INTO `bride_collect` (`collid`,`collimg`,`colltitle`,`collprice`,`collfea`,`collvis`,`uid`) VALUES 
-(1,'collect_sur.jpg','氤氲','28,430.00','#梦幻#大气#唯美#室内',1456,1),
-(2,'10.jpg','阿巴阿巴','28,430.00','#梦幻#大气#唯美#室内',1456,2);
-<<<<<<< HEAD
-=======
->>>>>>> 7aa06ec09b581357f67b5c07e170432efbc9ecc3
->>>>>>> 2f0fa3e6e2755e0aff13854906f67cc0721be2ff
+
+
 
 -- 创建订单表  id  商品id 用户id
 DROP TABLE IF EXISTS `bride_shop`;
@@ -546,13 +531,8 @@ CREATE TABLE `bride_shop`(
    pid int(10) unsigned NOT NULL COMMENT '用户id',
    uid int(10) unsigned NOT NULL COMMENT '用户id'
 );
-<<<<<<< HEAD
+
 INSERT INTO `bride_shop` (`shopid`,`pid`,`uid`) VALUES 
 (1,'1',1),
 (2,'2',2);
-=======
-INSERT INTO `bride_shop` (`shopid`,`shopimg`,`shoptitle`,`shopprice`,`shopdes`,`uid`) VALUES 
-(1,'collect_sur.jpg','简约+质感泰式','28,430.00','这是一条假的描述语段,仅仅是占着位置而已',1),
-(2,'10.jpg','乌拉乌拉','28,430.00','这是一条假的描述语段,仅仅是占着位置而已',2);
 
->>>>>>> 7aa06ec09b581357f67b5c07e170432efbc9ecc3

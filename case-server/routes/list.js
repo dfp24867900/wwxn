@@ -161,11 +161,7 @@ router.post("/addhistoryword", (req, res) => {
 //     }
 //   })
 // })
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 7aa06ec09b581357f67b5c07e170432efbc9ecc3
->>>>>>> 2f0fa3e6e2755e0aff13854906f67cc0721be2ff
+
 router.get("/scene", (req, res) => {
   let arr = req.query.alter;
   console.log(arr);

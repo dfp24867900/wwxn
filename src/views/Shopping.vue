@@ -10,31 +10,33 @@
       </router-link> 
     </mt-header>
     <!-- 商品模块 -->
-    <div class="shop" v-for="(shop,index) in shops " :key="index">
+    <div class="shop"  v-for="(shop,index) in shops " :key="index">
+      <router-link :to='`/details/${shop.cid}`'>
       <!-- 左侧照片 -->
       <div>
-        <img :src="require(`../assets/image/site/collect/${shop.shopimg}`)" alt="">
+        <img :src="`/img/list/${shop.pic}`" alt="">
       </div>
       <!-- 右侧文字描述 -->
       <div>
         <!-- 右上文字描述 -->
         <div>
           <!-- 标题 -->
-          <p>{{shop.shoptitle}}</p>
+          <p>{{shop.title}}</p>
           <!-- 描述 -->
-          <p>{{shop.shopdes}}</p>
+          <p>{{shop.descr}}</p>
           <!-- 单价 -->
           <p>
-            单价:<span>¥{{shop.shopprice}}</span>
+            单价:<span>¥{{shop.price.toFixed(2)}}</span>
           </p> 
         </div>
       </div>
+      </router-link>
     </div> 
     <!-- 页尾 -->
     <div class="shopfoot">
       <p>
         合计:
-        <span>¥</span>
+        <span>¥{{num.toFixed(2)}}</span>
       </p>
       <button>结算</button>  
     </div>
@@ -59,7 +61,10 @@
     margin-left: 1%;
     position: relative;
   }
-  .shop>div:first-child{
+  .shop>a{
+    color: #333;
+  }
+  .shop>a>div:first-child{
     width: 45%;
     height: 96%;
     overflow: hidden;
@@ -67,19 +72,19 @@
     left: 1%;
     top: 2%;
   }
-  .shop>div:first-child>img{
+  .shop>a>div:first-child>img{
     width: 100%;
     height: 100%;
     border-radius: 5px;
   }
-  .shop>div:last-child{
+  .shop>a>div:last-child{
     width: 53%;
     height: 96%;
     position: absolute;
     left: 47%;
     top: 2%;
   }
-  .shop>div:last-child>div:first-child{
+  .shop>a>div:last-child>div:first-child{
     width: 96%;
     height: 98%;
     background-color: #fff;
@@ -87,7 +92,7 @@
     top: 2%;
     left: 2%;
   }
-  .shop>div:last-child>div:first-child>p:first-child{
+  .shop>a>div:last-child>div:first-child>p:first-child{
     width: 80%;
     font-weight: 600;
     font-size: 20px;
@@ -95,16 +100,19 @@
     top: 5%;
     left: 2%;
   }
-  .shop>div:last-child>div:first-child>p:nth-child(2){
+  .shop>a>div:last-child>div:first-child>p:nth-child(2){
     width: 96%;
     font-size: 16px;
+    overflow: hidden;/*超出部分隐藏*/
+    text-overflow:ellipsis;/* 超出部分显示省略号 */
+    white-space: nowrap;
     font-weight: 500;
     color: #393939;
     position: absolute;
     top: 30%;
     left: 2%;
   }
-  .shop>div:last-child>div:first-child>p:last-child{
+  .shop>a>div:last-child>div:first-child>p:last-child{
     width: 90%;
     font-weight: 700;
     font-size: 16px;
@@ -112,7 +120,7 @@
     left: 10%;
     top: 70%;
   }
-  .shop>div:last-child>div:first-child>p:last-child>span{
+  .shop>a>div:last-child>div:first-child>p:last-child>span{
     color: #900;
     font-style: italic;
     font-size: 22px;
@@ -155,11 +163,17 @@ export default {
    data() {
     return {
       checked: true,
-      shops:[]
+      shops:[],
+      num:0
     };
   },
   methods:{
-   
+   sum(){
+     for(var i=0;i<this.shops.length;i++){
+       this.num+=parseInt(this.shops[i].price);
+     }
+     return this.num
+   }
   }
   ,
   mounted(){        
@@ -171,8 +185,8 @@ export default {
                uid:uid
            }
        }).then(res=>{
-            this.shops.push(res.data.result);
-            console.log(this.shops)           
+            this.shops=res.data;
+            this.sum()           
        });
     }
 }

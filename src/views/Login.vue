@@ -100,7 +100,6 @@ export default {
               });
             }
             if(res.data.code == 200){
-              console.log(res.data.info)
               this.$store.commit('loginMutation',res.data.info);
               localStorage.setItem('isLogined',1);
               localStorage.setItem('info',JSON.stringify(res.data.info));

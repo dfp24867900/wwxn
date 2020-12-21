@@ -148,7 +148,6 @@ router.post("/addhistoryword", (req, res) => {
     });
   })
 });
-<<<<<<< HEAD
 // router.get("/scene",(req,res)=>{
 //   let scene=req.query.alt;
 //   console.log(scene);
@@ -162,7 +161,6 @@ router.post("/addhistoryword", (req, res) => {
 //     }
 //   })
 // })
-=======
 router.get("/scene", (req, res) => {
   let arr = req.query.alter;
   let b = []
@@ -194,5 +192,4 @@ router.get("/scene", (req, res) => {
     }
   })
 })
->>>>>>> 3b8f3c2032e3a9cd720bc7789ec723a75675dce7
 module.exports = router;

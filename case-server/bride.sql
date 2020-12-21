@@ -271,7 +271,6 @@ VALUES('欢迎来到微微新娘，如果您在使用的过程中有任何的问
 
 
 
-<<<<<<< HEAD
 -- -- 报价明细表
 CREATE TABLE bribe_details_quotations(
    quid INT UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT'id且主键',
@@ -323,7 +322,6 @@ CREATE TABLE bribe_category(
 INSERT INTO bribe_category VALUES(1,'商品详情');
 INSERT INTO bribe_category VALUES(2,'价格明细');
 INSERT INTO bribe_category VALUES(3,'客户评论');
-=======
 -- 创建主页数据表
 CREATE TABLE `bride_header` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主内容ID,主键且自增',
@@ -467,32 +465,25 @@ INSERT INTO `bride_message` (`id`,`imgOne`,`imgTwo`,`message_id`) VALUES
 (35,'','',3),
 (36,'','',3);
 
--- 创建收藏信息表   id  图片  标题  价格  特色   浏览数
+-- 创建收藏信息表   id  商品id   浏览数
 DROP TABLE IF EXISTS `bride_collect`;
 CREATE TABLE `bride_collect`(
    collid INT PRIMARY KEY AUTO_INCREMENT COMMENT 'id',
-   colltitle VARCHAR(64) UNIQUE NOT NULL COMMENT '标题',
-   collprice DECIMAL(8,2) COMMENT '价格',
-   collimg VARCHAR(128) COMMENT '图片',
-   collvis INT(12) COMMENT '访问数',
-   collfea VARCHAR(128) NOT NULL COMMENT '特色',
+   pid int(10) unsigned  NOT NULL COMMENT '商品id',
    uid int(10) unsigned NOT NULL COMMENT '用户id'
 );
-INSERT INTO `bride_collect` (`collid`,`collimg`,`colltitle`,`collprice`,`collfea`,`collvis`,`uid`) VALUES 
-(1,'collect_sur.jpg','氤氲','28,430.00','#梦幻#大气#唯美#室内',1456,1),
-(2,'10.jpg','阿巴阿巴','28,430.00','#梦幻#大气#唯美#室内',1456,2);
->>>>>>> 3b8f3c2032e3a9cd720bc7789ec723a75675dce7
+INSERT INTO `bride_collect` (`collid`,`pid`,`uid`) VALUES 
+(1,'1',1),
+(2,'2',2),
+(3,'3',1);
 
--- 创建订单表  id  图片   标题  描述 价格
+-- 创建订单表  id  商品id 用户id
 DROP TABLE IF EXISTS `bride_shop`;
 CREATE TABLE `bride_shop`(
    shopid INT PRIMARY KEY AUTO_INCREMENT COMMENT 'id',
-   shoptitle VARCHAR(64) UNIQUE NOT NULL COMMENT '标题',
-   shopprice DECIMAL(8,2) COMMENT '价格',
-   shopimg VARCHAR(128) COMMENT '图片',
-   shopdes VARCHAR(128) NOT NULL COMMENT '详细说明,不为空',
+   pid int(10) unsigned NOT NULL COMMENT '用户id',
    uid int(10) unsigned NOT NULL COMMENT '用户id'
 );
-INSERT INTO `bride_shop` (`shopid`,`shopimg`,`shoptitle`,`shopprice`,`shopdes`,`uid`) VALUES 
-(1,'collect_sur.jpg','简约+质感泰式','28,430.00','这是一条假的描述语段,仅仅是占着位置而已',1),
-(2,'10.jpg','乌拉乌拉','28,430.00','这是一条假的描述语段,仅仅是占着位置而已',2);
+INSERT INTO `bride_shop` (`shopid`,`pid`,`uid`) VALUES 
+(1,'1',1),
+(2,'2',2);

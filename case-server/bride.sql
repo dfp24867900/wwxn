@@ -82,9 +82,9 @@ VALUES(
       1,
       '氤氲',
       28430,
-      'details/yinyun/31.jpg&details/yinyun/35.jpg&details/yinyun/36.jpg',
+      'img/details/yinyun/31.jpg&img/details/yinyun/35.jpg&img/details/yinyun/36.jpg',
       "list1.jpg",
-      'details/yinyun/s01.jpg&details/yinyun/s02.jpg&details/yinyun/s03.jpg',
+      'img/details/yinyun/s01.png&img/details/yinyun/s02.jpg&img/details/yinyun/s03.png',
       'image/avatar/21.png',
       '大钊',
       "这场蓝色，是灵性与童话兼具的色彩，给人耳目一新的印象，明度高的浅蓝展现出大海和天空般的舒畅开阔感，它象征清新余宁静，一副静谧，柔和的画面氤氲出幸福感",
@@ -95,7 +95,7 @@ VALUES(
       "白色",
       "2020年10月24日",
       "友豪锦江酒店",
-      'details/yinyun/31.jpg&details/yinyun/35.jpg&details/yinyun/36.jpg&details/yinyun/32.jpg&details/yinyun/37.jpg&details/yinyun/38.jpg&details/yinyun/39.jpg&details/yinyun/40.jpg',
+      'img/details/yinyun/31.jpg&img/details/yinyun/35.jpg&img/details/yinyun/36.jpg&img/details/yinyun/32.jpg&img/details/yinyun/37.jpg&img/details/yinyun/38.jpg&img/details/yinyun/39.jpg&img/details/yinyun/40.jpg',
       1
    );
 INSERT INTO bride_case_list
@@ -103,9 +103,9 @@ VALUES(
       NULL,
       '爱与无穷',
       21561,
-      'details/aywq/26.jpg&details/aywq/22.jpg&details/aywq/25.jpg',
+      'img/details/aywq/26.jpg&img/details/aywq/22.jpg&img/details/aywq/25.jpg',
       "list2.jpg",
-      'details/aywq/s01.jpg&details/aywq/s02.jpg&details/aywq/s03.jpg','image/avatar/08.jpg','魏超',
+      'img/details/aywq/s01.jpg&img/details/aywq/s02.jpg&img/details/aywq/s03.jpg','image/avatar/08.jpg','魏超',
       "秀场风婚礼以'∞'符号主题设计的婚礼。",
       25,
       2,
@@ -114,7 +114,7 @@ VALUES(
       "粉色",
       '2020年06月07日',
       "未来大酒店",
-      'details/aywq/26.jpg&details/aywq/22.jpg&details/aywq/25.jpg&details/aywq/23.jpg&details/aywq/24.jpg&details/aywq/27.jpg&details/aywq/28.jpg&details/aywq/29.jpg&details/aywq/30.jpg',
+      'img/details/aywq/26.jpg&img/details/aywq/22.jpg&img/details/aywq/25.jpg&img/details/aywq/23.jpg&img/details/aywq/24.jpg&img/details/aywq/27.jpg&img/details/aywq/28.jpg&img/details/aywq/29.jpg&img/details/aywq/30.jpg',
       1
    );
 INSERT INTO bride_case_list
@@ -122,9 +122,9 @@ VALUES(
       NULL,
       'The Soul',
       15322,
-      'details/TheSoul/101.jpg&details/TheSoul/103.jpg&details/TheSoul/107.jpg',
+      'img/details/TheSoul/101.jpg&img/details/TheSoul/103.jpg&img/details/TheSoul/107.jpg',
       "list3.jpg",
-      'details/TheSoul/s01.jpg&details/TheSoul/s02.jpg&details/TheSoul/s03.jpg',
+      'img/details/TheSoul/s01.png&img/details/TheSoul/s02.jpg&img/details/TheSoul/s03.png',
       'image/avatar/12.jpg',
       '小乔',
       "山水一程，风雨一更，三生有幸，共度余生，不偏不倚，刚好是你，往后余生，有你足矣！",
@@ -135,7 +135,7 @@ VALUES(
       "绿色",
       '2020年10月04日',
       "菁华园",
-      'details/TheSoul/101.jpg&details/TheSoul/102.jpg&details/TheSoul/103.jpg&details/TheSoul/104.jpg&details/TheSoul/105.jpg&details/TheSoul/106.jpg&details/TheSoul/109.jpg&details/TheSoul/111.jpg&details/TheSoul/112.jpg&details/TheSoul/113.jpg',
+      'img/details/TheSoul/101.jpg&img/details/TheSoul/102.jpg&img/details/TheSoul/103.jpg&img/details/TheSoul/104.jpg&img/details/TheSoul/105.jpg&img/details/TheSoul/106.jpg&img/details/TheSoul/109.jpg&img/details/TheSoul/111.jpg&img/details/TheSoul/112.jpg&img/details/TheSoul/113.jpg',
       1
    );
 INSERT INTO bride_case_list
@@ -143,9 +143,9 @@ VALUES(
       NULL,
       '梦回唐朝',
       14948,
-      'details/mhdt/41.jpg&details/mhdt/42.jpg&details/mhdt/43.jpg',
+      'img/details/mhdt/41.jpg&img/details/mhdt/42.jpg&img/details/mhdt/43.jpg',
       "list4.jpg",
-      'details/mhdt/s01.jpg&details/mhdt/s02.jpg',
+      'img/details/mhdt/s01.jpg&img/details/mhdt/s02.jpg',
       'image/avatar/17.jpg',
       '洋洋',
       "凤冠霞帔，许你一世长安",
@@ -156,7 +156,7 @@ VALUES(
       "红色",
       '2020年11月19日',
       "香城竹韵(斑竹园店)",
-      'details/mhdt/41.jpg&details/mhdt/42.jpg&details/mhdt/43.jpg&details/mhdt/44.jpg&details/mhdt/45.jpg&details/mhdt/46.jpg&details/mhdt/47.jpg&details/mhdt/48.jpg',
+      'img/details/mhdt/41.jpg&img/details/mhdt/42.jpg&img/details/mhdt/43.jpg&img/details/mhdt/44.jpg&img/details/mhdt/45.jpg&img/details/mhdt/46.jpg&img/details/mhdt/47.jpg&img/details/mhdt/48.jpg',
       1
    );
 INSERT INTO bride_case_list
@@ -164,9 +164,9 @@ VALUES(
       NULL,
       '暖暖午后',
       16590,
-      'details/nnwh/58.jpg&details/nnwh/59.jpg&details/nnwh/60.jpg',
+      'img/details/nnwh/58.jpg&img/details/nnwh/59.jpg&img/details/nnwh/60.jpg',
       "list5.jpg",
-      'details/nnwh/s01.jpg&details/nnwh/s02.jpg&details/nnwh/s03.jpg','image/avatar/11.jpg',
+      'img/details/nnwh/s01.jpg&img/details/nnwh/s02.png&img/details/nnwh/s03.png','image/avatar/11.jpg',
       '何先生',
       "一场暖色小清新户外婚礼，木质搭建为主，配合回暖黄的华裔，自由活泼，温暖惬意",
       320,
@@ -176,7 +176,7 @@ VALUES(
       "复古",
       '2020年11月15日',
       "恒苑山庄",
-      'details/nnwh/58.jpg&details/nnwh/59.jpg&details/nnwh/60.jpg&details/nnwh/61.jpg&details/nnwh/62.jpg&details/nnwh/63.jpg&details/nnwh/64.jpg&details/nnwh/65.jpg&details/nnwh/66.jpg&details/nnwh/67.jpg',
+      'img/details/nnwh/58.jpg&img/details/nnwh/59.jpg&img/details/nnwh/60.jpg&img/details/nnwh/61.jpg&img/details/nnwh/62.jpg&img/details/nnwh/63.jpg&img/details/nnwh/64.jpg&img/details/nnwh/65.jpg&img/details/nnwh/66.jpg&img/details/nnwh/67.jpg',
       1
    );
 INSERT INTO bride_case_list
@@ -184,9 +184,9 @@ VALUES(
    NULL,
    "是约定,是誓言,是一生",
    7623,
-   'details/ydsy/76.jpg&details/ydsy/78.jpg',
+   'img/details/ydsy/76.jpg&img/details/ydsy/78.jpg',
    "list9.jpg",
-   'details/ydsy/s01.jpg&details/ydsy/s02.jpg',
+   'img/details/ydsy/s01.png&img/details/ydsy/s02.png',
    'image/avatar/07.jpg',
    '德阳',
    "裸粉色的小户外,清新雅致",
@@ -197,7 +197,7 @@ VALUES(
     "绿色",
     '2020年09月19日',
    "天来酒店",
-   'details/ydsy/76.jpg&details/ydsy/78.jpg&details/ydsy/77.jpg&details/ydsy/79.jpg&details/ydsy/80.jpg&details/ydsy/81.jpg',
+   'img/details/ydsy/76.jpg&img/details/ydsy/78.jpg&img/details/ydsy/77.jpg&img/details/ydsy/79.jpg&img/details/ydsy/80.png&img/details/ydsy/81.png',
    1
 );
 INSERT INTO bride_case_list
@@ -205,9 +205,9 @@ VALUES(
    NULL,
    "小确幸",
    6998,
-   'details/xqx/142.jpg&details/xqx/143.jpg&details/xqx/144.jpg',
+   'img/details/xqx/142.jpg&img/details/xqx/143.jpg&img/details/xqx/144.jpg',
    "list11.jpg",
-   'details/xqx/s01.jpg&details/xqx/s02.jpg&details/xqx/s03.jpg',
+   'img/details/xqx/s01.jpg&img/details/xqx/s02.jpg&img/details/xqx/s03.jpg',
    'image/avatar/05.jpg',
    'Linda',
    "时光匆匆,青春易老",
@@ -218,7 +218,7 @@ VALUES(
    "蓝色",
    '2019年09月07日',
    "华生园",
-   'details/xqx/142.jpg&details/xqx/143.jpg&details/xqx/144.jpg&details/xqx/145.jpg&details/xqx/146.jpg&details/xqx/147.jpg&details/xqx/148.jpg',
+   'img/details/xqx/142.jpg&img/details/xqx/143.jpg&img/details/xqx/144.jpg&img/details/xqx/145.jpg&img/details/xqx/146.jpg&img/details/xqx/147.jpg&img/details/xqx/148.jpg',
    1
 );
 INSERT INTO bride_case_list
@@ -226,9 +226,9 @@ VALUES(
    NULL,
    "Youth",
    5000,
-   'details/Youth/01.jpg&details/Youth/02.jpg&details/Youth/03.jpg',
+   'img/details/Youth/01.jpg&img/details/Youth/02.jpg&img/details/Youth/03.jpg',
    "list8.jpg",
-   'details/Youth/s01.jpg&details/Youth/s02.jpg&details/Youth/s03.jpg',
+   'img/details/Youth/s01.jpg&img/details/Youth/s02.jpg&img/details/Youth/s03.jpg',
    'image/avatar/15.jpg',
    'Aliao',
    "许你一世承诺",
@@ -239,7 +239,7 @@ VALUES(
    "橙色",
    '2019年11月02日',
    "家园国际户外",
-   'details/Youth/01.jpg&details/Youth/02.jpg&details/Youth/03.jpg&details/Youth/06.jpg&details/Youth/07.jpg&details/Youth/08.jpg&details/Youth/09.jpg&details/Youth/10.jpg&details/Youth/11.jpg&details/Youth/12.jpg&details/Youth/13.jpg',
+   'img/details/Youth/01.jpg&img/details/Youth/02.jpg&img/details/Youth/03.jpg&img/details/Youth/06.jpg&img/details/Youth/07.jpg&img/details/Youth/08.jpg&img/details/Youth/09.jpg&img/details/Youth/10.jpg&img/details/Youth/11.jpg&img/details/Youth/12.jpg&img/details/Youth/13.jpg',
    1
 );
 
@@ -268,10 +268,31 @@ INSERT bride_service_messeage(content, user_id, is_send, created_at)
 VALUES('欢迎来到微微新娘，如果您在使用的过程中有任何的问题或建议，可以在设置里提交意见反馈哦~', 1, 0, 1607763687542);
 
 
+-- 婚礼团队
+CREATE TABLE bride_wedding_team(
+   tid INT UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT'id且主键',
+   tname VARCHAR(15) COMMENT '人员名字',
+   portrait VARCHAR(128)   COMMENT '肖像',
+   job VARCHAR(128)   COMMENT '岗位',
+   emolument DECIMAL(6,2)   COMMENT '薪酬',
+   bride_list_id smallint(5) unsigned NOT NULL COMMENT '外键,bride_case_list的ID'
+);
+INSERT INTO  bride_wedding_team VALUES(NULL,'大钊','../assets/image/avatar/15.jpg','策划师',1890,1);
+INSERT INTO  bride_wedding_team VALUES(NULL,'晴子','../assets/image/avatar/14.jpg','化妆师',1990,1);
+INSERT INTO  bride_wedding_team VALUES(NULL,'BOBO','../assets/image/avatar/09.jpg','摄影师',1820,1);
+INSERT INTO  bride_wedding_team VALUES(NULL,'元凯','../assets/image/avatar/16.jpg','策划师',2890,2);
+INSERT INTO  bride_wedding_team VALUES(NULL,'TOM','../assets/image/avatar/22.jpg','摄影师',1790,2);
+INSERT INTO  bride_wedding_team VALUES(NULL,'露露','../assets/image/avatar/25.jpg','化妆师',1234,2);
+INSERT INTO  bride_wedding_team VALUES(NULL,'lala','../assets/image/avatar/01.jpg','策划师',1777,3);
+INSERT INTO  bride_wedding_team VALUES(NULL,'mfrank','../assets/image/avatar/05.png','化妆师',1890,3);
+INSERT INTO  bride_wedding_team VALUES(NULL,'陈小红','../assets/image/avatar/06.jpg','摄影师',2890,3);
+INSERT INTO  bride_wedding_team VALUES(NULL,'南充刘东','../assets/image/avatar/07.jpg','策划师',1790,4);
+INSERT INTO  bride_wedding_team VALUES(NULL,'momo','../assets/image/avatar/03.jpg','摄影师',1890,4);
+INSERT INTO  bride_wedding_team VALUES(NULL,'小太','../assets/image/avatar/08.jpg','化妆师',1840,4);
+INSERT INTO  bride_wedding_team VALUES(NULL,'程雨','../assets/image/avatar/02.jpg','策划师',1887,5);
+INSERT INTO  bride_wedding_team VALUES(NULL,'rose','../assets/image/avatar/10.jpg','摄影师',1980,5);
+INSERT INTO  bride_wedding_team VALUES(NULL,'莎莎','../assets/image/avatar/17.jpg','化妆师',2890,5);
 
-
-
-<<<<<<< HEAD
 -- -- 报价明细表
 CREATE TABLE bribe_details_quotations(
    quid INT UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT'id且主键',
@@ -281,39 +302,58 @@ CREATE TABLE bribe_details_quotations(
   univalence DECIMAL(6,2)   COMMENT '单价',
   amount SMALLINT COMMENT '数量',
   unit  VARCHAR(5) COMMENT '单位',
-  classify_id INT UNSIGNED NOT NULL COMMENT '外键,参照bribe_details_classify表',
-  category_id smallint(5) unsigned NOT NULL COMMENT '外键,文章分类ID'
+  bride_list_id smallint(5) unsigned NOT NULL COMMENT '外键,bride_case_list的ID'
 );
 
-INSERT INTO bribe_details_quotations VALUES(NULL,'平面设计师','呈现婚礼的画面样式，设计KT和场景的配合','专业中级',200,1,'人',001,2);
-INSERT INTO bribe_details_quotations VALUES(NULL,'高级花艺师','呈现婚礼各区域场景花艺设计、细节','专业',800,2,'人',001,2);
-INSERT INTO bribe_details_quotations VALUES(NULL,'场布师','呈现婚礼区域场景布置样式，细节','专业',400,5,'人',001,2);
-INSERT INTO bribe_details_quotations VALUES(NULL,'花桌','桌花+桌布+背景花艺','专业',400,5,'个',002,2);
-INSERT INTO bribe_details_quotations VALUES(NULL,'装饰品','桌牌+支架+装饰品','专业',80,5,'个',002,2);
-INSERT INTO bribe_details_quotations VALUES(NULL,'喷绘','户外喷绘','专业',220,1,'个',002,2);
-INSERT INTO bribe_details_quotations VALUES(NULL,'造型','吊顶+花艺+布幔+灯带+烛台','专业',2800,1,'个',003,2);
-INSERT INTO bribe_details_quotations VALUES(NULL,'支架','所有支架','专业',600,5,'个',003,2);
-INSERT INTO bribe_details_quotations VALUES(NULL,'球','波波球+网沙花+金属球+摩天轮','专业',1400,1,'人',003,2);
-INSERT INTO bribe_details_quotations VALUES(NULL,'面光灯','面光灯+光束灯','专业',330,24,'台',004,2);
-INSERT INTO bribe_details_quotations VALUES(NULL,'P3B','呈现婚礼区域场景布置样式，细节','专业',30,15,'台',004,2);
-INSERT INTO bribe_details_quotations VALUES(NULL,'音响','呈现婚礼区域场景布置样式，细节','专业',800,1,'套',004,2);
-INSERT INTO bribe_details_quotations VALUES(NULL,'工作餐','工作人员工作餐','专业',20,8,'份',005,2);
-INSERT INTO bribe_details_quotations VALUES(NULL,'消耗品','花泥+扎带+小胶+大胶','专业',220,1,'套',005,2);
-INSERT INTO bribe_details_quotations VALUES(NULL,'胸花+手捧花','常规','专业',300,1,'套',005,2);
+INSERT INTO bribe_details_quotations VALUES(NULL,'平面设计师','呈现婚礼的画面样式，设计KT和场景的配合','专业中级',200,1,'人',1);
+INSERT INTO bribe_details_quotations VALUES(NULL,'高级花艺师','呈现婚礼各区域场景花艺设计、细节','专业',800,2,'人',1);
+INSERT INTO bribe_details_quotations VALUES(NULL,'场布师','呈现婚礼区域场景布置样式，细节','专业',400,5,'人',1);
+INSERT INTO bribe_details_quotations VALUES(NULL,'花桌','桌花+桌布+背景花艺+支架+装饰品','专业',600,10,'个',1);
+INSERT INTO bribe_details_quotations VALUES(NULL,'造型','吊顶+花艺+布幔+灯带+烛台+户外喷绘','专业',3020,1,'个',1);
+INSERT INTO bribe_details_quotations VALUES(NULL,'球+音响','波波球+网沙花+金属球+摩天轮','专业',2800,1,'人',1);
+INSERT INTO bribe_details_quotations VALUES(NULL,'面光灯','面光灯+光束灯','专业',134,45,'台',1);
+INSERT INTO bribe_details_quotations VALUES(NULL,'消耗品','花泥+扎带+小胶+大胶','专业',380,1,'套',1);
+INSERT INTO bribe_details_quotations VALUES(NULL,'胸花+手捧花','常规','专业',300,1,'套',1);
+
+INSERT INTO bribe_details_quotations VALUES(NULL,'平面设计师','呈现婚礼的画面样式，设计KT和场景的配合','专业中级',200,1,'人',2);
+INSERT INTO bribe_details_quotations VALUES(NULL,'高级花艺师','呈现婚礼各区域场景花艺设计、细节','专业',400,2,'人',2);
+INSERT INTO bribe_details_quotations VALUES(NULL,'场布师','呈现婚礼区域场景布置样式，细节','专业',400,2,'人',2);
+INSERT INTO bribe_details_quotations VALUES(NULL,'花桌','桌花+桌布+背景花艺','专业',187,1,'个',2);
+INSERT INTO bribe_details_quotations VALUES(NULL,'装饰品','桌牌+支架+装饰品','专业',100,2,'个',2);
+INSERT INTO bribe_details_quotations VALUES(NULL,'喷绘','户外喷绘','专业',220,1,'个',2);
+INSERT INTO bribe_details_quotations VALUES(NULL,'造型','吊顶+花艺+布幔+灯带+烛台','专业',2800,1,'个',2);
+INSERT INTO bribe_details_quotations VALUES(NULL,'支架','所有支架','专业',600,2,'个',2);
+INSERT INTO bribe_details_quotations VALUES(NULL,'球','波波球+网沙花+金属球+摩天轮','专业',1400,1,'人',2);
+INSERT INTO bribe_details_quotations VALUES(NULL,'面光灯','面光灯+光束灯','专业',300,20,'台',2);
+INSERT INTO bribe_details_quotations VALUES(NULL,'P3B','呈现婚礼区域场景布置样式，细节','专业',30,12,'台',2);
+INSERT INTO bribe_details_quotations VALUES(NULL,'音响','呈现婚礼区域场景布置样式，细节','专业',800,1,'套',2);
+INSERT INTO bribe_details_quotations VALUES(NULL,'工作餐','工作人员工作餐','专业',20,8,'份',2);
+INSERT INTO bribe_details_quotations VALUES(NULL,'消耗品','花泥+扎带+小胶+大胶','专业',220,1,'套',2);
+INSERT INTO bribe_details_quotations VALUES(NULL,'胸花+手捧花','常规','专业',300,1,'套',2);
 
 -- -- 客户评价表
 CREATE TABLE bribe_details_evaluate(
    evid INT UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT'id且主键',
-   avatar VARCHAR(128)   COMMENT '用户头像',
+   usericon VARCHAR(128)   COMMENT '用户头像',
    mName VARCHAR(12) COMMENT '新人',
    staff VARCHAR(16) COMMENT "评论的对象",
    content VARCHAR(512) COMMENT "评论的内容",
    score VARCHAR(32) COMMENT "评星",
-   category_id smallint(5) unsigned NOT NULL COMMENT '外键,文章分类ID'
+   bride_list_id smallint(5) unsigned NOT NULL COMMENT '外键,bride_case_list的ID'
 );
-INSERT INTO bribe_details_evaluate VALUES(11,'image/avatar/15.jpg','白小白','大钊','aliao是我朋友给我力荐的策划师，跟他的交流很顺畅。他能知道我们需要什么，作为水瓶座的女生，我有一些天马行空的想法。他耐心倾听我的叙述，从我的描述中提取的关键词很准确。最终效果图一出来，我们的感觉就有了！这是一次就通过的方案，没有任何改动。我觉得实景比图纸还要美。我站在台上感觉已经进入了aliao为我们构建的梦里。我的金色婚纱在这个梦里熠熠生辉，每一个人都赞美我的婚纱绝美。但我知道，它能把它的美散发的淋漓尽致是因为有这个舞台的加持。我相信我的丈夫会一辈子记得那天我站在他身后，他转身回眸的一瞬间，眼睛里都是我第一次身着金纱最美的模样。我也永远不会忘记他那一刻的热泪。谢谢aliao','star5.png',3);
-INSERT INTO bribe_details_evaluate VALUES(12,'image/avatar/16.jpg','Arey','凯元',' 凯哥堪称性价比之王了～声音超好听，是配音级别的，不论是场控还是现场音乐的选择都是一流的，非常好沟通，是一名优秀的主持人^_^','star5.png',3);
-INSERT INTO bribe_details_evaluate VALUES(13,'image/avatar/14.jpg','BoBo','琴子','技术超好的琴子，擅长日系清新的妆容，虽然说的是化妆师，但琴子更是一名优秀的造型师，服化一体，不论是服装还是妆容都给出了非常专业的建议，并且在婚礼当天让我成为了最美的新娘','star5.png',3);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/15.jpg','白小白','策划师-大钊','aliao是我朋友给我力荐的策划师，跟他的交流很顺畅。他能知道我们需要什么，作为水瓶座的女生，我有一些天马行空的想法。他耐心倾听我的叙述，从我的描述中提取的关键词很准确。最终效果图一出来，我们的感觉就有了！这是一次就通过的方案，没有任何改动。我觉得实景比图纸还要美。我站在台上感觉已经进入了aliao为我们构建的梦里。我的金色婚纱在这个梦里熠熠生辉，每一个人都赞美我的婚纱绝美。但我知道，它能把它的美散发的淋漓尽致是因为有这个舞台的加持。我相信我的丈夫会一辈子记得那天我站在他身后，他转身回眸的一瞬间，眼睛里都是我第一次身着金纱最美的模样。我也永远不会忘记他那一刻的热泪。谢谢aliao','star5.png',3);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/16.jpg','Arey','主持人-凯元',' 凯哥堪称性价比之王了～声音超好听，是配音级别的，不论是场控还是现场音乐的选择都是一流的，非常好沟通，是一名优秀的主持人^_^','star5.png',3);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/14.jpg','BoBo','化妆师-琴子','技术超好的琴子，擅长日系清新的妆容，虽然说的是化妆师，但琴子更是一名优秀的造型师，服化一体，不论是服装还是妆容都给出了非常专业的建议，并且在婚礼当天让我成为了最美的新娘','star5.png',3);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/09.jpg','tom','摄影师-Alo','摄像小哥哥人很幽默，拍摄的视频，光是预告片都爱了。很期待婚礼的成片！摄影师选择兆恒！肯定会是不会错的！！推荐给大家！','star5.png',1);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/22.jpg','露露','化妆师-安琪','从选择了sunny 到我试妆 婚礼当天的妆 我都非常满意！试妆那天可能花了有四个小时，sunny化妆化的很仔细，很认真，及时跟我沟通妆容各种小细节。sunny很温柔🧏🏻 婚礼当天，sunny准时到了酒店开始给我化妆，真的是超级超级喜欢！爱了爱了！当天我们拍外景，天气也很热，sunny真的是随时随地都在帮我整理我的造型！太感谢sunny了 给我化了这么好看的妆容！！！！我！很！喜！欢！','star5.png',1);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/25.jpg','杨','统筹师-莎莎','从刚开始不理解为什么有统筹师这个选择，到最后真的发现，没有莎莎我可怎么办，不论是事前的准备，还是婚礼当天的各种繁琐事项，安排人员，准备早餐，莎莎都完美的安排好了，真的是省了太多的心，很多事伴娘根本没办法事无巨细，但是莎莎的存在就是让你只管美美的，而且性格也超好，特别好相处，如果我有朋友结婚的话，一定会推荐她选择莎莎。','star5.png',1);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/23.jpg','rose','策划师-啦啦','我啦姐还有啥可说的！简直不能用语言来形容我对啦姐的感情！这场婚礼是在啦啦的努力和帮助下才能办的如此超乎我想象的浪漫和美好，感激感谢这样的话都显得太肤浅了！作为焦虑新娘的代表……我忘记好多事情，好多事情也想不起来，啦啦在我筹备婚礼的整个过程里，作为策划师给了我超级多信心和实现自己对婚礼的期待的勇气～说真的，遇见啦啦之前，我从来没想过自己真的可以实现一场这样的婚礼，我爱啦姐！（唯一就是那个炸鸡，我没吃完很不开心哼～）','star5.png',2);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/24.png','momo','化妆师-苡苡','化出的妆容很自然，人也很亲和，很nice的小姐姐，大早上就准时到酒店，化妆造型都很仔细，每套衣服都会换不同的发型，审美很在线额，搭配的饰品也很多，超级满意的','star5.png',2);
+
+INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/26.jpg','H小太','策划师-陈渝','从第一次和陈老师相处 就很投缘 我喜欢的点他都get得到 很多时候就是一点就通 很灵性 我喜欢的风格是黑白绿 这种风格能驾驭出来就是高级 但是一不小心就会翻车 陈老师从我们3次沟通后 呈现出来的景和效果图一模一样 现场简直是超级爱 非常感谢他 是美的','star5.png',4);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/27.jpg','mfrank','主持人-南充刘东','谢谢刘东老师高水平的组织，我们十分满意，谢谢了！','star5.png',4);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/28.jpg','二娃分','策划师-南充麦子','今天儿子的婚礼答谢宴非常圆满，感谢麦子的精心策划，感谢刘东老师高水平的组织，几位老师工作尽心尽责，我们全家人都很满意！感谢感谢！','star5.png',5);
+INSERT INTO bribe_details_evaluate VALUES(NULL,'../assets/image/avatar/29.jpg','山豆根','统筹师-陈小红','在平台上看了喜欢的布置风格后就直接选定了梦梦，最后婚礼的效果太满意啦，当时的选择完全没有错～ 梦梦沟通特别耐心，布置上的一些小细节我突如其来想修改，她都耐心帮我一起构思。 现场效果就是我想要的那种，清新自然，显得高级，非常棒，推荐大家选梦梦！','star5.png',5);
 
 -- 详情页面导航栏
 CREATE TABLE bribe_category(
@@ -323,7 +363,6 @@ CREATE TABLE bribe_category(
 INSERT INTO bribe_category VALUES(1,'商品详情');
 INSERT INTO bribe_category VALUES(2,'价格明细');
 INSERT INTO bribe_category VALUES(3,'客户评论');
-=======
 -- 创建主页数据表
 CREATE TABLE `bride_header` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主内容ID,主键且自增',
@@ -481,7 +520,6 @@ CREATE TABLE `bride_collect`(
 INSERT INTO `bride_collect` (`collid`,`collimg`,`colltitle`,`collprice`,`collfea`,`collvis`,`uid`) VALUES 
 (1,'collect_sur.jpg','氤氲','28,430.00','#梦幻#大气#唯美#室内',1456,1),
 (2,'10.jpg','阿巴阿巴','28,430.00','#梦幻#大气#唯美#室内',1456,2);
->>>>>>> 3b8f3c2032e3a9cd720bc7789ec723a75675dce7
 
 -- 创建订单表  id  图片   标题  描述 价格
 DROP TABLE IF EXISTS `bride_shop`;

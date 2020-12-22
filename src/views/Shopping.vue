@@ -96,6 +96,9 @@
     width: 80%;
     font-weight: 600;
     font-size: 20px;
+    overflow: hidden;/*超出部分隐藏*/
+    text-overflow:ellipsis;/* 超出部分显示省略号 */
+    white-space: nowrap;
     position: absolute;
     top: 5%;
     left: 2%;

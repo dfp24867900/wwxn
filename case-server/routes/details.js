@@ -63,7 +63,6 @@ pool.query(sql,[id],(err,results)=>{
 // 添加收藏
 router.get('/collection',(req,res)=>{
   let id = req.query.id;
-
   let uid = req.query.uid;
   let sql = `INSERT INTO bride_collect (collid,pid,uid)VALUES (NULL,?,?)`
       pool.query(sql,[id,uid],(err,results)=>{

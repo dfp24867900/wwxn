@@ -96,6 +96,9 @@
     width: 80%;
     font-weight: 600;
     font-size: 20px;
+    overflow: hidden;/*超出部分隐藏*/
+    text-overflow:ellipsis;/* 超出部分显示省略号 */
+    white-space: nowrap;
     position: absolute;
     top: 5%;
     left: 2%;
@@ -177,9 +180,7 @@ export default {
   }
   ,
   mounted(){        
-       //获取地址栏中的参数
        let uid = this.$route.params.uid;
-       //向服务器发送请求以获取指定ID的文章信息
        this.axios.get('/user/siteshopping',{
            params:{
                uid:uid

@@ -105,7 +105,7 @@ router.get('/siteshopping', (req, res) => {
    let coll=[];
    let sq='?'
    // 查询特定记录的SQL语句
-   let sql = 'SELECT pid FROM bride_collect WHERE uid=?';
+   let sql = 'SELECT pid FROM bride_shop WHERE uid=?';
    // 执行SQL语句
    pool.query(sql, [uid], (error, results) => {
      if (error) throw error;

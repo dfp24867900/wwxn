@@ -161,7 +161,6 @@ router.post("/addhistoryword", (req, res) => {
 //     }
 //   })
 // })
-
 router.get("/scene", (req, res) => {
   let arr = req.query.alter;
   console.log(arr);

@@ -191,6 +191,7 @@
         </div>
       </router-link>
     </div>
+    <my-footer></my-footer>
   </div>
 </template>
 

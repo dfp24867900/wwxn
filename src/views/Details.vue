@@ -100,9 +100,7 @@
           <img v-for="(img,index) of imageList" :key="index" v-lazy="`/${img}`"  class="lazyImages"  
           />
           <!-- 图片详图结束 -->
-          <div class="comments-more"  >
-            <span >加载更多</span>
-          </div>
+  
        
         </div>
         
@@ -133,52 +131,53 @@
        
       </mt-tab-container-item>
       <!-- 价格明细 -->
-     <mt-tab-container-item id='2' >
-       <div class="details-price">
-         <div>
-           <van-icon name="gem" />
-            <span>执行人员</span>
-         </div>
-       <div >
-         <van-button 
-         color="linear-gradient(to bottom, #ff6034, #ee0a24)"
-         round type="info" @click="open" class="btn ">点击获取账单详情</van-button>
-         <div v-show="show" class="">
-            <a href="javascript:;" @click="close">×</a>
-            <ul v-for="(quotation,index) of quotations" :key="index">
-              <li>
-                <span>项目</span>
-                <span>{{quotations[index].item}}</span>
-              </li>
-              <li>
-                <span>内容</span>
-                <span>{{quotations[index].serContent}}</span>
-              </li>
-              <li>
-                 <span>水平</span>
-                <span>{{quotations[index].servicelevel}}</span>
-              </li>
-              <li>
-                <span>单价</span>
-                <span>{{quotations[index].univalence}}</span>
-              </li>
-              <li>
-                 <span>数量</span>
-                <span>{{quotations[index].amount}}</span>
-              </li>
-              <li>
-                 <span>单位</span>
-                <span>{{quotations[index].unit}}</span>
-              </li>
-              <li>
-                 <span>总价</span>
-                <span class="price">{{quotations[index].univalence*quotations[index].amount}}</span>
-              </li>
-            </ul>
-         </div>
+    <mt-tab-container-item id='2' >
+        <div >
+          <div class="details-price-top">
+            <van-icon name="gem" />
+            <span>执行人员</span>
+          </div>
+          <div >
+            <van-collapse v-model='activeNames'>
+              <van-collapse-item
+               v-for="(quotation, index) of quotations"
+                :key="index"
+                :name="index"
+                :title="`${quotation.item}`"
+              >
+            <van-cell-group>
+              <div class="details-price-content">
+                    <div>
+                      <span>内容:</span>
+                      <span>{{ quotation.serContent }}</span>
+                    </div>
+                    <div>
+                      <span>水平:</span>
+                      <span>{{ quotation.servicelevel }}</span>
+                    </div>
+                    <div>
+                      <span>单价:</span>
+                      <span>{{ quotation.univalence }}</span>
+                    </div>
+                    <div>
+                      <span>数量:</span>
+                      <span>{{ quotation.amount }}</span>
+                    </div>
+                    <div>
+                      <span>单位:</span>
+                      <span>{{ quotation.unit }}</span>
+                    </div>
+                    <div>
+                      <span>总价:</span>
+                      <span>{{ quotation.univalence * quotation.amount }}</span>
+                    </div>
+                  </div>
+            </van-cell-group>
+              </van-collapse-item>
+            </van-collapse>
+          </div>
         </div>
-         </div>
-      </mt-tab-container-item>
+      </mt-tab-container-item> 
       <!-- 新人评价 -->
       <mt-tab-container-item id='3' >
         <div class="comment-container" v-if="comments.length>0">
@@ -233,6 +232,8 @@
   <footer>
     <van-goods-action v-show='isShow'>
       <van-goods-action-icon  icon='chat-o' text='客服' color="#ee0a24" to='/service' dot/>
+       <van-goods-action-icon  icon='gift-o' text='收藏' color="#ee0a24" :to='`/sitecollect/${info.uid}`' dot/>
+      <van-goods-action-icon  icon='balance-o' text='订单区' color="#ee0a24" :to='`/siteshopping/${info.uid}`' dot/>
       <van-goods-action-button  color="#969799" text='加入收藏' @click="addtofavorites(info.uid)"
      
       />
@@ -461,57 +462,18 @@
   font-weight: 600;
 }
 /* 报价明细 */
-.details-price {
-  font-size:18px;
-  font-weight: 600;
-  color:#302e2e;
-  padding:20px 16px;
-  background: #fff;
-  
-}
-.details-price .btn{
-  margin:100px;
- animation:heartBeat 2.5s  infinite;
-}
-.details-price>div:first-child{
-  text-align: center;
+.details-price-top{
+  margin:17px 12px;
+  padding-left:117px;
   font-size:24px;
-  color:#413535;
-  text-shadow: 3px 2px 9px #f00;
-  margin-bottom: 10px;
+  color: #666;
+  text-shadow:0px 1px 9px #e23314;
+  animation:heartBeat 2.5s  infinite;
 }
-.details-price>div:nth-child(2)>div{
-    position:fixed;
-      top:33%;
-      left:43%;
-     width:353px;
-     height:375px;
-      background-color: rgba(0,0,0,.7);
-      margin-left:-150px;
-      margin-top:-50px;
-      overflow:auto
+.details-price-content span{
+   line-height:2.5;
+   padding-left: 20px;
 }
-.details-price>div:nth-child(2)>div>ul{
-   color:#fff;
-  line-height:1.5;
-  padding-left:22px;
-}
-.details-price>div:nth-child(2)>div>ul>li{
-  margin:20px 35px;
-   line-height:1.5;
-}
-.details-price>div:nth-child(2)>div>ul>li>span:nth-child(2){
-  margin-left: 120px;
-}
-.details-price>div:nth-child(2)>div>a{
-      font-size: 30px;
-      padding-left: 15px;
-      color: #fff;
-      position: fixed;
-    }
-   .price{
-     color:#f70909
-   } 
 /* 新人评价 */
 .comment-container>p:first-child{
   font-size: 18px;
@@ -600,7 +562,7 @@ export default {
     weddingteam:[],
     quotations:[],
     isShow:true,
-    show:false,
+    // show:false,
     sum:0,
     dateTime:3,
     uid:''
@@ -608,14 +570,6 @@ export default {
   },
 
   methods: {
-        open() {
-      setTimeout(() => {
-       this.show = true
-      }, 1000)
-    },
-    close(){//让话框隐藏
-          this.show=false;
-   },
   // 立即预定
   addtoshop(b){
     this.uid=b
@@ -631,9 +585,8 @@ export default {
        }
      }).then(res=>{
         let cart = res.data;
-        if(cart.code == 1){
-          Toast(cart.message);
-
+        if(cart.code == 1){      
+           Toast(cart.message);
         } else {
           Toast(cart.message)
         }
@@ -746,7 +699,7 @@ export default {
          } 
        }).then(res=>{
              this.quotations=res.data.results;
-              console.log(this.quotations)
+              // console.log(this.quotations)
       
        });
     // 获取新人评论信息
@@ -757,9 +710,7 @@ export default {
          } 
        }).then(res=>{
          this.comments=res.data.results;
-       console.log("--",res.data.results)
-
-      
+            
        });
   },
 }

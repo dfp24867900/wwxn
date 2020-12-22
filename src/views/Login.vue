@@ -117,7 +117,8 @@ export default {
 #login {
   width: 375px;
   height: 667px;
-  background: url(../assets/user/login_bg.png);
+  background: url(../assets/user/bg.jpg);
+  background-size: 375px 667px;
   position: relative;
 }
 .log {
@@ -128,14 +129,14 @@ export default {
   width: 340px;
   border-radius: 10px;
   padding: 10px;
-  color: #fe4577;
+  color: #f8b0c3;
 }
 .mint-cell{
   border-radius: 5px;
 }
 .log h3 {
   text-align: center;
-  color: #fe4577;
+  color:#f8b0c3;
   font-size: 24px;
   margin-bottom: 10px;
 }
@@ -168,7 +169,7 @@ export default {
   padding: 10px;
   font-size: 16px;
   color: #ffffff;
-  background: #fe4577;
+  background: #f8b0c3;
   border-radius: 5px;
   opacity: .8;
 }

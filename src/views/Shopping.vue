@@ -177,9 +177,7 @@ export default {
   }
   ,
   mounted(){        
-       //获取地址栏中的参数
        let uid = this.$route.params.uid;
-       //向服务器发送请求以获取指定ID的文章信息
        this.axios.get('/user/siteshopping',{
            params:{
                uid:uid

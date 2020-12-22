@@ -232,6 +232,8 @@
   <footer>
     <van-goods-action v-show='isShow'>
       <van-goods-action-icon  icon='chat-o' text='客服' color="#ee0a24" to='/service' dot/>
+       <van-goods-action-icon  icon='gift-o' text='收藏' color="#ee0a24" :to='`/sitecollect/${info.uid}`' dot/>
+      <van-goods-action-icon  icon='balance-o' text='订单区' color="#ee0a24" :to='`/siteshopping/${info.uid}`' dot/>
       <van-goods-action-button  color="#969799" text='加入收藏' @click="addtofavorites(info.uid)"
      
       />
@@ -583,15 +585,8 @@ export default {
        }
      }).then(res=>{
         let cart = res.data;
-        if(cart.code == 1){
-          var time = setInterval(() => {
-            // 跳转
-            this.$router.push(`/siteshopping/${this.uid}`)
-          }, 1000);
-          
+        if(cart.code == 1){      
            Toast(cart.message);
-         
-
         } else {
           Toast(cart.message)
         }

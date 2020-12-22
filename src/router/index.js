@@ -85,7 +85,7 @@ const routes = [
   { path: "/login", component: Login },
   { path: "/register", component: Register },
   {
-    path: '/message',
+    path: '/message/:id',
     component: Message
   },
 

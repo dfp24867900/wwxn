@@ -63,7 +63,7 @@
              <img src="/img/icon/icon5.png">
              <p>找不到该案例</p>
            </div>
-           <router-link :to="`/detail/${item.cid}`" v-for="(item,index) of list" :key="index">
+           <router-link :to="`/details/${item.cid}`" v-for="(item,index) of list" :key="index">
               <div class="content">
                <img class="content_img" v-lazy="`/img/list/${item.pic}`">
                <p>

@@ -69,8 +69,9 @@ const routes = [
     path: '/sitecollect/:uid',
     component: Sitecollect
   },
+  // { path: "/address",             component: Address },
   { path: "/searchlist/:keyword", component: SearchList },
-  { path: "/list/:keyword", component: List },
+  { path: "/list/:keyword",component: List },
   { path: '/service', name: 'Service', component: Service },
   { path: "/list", component: List },
   { path: '/service', name: 'Service', component: Service },

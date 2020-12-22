@@ -100,9 +100,7 @@
           <img v-for="(img,index) of imageList" :key="index" v-lazy="`/${img}`"  class="lazyImages"  
           />
           <!-- 图片详图结束 -->
-          <div class="comments-more"  >
-            <span >加载更多</span>
-          </div>
+  
        
         </div>
         
@@ -570,14 +568,6 @@ export default {
   },
 
   methods: {
-  //       open() {
-  //     setTimeout(() => {
-  //      this.show = true
-  //     }, 1000)
-  //   },
-  //   close(){//让话框隐藏
-  //         this.show=false;
-  //  },
   // 立即预定
   addtoshop(b){
     this.uid=b
@@ -594,7 +584,13 @@ export default {
      }).then(res=>{
         let cart = res.data;
         if(cart.code == 1){
-          Toast(cart.message);
+          var time = setInterval(() => {
+            // 跳转
+            this.$router.push(`/siteshopping/${this.uid}`)
+          }, 1000);
+          
+           Toast(cart.message);
+         
 
         } else {
           Toast(cart.message)
@@ -708,7 +704,7 @@ export default {
          } 
        }).then(res=>{
              this.quotations=res.data.results;
-              console.log(this.quotations)
+              // console.log(this.quotations)
       
        });
     // 获取新人评论信息
@@ -719,9 +715,7 @@ export default {
          } 
        }).then(res=>{
          this.comments=res.data.results;
-       console.log("--",res.data.results)
-
-      
+            
        });
   },
 }

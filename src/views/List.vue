@@ -212,12 +212,6 @@ export default {
       this.screen.push({price:this.screen3});
     }
     console.log(this.screen);
-   //数组去重
-    // for(var i=0;i<this.screen.length;i++){
-    //   if(arr1.indexOf(this.screen[i])==-1){
-    //     arr1.push(this.screen[i]);
-    //   }
-    // }
     if(this.screen.length>0){
      //arr1.forEach(elem=>{
         //向后台发请求,获取后台数据
@@ -319,9 +313,6 @@ export default {
       text:'加载中...',
       spinnerType:'fading-circle'
     });
-    // setTimeout(()=>{
-    //   this.$indicator.close();
-    // },500)
     this.found=false;
     this.axios.get("/list/defaults").then(result=>{
       console.log(result.data);

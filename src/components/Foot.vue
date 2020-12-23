@@ -5,22 +5,10 @@
                 <div class="iconfont icon-shouye"></div>
                 <span>首页</span>
             </mt-tab-item>
-
             <mt-tab-item id="Case">
                 <div class="iconfont icon-xingqiu2"></div>
                 <span>案例</span>
             </mt-tab-item>
-
-            <mt-tab-item id="3">
-                <div class="iconfont icon-zuoyi"></div>
-                <span>社交</span>
-            </mt-tab-item>
-
-            <mt-tab-item id="4">
-                <div class="iconfont icon-linggan"></div>
-                <span>灵感</span>
-            </mt-tab-item>
-
             <mt-tab-item id="Mine">
                 <div class="iconfont icon-wo"></div>
                 <span>我的</span>
@@ -47,14 +35,21 @@
 export default {
     data(){
         return{
-            selected:'MinePage'
+            selected:'MianPage'
         }
     },
     watch:{
         selected(){
-            if(this.selected=='MinePage') this.$router.push('/');
-            if(this.selected=='Case') this.$router.push('/list');
-            if(this.selected=='Mine') this.$router.push('/site');
+            if(this.selected=='MianPage') {
+                this.$router.push('/');
+                this.selected='MianPage';
+            }else if(this.selected=='Case'){
+                this.$router.push('/list');
+                this.selected='Case';
+            }else if(this.selected=='Mine'){
+                this.$router.push('/site');
+                this.selected='Mine';
+            }
         }
     }
 }

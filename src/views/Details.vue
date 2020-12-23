@@ -1,7 +1,7 @@
 <template>
 <div class="details">
   <!-- 头部导航栏开始 -->
-  <mt-header title="薇薇新娘" fixed>
+  <mt-header title="薇薇新娘" fixed >
       <router-link to="/list" slot="left">
         <mt-button icon="back"></mt-button>
       </router-link>
@@ -262,7 +262,11 @@
 }
 
 .details>:first-child{
-  background:linear-gradient(to top, #fcfbfa, #fcf4f5);
+  background-image: -moz-linear-gradient(bottom, #fcfbfa, #fcf4f5) ;
+background-image: -webkit-linear-gradient(bottom,#fcfbfa, #fcf4f5); 	
+background-image: -o-linear-gradient(bottom, #fcfbfa, #fcf4f5);  	
+background-image: -ms-linear-gradient(bottom, #fcfbfa, #fcf4f5);  
+background:linear-gradient(to top, #fcfbfa, #fcf4f5);
   border-bottom:1px solid #e9e6e6;
   color:rgb(20, 19, 19);
   font-weight: bold;

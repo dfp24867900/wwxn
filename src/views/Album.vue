@@ -2,8 +2,8 @@
     <div class="album">
         <!-- 头部 -->
         <mt-header title="专辑" fixed class="my-header">
-            <router-link to="/" slot="left" >
-                <mt-button icon="back"></mt-button>
+            <router-link to="" slot="left" >
+                <mt-button icon="back" @click="didiback"></mt-button>
             </router-link>
         </mt-header>
         <!-- 主内容 -->
@@ -47,6 +47,11 @@ export default {
     data(){
         return{
             imgArr:[]
+        }
+    },
+    methods:{
+        didiback(){
+            window.history.go(-1);
         }
     },
     mounted(){

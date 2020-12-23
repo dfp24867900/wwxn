@@ -1,7 +1,11 @@
 .<template>
   <div id="rigister">
+    <mt-header title="用户注册" class="reg_header">
+      <router-link to="/" slot="left">
+        <mt-button icon="back"></mt-button>
+      </router-link>
+    </mt-header>
     <div class="reg">
-      <h3>用户注册</h3>
       <p>
         <span class="phone icon iconfont icon-shouji"></span>
         <mt-field
@@ -11,6 +15,7 @@
           :attr="{ maxlength: 16, autocomplete: 'off' }"
           @blur.native.capture="checkPhone"
           :state="phoneState"
+          @keydown.13="userregister"
         ></mt-field>
       </p>
       <p>
@@ -22,6 +27,7 @@
           :attr="{ minlength: 6, maxlength: 16, autocomplete: 'off' }"
           @blur.native.capture="checkPasssword"
           :state="passwordState"
+          @keydown.13="userregister"
         ></mt-field>
       </p>
       <p>
@@ -33,6 +39,7 @@
           :attr="{ maxlength: 16, autocomplete: 'off' }"
           @blur.native.capture="checkConpasssword"
           :state="conpasswordState"
+          @keydown.13="userregister"
         ></mt-field>
       </p>
       <p>
@@ -44,6 +51,7 @@
           :attr="{ maxlength: 16 }"
           @blur.native.capture="checkUsername"
           :state="usernameState"
+          @keydown.13="userregister"
         ></mt-field>
       </p>
       <p>
@@ -56,6 +64,7 @@
           :attr="{ maxlength: 16 }"
           @blur.native.capture="checkEmail"
           :state="emailState"
+          @keydown.13="userregister"
         ></mt-field>
       </p>
       <p>
@@ -200,6 +209,13 @@ export default {
 </script>
 
 <style>
+.reg_header{
+  background-color: #ffffff !important;
+  color: #333 !important;
+  font-family: "Microsoft Yahei";
+  font-size: 16px !important;
+  border-bottom: 1px solid #ccc;
+}
 #rigister {
   width: 375px;
   height: 667px;

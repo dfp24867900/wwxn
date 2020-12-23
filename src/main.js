@@ -14,6 +14,11 @@ import 'mint-ui/lib/style.min.css';
 import Vant from 'vant';
 import 'vant/lib/index.css';
 import Foot from './components/Foot.vue'
+import List from './views/List.vue'
+import Site from './views/Site.vue'
+
+Vue.component('my-list',List)
+Vue.component('my-site',Site)
 Vue.component('my-footer',Foot)
 // 通过Vue.use()方法将MintUI注册为插件
 Vue.use(MintUI);

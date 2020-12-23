@@ -5,7 +5,7 @@
       title="我的钱包"
       class="gold_header"
     >
-      <router-link to="/site" slot="left" >
+      <router-link to="/" slot="left" >
         <mt-button icon='back'></mt-button>
       </router-link> 
     </mt-header>

@@ -1,7 +1,11 @@
 <template>
   <div id="login">
-    <div class="log">
-      <h3>用户登录</h3>
+    <mt-header title="用户登录" class="log_header">
+      <router-link to="/" slot="left">
+        <mt-button icon="back" ></mt-button>
+      </router-link>
+    </mt-header>
+    <div class="log">      
       <p>
         <span class="me icon iconfont icon-wo"></span>
         <mt-field
@@ -11,6 +15,7 @@
           :attr="{ maxlength: 16, autocomplete: 'off' }"
           @blur.native.capture="checkUsername"
           :state="usernameState"
+          @keydown.13="handle"
         ></mt-field>
       </p>
       <p>
@@ -22,6 +27,7 @@
           :attr="{ minlength: 6, maxlength: 16, autocomplete: 'off' }"
           @blur.native.capture="checkPassword"
           :state="passwordState"
+          @keydown.13="handle"
         ></mt-field>
       </p>
       <p>
@@ -47,6 +53,7 @@ export default {
     };
   },
   methods: {
+    
     // 跳转到路由
     toBack(path) {
       this.$router.push(path);
@@ -103,7 +110,7 @@ export default {
               this.$store.commit('loginMutation',res.data.info);
               localStorage.setItem('isLogined',1);
               localStorage.setItem('info',JSON.stringify(res.data.info));
-              this.$router.push('/site');
+              this.$router.push('/');
               
             }
         });
@@ -114,6 +121,13 @@ export default {
 </script>
 
 <style>
+.log_header{
+  background-color: #ffffff !important;
+  color: #333 !important;
+  font-family: "Microsoft Yahei";
+  font-size: 16px !important;
+  border-bottom: 1px solid #ccc;
+}
 #login {
   width: 375px;
   height: 667px;

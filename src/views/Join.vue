@@ -1,7 +1,7 @@
 <template>
   <div id="join">
     <mt-header title="邀请另一半" class="join_header">
-      <router-link to="/site" slot="left">
+      <router-link to="/" slot="left">
         <mt-button icon="back"></mt-button>
       </router-link>
     </mt-header>

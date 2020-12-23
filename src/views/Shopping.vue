@@ -5,8 +5,8 @@
       title="我的订单"
       class="shop_header"
     >
-      <router-link to="/site" slot="left" >
-        <mt-button icon='back'></mt-button>
+      <router-link to="" slot="left" >
+        <mt-button icon='back' @click="didiback"></mt-button>
       </router-link> 
     </mt-header>
     <!-- 商品模块 -->
@@ -171,6 +171,10 @@ export default {
     };
   },
   methods:{
+     didiback(){
+            window.history.go(-1);
+        }
+    ,
    sum(){
      for(var i=0;i<this.shops.length;i++){
        this.num+=parseInt(this.shops[i].price);

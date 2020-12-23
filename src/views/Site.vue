@@ -31,6 +31,11 @@
         <router-link to="/register">
           <p>注册</p>
         </router-link>
+        <router-link to="">
+          <p>
+            <img src="../assets/image/site/avatar/avatar_de.jpg" alt="">
+          </p>
+        </router-link>
       </div>
     </div>
     <!-- 中间选项区 -->
@@ -191,7 +196,6 @@
         </div>
       </router-link>
     </div>
-    <my-footer></my-footer>
   </div>
 </template>
 
@@ -221,10 +225,22 @@
   color: #f5f5f5;
   position: absolute;
   top: 30%;
-  left: 80%;
+  left: 90%;
 }
 #sitehea > div > a:first-child > p{
   left: 50%;
+}
+#sitehea > div >a:nth-child(3) > p{
+  top: 5%;
+  left: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+#sitehea > div >a:nth-child(3) > p >img{
+  width: 60px;
+  height: 60px;
 }
 #siteheader > div:first-child > p:first-child {
   position: absolute;

@@ -2,8 +2,8 @@
   <div id="service">
     <!-- 顶部栏 -->
     <mt-header title="在线客服" fixed>
-      <router-link slot="left" to="/">
-        <mt-button icon="back"></mt-button>
+      <router-link slot="left" to="">
+        <mt-button icon="back" @click="didiback"></mt-button>
       </router-link>
     </mt-header>
     <!-- 消息展示 -->
@@ -87,6 +87,9 @@ export default {
     };
   },
   methods: {
+     didiback(){
+            window.history.go(-1);
+        },
     // 表情事件
     face() {
       this.faceShow = !this.faceShow;

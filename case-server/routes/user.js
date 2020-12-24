@@ -50,8 +50,8 @@ router.post('/login', (req, res) => {
   var obj = req.body
   console.log(obj)
   let username = obj.username;
-  let password = obj.password;
-  // let password = md5(req.body.upwd);
+  // let password = obj.password;
+  let password = md5(obj.password);
   //以用户名和密码为条件进行查找
   let sql = 'SELECT * FROM bride_user WHERE uname=? AND upwd=?';
   pool.query(sql, [username, password], (error, result) => {

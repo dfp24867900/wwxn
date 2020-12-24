@@ -448,9 +448,9 @@
   color: rgb(63, 61, 61);
 }
 .detail-content img {
-  width: 102px;
+  width: 97px;
   height: 78px;
-  margin: 5px 5px 5px 0px;
+  margin: 5px 2px 0px 0px;
   border-radius: 3px;
   float: left;
 }

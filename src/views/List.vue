@@ -153,7 +153,6 @@ export default {
       this.found=false;
       this.list=[];
       this.axios.get("/list/defaults").then(result=>{
-      console.log(result.data);
       this.list=result.data.results;
       this.$indicator.close();
     })
@@ -211,13 +210,11 @@ export default {
     if(this.screen3!=""){
       this.screen.push({price:this.screen3});
     }
-    console.log(this.screen);
     if(this.screen.length>0){
      //arr1.forEach(elem=>{
         //向后台发请求,获取后台数据
       this.axios.get("/list/scene",{params:{alter:this.screen}}).then(result=>{
         if(result.data.code==200){
-          console.log(result.data.results);
           this.list=result.data.results;
           this.found=false;
         }else{
@@ -259,7 +256,6 @@ export default {
        $(e.target).siblings().css("background","#f1f1f1");
        $(e.target).siblings().css("color","#999");
        this.screen1=this.scene[value];
-       console.log(this.screen1);
     }else if(this.screen1!=""){
        this.screen1="";
        btn.style.backgroundColor="#f1f1f1";
@@ -315,7 +311,6 @@ export default {
     });
     this.found=false;
     this.axios.get("/list/defaults").then(result=>{
-      console.log(result.data);
       this.list=result.data.results;
       this.$indicator.close();
     })
@@ -445,7 +440,7 @@ export default {
   font-size: 18px;
   color: rgb(231, 46, 46);
   font-weight: bold;
-  margin-left: 4.7rem;
+  margin-left: 4rem;
 }
 .bride_list .content>p:nth-child(3){
   margin-top: 10px;
@@ -460,6 +455,6 @@ export default {
   width: 1rem;
   height: 1rem;
   vertical-align: top;
-  margin-left: 3rem;
+  margin-left: 2.1rem;
 }
 </style>

@@ -294,6 +294,12 @@ export default {
     cityCancel() {
       this.ci = false;
     },
+    getCamera(){
+      console.log("假装这里有一个照相机接口")
+    },
+    getLibrary(){
+       console.log("假装这里有一个文件夹")
+    },
 
     //日期
     formatDate(date) {

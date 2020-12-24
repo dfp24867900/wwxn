@@ -99,7 +99,6 @@ export default {
         let str = this.qs.stringify(obj);     
         this.axios.post('/user/login',str).then(res=>{
             //登录失败
-            console.log(res)
             if(res.data.code ==  201){
               this.$messagebox.confirm('登录失败,是否注册新用户','提示信息').then(()=>{
                 this.$router.push('/register');

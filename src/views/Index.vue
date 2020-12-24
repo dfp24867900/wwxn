@@ -272,8 +272,10 @@
   margin: 5px 5px;
 }
 .index > .main .page {
-  margin: 5px 7px;
-  width: 170px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: 3%;
+  width: 45%;
   height: 240px;
   float: left;
   border: 1px solid #ddd;

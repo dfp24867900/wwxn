@@ -20,7 +20,7 @@
         </div>
         <div v-else class="right_align">
           <div class="avatar">
-            <img :src="avatar" alt="" />
+            <img :src="require(`../assets/image/site/avatar/${info.avatar}`)" alt="" />
           </div>
           <div class="message">{{ messeage.content }}</div>
         </div>

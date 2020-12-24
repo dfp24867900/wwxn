@@ -122,7 +122,7 @@ export default {
 
 <style>
 .log_header{
-  background-color: #ffffff !important;
+  background: linear-gradient(to top, #fcfbfa, #fcf4f5);
   color: #333 !important;
   font-family: "Microsoft Yahei";
   font-size: 16px !important;

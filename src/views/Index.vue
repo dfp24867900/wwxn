@@ -23,12 +23,12 @@
           <!-- 轮播图开始 -->
           <mt-swipe :auto="4000" class="swipe">
             <mt-swipe-item>
-              <router-link to="/">
+              <router-link to="/list">
                 <img src="img/lb1.jpg" alt="" class="swipe-img" />
               </router-link>
             </mt-swipe-item>
             <mt-swipe-item>
-              <router-link to="/">
+              <router-link to="/list">
                 <img src="img/lb2.jpg" alt="" class="swipe-img" />
               </router-link>
             </mt-swipe-item>
@@ -44,7 +44,7 @@
                 <span>专辑</span>
               </li>
               <li>
-                <router-link to="" class="nav-item"
+                <router-link to="/list" class="nav-item"
                   ><span class="color-c3 iconfont icon-shipin1"></span
                 ></router-link>
                 <span>案例</span>

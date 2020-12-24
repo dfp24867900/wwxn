@@ -212,7 +212,8 @@
   left: 0;
   width: 100%;
   height: 180px;
-  background-color: #ff93a0;
+  background-color: #F7DEDE;
+  /* background-color: #ff93a0; */
   z-index: 8;
 }
 #siteheader > div:first-child,
@@ -227,8 +228,8 @@
   width: 30%;
   height: 50%;
   text-align: center;
-  font-size: 24px;
-  color: #f5f5f5;
+  font-size: 22px;
+  color: #999;
   position: absolute;
   top: 30%;
   left: 90%;
@@ -282,7 +283,7 @@
   position: absolute;
   top: 10px;
   left: 100px;
-  color: #f5f5f5;
+  color: #666;
   font-size: 20px;
   font-family: "Microsoft Yahei";
 }
@@ -290,7 +291,7 @@
   position: absolute;
   top: 40px;
   left: 100px;
-  color: #e7dddd;
+  color: #999;
   font-size: 12px;
   font-family: "Microsoft Yahei";
 }
@@ -310,7 +311,7 @@
 }
 #siteheader > div:last-child > a > p {
   position: absolute;
-  color: #f5f5f5;
+  color: #999;
   top: 23%;
   left: 27%;
 }

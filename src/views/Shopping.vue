@@ -176,7 +176,12 @@ export default {
         }
     ,
     togold(){
-      this.$router.push('/sitegold')
+      if(this.num>0){
+        this.$router.push('/sitegold')
+      }else{
+        this.$toast("请确认您的订单正确");
+      }
+      
     },
    sum(){
      for(var i=0;i<this.shops.length;i++){

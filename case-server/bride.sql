@@ -7,12 +7,12 @@ CREATE table bride_user(
    uid INT PRIMARY KEY AUTO_INCREMENT,
    uname varchar(16),
    upwd varchar(128),
-   nickname varchar(30) DEFAULT NULL,
+   nickname varchar(30) DEFAULT 'Z-sum',
    phone varchar(16),
    email varchar(32),
-   data varchar(64),
-   address varchar(128),
-   avatar   VARCHAR(50) NOT NULL COMMENT '用户头像'
+   data varchar(64) DEFAULT '待定',
+   address varchar(128) DEFAULT '待定',
+   avatar   VARCHAR(50) DEFAULT 'avatar_2.jpg' COMMENT '用户头像'
 );
 INSERT INTO bride_user
 VALUES(
@@ -37,6 +37,18 @@ VALUES(
       "布拉市",
       "2521年1月",
       "avatar_4.jpg"
+   );
+   INSERT INTO bride_user
+VALUES(
+      3,
+      "xiaohua",
+      "e10adc3949ba59abbe56e057f20f883e",
+      "木糖醇",
+      "13666668888",
+      "xiaohua@qq.com",
+      "布拉市",
+      "2520年1月",
+      "avatar_5.jpg"
    );
 -- 创建案例表
 CREATE TABLE bride_case_list(

@@ -12,7 +12,7 @@
           type="text"
           placeholder="请输入注册的手机号"
           v-model="phone"
-          :attr="{ maxlength: 16, autocomplete: 'off' }"
+          :attr="{ maxlength: 11, autocomplete: 'off' }"
           @blur.native.capture="checkPhone"
           :state="phoneState"
           @keydown.13="userregister"

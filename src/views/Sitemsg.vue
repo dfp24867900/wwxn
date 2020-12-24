@@ -36,7 +36,7 @@
 <style>
   /* 定义页面顶部的样式 */
   .msg_header{
-    background-color: #ffffff!important;
+    background: linear-gradient(to top, #fcfbfa, #fcf4f5);
     color: #333 !important;
     font-family:"Microsoft Yahei";
     font-size: 16px !important;

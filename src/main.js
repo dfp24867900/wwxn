@@ -18,6 +18,8 @@ import Site from './views/Site.vue'
 
 Vue.component('my-list',List)
 Vue.component('my-site',Site)
+import Foot from './components/Footer.vue'
+Vue.component('my-footer',Foot) 
 // 通过Vue.use()方法将MintUI注册为插件
 Vue.use(MintUI);
 Vue.use(Vant)

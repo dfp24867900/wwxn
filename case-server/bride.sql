@@ -18,7 +18,7 @@ INSERT INTO bride_user
 VALUES(
       1,
       "goudan",
-      "123456",
+      "e10adc3949ba59abbe56e057f20f883e",
       "橘子猫",
       "13555555555",
       "goudan@qq.com",
@@ -30,7 +30,7 @@ INSERT INTO bride_user
 VALUES(
       2,
       "tiedan",
-      "123456",
+      "e10adc3949ba59abbe56e057f20f883e",
       "柚子呀",
       "13666666666",
       "tiedan@qq.com",

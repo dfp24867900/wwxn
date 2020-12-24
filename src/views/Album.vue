@@ -24,6 +24,7 @@
 }
 .album > .main {
   margin-top: 40px;
+  overflow: auto;
 }
 .album > .main::before {
   content: "";

@@ -748,7 +748,7 @@ export default {
       if (this.$store.state.isLogined !== 1) {
         this.packaging();
       } else {
-        this.$router.push(`/service`);
+        this.$router.push('/service');
       }
     }
   },

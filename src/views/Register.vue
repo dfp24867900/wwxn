@@ -120,7 +120,7 @@ export default {
     },
     // 判断用户名
     checkUsername() {
-      let usernameRegExp = /^[\u4e00-\u9fa50-9a-zA-Z]{6,16}$/;
+      let usernameRegExp = /^[\u4e00-\u9fa50-9a-zA-Z]{6,12}$/;
       if (usernameRegExp.test(this.uname)) {
         this.usernameState = "success";
         return true;
@@ -186,15 +186,13 @@ export default {
     },
     // 点击注册按钮
     userregister() {
-      let data = {
+      if(this.checkPhone() && this.checkUsername() && this.checkPasssword() && this.checkConpasssword() && this.checkEmail()){
+        let data = {
         uname: this.uname,
         upwd: this.upwd,
         phone: this.phone,
         email: this.email,
       };
-      if (!this.uname || !this.upwd || !this.phone || !this.email) {
-        Toast("请输入用户名，密码，手机号，邮箱");
-      } else {
         API.register(data)
           .then((res) => {
             console.log(res);
@@ -203,7 +201,10 @@ export default {
           .catch((err) => {
             console.log(err);
           });
+      }else{
+        Toast("请输入正确的用户名，密码，手机号，邮箱"); 
       }
+      
     },
   },
 };

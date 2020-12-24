@@ -86,10 +86,15 @@ router.get('/sitecollect', (req, res) => {
       coll.push(element.pid);
     });
     console.log(coll)
-    for(i=0;i<coll.length-1;i++){
-      sq+=',?'
+    if(coll.length>1){
+      for(i=0;i<coll.length-1;i++){
+        sq+=',?'
+      }
+      sql = `SELECT * FROM bride_case_list where cid in (${sq})`
+    }else if(coll.length=1){
+      sql = `SELECT * FROM bride_case_list where cid = ?`
     }
-    sql = `SELECT * FROM bride_case_list where cid in (${sq})`
+    
     pool.query(sql,coll,(err,results)=>{
       if(err) throw err;
       res.send(results);
@@ -113,10 +118,14 @@ router.get('/siteshopping', (req, res) => {
        coll.push(element.pid);
      });
      console.log(coll)
-     for(i=0;i<coll.length-1;i++){
-       sq+=',?'
-     }
-     sql = `SELECT * FROM bride_case_list where cid in (${sq})`
+     if(coll.length>1){
+      for(i=0;i<coll.length-1;i++){
+        sq+=',?'
+      }
+      sql = `SELECT * FROM bride_case_list where cid in (${sq})`
+    }else if(coll.length=1){
+      sql = `SELECT * FROM bride_case_list where cid = ?`
+    }
      pool.query(sql,coll,(err,results)=>{
        if(err) throw err;
        res.send(results);

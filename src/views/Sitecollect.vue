@@ -22,7 +22,7 @@
       <mt-tab-container v-model="collect_active">
         <mt-tab-container-item id="collect_1" >
           <!-- 外层位置 -->
-          <div class="collect_community" v-for="(article,index) in articles" :key="index">
+          <div class="collect_community" v-for="(article,index) in articles" :key="index"  >
             <router-link :to='`/details/${article.cid}`'>           
             <!-- 上方图片位置 -->
             <div>
@@ -207,7 +207,6 @@ export default {
     mounted(){        
        //获取地址栏中的参数
        let uid = this.$route.params.uid;
-       console.log(uid)
        //向服务器发送请求以获取指定ID的文章信息
        this.axios.get('/user/sitecollect',{
            params:{
@@ -215,6 +214,7 @@ export default {
            }
        }).then(res=>{
          this.articles=res.data;
+         console.log(this.articles.length)
        });
     }
 }

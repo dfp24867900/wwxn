@@ -13,7 +13,6 @@
     <div id="siteback">
       <p>问题和意见</p>
       <p contenteditable="true">
-        请描述您的问题和反馈
       </p>
       <p>
         联系方式,以使我们及时与您联系

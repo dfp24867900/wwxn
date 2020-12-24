@@ -273,7 +273,7 @@
           icon="chat-o"
           text="客服"
           color="#ee0a24"
-          to="/service"
+           @click="kefu(info.uid)"
           dot
         />
         <van-goods-action-icon
@@ -742,6 +742,15 @@ export default {
         this.packaging();
       }
     },
+    // 客服
+    kefu(kf){
+      this.uid = kf;
+      if (this.$store.state.isLogined !== 1) {
+        this.packaging();
+      } else {
+        this.$router.push(`/service`);
+      }
+    }
   },
 
   // 向后台发送请求

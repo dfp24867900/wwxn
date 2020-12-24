@@ -198,6 +198,7 @@ export default {
         API.register(data)
           .then((res) => {
             console.log(res);
+            this.$router.push('/login')
           })
           .catch((err) => {
             console.log(err);

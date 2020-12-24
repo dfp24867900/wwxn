@@ -2,7 +2,7 @@
   <div id="gold">
     <!-- 页头 -->
     <mt-header title="我的钱包" class="gold_header">
-      <router-link to="/siteshopping/1" slot="left">
+      <router-link to="/siteshopping" slot="left">
         <mt-button icon="back"></mt-button>
       </router-link>
     </mt-header>

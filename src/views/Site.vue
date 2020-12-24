@@ -5,10 +5,10 @@
       <!-- 头像区域 -->
       <div>
         <p>
-          <img
+          <!-- <img
             :src="require(`../assets/image/site/avatar/${info.avatar}`)"
             alt=""
-          />
+          /> -->
         </p>
         <p>
           <router-link to="/join">
@@ -199,7 +199,6 @@
         </div>
       </router-link>
     </div>
-    <!-- <my-footer></my-footer> -->
   </div>
 </template>
 

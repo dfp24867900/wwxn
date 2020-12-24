@@ -94,7 +94,8 @@ const routes = [
 
   {
     path: '/album/:id',
-    component: Album
+    component: Album,
+    meta:{showFooter:true}
   },
   {
     path: '/',

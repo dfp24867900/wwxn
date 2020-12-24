@@ -104,7 +104,7 @@ VALUES(
       '爱与无穷',
       21561,
       'img/details/aywq/26.jpg&img/details/aywq/22.jpg&img/details/aywq/25.jpg',
-      "list2.jpg",
+      "list20.jpg",
       'img/details/aywq/s01.jpg&img/details/aywq/s02.jpg&img/details/aywq/s03.jpg','image/avatar/08.jpg','魏超',
       "秀场风婚礼以'∞'符号主题设计的婚礼。",
       25,
@@ -227,14 +227,35 @@ VALUES(
    "Youth",
    5000,
    'img/details/Youth/01.jpg&img/details/Youth/02.jpg&img/details/Youth/03.jpg',
-   "list8.jpg",
+   "list18.jpg",
    'img/details/Youth/s01.jpg&img/details/Youth/s02.jpg&img/details/Youth/s03.jpg',
    'image/avatar/15.jpg',
    'Aliao',
    "许你一世承诺",
    "25",
    23,
-   "小清新&大气&梦幻&唯美",
+   "草坪&大气&梦幻&唯美",
+   "户外",
+   "绿色",
+   '2019年11月02日',
+   "家园国际户外",
+   'img/details/Youth/01.jpg&img/details/Youth/02.jpg&img/details/Youth/03.jpg&img/details/Youth/06.jpg&img/details/Youth/07.jpg&img/details/Youth/08.jpg&img/details/Youth/09.jpg&img/details/Youth/10.jpg&img/details/Youth/11.jpg&img/details/Youth/12.jpg&img/details/Youth/13.jpg',
+   1
+);
+INSERT INTO bride_case_list
+VALUES(
+   NULL,
+   "就在身边",
+   5660,
+   'img/details/Youth/01.jpg&img/details/Youth/02.jpg&img/details/Youth/03.jpg',
+   "list15.jpg",
+   'img/details/Youth/s01.jpg&img/details/Youth/s02.jpg&img/details/Youth/s03.jpg',
+   'image/avatar/15.jpg',
+   'Aliao',
+   "许你一世承诺",
+   "25",
+   23,
+   "草坪",
    "户外",
    "橙色",
    '2019年11月02日',
@@ -242,7 +263,46 @@ VALUES(
    'img/details/Youth/01.jpg&img/details/Youth/02.jpg&img/details/Youth/03.jpg&img/details/Youth/06.jpg&img/details/Youth/07.jpg&img/details/Youth/08.jpg&img/details/Youth/09.jpg&img/details/Youth/10.jpg&img/details/Youth/11.jpg&img/details/Youth/12.jpg&img/details/Youth/13.jpg',
    1
 );
-
+INSERT INTO bride_case_list
+VALUES(
+   NULL,
+   "我们的故事",
+   4589,
+   'img/details/Youth/01.jpg&img/details/Youth/02.jpg&img/details/Youth/03.jpg',
+   "list19.jpg",
+   'img/details/Youth/s01.jpg&img/details/Youth/s02.jpg&img/details/Youth/s03.jpg',
+   'image/avatar/15.jpg',
+   'Aliao',
+   "许你一世承诺",
+   "25",
+   23,
+   "草坪",
+   "户外",
+   "绿色",
+   '2019年11月02日',
+   "家园国际户外",
+   'img/details/Youth/01.jpg&img/details/Youth/02.jpg&img/details/Youth/03.jpg&img/details/Youth/06.jpg&img/details/Youth/07.jpg&img/details/Youth/08.jpg&img/details/Youth/09.jpg&img/details/Youth/10.jpg&img/details/Youth/11.jpg&img/details/Youth/12.jpg&img/details/Youth/13.jpg',
+   1
+);
+INSERT INTO bride_case_list
+VALUES(
+      NULL,
+      '许你一个童话世界',
+      21561,
+      'img/details/aywq/26.jpg&img/details/aywq/22.jpg&img/details/aywq/25.jpg',
+      "list21.jpg",
+      'img/details/aywq/s01.jpg&img/details/aywq/s02.jpg&img/details/aywq/s03.jpg','image/avatar/08.jpg','魏超',
+      "秀场风婚礼以'∞'符号主题设计的婚礼。",
+      25,
+      2,
+      "主题&梦幻",
+      "室内",
+      "粉色",
+      '2020年06月07日',
+      "未来大酒店",
+      'img/details/aywq/26.jpg&img/details/aywq/22.jpg&img/details/aywq/25.jpg&img/details/aywq/23.jpg&img/details/aywq/24.jpg&img/details/aywq/27.jpg&img/details/aywq/28.jpg&img/details/aywq/29.jpg&img/details/aywq/30.jpg',
+      1
+   );
 
 -- 创建搜索历史表
 CREATE TABLE bride_search_history(

@@ -1,7 +1,7 @@
 <template>
 <div class="details">
   <!-- 头部导航栏开始 -->
-  <mt-header title="薇薇新娘" fixed>
+  <mt-header title="薇薇新娘" fixed >
       <router-link to="/list" slot="left">
         <mt-button icon="back"></mt-button>
       </router-link>
@@ -100,9 +100,7 @@
           <img v-for="(img,index) of imageList" :key="index" v-lazy="`/${img}`"  class="lazyImages"  
           />
           <!-- 图片详图结束 -->
-          <div class="comments-more"  >
-            <span >加载更多</span>
-          </div>
+  
        
         </div>
         
@@ -234,6 +232,8 @@
   <footer>
     <van-goods-action v-show='isShow'>
       <van-goods-action-icon  icon='chat-o' text='客服' color="#ee0a24" to='/service' dot/>
+       <van-goods-action-icon  icon='gift-o' text='收藏' color="#ee0a24" :to='`/sitecollect/${info.uid}`' dot/>
+      <van-goods-action-icon  icon='balance-o' text='订单区' color="#ee0a24" :to='`/siteshopping/${info.uid}`' dot/>
       <van-goods-action-button  color="#969799" text='加入收藏' @click="addtofavorites(info.uid)"
      
       />
@@ -262,7 +262,11 @@
 }
 
 .details>:first-child{
-  background:linear-gradient(to top, #fcfbfa, #fcf4f5);
+  background-image: -moz-linear-gradient(bottom, #fcfbfa, #fcf4f5) ;
+background-image: -webkit-linear-gradient(bottom,#fcfbfa, #fcf4f5); 	
+background-image: -o-linear-gradient(bottom, #fcfbfa, #fcf4f5);  	
+background-image: -ms-linear-gradient(bottom, #fcfbfa, #fcf4f5);  
+background:linear-gradient(to top, #fcfbfa, #fcf4f5);
   border-bottom:1px solid #e9e6e6;
   color:rgb(20, 19, 19);
   font-weight: bold;
@@ -570,14 +574,6 @@ export default {
   },
 
   methods: {
-  //       open() {
-  //     setTimeout(() => {
-  //      this.show = true
-  //     }, 1000)
-  //   },
-  //   close(){//让话框隐藏
-  //         this.show=false;
-  //  },
   // 立即预定
   addtoshop(b){
     this.uid=b
@@ -593,9 +589,8 @@ export default {
        }
      }).then(res=>{
         let cart = res.data;
-        if(cart.code == 1){
-          Toast(cart.message);
-
+        if(cart.code == 1){      
+           Toast(cart.message);
         } else {
           Toast(cart.message)
         }
@@ -708,7 +703,7 @@ export default {
          } 
        }).then(res=>{
              this.quotations=res.data.results;
-              console.log(this.quotations)
+              // console.log(this.quotations)
       
        });
     // 获取新人评论信息
@@ -719,9 +714,7 @@ export default {
          } 
        }).then(res=>{
          this.comments=res.data.results;
-       console.log("--",res.data.results)
-
-      
+            
        });
   },
 }

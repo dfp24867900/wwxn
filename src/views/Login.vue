@@ -1,7 +1,11 @@
 <template>
   <div id="login">
-    <div class="log">
-      <h3>用户登录</h3>
+    <mt-header title="用户登录" class="log_header">
+      <router-link to="/site" slot="left">
+        <mt-button icon="back" ></mt-button>
+      </router-link>
+    </mt-header>
+    <div class="log">      
       <p>
         <span class="me icon iconfont icon-wo"></span>
         <mt-field
@@ -11,6 +15,7 @@
           :attr="{ maxlength: 16, autocomplete: 'off' }"
           @blur.native.capture="checkUsername"
           :state="usernameState"
+          @keydown.13="handle"
         ></mt-field>
       </p>
       <p>
@@ -22,6 +27,7 @@
           :attr="{ minlength: 6, maxlength: 16, autocomplete: 'off' }"
           @blur.native.capture="checkPassword"
           :state="passwordState"
+          @keydown.13="handle"
         ></mt-field>
       </p>
       <p>
@@ -47,6 +53,7 @@ export default {
     };
   },
   methods: {
+    
     // 跳转到路由
     toBack(path) {
       this.$router.push(path);
@@ -103,7 +110,7 @@ export default {
               this.$store.commit('loginMutation',res.data.info);
               localStorage.setItem('isLogined',1);
               localStorage.setItem('info',JSON.stringify(res.data.info));
-              this.$router.push('/site');
+              this.$router.push('/');
               
             }
         });
@@ -114,10 +121,18 @@ export default {
 </script>
 
 <style>
+.log_header{
+  background-color: #ffffff !important;
+  color: #333 !important;
+  font-family: "Microsoft Yahei";
+  font-size: 16px !important;
+  border-bottom: 1px solid #ccc;
+}
 #login {
   width: 375px;
   height: 667px;
-  background: url(../assets/user/login_bg.png);
+  background: url(../assets/user/bg.jpg);
+  background-size: 375px 667px;
   position: relative;
 }
 .log {
@@ -128,14 +143,14 @@ export default {
   width: 340px;
   border-radius: 10px;
   padding: 10px;
-  color: #fe4577;
+  color: #f8b0c3;
 }
 .mint-cell{
   border-radius: 5px;
 }
 .log h3 {
   text-align: center;
-  color: #fe4577;
+  color:#f8b0c3;
   font-size: 24px;
   margin-bottom: 10px;
 }
@@ -168,7 +183,7 @@ export default {
   padding: 10px;
   font-size: 16px;
   color: #ffffff;
-  background: #fe4577;
+  background: #f8b0c3;
   border-radius: 5px;
   opacity: .8;
 }

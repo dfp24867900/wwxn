@@ -212,12 +212,6 @@ export default {
       this.screen.push({price:this.screen3});
     }
     console.log(this.screen);
-   //数组去重
-    // for(var i=0;i<this.screen.length;i++){
-    //   if(arr1.indexOf(this.screen[i])==-1){
-    //     arr1.push(this.screen[i]);
-    //   }
-    // }
     if(this.screen.length>0){
      //arr1.forEach(elem=>{
         //向后台发请求,获取后台数据
@@ -319,9 +313,6 @@ export default {
       text:'加载中...',
       spinnerType:'fading-circle'
     });
-    // setTimeout(()=>{
-    //   this.$indicator.close();
-    // },500)
     this.found=false;
     this.axios.get("/list/defaults").then(result=>{
       console.log(result.data);
@@ -395,7 +386,7 @@ export default {
   padding: 16px 16px 160px;
 }
 .bride_list .mint-header{
-  background-color: #ffc0cb !important;
+  background:linear-gradient(to top, #fcfbfa, #fcf4f5) !important;
   font-size: 16px !important;
   color: #000;
   font-weight: bold;
@@ -446,14 +437,14 @@ export default {
   font-size: 18px;
   color: rgb(231, 46, 46);
   font-weight: bold;
-  margin-left: 4.7rem;
+  margin-left: 5.7rem;
 }
 .bride_list .content>p:nth-child(3){
   margin-top: 10px;
 }
 .bride_list .content>p:nth-child(3)>span:first-child{
   display: inline-block;
-  width: 11rem;
+  width: 13rem;
   font-size: 12px;
   color: #999999;
 }
@@ -461,6 +452,6 @@ export default {
   width: 1rem;
   height: 1rem;
   vertical-align: top;
-  margin-left: 5rem;
+  margin-left: 4rem;
 }
 </style>

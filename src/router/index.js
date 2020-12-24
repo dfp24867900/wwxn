@@ -59,7 +59,8 @@ const routes = [
   },
   {
     path: '/site',
-    component: Site
+    component: Site,
+    meta:{showFooter:true}
   },
   {
     path: '/siteshopping/:uid',
@@ -69,16 +70,12 @@ const routes = [
     path: '/sitecollect/:uid',
     component: Sitecollect
   },
-  { path: "/list", component: List },
   { path: '/service', name: 'Service', component: Service },
-  // {path: '/', name: 'Home', component: Home },
   { path: '/search', name: 'Search', component: Search },
-  // { path: "/address", component: Address },
-  // { path: "/address",             component: Address },
   { path: "/searchlist/:keyword", component: SearchList },
-  { path: "/list/:keyword", component: List },
+  { path: "/list/:keyword", component: List ,meta:{showFooter:true}},
   { path: '/service', name: 'Service', component: Service },
-  { path: "/list", component: List },
+  { path: "/list", component: List,meta:{showFooter:true} },
   { path: '/service', name: 'Service', component: Service },
   { path: '/search', name: 'Search', component: Search },
   {
@@ -101,10 +98,21 @@ const routes = [
   },
   {
     path: '/',
-    component: Index
+    component: Index,
+    meta:{showFooter:true}
+  },
+  {
+    path: '/index',
+    component: Index,
+    meta:{showFooter:true}
   }
 ]
-
+//获取原型对象上的push函数
+const originalPush = VueRouter.prototype.push
+//修改原型对象中的push方法
+VueRouter.prototype.push = function push(location) {
+   return originalPush.call(this, location).catch(err => err)
+}
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,

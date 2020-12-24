@@ -1,110 +1,146 @@
 <template>
-  <div class="index">
-    <mt-header title="微微新娘" fixed class="my-header">
-      <router-link to="/search" slot="right"
-        ><span class="left iconfont icon-fangdajing"></span
-      ></router-link>
-       <span slot="left">
-         <!-- 设置is-link属性后会在单元格右侧显示箭头 -->
-         <van-cell is-link @click="showPopup" class="details_address"  arrow-direction="down">
-           <span v-if="!province">全国</span>{{province}} {{city}}  {{country}}
-         </van-cell>
-         <van-popup v-model="show" position="top" :style="{ height: '50%' }">
-         <van-area :area-list="areaList" :columns-num="3" ref="myArea"
-            @confirm="onConfirm" @cancel="onCancel"  @change="onChange" title="请选择婚礼举办地"  />  
-        </van-popup> 
-      </span> 
-    </mt-header>
+<div>
 
-    <!-- 轮播图开始 -->
-    <mt-swipe :auto="4000" class="swipe">
-      <mt-swipe-item>
-        <router-link to="/">
-          <img src="img/lb1.jpg" alt="" class="swipe-img" />
-        </router-link>
-      </mt-swipe-item>
-      <mt-swipe-item>
-        <router-link to="/">
-          <img src="img/lb2.jpg" alt="" class="swipe-img" />
-        </router-link>
-      </mt-swipe-item>
-    </mt-swipe>
-    <!-- 轮播图结束 -->
-    <!-- 分栏一开始 -->
-    <div class="nav">
-      <ul>
-        <li>
-          <router-link :to="`/album/${Z1[0]}`" class="nav-item"
-            ><span class="color-c3 iconfont icon-zhuanji"></span
-          ></router-link>
-          <span>专辑</span>
-        </li>
-        <li>
-          <router-link to="/list" class="nav-item"
-            ><span class="color-c3 iconfont icon-shipin1"></span
-          ></router-link>
-          <span>案例</span>
-        </li>
-        <li>
-          <router-link :to="`/album/${Z1[1]}`" class="nav-item"
-            ><span class="color-c3 iconfont icon-huodong"></span
-          ></router-link>
-          <span>活动</span>
-        </li>
-        <li>
-          <router-link to="/" class="nav-item"
-            ><span class="color-c3 iconfont icon-daojishi"></span
-          ></router-link>
-          <span>倒计时</span>
-        </li>
-        <li>
-          <router-link to="/" class="nav-item"
-            ><span class="color-c3 iconfont icon-qiandao"></span
-          ></router-link>
-          <span>签到</span>
-        </li>
-      </ul>
-    </div>
-    <!-- 分栏一结束 -->
+    <mt-tab-container v-model="selected">
+      <mt-tab-container-item id="MianPage">
+        <div class="index">
+          <mt-header title="微微新娘" fixed class="my-header">
+            <router-link to="/search" slot="right"
+              ><span class="left iconfont icon-fangdajing"></span
+            ></router-link>
+            <span slot="left">
+              <!-- 设置is-link属性后会在单元格右侧显示箭头 -->
+              <van-cell is-link @click="showPopup" class="details_address"  arrow-direction="down">
+                <span v-if="!province">全国</span>{{province}} {{city}}  {{country}}
+              </van-cell>
+              <van-popup v-model="show" position="top" :style="{ height: '50%' }">
+              <van-area :area-list="areaList" :columns-num="3" ref="myArea"
+                  @confirm="onConfirm" @cancel="onCancel"  @change="onChange" title="请选择婚礼举办地"  />  
+              </van-popup> 
+            </span> 
+          </mt-header>
 
-    <!-- 主内容区域开始-->
-    
-        <mt-navbar v-model="active" class="tabbar">
-          <mt-tab-item class="tab-bar" :id="index+''" v-for="(item, index) of category" :key="index" >{{ item }}</mt-tab-item>
-        </mt-navbar>
-    
-
-    <!-- 住内容开始 -->
-
-    <div class="main">
-      <mt-tab-container v-model="active" swipeable>
-        <mt-tab-container-item :id="active">
-          <!-- 单一文章开始 -->
-          <div class="page" v-for="(item,index) of articles" :key="index">
-            <!-- 图片 -->
-                        <div>
-                            <router-link :to="`/message/${item.id}`">
-                                <img v-lazy="item.img" alt="">
-                                <p class="span4">{{item.description}}</p>
-                            </router-link>
-                        </div>
-                        <div class="title-bar clearfix">
-                            <img class="small-photo" v-lazy="item.header_img" alt="">
-                            <span class="title">{{item.author}}</span>
-                            <span class="vip" v-if="item.vip">VIP</span>
-                            <span class="xin iconfont icon-xin rf">&nbsp;{{item.like_up}}</span>
-                        </div>
+          <!-- 轮播图开始 -->
+          <mt-swipe :auto="4000" class="swipe">
+            <mt-swipe-item>
+              <router-link to="/">
+                <img src="img/lb1.jpg" alt="" class="swipe-img" />
+              </router-link>
+            </mt-swipe-item>
+            <mt-swipe-item>
+              <router-link to="/">
+                <img src="img/lb2.jpg" alt="" class="swipe-img" />
+              </router-link>
+            </mt-swipe-item>
+          </mt-swipe>
+          <!-- 轮播图结束 -->
+          <!-- 分栏一开始 -->
+          <div class="nav">
+            <ul>
+              <li>
+                <router-link :to="`/album/${Z1[0]}&${B1[0]}`" class="nav-item"
+                  ><span class="color-c3 iconfont icon-zhuanji"></span
+                ></router-link>
+                <span>专辑</span>
+              </li>
+              <li>
+                <router-link to="" class="nav-item"
+                  ><span class="color-c3 iconfont icon-shipin1"></span
+                ></router-link>
+                <span>案例</span>
+              </li>
+              <li>
+                <router-link :to="`/album/${Z1[1]}&${B1[1]}`" class="nav-item"
+                  ><span class="color-c3 iconfont icon-huodong"></span
+                ></router-link>
+                <span>活动</span>
+              </li>
+              <li>
+                <router-link to="/" class="nav-item"
+                  ><span class="color-c3 iconfont icon-daojishi"></span
+                ></router-link>
+                <span>倒计时</span>
+              </li>
+              <li>
+                <router-link to="/" class="nav-item"
+                  ><span class="color-c3 iconfont icon-qiandao"></span
+                ></router-link>
+                <span>签到</span>
+              </li>
+            </ul>
           </div>
-            <!-- 制作人及点赞 -->  
-          <!-- 单一文章结束 -->
-        </mt-tab-container-item>
-      </mt-tab-container>
-    </div>
-    <!-- 主内容区域结束-->
-    <my-footer></my-footer>
+          <!-- 分栏一结束 -->
+
+          <!-- 主内容区域开始-->
+          
+              <mt-navbar v-model="active" class="tabbar">
+                <mt-tab-item class="tab-bar" :id="index+''" v-for="(item, index) of category" :key="index" >{{ item }}</mt-tab-item>
+              </mt-navbar>
+          
+
+          <!-- 住内容开始 -->
+
+          <div class="main">
+            <mt-tab-container v-model="active" swipeable>
+              <mt-tab-container-item :id="active">
+                <!-- 单一文章开始 -->
+                <div class="page" v-for="(item,index) of articles" :key="index">
+                  <!-- 图片 -->
+                              <div>
+                                  <router-link :to="`/message/${item.id}`">
+                                      <img v-lazy="item.img" alt="">
+                                      <p class="span4">{{item.description}}</p>
+                                  </router-link>
+                              </div>
+                              <div class="title-bar clearfix">
+                                  <img class="small-photo" v-lazy="item.header_img" alt="">
+                                  <span class="title">{{item.author}}</span>
+                                  <span class="vip" v-if="item.vip">VIP</span>
+                                  <span class="xin iconfont icon-xin rf">&nbsp;{{item.like_up}}</span>
+                              </div>
+                </div>
+                  <!-- 制作人及点赞 -->  
+                <!-- 单一文章结束 -->
+              </mt-tab-container-item>
+            </mt-tab-container>
+          </div>
+          
+          <!-- 主内容区域结束-->
+        </div>
+       </mt-tab-container-item>
+    </mt-tab-container>
+
+    <mt-tab-container v-model="selected">
+       <mt-tab-container-item id="Case">
+      <my-list></my-list>
+      </mt-tab-container-item>
+    </mt-tab-container>
+
+    <mt-tab-container v-model="selected">
+       <mt-tab-container-item id="Mine">
+        <my-site class="site-index"></my-site>
+       </mt-tab-container-item>
+    </mt-tab-container>
   </div>
+  
 </template>
 <style>
+  .site-index{
+    height: 700px;
+  }
+  .foot>.tabbar{
+        color: #888;
+    }
+  .foot> .mint-tabbar>.mint-tab-item.is-selected{
+        color: pink;
+  }
+  .foot>.tabbar .iconfont{
+        font-size: 22px;
+        margin-bottom: 5px;
+  }
+  .mint-tab-item {
+       padding: 3px 0;
+  }
 .rf{
   float: right;
 }
@@ -113,19 +149,23 @@
   display: block;
   clear: both;
 }
+.index .main{
+   touch-action: pan-y pinch-zoom;
+}
 .index .color-c3 {
   color: pink;
 }
 /* 设置头部 */
 .index > .my-header {
-  background-color: #fff;
-  color: pink;
-
+  background:linear-gradient(to top, #fcfbfa, #fcf4f5);
+  color: #000;
+  
 }
 .index .details_address{
   color:#666;
   width: 100px;
   padding: 9px 18px;
+  background-color: transparent;
 
 }
 .index > .my-header .right {
@@ -186,9 +226,10 @@
   margin-bottom: -1px !important;
 }
 
-.index > .tabbar {
+.tabbar {
   width: 100%;
   padding-top: 10px;
+ 
 }
 
 .index .tabbar > .tab-bar {
@@ -205,6 +246,7 @@
 /* 主内容区域 */
 .index > .main {
   margin-top: 5px;
+  margin-bottom: 55px;
 }
 .index > .main .page .span4 {
   overflow: hidden;
@@ -258,11 +300,13 @@
     margin-right: 10px;
     font-size: 12px;
     line-height: 25px;
+    position: sticky;
 }
 
 
 </style>
 <script>
+
 import areaList from '../assets/area.js';
 import { Toast } from 'vant';
 export default {
@@ -272,11 +316,13 @@ export default {
       category: ["推荐", "时尚星闻", "主题婚礼", "婚纱礼服"],
       articles:[],
       Z1:[1,2],
+      B1:['专辑','活动'],
       height:"",
       show:false,
       province:"",
       city:"",
       country:"",
+      selected:'MianPage',
       areaList
     }
   },

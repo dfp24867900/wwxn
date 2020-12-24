@@ -5,7 +5,7 @@
       title="我的笔记"
       class="note_header"
     >
-      <router-link to="/site" slot="left" >
+      <router-link to="/" slot="left" >
         <mt-button icon='back'></mt-button>
       </router-link> 
     </mt-header>

@@ -21,7 +21,7 @@
       没有搜索到合适的！下面的说不定能找到呦
     </p>
     <div class="list" v-for="(detail, i) of lists" :key="i">
-      <router-link :to="`/detail/${detail.cid}`">
+      <router-link :to="`/details/${detail.cid}`">
         <div><img v-lazy="detail.pic" alt="" /></div>
         <div class="mycontent">
           <p>{{ detail.title }}</p>

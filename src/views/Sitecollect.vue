@@ -5,8 +5,8 @@
       title="我的收藏"
       class="collect_header"
     >
-      <router-link to="/site" slot="left" >
-        <mt-button icon='back'></mt-button>
+      <router-link to="" slot="left" >
+        <mt-button icon='back' @click="didiback"></mt-button>
       </router-link> 
     </mt-header>
     <!-- 顶部选项卡 -->
@@ -198,6 +198,12 @@ export default {
             collect_active:"collect_1"
         }
     },
+    methods:{
+       didiback(){
+            window.history.go(-1);
+        }
+    }
+    ,
     mounted(){        
        //获取地址栏中的参数
        let uid = this.$route.params.uid;

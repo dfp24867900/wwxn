@@ -5,7 +5,7 @@
       title="设置"
       class="set_header"
     >
-      <router-link to="/site" slot="left" >
+      <router-link to="/" slot="left" >
         <mt-button icon='back'></mt-button>
       </router-link> 
     </mt-header>

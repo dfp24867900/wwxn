@@ -2,8 +2,8 @@
   <div id="service">
     <!-- 顶部栏 -->
     <mt-header title="在线客服" fixed>
-      <router-link slot="left" to="/">
-        <mt-button icon="back"></mt-button>
+      <router-link slot="left" to="">
+        <mt-button icon="back" @click="didiback"></mt-button>
       </router-link>
     </mt-header>
     <!-- 消息展示 -->
@@ -73,7 +73,6 @@ export default {
       faceList: [],
       testContents: [
         "你想咨询点什么",
-        "这些价格上都是有差异的",
         "这个问题还没遇到过",
         "你说什么，我听不明白",
         "我们尽快为您解决",
@@ -81,12 +80,16 @@ export default {
         "当前客服忙",
         "您还有什么咨询的吗",
         "正在查询",
-        "gone with the wind",
+        "稍等片刻，马上就好",
+        "由于查询数据需要一写时间，稍等一下",
       ],
       avatar:""
     };
   },
   methods: {
+     didiback(){
+            window.history.go(-1);
+        },
     // 表情事件
     face() {
       this.faceShow = !this.faceShow;

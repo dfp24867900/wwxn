@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Address from '../components/Address.vue'
 import List from '../views/List.vue'
 import Service from '../views/Service.vue'
 import Login from '../views/Login.vue'
@@ -21,14 +20,14 @@ import Index from '../views/Index.vue'
 import Album from '../views/Album.vue'
 import Message from '../components/Message.vue'
 
-import Detail from '../views/Detail.vue'
+import Details from '../views/Details.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/detail',
-    component: Detail
+    path: '/details/:id',
+    component: Details
   },
   {
     path: '/siteback',
@@ -63,42 +62,36 @@ const routes = [
     component: Site
   },
   {
-    path: '/siteshopping',
+    path: '/siteshopping/:uid',
     component: Shopping
   },
   {
-    path: '/sitecollect',
+    path: '/sitecollect/:uid',
     component: Sitecollect
   },
-  // {path: '/', name: 'Home', component: Home },
-  // { path: '/', name: 'Home', component: Home },
-  { path: "/address", component: Address },
   { path: "/list", component: List },
   { path: '/service', name: 'Service', component: Service },
   // {path: '/', name: 'Home', component: Home },
-  {path: '/search', name: 'Search', component: Search },
-  { path: "/address", component: Address },
+  { path: '/search', name: 'Search', component: Search },
+  // { path: "/address", component: Address },
+  // { path: "/address",             component: Address },
   { path: "/searchlist/:keyword", component: SearchList },
   { path: "/list/:keyword", component: List },
   { path: '/service', name: 'Service', component: Service },
-  { path: "/address", component: Address },
   { path: "/list", component: List },
   { path: '/service', name: 'Service', component: Service },
   { path: '/search', name: 'Search', component: Search },
   {
     path: '/about',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   { path: "/login", component: Login },
-  {path:"/register",component:Register},
+  { path: "/register", component: Register },
   { path: "/login", component: Login },
   { path: "/register", component: Register },
   {
-    path: '/message',
+    path: '/message/:id',
     component: Message
   },
 

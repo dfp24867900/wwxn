@@ -53,7 +53,7 @@ export default {
         //获取主页传递的参数
         let id = this.$route.params.id;
         //发送请求
-        this.axios.get('/alb',{
+        this.axios.get('/index/alb',{
             params:{
                 id:id
             }

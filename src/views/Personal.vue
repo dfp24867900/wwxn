@@ -14,7 +14,7 @@
         <p>
           <img src="../assets/image/site/site_right.png" alt="" />
         </p>
-        <img src="../assets/image/site/site_avatar.jpg" alt="" />
+        <img :src="require(`../assets/image/site/avatar/${info.avatar}`)" alt="" />
       </div>
       <!-- 头像选择 -->
       <mt-actionsheet :actions="actions" v-model="chooseavatar">
@@ -25,12 +25,12 @@
         <p>
           <img src="../assets/image/site/site_right.png" alt="" />
         </p>
-        <p>Z-sum</p>
+        <p>{{info.nickname}}</p>
       </div>
       <!-- 电话 -->
       <div class="personal">
         <p>电话号码</p>
-        <p>15988755642</p>
+        <p>{{info.phone}}</p>
       </div>
       <!-- 性别 -->
       <div class="personal" @click="sex = true">
@@ -200,7 +200,11 @@ textarea{
 
 <script>
 import { Toast } from "vant";
+import {mapState} from 'vuex';
 export default {
+  computed:{
+    ...mapState(['isLogined','info']),
+  },
   data() {
     return {
       manifesto:'',

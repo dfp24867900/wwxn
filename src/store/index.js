@@ -2,17 +2,21 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios';
 
+//注册成为Vue的插件
 Vue.use(Vuex)
 
+//通过构造函数来创建Vuex的Store(仓库)
 export default new Vuex.Store({
+  //各个组件中共享的数据
   state: {
-    isLogined:localStorage.getItem('isLogined') || 0,
-    info:JSON.parse(localStorage.getItem('info')) || {},
+    // 标识用户是否已经登录
+    isLogined:0,
+    // 存储登录用户的相关信息
+    info:{},
+    
   },
   getters:{
-    counts(state){
-      return state.friends.length;
-    }
+    
   },
   //改变状态
   mutations: {
@@ -26,16 +30,13 @@ export default new Vuex.Store({
     // 用户注销
     logoutMutation(state){
       state.isLogined = 0;
-      state.info = {};     
-    }
+      state.info = {};
+    },
+    
   },
   //发送异步请求
   actions: {
-    getServerData(context){
-      axios.get('/user').then(res=>{
-          context.commit('addFriendMutation',res.data);
-      });
-    }
+    
   },
   modules: {
   }

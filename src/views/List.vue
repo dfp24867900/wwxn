@@ -63,7 +63,7 @@
              <img src="/img/icon/icon5.png">
              <p>找不到该案例</p>
            </div>
-           <router-link :to="`/detail/${item.cid}`" v-for="(item,index) of list" :key="index">
+           <router-link :to="`/details/${item.cid}`" v-for="(item,index) of list" :key="index">
               <div class="content">
                <img class="content_img" v-lazy="`/img/list/${item.pic}`">
                <p>
@@ -109,18 +109,12 @@ export default {
     }
   },
   methods:{
-    load(){
+    //价格升序
+    price_asc(){
       this.$indicator.open({
       text:'加载中...',
       spinnerType:'fading-circle'
     });
-    setTimeout(()=>{
-    this.$indicator.close();
-    },100)
-    },
-    //价格升序
-    price_asc(){
-      this.load();
       this.list=[];
       this.icon_toggle=false;
       this.axios.get("/list/price_asc").then(result=>{
@@ -133,14 +127,18 @@ export default {
     },
     //价格降序
     price_desc(){
-      this.load();
+     this.$indicator.open({
+      text:'加载中...',
+      spinnerType:'fading-circle'
+    });
       this.list=[];
       this.icon_toggle=true;
       this.axios.get("/list/price_desc").then(result=>{
         let arr=result.data.results;
         arr.forEach(elem=>{
           this.list.push(elem)
-        })
+        });
+        this.$indicator.close();
       })
     },
     //筛选分类
@@ -148,17 +146,24 @@ export default {
       this.show=true;
     },
     defaults(){
-      this.load();
+      this.$indicator.open({
+      text:'加载中...',
+      spinnerType:'fading-circle'
+    });
       this.found=false;
       this.list=[];
       this.axios.get("/list/defaults").then(result=>{
       console.log(result.data);
       this.list=result.data.results;
+      this.$indicator.close();
     })
     },
     //浏览量升序
     vistis_asc(){
-      this.load();
+     this.$indicator.open({
+      text:'加载中...',
+      spinnerType:'fading-circle'
+    });
       this.found=false;
        this.list=[];
        this.icon_vistis=false;
@@ -167,11 +172,16 @@ export default {
         arr.forEach(elem=>{
           this.list.push(elem);
         })
+        this.$indicator.close();
        })
     },
     //浏览量降序
     vistis_desc(){
-      this.load();
+      // this.load();
+      this.$indicator.open({
+      text:'加载中...',
+      spinnerType:'fading-circle'
+    });
       this.found=false;
       this.list=[];
       this.icon_vistis=true;
@@ -179,12 +189,16 @@ export default {
         let arr=result.data.results;
         arr.forEach(elem=>{
           this.list.push(elem);
-        })
+        });
+        this.$indicator.close();
       })
   },
   //确认触发按钮事件,获取后台信息
   confirm(){
-    this.load();
+   this.$indicator.open({
+      text:'加载中...',
+      spinnerType:'fading-circle'
+    });
     this.show=false;
     this.list=[];
     this.screen=[];
@@ -198,8 +212,6 @@ export default {
       this.screen.push({price:this.screen3});
     }
     console.log(this.screen);
-   //声明一个空数组
-    let arr1=[];
    //数组去重
     // for(var i=0;i<this.screen.length;i++){
     //   if(arr1.indexOf(this.screen[i])==-1){
@@ -218,7 +230,8 @@ export default {
           console.log(1);
          this.list=[];
          this.found=true;
-        } 
+        }
+        this.$indicator.close();
       })
     //})
     }else{
@@ -242,6 +255,7 @@ export default {
       btn.style.color="#999";
     }
   },
+  //场景
   screen_1(e,value){
      //e.target获取当前正在点击的元素 
     let btn=e.target;
@@ -258,6 +272,7 @@ export default {
        btn.style.color="#999";
     }
   },
+  //风格
   screen_2(e,value){
     let btn=e.target;
     if(this.screen2!=this.manner[value]){
@@ -272,6 +287,7 @@ export default {
       btn.style.color="#999";
     }
   },
+  //价格
   screen_3(e,value){
     let btn=e.target;
     if(this.screen3!=this.price[value]){
@@ -282,7 +298,7 @@ export default {
       switch(value){
         case 0 : this.screen3='0-5000';
         break; 
-         case 1 :this.screen3='5000-10000';
+        case 1 :this.screen3='5000-10000';
         break; 
          case 2 :this.screen3='10000-20000';
         break; 
@@ -303,28 +319,29 @@ export default {
       text:'加载中...',
       spinnerType:'fading-circle'
     });
-    setTimeout(()=>{
-      this.$indicator.close();
-    },500)
+    // setTimeout(()=>{
+    //   this.$indicator.close();
+    // },500)
     this.found=false;
     this.axios.get("/list/defaults").then(result=>{
       console.log(result.data);
       this.list=result.data.results;
+      this.$indicator.close();
     })
   }
 }
 </script>
 
-<style scoped>
+<style>
 /* 不能发现案例 */
-.not_found{
+.bride_list .not_found{
   text-align: center;
   margin-top: 170px;
 }
-.my_span{
+.bride_list .my_span{
   color: #999;
 }
-.reset{
+.bride_list .reset{
   margin-left: 25px;
   height: 40px;
   width: 150px;
@@ -335,7 +352,7 @@ export default {
   outline: nonr;
   border-radius: 5px;
 }
-.confirm{
+.bride_list .confirm{
   height: 40px;
   width: 150px;
   background:#57d2cd ;
@@ -345,16 +362,16 @@ export default {
   color: #fff;
   margin-left: 25px;
 }
-.mint-tabbar{
+.bride_list .mint-tabbar{
   background-image: none !important;
   background: transparent !important;
 }
-.flex-row{
+.bride_list .flex-row{
   margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
 }
-.item,.item1{
+ .bride_list .item,.item1{
   display: inline-block;
   height: 30px;
   width: 70px;
@@ -367,23 +384,23 @@ export default {
   padding: 0;
   border: 0;
 }
-.title{
+.bride_list .title{
   display: inline-block;
   font-size: 18px;
   font-weight: bold;
   text-align: left !important;
   margin-left: 10px;
 }
-.content1{
+.bride_list .content1{
   padding: 16px 16px 160px;
 }
-.mint-header{
-  background-color: #c8caee !important;
-  font-size: 19px !important;
+.bride_list .mint-header{
+  background-color: #ffc0cb !important;
+  font-size: 16px !important;
   color: #000;
   font-weight: bold;
 }
-.top{
+.bride_list .top{
   position: fixed;
   top: 0;
   right: 0;
@@ -391,56 +408,56 @@ export default {
   z-index: 333;
 }
 /* 图标的样式 */
-.icon_img{
+.bride_list .icon_img{
   width: 0.7rem;
   height: 0.7rem;
   vertical-align: top;
 }
-.icon_img1{
+.bride_list .icon_img1{
   width: 0.6rem;
   height: 0.6rem;
   vertical-align: baseline;
 }
-.mint-navbar .mint-tab-item{
+.bride_list .mint-navbar .mint-tab-item{
   font-size: 15px;
   font-weight: bold;
 }
-.main{
+.bride_list .main{
   margin-top: 87px;
 }
-.content{
+.bride_list .content{
   padding: 10px 20px;
 }
-.content_img{
+.bride_list .content_img{
   width: 335px;
   height: 200px;
 }
-.content>p:nth-child(2){
+.bride_list .content>p:nth-child(2){
   margin-top: 10px;
 }
-.content>p:nth-child(2)>span:first-child{
+.bride_list .content>p:nth-child(2)>span:first-child{
   display: inline-block;
   width: 11rem;
   font-size: 18px;
   font-weight: bold;
   color: #333;
 }
-.content>p:nth-child(2)>span:nth-child(2){
+.bride_list .content>p:nth-child(2)>span:nth-child(2){
   font-size: 18px;
   color: rgb(231, 46, 46);
   font-weight: bold;
   margin-left: 4.7rem;
 }
-.content>p:nth-child(3){
+.bride_list .content>p:nth-child(3){
   margin-top: 10px;
 }
-.content>p:nth-child(3)>span:first-child{
+.bride_list .content>p:nth-child(3)>span:first-child{
   display: inline-block;
   width: 11rem;
   font-size: 12px;
   color: #999999;
 }
-.watch_icon{
+.bride_list .watch_icon{
   width: 1rem;
   height: 1rem;
   vertical-align: top;

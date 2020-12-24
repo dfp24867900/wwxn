@@ -14,6 +14,8 @@ app.listen(3000);
 const user =require('./routes/user')
 const index =require('./routes/index')
 const list =require('./routes/list')
+const details =require('./routes/details')
+
 
 //使用body-parser中间件
 app.use(bodyParser.urlencoded({
@@ -28,3 +30,4 @@ app.use(cors({
 app.use("/user", user);
 app.use("/index",index)
 app.use("/list",list);
+app.use("/details",details);

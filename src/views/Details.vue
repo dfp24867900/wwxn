@@ -8,7 +8,7 @@
       <router-link to="/search" slot="right"
         ><mt-button icon="search"></mt-button
       ></router-link>
-    </mt-header>
+    </mt-header> 
    <!-- 头部导航栏结束 -->
        <!-- 轮播图开始 -->
         <div>
@@ -232,8 +232,8 @@
   <footer>
     <van-goods-action v-show='isShow'>
       <van-goods-action-icon  icon='chat-o' text='客服' color="#ee0a24" to='/service' dot/>
-       <van-goods-action-icon  icon='gift-o' text='收藏' color="#ee0a24" :to='`/sitecollect/${info.uid}`' dot/>
-      <van-goods-action-icon  icon='balance-o' text='订单区' color="#ee0a24" :to='`/siteshopping/${info.uid}`' dot/>
+       <van-goods-action-icon  icon='gift-o' text='收藏' color="#ee0a24" to='' @click="skip1(info.uid)"  dot/>
+      <van-goods-action-icon  icon='balance-o' text='订单区' color="#ee0a24" to='' @click="skip(info.uid)"   dot/>
       <van-goods-action-button  color="#969799" text='加入收藏' @click="addtofavorites(info.uid)"
      
       />
@@ -242,7 +242,7 @@
   </footer>
   <!-- 底部导航栏结束 -->
      <div id="tishi">
-      请先登录:{{dateTime}} 跳转登录
+        请先登录:{{dateTime}} ,帮您转接中ing....
     </div>
 </div>
 
@@ -574,6 +574,38 @@ export default {
   },
 
   methods: {
+    // 封装
+    packaging(){
+      tishi.style.display="block";
+        var time = setInterval(() => {
+          if (this.dateTime <= 0) {
+            this.$router.push("/login");
+            clearInterval(time);
+          } else {
+            this.dateTime -= 1;
+          }
+        }, 1000);
+    },
+    // 收藏
+
+skip1(d){
+     this.uid=d
+    if(this.$store.state.isLogined !== 1){
+       this.packaging()
+      }else {
+        this.$router.push(`/sitecollect/${this.uid}`)
+      }
+    },
+
+    // 预定跳转
+    skip(c){
+     this.uid=c
+    if(this.$store.state.isLogined !== 1){
+      this.packaging()
+      }else {
+        this.$router.push(`/siteshopping/${this.uid}`)
+      }
+    },
   // 立即预定
   addtoshop(b){
     this.uid=b
@@ -597,15 +629,7 @@ export default {
      });
     
       }else{
-        tishi.style.display="block";
-        var time = setInterval(() => {
-          if (this.dateTime <= 0) {
-            this.$router.push("/login");
-            clearInterval(time);
-          } else {
-            this.dateTime -= 1;
-          }
-        }, 1000);
+       packaging()
       }
   },
 
@@ -633,15 +657,7 @@ export default {
      });
     
       } else{
-        tishi.style.display="block";
-        var time = setInterval(() => {
-          if (this.dateTime <= 0) {
-            this.$router.push("/login");
-            clearInterval(time);
-          } else {
-            this.dateTime -= 1;
-          }
-        }, 1000);
+       packaging()
       }
      
       },

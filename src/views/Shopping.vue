@@ -38,7 +38,7 @@
         合计:
         <span>¥{{num.toFixed(2)}}</span>
       </p>
-      <button>结算</button>  
+      <button @click="togold">结算</button>  
     </div>
 </div>  
 </template>
@@ -175,6 +175,9 @@ export default {
             window.history.go(-1);
         }
     ,
+    togold(){
+      this.$router.push('/sitegold')
+    },
    sum(){
      for(var i=0;i<this.shops.length;i++){
        this.num+=parseInt(this.shops[i].price);

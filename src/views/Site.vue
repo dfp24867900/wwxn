@@ -10,7 +10,12 @@
             alt=""
           />
         </p>
-        <p>
+        <p v-if="isjoin==1">
+          <router-link to="/join">
+            <img :src="require(`../assets/image/site/avatar/${resu.avatar}`)" alt="" />
+          </router-link>
+        </p>
+        <p v-else>
           <router-link to="/join">
             <img src="../assets/image/site/site_add.png" alt="" />
           </router-link>
@@ -264,8 +269,9 @@
   position: absolute;
   top: 8px;
   left: 45px;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
   background-color: #fff;
   box-shadow: 2px 2px 8px 1px #f5f5f5;
   border-radius: 50%;
@@ -273,10 +279,8 @@
 }
 #siteheader > div:first-child > p:nth-child(2) img {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  width: 15px;
-  height: 15px;
+  width: 35px;
+  height: 35px;
 }
 #siteheader > div:first-child > p:nth-child(3) {
   position: absolute;
@@ -388,7 +392,7 @@
 import { mapState } from "vuex";
 export default {
   computed: {
-    ...mapState(["isLogined", "info"]),
+    ...mapState(["isLogined", "info",'isjoin','resu']),
   },
   data() {
     return {

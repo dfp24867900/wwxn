@@ -11,8 +11,11 @@ export default new Vuex.Store({
   state: {
     // 标识用户是否已经登录
     isLogined:0,
+    isjoin:0,
     // 存储登录用户的相关信息
     info:{},
+    //储存邀请用户的相关信息
+    resu:{}
     
   },
   getters:{
@@ -27,10 +30,18 @@ export default new Vuex.Store({
       //将获取到的登录用户信息存储到info中去
       state.info = payload;
     },
+    //用户邀请信息
+    joinMutation(state,payload){
+      //改变用户登录的状态
+      state.isjoin = 1;
+      //将获取到的邀请用户信息存储到resu中去
+      state.resu = payload;
+    },
     // 用户注销
     logoutMutation(state){
       state.isLogined = 0;
       state.info = {};
+      state.resu = {};
     },
     
   },

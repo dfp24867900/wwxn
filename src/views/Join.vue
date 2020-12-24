@@ -165,7 +165,10 @@ export default {
           } else {
             this.avatar=res.data.result
             this.phone="";
-            this.c=1
+            this.c=1;
+            this.$store.commit('joinMutation',res.data.result);
+            localStorage.setItem('isjoin',1);
+            localStorage.setItem('resu',JSON.stringify(res.data.result));
             this.$router.push('/site',this.avatar)
           }
         })

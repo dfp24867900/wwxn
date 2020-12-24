@@ -5,7 +5,7 @@
       title="意见反馈"
       class="back_header"
     >
-      <router-link to="/" slot="left" >
+      <router-link to="/site" slot="left" >
         <mt-button icon='back'></mt-button>
       </router-link> 
     </mt-header>

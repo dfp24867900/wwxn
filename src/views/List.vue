@@ -3,9 +3,7 @@
      <div class="top">
        <!-- 顶部 -->
        <mt-header title="案例">
-         <router-link to="/" slot="left">
-           <mt-button icon="back"></mt-button>
-         </router-link>
+         
        </mt-header>
        <!-- 顶部结束 -->
        <!-- 顶部导航栏 -->
@@ -390,6 +388,7 @@ export default {
   font-size: 16px !important;
   color: #000;
   font-weight: bold;
+  border-bottom: 1px solid #e8e8e8;
 }
 .bride_list .top{
   position: fixed;
@@ -415,6 +414,7 @@ export default {
 }
 .bride_list .main{
   margin-top: 87px;
+  margin-bottom: 55px;
 }
 .bride_list .content{
   padding: 10px 20px;
@@ -422,6 +422,12 @@ export default {
 .bride_list .content_img{
   width: 335px;
   height: 200px;
+}
+.bride_list .mint-navbar .mint-tab-item{
+  padding: 14px;
+}
+.bride_list .mint-header-title{
+  font-size: 14px;
 }
 .bride_list .content>p:nth-child(2){
   margin-top: 10px;
@@ -437,7 +443,7 @@ export default {
   font-size: 18px;
   color: rgb(231, 46, 46);
   font-weight: bold;
-  margin-left: 5.7rem;
+  margin-left: 4.7rem;
 }
 .bride_list .content>p:nth-child(3){
   margin-top: 10px;
@@ -452,6 +458,6 @@ export default {
   width: 1rem;
   height: 1rem;
   vertical-align: top;
-  margin-left: 4rem;
+  margin-left: 3rem;
 }
 </style>

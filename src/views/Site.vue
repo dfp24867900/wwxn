@@ -1,19 +1,22 @@
 <template>
   <div id="te">
     <!-- 页面顶部位置的内容区域 -->
-    <div id="siteheader" v-if='isLogined == 1'>
+    <div id="siteheader" v-if="isLogined == 1">
       <!-- 头像区域 -->
-      <div >
+      <div>
         <p>
-          <img :src="require(`../assets/image/site/avatar/${info.avatar}`)" alt="" />
+          <img
+            :src="require(`../assets/image/site/avatar/${info.avatar}`)"
+            alt=""
+          />
         </p>
         <p>
           <router-link to="/join">
             <img src="../assets/image/site/site_add.png" alt="" />
           </router-link>
         </p>
-        <p>{{info.nickname}}</p>
-        <p>{{info.address}}|{{info.data}}</p>
+        <p>{{ info.nickname }}</p>
+        <p>{{ info.address }}|{{ info.data }}</p>
       </div>
       <!-- 编辑资料 -->
       <div>
@@ -33,7 +36,7 @@
         </router-link>
         <router-link to="">
           <p>
-            <img src="../assets/image/site/avatar/avatar_de.jpg" alt="">
+            <img src="../assets/image/site/avatar/avatar_de.jpg" alt="" />
           </p>
         </router-link>
       </div>
@@ -41,7 +44,7 @@
     <!-- 中间选项区 -->
     <div>
       <mt-navbar class="site_nav">
-        <router-link to="/sitenote" v-if='isLogined == 1'>
+        <router-link to="/sitenote" v-if="isLogined == 1">
           <mt-tab-item>
             <img src="../assets/image/site/site_note.png" alt="" slot="icon" />
             笔记
@@ -53,7 +56,7 @@
             笔记
           </mt-tab-item>
         </router-link>
-        <router-link :to="`/sitecollect/${info.uid}`" v-if='isLogined == 1'>
+        <router-link :to="`/sitecollect/${info.uid}`" v-if="isLogined == 1">
           <mt-tab-item>
             <img
               src="../assets/image/site/site_collect.png"
@@ -73,7 +76,7 @@
             收藏
           </mt-tab-item>
         </router-link>
-        <router-link to="/sitemsg" v-if='isLogined == 1'>
+        <router-link to="/sitemsg" v-if="isLogined == 1">
           <mt-tab-item>
             <img src="../assets/image/site/site_news.png" alt="" slot="icon" />
             消息
@@ -101,7 +104,7 @@
     <!-- 下方菜单选项区 -->
     <div id="site_menu">
       <!-- 我的订单 -->
-      <router-link :to="`/siteshopping/${info.uid}`" v-if='isLogined == 1'>
+      <router-link :to="`/siteshopping/${info.uid}`" v-if="isLogined == 1">
         <div>
           <img src="../assets/image/site/site_order.png" alt="" />
           <p>
@@ -120,7 +123,7 @@
         </div>
       </router-link>
       <!-- 我的钱包 -->
-      <router-link to="/sitegold" v-if='isLogined == 1'>
+      <router-link to="/sitegold" v-if="isLogined == 1">
         <div>
           <img src="../assets/image/site/site_wallet.png" alt="" />
           <p>
@@ -139,7 +142,7 @@
         </div>
       </router-link>
       <!-- 我的客服 -->
-      <router-link to="/service" v-if='isLogined == 1'>
+      <router-link to="/service" v-if="isLogined == 1">
         <div>
           <img src="../assets/image/site/site_service.png" alt="" />
           <p>
@@ -158,7 +161,7 @@
         </div>
       </router-link>
       <!-- 意见反馈 -->
-      <router-link to="/siteback" v-if='isLogined == 1'>
+      <router-link to="/siteback" v-if="isLogined == 1">
         <div>
           <img src="../assets/image/site/site_back.png" alt="" />
           <p>
@@ -177,7 +180,7 @@
         </div>
       </router-link>
       <!-- 设置 -->
-      <router-link to="/siteset" v-if='isLogined == 1'>
+      <router-link to="/siteset" v-if="isLogined == 1">
         <div>
           <img src="../assets/image/site/site_set.png" alt="" />
           <p>
@@ -202,7 +205,8 @@
 
 <style>
 /* 顶部内容区域 */
-#siteheader,#sitehea{
+#siteheader,
+#sitehea {
   position: absolute;
   top: 0;
   left: 0;
@@ -211,14 +215,15 @@
   background-color: #ff93a0;
   z-index: 8;
 }
-#siteheader > div:first-child ,#sitehea > div  {
+#siteheader > div:first-child,
+#sitehea > div {
   width: 220px;
   height: 60px;
   position: absolute;
   top: 40px;
   left: 20px;
 }
-#sitehea > div > a > p{
+#sitehea > div > a > p {
   width: 30%;
   height: 50%;
   text-align: center;
@@ -228,10 +233,10 @@
   top: 30%;
   left: 90%;
 }
-#sitehea > div > a:first-child > p{
+#sitehea > div > a:first-child > p {
   left: 50%;
 }
-#sitehea > div >a:nth-child(3) > p{
+#sitehea > div > a:nth-child(3) > p {
   top: 5%;
   left: 30px;
   width: 60px;
@@ -239,7 +244,7 @@
   border-radius: 50%;
   overflow: hidden;
 }
-#sitehea > div >a:nth-child(3) > p >img{
+#sitehea > div > a:nth-child(3) > p > img {
   width: 60px;
   height: 60px;
 }
@@ -380,13 +385,14 @@
 </style>
 
 <script>
-import {mapState} from 'vuex';
+import { mapState } from "vuex";
 export default {
-  computed:{
-    ...mapState(['isLogined','info']),
+  computed: {
+    ...mapState(["isLogined", "info"]),
   },
   data() {
     return {
+      selected:'MianPage',
     };
   },
 };

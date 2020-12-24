@@ -121,25 +121,6 @@
         <my-site class="site-index"></my-site>
        </mt-tab-container-item>
     </mt-tab-container>
-    
-    <div class="foot">
-        <mt-tabbar fixed v-model="selected" class="tabbar">
-            <mt-tab-item id="MianPage">
-                <div class="iconfont icon-shouye"></div>
-                <span>首页</span>
-            </mt-tab-item>
-
-            <mt-tab-item id="Case">
-                <div class="iconfont icon-xingqiu2"></div>
-                <span>案例</span>
-            </mt-tab-item>
-
-            <mt-tab-item id="Mine">
-                <div class="iconfont icon-wo"></div>
-                <span>我的</span>
-            </mt-tab-item>
-        </mt-tabbar>
-    </div>
   </div>
   
 </template>

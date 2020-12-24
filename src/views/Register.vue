@@ -1,7 +1,7 @@
 .<template>
   <div id="rigister">
     <mt-header title="用户注册" class="reg_header">
-      <router-link to="/" slot="left">
+      <router-link to="/login" slot="left">
         <mt-button icon="back"></mt-button>
       </router-link>
     </mt-header>

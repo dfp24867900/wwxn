@@ -35,7 +35,7 @@
         margin-top: 40px;
     }
     .message>.my-header{
-        background-color: #fff !important;
+        background: linear-gradient(to top, #fcfbfa, #fcf4f5);
         color: pink !important;
         
     }

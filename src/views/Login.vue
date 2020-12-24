@@ -99,6 +99,7 @@ export default {
         let str = this.qs.stringify(obj);     
         this.axios.post('/user/login',str).then(res=>{
             //登录失败
+            console.log(res)
             if(res.data.code ==  201){
               this.$messagebox.confirm('登录失败,是否注册新用户','提示信息').then(()=>{
                 this.$router.push('/register');
@@ -110,8 +111,7 @@ export default {
               this.$store.commit('loginMutation',res.data.info);
               localStorage.setItem('isLogined',1);
               localStorage.setItem('info',JSON.stringify(res.data.info));
-              this.$router.push('/');
-              
+              this.$router.push('/index');             
             }
         });
       }
@@ -122,7 +122,7 @@ export default {
 
 <style>
 .log_header{
-  background-color: #ffffff !important;
+  background: linear-gradient(to top, #fcfbfa, #fcf4f5);
   color: #333 !important;
   font-family: "Microsoft Yahei";
   font-size: 16px !important;

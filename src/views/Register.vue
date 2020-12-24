@@ -12,7 +12,7 @@
           type="text"
           placeholder="请输入注册的手机号"
           v-model="phone"
-          :attr="{ maxlength: 16, autocomplete: 'off' }"
+          :attr="{ maxlength: 11, autocomplete: 'off' }"
           @blur.native.capture="checkPhone"
           :state="phoneState"
           @keydown.13="userregister"
@@ -212,7 +212,7 @@ export default {
 
 <style>
 .reg_header{
-  background-color: #ffffff !important;
+  background: linear-gradient(to top, #fcfbfa, #fcf4f5);
   color: #333 !important;
   font-family: "Microsoft Yahei";
   font-size: 16px !important;

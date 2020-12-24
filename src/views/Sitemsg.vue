@@ -5,7 +5,7 @@
       title="消息"
       class="msg_header"
     >
-      <router-link to="/" slot="left" >
+      <router-link to="/site" slot="left" >
         <mt-button icon='back'></mt-button>
       </router-link> 
     </mt-header>
@@ -17,7 +17,7 @@
             获赞
           </mt-tab-item>
         </router-link>
-        <router-link to="/sitecollect">
+        <router-link :to="`/sitecollect/${info.uid}`" >
           <mt-tab-item>
             <img src="../assets/image/site/msg_review.png" alt="" slot="icon" />
             评论
@@ -36,7 +36,7 @@
 <style>
   /* 定义页面顶部的样式 */
   .msg_header{
-    background-color: #ffffff!important;
+    background: linear-gradient(to top, #fcfbfa, #fcf4f5);
     color: #333 !important;
     font-family:"Microsoft Yahei";
     font-size: 16px !important;
@@ -61,11 +61,15 @@
 </style>
 
 <script>
+import { mapState } from "vuex";
 export default {
   data(){
     return{
       msg_active:"msg_1"
     }
-  }
+  },
+  computed: {
+    ...mapState(["isLogined", "info"]),
+  },
 }
 </script>

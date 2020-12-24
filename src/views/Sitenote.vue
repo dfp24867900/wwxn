@@ -5,7 +5,7 @@
       title="我的笔记"
       class="note_header"
     >
-      <router-link to="/" slot="left" >
+      <router-link to="/site" slot="left" >
         <mt-button icon='back'></mt-button>
       </router-link> 
     </mt-header>
@@ -34,7 +34,7 @@
 <style>
   /* 定义页面顶部的样式 */
   .note_header{
-    background-color: #ffffff!important;
+    background: linear-gradient(to top, #fcfbfa, #fcf4f5);
     color: #333 !important;
     font-family:"Microsoft Yahei";
     font-size: 16px !important;

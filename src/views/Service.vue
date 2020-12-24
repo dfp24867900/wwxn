@@ -179,7 +179,7 @@ export default {
 
 <style>
 #service header {
-  background-color: #fff;
+   background:linear-gradient(to top, #fcfbfa, #fcf4f5) !important;
   color: black;
   border-bottom: 1px solid #ccc;
 }

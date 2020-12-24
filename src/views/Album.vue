@@ -1,7 +1,7 @@
 <template>
     <div class="album">
         <!-- 头部 -->
-        <mt-header title="专辑" fixed class="my-header">
+        <mt-header title="专辑&活动" fixed class="my-header">
             <router-link to="" slot="left" >
                 <mt-button icon="back" @click="didiback"></mt-button>
             </router-link>
@@ -16,7 +16,7 @@
 </template>
 <style>
     .album>.my-header{
-        background-color: #fff !important;
+        background:linear-gradient(to top, #fcfbfa, #fcf4f5);
         color: pink !important;
         box-shadow: 0 1px 1px #ccc;
     }

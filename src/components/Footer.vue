@@ -25,6 +25,17 @@
     <a
       href="javascript:;"
       class="guide_item"
+      :class="{ on: `/album/${Z1[1]}&${B1[1]}` === $route.path }"
+      @click="goTo(`/album/${Z1[1]}&${B1[1]}`)"
+    >
+      <span class="item_icon">
+        <i class="iconfont icon-huodong"></i>
+      </span>
+      <span>活动</span>
+    </a>
+    <a
+      href="javascript:;"
+      class="guide_item"
       :class="{ on: '/site' === $route.path }"
       @click="goTo('/site')"
     >
@@ -39,7 +50,8 @@
 export default {
   data() {
     return {
-      
+      Z1:[1,2],
+      B1:['专辑','活动'],
     }
   },
   methods: {

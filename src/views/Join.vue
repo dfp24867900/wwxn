@@ -1,7 +1,7 @@
 <template>
   <div id="join">
     <mt-header title="邀请另一半" class="join_header">
-      <router-link to="/" slot="left">
+      <router-link to="/site" slot="left">
         <mt-button icon="back"></mt-button>
       </router-link>
     </mt-header>
@@ -155,9 +155,6 @@ export default {
   methods:{
     join(){
       if(this.phone.length == 11){
-        // let phone = this.phone;
-        // console.log(phone)
-        // let data={phone:this.phone}
         this.axios.get(`/user/join?phone=${this.phone}`).then(res=>{
           if(res.data.code == 0){
              this.$toast({
@@ -169,6 +166,7 @@ export default {
             this.avatar=res.data.result
             this.phone="";
             this.c=1
+            this.$router.push('/site',this.avatar)
           }
         })
       }

@@ -12,7 +12,7 @@
     </div>
     <!-- 文字说明 -->
     <div>
-      <p>
+      <p class="text">
         是一家专注于定制婚礼的网站，价格透明，无中间差价，新人可以通过找我婚礼轻松找到满意的婚礼人（策划师、主持人、摄影师、摄像师、化妆师等），避开中间环节直接在线预订婚礼。
       </p>
     </div>
@@ -21,7 +21,7 @@
 
 <style >
 #ab > .ab_header {
-  background-color: #ffffff !important;
+  background: linear-gradient(to top, #fcfbfa, #fcf4f5);
   color: #333 !important;
   font-family: "Microsoft Yahei";
   font-size: 16px !important;
@@ -44,5 +44,10 @@
   #ab > div > img {
     width: 667px;
   }
+}
+.text{
+  color:#666;
+  padding:5px;
+  line-height:25px;
 }
 </style>

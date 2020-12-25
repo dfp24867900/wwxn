@@ -73,6 +73,7 @@ export default {
   width: 100%;
   height: 50px;
   display: flex;
+  border-top: 1px solid #e8e8e8;
 }
 .guide_item {
   display: flex;

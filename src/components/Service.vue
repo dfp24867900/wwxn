@@ -2,7 +2,6 @@
   <div class="app">
     <!-- 客服头标题 -->
     <div class="xw-header">
-      
       <div class="xw-header-content" @touchstart="showInfo">
         <div class="xw-header-back">
         <mt-button icon="back" class="xw-header-title" @click="back"

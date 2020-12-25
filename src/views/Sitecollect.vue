@@ -204,6 +204,7 @@ export default {
         }
     }
     ,
+<<<<<<< HEAD
     mounted(){    
       if(this.$route.params.uid2){
           //获取地址栏中的参数
@@ -230,6 +231,19 @@ export default {
             this.articles=res.data;
           });
         }
+=======
+    mounted(){        
+       //获取地址栏中的参数
+       let uid = this.$route.params.uid;
+       //向服务器发送请求以获取指定ID的文章信息
+       this.axios.get('/user/sitecollect',{
+           params:{
+               uid:uid
+           }
+       }).then(res=>{
+         this.articles=res.data;
+       });
+>>>>>>> a20b5025246b1a130904f55b608a7511c5308e8d
     }
        
 }

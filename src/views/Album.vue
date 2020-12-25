@@ -66,7 +66,6 @@ export default {
       })
       .then((res) => {
         this.imgArr = res.data.result;
-        console.log(this.imgArr);
       });
   },
 };

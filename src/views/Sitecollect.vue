@@ -204,18 +204,33 @@ export default {
         }
     }
     ,
-    mounted(){        
-       //获取地址栏中的参数
-       let uid = this.$route.params.uid;
-       //向服务器发送请求以获取指定ID的文章信息
-       this.axios.get('/user/sitecollect',{
-           params:{
-               uid:uid
-           }
-       }).then(res=>{
-         this.articles=res.data;
-         console.log(this.articles.length)
-       });
+    mounted(){    
+      if(this.$route.params.uid2){
+          //获取地址栏中的参数
+          let uid = this.$route.params.uid;
+          let uid2 = this.$route.params.uid2;
+          //向服务器发送请求以获取指定ID的文章信息
+          this.axios.get('/user/sitecollect',{
+              params:{
+                  uid:uid,
+                  uid2:uid2
+              }
+          }).then(res=>{
+            this.articles=res.data;
+          });
+        }else{
+          //获取地址栏中的参数
+          let uid = this.$route.params.uid;
+          //向服务器发送请求以获取指定ID的文章信息
+          this.axios.get('/user/sitecollect',{
+              params:{
+                  uid:uid
+              }
+          }).then(res=>{
+            this.articles=res.data;
+          });
+        }
     }
+       
 }
 </script>

@@ -797,7 +797,7 @@ export default {
       })
       .then((res) => {
         this.weddingteam = res.data.results;
-        console.log(res.data.results);
+        // console.log(res.data.results);
       });
 
     //获取价格明细表

@@ -137,7 +137,7 @@ export default {
     // 判断密码
     checkPasssword() {
       let passwordRegExp = /^[\u4e00-\u9fa50-9a-zA-Z]{6,16}$/;
-      console.log("--------", this.upwd);
+      // console.log("--------", this.upwd);
       if (passwordRegExp.test(this.upwd)) {
         this.passwordState = "success";
         return true;
@@ -195,7 +195,7 @@ export default {
       };
         API.register(data)
           .then((res) => {
-            console.log(res);
+            // console.log(res);
             this.$router.push('/login')
           })
           .catch((err) => {

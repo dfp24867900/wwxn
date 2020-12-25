@@ -63,21 +63,21 @@ const routes = [
     meta:{showFooter:true}
   },
   {
-    path: '/siteshopping/:uid',
+    path: '/siteshopping/:uid/:uid2?',
     component: Shopping
   },
   {
-    path: '/sitecollect/:uid',
+    path: '/sitecollect/:uid/:uid2?',
     component: Sitecollect
   },
   { path: '/service', name: 'Service', component: Service },
   { path: '/search', name: 'Search', component: Search },
   { path: "/searchlist/:keyword", component: SearchList },
   // { path: "/list/:keyword", component: List ,meta:{showFooter:true}},
-  { path: '/service', name: 'Service', component: Service },
+  // { path: '/service', name: 'Service', component: Service },
   { path: "/list", component: List,meta:{showFooter:true} },
-  { path: '/service', name: 'Service', component: Service },
-  { path: '/search', name: 'Search', component: Search },
+  // { path: '/service', name: 'Service', component: Service },
+  // { path: '/search', name: 'Search', component: Search },
   {
     path: '/about',
     name: 'About',

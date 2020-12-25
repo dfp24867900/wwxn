@@ -74,7 +74,7 @@
                  <span>#{{item.manner}}#{{item.scene}}#{{item.color}}</span>
                  <img src="/img/icon/icon.png" class="watch_icon">
                  <span class="my_span">{{item.visits}}</span>
-                  </p>
+               </p>
               </div>
            </router-link>
          </mt-tab-container-item>
@@ -414,10 +414,10 @@ export default {
   margin-bottom: 55px;
 }
 .bride_list .content{
-  padding: 10px 20px;
+  padding: 1% 5%;
 }
 .bride_list .content_img{
-  width: 335px;
+  width: 100%;
   height: 200px;
 }
 .bride_list .mint-navbar .mint-tab-item{
@@ -440,7 +440,7 @@ export default {
   font-size: 18px;
   color: rgb(231, 46, 46);
   font-weight: bold;
-  margin-left: 4rem;
+  margin-left: 24%;
 }
 .bride_list .content>p:nth-child(3){
   margin-top: 10px;
@@ -455,6 +455,6 @@ export default {
   width: 1rem;
   height: 1rem;
   vertical-align: top;
-  margin-left: 2.1rem;
+  margin-left: 15%;
 }
 </style>

@@ -220,7 +220,7 @@ VALUES(
    'img/details/xqx/142.jpg&img/details/xqx/143.jpg&img/details/xqx/144.jpg',
    "list11.jpg",
    'img/details/xqx/s01.jpg&img/details/xqx/s02.jpg&img/details/xqx/s03.jpg',
-   'image/avatar/05.jpg',
+   'image/avatar/05.png',
    'Linda',
    "时光匆匆,青春易老",
    "245",

@@ -191,16 +191,34 @@ export default {
    }
   }
   ,
-  mounted(){        
-       let uid = this.$route.params.uid;
-       this.axios.get('/user/siteshopping',{
-           params:{
-               uid:uid
-           }
-       }).then(res=>{
+   mounted(){    
+      if(this.$route.params.uid2){
+          //获取地址栏中的参数
+          let uid = this.$route.params.uid;
+          let uid2 = this.$route.params.uid2;
+          //向服务器发送请求以获取指定ID的商品信息
+          this.axios.get('/user/siteshopping',{
+              params:{
+                  uid:uid,
+                  uid2:uid2
+              }
+          }).then(res=>{
             this.shops=res.data;
-            this.sum()           
-       });
+            this.sum()  
+          });
+        }else{
+          //获取地址栏中的参数
+          let uid = this.$route.params.uid;
+          //向服务器发送请求以获取指定ID的文章信息
+          this.axios.get('/user/siteshopping',{
+              params:{
+                  uid:uid
+              }
+          }).then(res=>{
+            this.shops=res.data;
+            this.sum()  
+          });
+        }
     }
 }
 </script>

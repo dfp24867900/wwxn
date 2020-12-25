@@ -73,14 +73,82 @@ router.post('/login', (req, res) => {
 
 // 收藏界面接口
 router.get('/sitecollect', (req, res) => {
-  // 获取地址栏的URL参数 -- 用户ID
+  if(req.query.uid2){
+      // 获取地址栏的URL参数 -- 用户ID
+    let uid = req.query.uid;
+    let uid2 = req.query.uid2;
+    let coll=[];
+    let sq='?'
+    // 查询特定记录的SQL语句
+    let sql = 'SELECT pid FROM bride_collect WHERE uid in (?,?)';
+    // 执行SQL语句
+    pool.query(sql, [uid,uid2], (error, results) => {
+      if (error) throw error;
+      results.forEach(element => {
+        coll.push(element.pid);
+      });
+      console.log(coll)
+      if(coll.length>1){
+        for(i=0;i<coll.length-1;i++){
+          sq+=',?'
+        }
+        sql = `SELECT * FROM bride_case_list where cid in (${sq})`
+      }else if(coll.length=1){
+        sql = `SELECT * FROM bride_case_list where cid = ?`
+      }
+      
+      pool.query(sql,coll,(err,results)=>{
+        if(err) throw err;
+        res.send(results);
+      })
+      
+    });
+  }else{
+      // 获取地址栏的URL参数 -- 用户ID
+      let uid = req.query.uid;
+      let coll=[];
+      let sq='?'
+      // 查询特定记录的SQL语句
+      let sql = 'SELECT pid FROM bride_collect WHERE uid=?';
+      // 执行SQL语句
+      pool.query(sql, [uid], (error, results) => {
+        if (error) throw error;
+        results.forEach(element => {
+          coll.push(element.pid);
+        });
+        console.log(coll)
+        if(coll.length>1){
+          for(i=0;i<coll.length-1;i++){
+            sq+=',?'
+          }
+          sql = `SELECT * FROM bride_case_list where cid in (${sq})`
+        }else if(coll.length=1){
+          sql = `SELECT * FROM bride_case_list where cid = ?`
+        }
+        
+        pool.query(sql,coll,(err,results)=>{
+          if(err) throw err;
+          res.send(results);
+        })
+        
+      });
+  }
+  
+});
+
+// 订单界面接口
+router.get('/siteshopping', (req, res) => {
+
+  if(req.query.uid2){
+    // 获取地址栏的URL参数 -- 用户ID
   let uid = req.query.uid;
+  let uid2 = req.query.uid2;
   let coll=[];
   let sq='?'
   // 查询特定记录的SQL语句
-  let sql = 'SELECT pid FROM bride_collect WHERE uid=?';
+  let sql = 'SELECT pid FROM bride_shop WHERE uid in (?,?)';
   // 执行SQL语句
-  pool.query(sql, [uid], (error, results) => {
+  pool.query(sql, [uid,uid2], (error, results) => {
     if (error) throw error;
     results.forEach(element => {
       coll.push(element.pid);
@@ -101,37 +169,36 @@ router.get('/sitecollect', (req, res) => {
     })
     
   });
-});
-
-// 订单界面接口
-router.get('/siteshopping', (req, res) => {
-   // 获取地址栏的URL参数 -- 用户ID
-   let uid = req.query.uid;
-   let coll=[];
-   let sq='?'
-   // 查询特定记录的SQL语句
-   let sql = 'SELECT pid FROM bride_shop WHERE uid=?';
-   // 执行SQL语句
-   pool.query(sql, [uid], (error, results) => {
-     if (error) throw error;
-     results.forEach(element => {
-       coll.push(element.pid);
-     });
-     console.log(coll)
-     if(coll.length>1){
-      for(i=0;i<coll.length-1;i++){
-        sq+=',?'
+}else{
+    // 获取地址栏的URL参数 -- 用户ID
+    let uid = req.query.uid;
+    let coll=[];
+    let sq='?'
+    // 查询特定记录的SQL语句
+    let sql = 'SELECT pid FROM bride_shop WHERE uid=?';
+    // 执行SQL语句
+    pool.query(sql, [uid], (error, results) => {
+      if (error) throw error;
+      results.forEach(element => {
+        coll.push(element.pid);
+      });
+      console.log(coll)
+      if(coll.length>1){
+        for(i=0;i<coll.length-1;i++){
+          sq+=',?'
+        }
+        sql = `SELECT * FROM bride_case_list where cid in (${sq})`
+      }else if(coll.length=1){
+        sql = `SELECT * FROM bride_case_list where cid = ?`
       }
-      sql = `SELECT * FROM bride_case_list where cid in (${sq})`
-    }else if(coll.length=1){
-      sql = `SELECT * FROM bride_case_list where cid = ?`
-    }
-     pool.query(sql,coll,(err,results)=>{
-       if(err) throw err;
-       res.send(results);
-     })
-     
-   });
+      
+      pool.query(sql,coll,(err,results)=>{
+        if(err) throw err;
+        res.send(results);
+      })
+      
+    });
+}
  });
 
 //邀请界面接口

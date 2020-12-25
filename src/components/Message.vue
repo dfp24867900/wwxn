@@ -69,7 +69,7 @@ export default {
         //获取主页传递的参数
        
         let id = this.$route.params.id;
-        console.log(id)
+        // console.log(id)
         this.axios.get('/index/msg',{
             params:{
                 id:id 

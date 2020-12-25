@@ -64,12 +64,9 @@ export default {
             msgImgArr:[]
         }
     },
-    
     mounted(){
         //获取主页传递的参数
-       
         let id = this.$route.params.id;
-        console.log(id)
         this.axios.get('/index/msg',{
             params:{
                 id:id 
@@ -78,7 +75,6 @@ export default {
             this.msgImgArr.push(res.data.result.imgOne);
             this.msgImgArr.push(res.data.result.imgTwo);
         })
-     
     }
 }
 </script>

@@ -101,7 +101,6 @@ export default {
         .get("/list/historyword", { params: { keyword: this.keyword } })
         .then((result) => {
           this.historySearchs = result.data.result;
-          // console.log(result.data.result)
           result.data.result.forEach((aa) => {
             this.history_word.push(aa.history_word);
           });

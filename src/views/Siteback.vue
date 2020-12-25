@@ -13,10 +13,6 @@
     <div id="siteback">
       <p>问题和意见</p>
       <p contenteditable="true">
-<<<<<<< HEAD
-       
-=======
->>>>>>> d1be5b32d5bab848a189b7fe0db7b39810eff002
       </p>
       <p>
         联系方式,以使我们及时与您联系

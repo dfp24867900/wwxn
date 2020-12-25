@@ -3,9 +3,6 @@
      <div class="top">
        <!-- 顶部 -->
        <mt-header title="案例">
-         <router-link to="/index" slot="left">
-        <mt-button icon="back" ></mt-button>
-      </router-link>
        </mt-header>
        <!-- 顶部结束 -->
        <!-- 顶部导航栏 -->
@@ -218,7 +215,6 @@ export default {
           this.list=result.data.results;
           this.found=false;
         }else{
-          console.log(1);
          this.list=[];
          this.found=true;
         }

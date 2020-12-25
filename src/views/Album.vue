@@ -2,9 +2,6 @@
   <div class="album">
     <!-- 头部 -->
     <mt-header title="专辑&活动" fixed class="my-header">
-      <router-link to="" slot="left">
-        <mt-button icon="back" @click="didiback"></mt-button>
-      </router-link>
     </mt-header>
     <!-- 主内容 -->
     <div class="main">
@@ -19,28 +16,15 @@
 <style>
 .album > .my-header {
   background: linear-gradient(to top, #fcfbfa, #fcf4f5);
-  color: pink !important;
+  color: #000 !important;
   box-shadow: 0 1px 1px #ccc;
 }
 .album > .main {
-  margin-top: 40px;
+  width: 100%;
   overflow: auto;
 }
-.album > .main::before {
-  content: "";
-  display: table;
-}
-.album > .main > .area {
+.album .main img{
   width: 100%;
-  height: 120px;
-  margin: 4px 0;
-  box-sizing: border-box;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-.album > .main > .area > .area-img {
-  width: 100%;
-  height: 100%;
 }
 </style>
 <script>
@@ -67,7 +51,6 @@ export default {
       })
       .then((res) => {
         this.imgArr = res.data.result;
-        console.log(this.imgArr);
       });
   },
 };

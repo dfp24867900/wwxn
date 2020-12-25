@@ -35,7 +35,6 @@ export default {
                     headers:{'Content-Type':'multipart/form-data'}
                 }).then(response => {
                     this.showload = false;
-                    //   console.log(response.data)
                     let data = {
                         url:response.data.url,
                         index:this.index2 //用index来区分是哪个模块调用的，进而去做不同的操作

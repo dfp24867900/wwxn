@@ -214,7 +214,6 @@ export default {
            }
        }).then(res=>{
          this.articles=res.data;
-         console.log(this.articles.length)
        });
     }
 }

@@ -448,8 +448,8 @@
   color: rgb(63, 61, 61);
 }
 .detail-content img {
-  width: 97px;
-  height: 78px;
+  width: 32%;
+  height: 60px;
   margin: 5px 2px 0px 0px;
   border-radius: 3px;
   float: left;
@@ -693,7 +693,6 @@ export default {
       if (this.$store.state.isLogined == 1) {
         //获取地址栏中的参数
         let id = this.$route.params.id;
-        // console.log(this.$route.params.id)
         this.axios
           .get("/details/shop?", {
             params: {
@@ -721,7 +720,6 @@ export default {
       if (this.$store.state.isLogined == 1) {
         //获取地址栏中的参数
         let id = this.$route.params.id;
-        // console.log(this.$route.params.id)
         this.axios
           .get("/details/collection?", {
             params: {
@@ -766,7 +764,6 @@ export default {
     // 获取详情信息
     // 获取地址栏的参数
     let id = this.$route.params.id;
-    // console.log(id)
     this.axios
       .get("/details/information", {
         params: {
@@ -797,7 +794,6 @@ export default {
       })
       .then((res) => {
         this.weddingteam = res.data.results;
-        console.log(res.data.results);
       });
 
     //获取价格明细表
@@ -810,7 +806,6 @@ export default {
       })
       .then((res) => {
         this.quotations = res.data.results;
-        // console.log(this.quotations)
       });
     // 获取新人评论信息
     let cid = this.$route.params.id;

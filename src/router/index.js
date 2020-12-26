@@ -24,66 +24,6 @@ import Details from '../views/Details.vue'
 Vue.use(VueRouter)
 
 const routes = [
-<<<<<<< HEAD
-  {
-    path: '/details/:id',
-    component: Details
-  },
-  {
-    path: '/siteback',
-    component: Siteback
-  },
-  {
-    path: '/siteset',
-    component: Siteset
-  },
-  {
-    path: '/sitegold',
-    component: Sitegold
-  },
-  {
-    path: '/personal',
-    component: Personal
-  },
-  {
-    path: '/join',
-    component: Join
-  },
-  {
-    path: '/sitemsg',
-    component: Sitemsg
-  },
-  {
-    path: '/sitenote',
-    component: Sitenote
-  },
-  {
-    path: '/site',
-    component: Site,
-    meta:{showFooter:true}
-  },
-  {
-    path: '/siteshopping/:uid/:uid2?',
-    component: Shopping
-  },
-  {
-    path: '/sitecollect/:uid/:uid2?',
-    component: Sitecollect
-  },
-  { path: '/service', name: 'Service', component: Service },
-  { path: '/search', name: 'Search', component: Search },
-  { path: "/searchlist/:keyword", component: SearchList },
-  // { path: "/list/:keyword", component: List ,meta:{showFooter:true}},
-  // { path: '/service', name: 'Service', component: Service },
-  { path: "/list", component: List,meta:{showFooter:true} },
-  // { path: '/service', name: 'Service', component: Service },
-  // { path: '/search', name: 'Search', component: Search },
-  {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },
-=======
   { path: '/details/:id', component: Details },
   { path: '/siteback', component: Siteback },
   { path: '/siteset', component: Siteset },
@@ -93,14 +33,13 @@ const routes = [
   { path: '/sitemsg', component: Sitemsg },
   { path: '/sitenote', component: Sitenote },
   { path: '/site', component: Site, meta: { showFooter: true } },
-  { path: '/siteshopping/:uid', component: Shopping },
-  { path: '/sitecollect/:uid', component: Sitecollect },
+  { path: '/siteshopping/:uid/:uid?', component: Shopping },
+  { path: '/sitecollect/:uid/:uid?', component: Sitecollect },
   { path: '/service', name: 'Service', component: Service },
   { path: '/search', name: 'Search', component: Search },
   { path: "/searchlist/:keyword", component: SearchList },
   { path: "/list", component: List, meta: { showFooter: true } },
   { path: '/about', name: 'About', component: () => import(/* webpackChunkName: "about" */ '../views/About.vue') },
->>>>>>> a20b5025246b1a130904f55b608a7511c5308e8d
   { path: "/login", component: Login },
   { path: "/register", component: Register },
   { path: '/message/:id', component: Message },

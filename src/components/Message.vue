@@ -67,10 +67,6 @@ export default {
     mounted(){
         //获取主页传递的参数
         let id = this.$route.params.id;
-<<<<<<< HEAD
-        // console.log(id)
-=======
->>>>>>> a20b5025246b1a130904f55b608a7511c5308e8d
         this.axios.get('/index/msg',{
             params:{
                 id:id 

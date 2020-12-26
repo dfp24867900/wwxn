@@ -4,7 +4,7 @@
       href="javascript:;"
       class="guide_item"
       :class="{ on: '/index' === $route.path || '/' === $route.path }"
-      @click="goTo('/index')"
+      @click=" goTo('/index')"
     >
       <span class="item_icon">
         <i class="iconfont icon-shouye"></i>
@@ -63,7 +63,7 @@ export default {
 </script>
  
 <style>
-.footer_guide {
+ .footer_guide {
   position: fixed;
   z-index: 100;
   left: 0;
@@ -75,7 +75,7 @@ export default {
   display: flex;
   border-top: 1px solid #e8e8e8;
 }
-.guide_item {
+.footer_guide .guide_item {
   display: flex;
   flex: 1;
   text-align: center;
@@ -84,19 +84,19 @@ export default {
   margin: 5px;
   color: #999999;
 }
-a.on {
+.footer_guide a.on {
    color: pink;
 }
-.guide_item span {
+.footer_guide .guide_item span {
   font-size: 12px;
   margin-top: 2px;
   margin-bottom: 2px;
 }
-.guide_item span .iconfont {
+.footer_guide .guide_item span .iconfont {
   font-size: 22px;
   position: relative;
 }
-.cartcount{
+.footer_guide .cartcount{
   color:green;
   position:absolute;
   top:-6px;

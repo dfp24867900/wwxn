@@ -10,9 +10,12 @@
             alt=""
           />
         </p>
-        <p v-if="isjoin==1">
+        <p v-if="isjoin == 1">
           <router-link to="/join">
-            <img :src="require(`../assets/image/site/avatar/${resu.avatar}`)" alt="" />
+            <img
+              :src="require(`../assets/image/site/avatar/${resu.avatar}`)"
+              alt=""
+            />
           </router-link>
         </p>
         <p v-else>
@@ -52,70 +55,85 @@
         <p v-if="isLogined == 1">
           <router-link to="/sitenote">
             <mt-tab-item>
-              <img src="../assets/image/site/site_note.png" alt="" slot="icon" />
+              <img
+                src="../assets/image/site/site_note.png"
+                alt=""
+                slot="icon"
+              />
               笔记
             </mt-tab-item>
-          </router-link> 
+          </router-link>
         </p>
         <p v-else>
-          <router-link to="/login" >
+          <router-link to="/login">
             <mt-tab-item>
-             <img src="../assets/image/site/site_note.png" alt="" slot="icon" />
+              <img
+                src="../assets/image/site/site_note.png"
+                alt=""
+                slot="icon"
+              />
               笔记
             </mt-tab-item>
           </router-link>
         </p>
         <p v-if="isLogined == 1">
           <router-link :to="`/sitecollect/${info.uid}`" v-if="isjoin == 0">
-          <mt-tab-item>
-            <img
-              src="../assets/image/site/site_collect.png"
-              alt=""
-              slot="icon"
-            />
-            收藏
-          </mt-tab-item>
+            <mt-tab-item>
+              <img
+                src="../assets/image/site/site_collect.png"
+                alt=""
+                slot="icon"
+              />
+              收藏
+            </mt-tab-item>
           </router-link>
           <router-link :to="`/sitecollect/${info.uid}/${resu.uid}`" v-else>
-          <mt-tab-item>
-            <img
-              src="../assets/image/site/site_collect.png"
-              alt=""
-              slot="icon"
-            />
-            收藏
-          </mt-tab-item>
+            <mt-tab-item>
+              <img
+                src="../assets/image/site/site_collect.png"
+                alt=""
+                slot="icon"
+              />
+              收藏
+            </mt-tab-item>
           </router-link>
         </p>
         <p v-else>
-          <router-link to="/login" >
-          <mt-tab-item>
-            <img
-              src="../assets/image/site/site_collect.png"
-              alt=""
-              slot="icon"
-            />
-            收藏
-          </mt-tab-item>
-        </router-link>
+          <router-link to="/login">
+            <mt-tab-item>
+              <img
+                src="../assets/image/site/site_collect.png"
+                alt=""
+                slot="icon"
+              />
+              收藏
+            </mt-tab-item>
+          </router-link>
         </p>
         <p v-if="isLogined == 1">
-          <router-link to="/sitemsg" >
-          <mt-tab-item>
-            <img src="../assets/image/site/site_news.png" alt="" slot="icon" />
-            消息
-          </mt-tab-item>
-        </router-link>
+          <router-link to="/sitemsg">
+            <mt-tab-item>
+              <img
+                src="../assets/image/site/site_news.png"
+                alt=""
+                slot="icon"
+              />
+              消息
+            </mt-tab-item>
+          </router-link>
         </p>
         <p v-else>
-          <router-link to="/login" >
-          <mt-tab-item>
-            <img src="../assets/image/site/site_news.png" alt="" slot="icon" />
-            消息
-          </mt-tab-item>
-        </router-link>
+          <router-link to="/login">
+            <mt-tab-item>
+              <img
+                src="../assets/image/site/site_news.png"
+                alt=""
+                slot="icon"
+              />
+              消息
+            </mt-tab-item>
+          </router-link>
         </p>
-        
       </mt-navbar>
     </div>
     <!-- 中间轮播区 -->
@@ -134,132 +152,131 @@
       <!-- 我的订单 -->
       <p v-if="isLogined == 1">
         <router-link :to="`/siteshopping/${info.uid}`" v-if="isjoin == 0">
-        <div>
-          <img src="../assets/image/site/site_order.png" alt="" />
-          <p>
-            我的订单
-            <img src="../assets/image/site/site_right.png" alt="" />
-          </p>
-        </div>
+          <div>
+            <img src="../assets/image/site/site_order.png" alt="" />
+            <p>
+              我的订单
+              <img src="../assets/image/site/site_right.png" alt="" />
+            </p>
+          </div>
         </router-link>
         <router-link :to="`/siteshopping/${info.uid}/${resu.uid}`" v-else>
-        <div>
-          <img src="../assets/image/site/site_order.png" alt="" />
-          <p>
-            我的订单
-            <img src="../assets/image/site/site_right.png" alt="" />
-          </p>
-        </div>
+          <div>
+            <img src="../assets/image/site/site_order.png" alt="" />
+            <p>
+              我的订单
+              <img src="../assets/image/site/site_right.png" alt="" />
+            </p>
+          </div>
         </router-link>
       </p>
       <p v-else>
-         <router-link to="/login">
-        <div>
-          <img src="../assets/image/site/site_order.png" alt="" />
-          <p>
-            我的订单
-            <img src="../assets/image/site/site_right.png" alt="" />
-          </p>
-        </div>
-      </router-link>
+        <router-link to="/login">
+          <div>
+            <img src="../assets/image/site/site_order.png" alt="" />
+            <p>
+              我的订单
+              <img src="../assets/image/site/site_right.png" alt="" />
+            </p>
+          </div>
+        </router-link>
       </p>
-     
+
       <!-- 我的钱包 -->
       <p v-if="isLogined == 1">
         <router-link to="/sitegold">
-        <div>
-          <img src="../assets/image/site/site_wallet.png" alt="" />
-          <p>
-            我的钱包
-            <img src="../assets/image/site/site_right.png" alt="" />
-          </p>
-        </div>
-      </router-link>
-      </p>
-      <p v-else>
-         <router-link to="/login">
-        <div>
-          <img src="../assets/image/site/site_wallet.png" alt="" />
-          <p>
-            我的钱包
-            <img src="../assets/image/site/site_right.png" alt="" />
-          </p>
-        </div>
-      </router-link>
-      </p>
-     
-      <!-- 我的客服 -->
-      <p v-if="isLogined == 1">
-        <router-link to="/service">
-        <div>
-          <img src="../assets/image/site/site_service.png" alt="" />
-          <p>
-            我的客服
-            <img src="../assets/image/site/site_right.png" alt="" />
-          </p>
-        </div>
+          <div>
+            <img src="../assets/image/site/site_wallet.png" alt="" />
+            <p>
+              我的钱包
+              <img src="../assets/image/site/site_right.png" alt="" />
+            </p>
+          </div>
         </router-link>
       </p>
       <p v-else>
         <router-link to="/login">
-        <div>
-          <img src="../assets/image/site/site_service.png" alt="" />
-          <p>
-            我的客服
-            <img src="../assets/image/site/site_right.png" alt="" />
-          </p>
-        </div>
-      </router-link>
+          <div>
+            <img src="../assets/image/site/site_wallet.png" alt="" />
+            <p>
+              我的钱包
+              <img src="../assets/image/site/site_right.png" alt="" />
+            </p>
+          </div>
+        </router-link>
       </p>
-      
+
+      <!-- 我的客服 -->
+      <p v-if="isLogined == 1">
+        <router-link to="/service">
+          <div>
+            <img src="../assets/image/site/site_service.png" alt="" />
+            <p>
+              我的客服
+              <img src="../assets/image/site/site_right.png" alt="" />
+            </p>
+          </div>
+        </router-link>
+      </p>
+      <p v-else>
+        <router-link to="/login">
+          <div>
+            <img src="../assets/image/site/site_service.png" alt="" />
+            <p>
+              我的客服
+              <img src="../assets/image/site/site_right.png" alt="" />
+            </p>
+          </div>
+        </router-link>
+      </p>
+
       <!-- 意见反馈 -->
       <p v-if="isLogined == 1">
         <router-link to="/siteback">
-        <div>
-          <img src="../assets/image/site/site_back.png" alt="" />
-          <p>
-            意见反馈
-            <img src="../assets/image/site/site_right.png" alt="" />
-          </p>
-        </div>
-      </router-link>
+          <div>
+            <img src="../assets/image/site/site_back.png" alt="" />
+            <p>
+              意见反馈
+              <img src="../assets/image/site/site_right.png" alt="" />
+            </p>
+          </div>
+        </router-link>
       </p>
       <p v-else>
         <router-link to="/login">
-        <div>
-          <img src="../assets/image/site/site_back.png" alt="" />
-          <p>
-            意见反馈
-            <img src="../assets/image/site/site_right.png" alt="" />
-          </p>
-        </div>
-      </router-link>
+          <div>
+            <img src="../assets/image/site/site_back.png" alt="" />
+            <p>
+              意见反馈
+              <img src="../assets/image/site/site_right.png" alt="" />
+            </p>
+          </div>
+        </router-link>
       </p>
-      
+
       <!-- 设置 -->
       <p v-if="isLogined == 1">
         <router-link to="/siteset">
-        <div>
-          <img src="../assets/image/site/site_set.png" alt="" />
-          <p>
-            设置
-            <img src="../assets/image/site/site_right.png" alt="" />
-          </p>
-        </div>
-      </router-link>
+          <div>
+            <img src="../assets/image/site/site_set.png" alt="" />
+            <p>
+              设置
+              <img src="../assets/image/site/site_right.png" alt="" />
+            </p>
+          </div>
+        </router-link>
       </p>
       <p v-else>
         <router-link to="/login">
-        <div>
-          <img src="../assets/image/site/site_set.png" alt="" />
-          <p>
-            设置
-            <img src="../assets/image/site/site_right.png" alt="" />
-          </p>
-        </div>
-      </router-link>
+          <div>
+            <img src="../assets/image/site/site_set.png" alt="" />
+            <p>
+              设置
+              <img src="../assets/image/site/site_right.png" alt="" />
+            </p>
+          </div>
+        </router-link>
       </p>
-      
     </div>
   </div>
 </template>
@@ -273,7 +290,7 @@
   left: 0;
   width: 100%;
   height: 180px;
-  background-color: #F7DEDE;
+  background-color: #f7dede;
   /* background-color: #ff93a0; */
   z-index: 8;
 }
@@ -391,7 +408,7 @@
 .site_nav > p {
   width: 33%;
 }
-.site_nav > p >a {
+.site_nav > p > a {
   width: 100%;
 }
 
@@ -424,36 +441,36 @@
   top: 380px;
   left: 3%;
 }
-#site_menu > p{
+#site_menu > p {
   position: relative;
   padding: 3% 1%;
 }
-#site_menu > p:first-child{
+#site_menu > p:first-child {
   top: 1%;
 }
-#site_menu > p:nth-child(2){
+#site_menu > p:nth-child(2) {
   top: 5%;
 }
-#site_menu > p:nth-child(3){
+#site_menu > p:nth-child(3) {
   top: 9%;
 }
-#site_menu > p:nth-child(4){
+#site_menu > p:nth-child(4) {
   top: 13%;
 }
-#site_menu > p:nth-child(5){
+#site_menu > p:nth-child(5) {
   top: 17%;
 }
-#site_menu >p> a > div {
+#site_menu > p > a > div {
   position: relative;
   width: 100%;
   height: 12%;
 }
-#site_menu >p> a > div > img {
+#site_menu > p > a > div > img {
   position: absolute;
   top: 30%;
   left: 3%;
 }
-#site_menu >p> a > div > p {
+#site_menu > p > a > div > p {
   position: absolute;
   width: 90%;
   top: 30%;
@@ -461,7 +478,7 @@
   color: #333;
   font-family: "Microsoft Yahei";
 }
-#site_menu >p> a > div > p > img {
+#site_menu > p > a > div > p > img {
   position: absolute;
   left: 90%;
 }
@@ -471,11 +488,11 @@
 import { mapState } from "vuex";
 export default {
   computed: {
-    ...mapState(["isLogined", "info",'isjoin','resu']),
+    ...mapState(["isLogined", "info", "isjoin", "resu"]),
   },
   data() {
     return {
-      selected:'MianPage',
+      selected: "MianPage",
     };
   },
 };

@@ -2,6 +2,9 @@
   <div class="album">
     <!-- 头部 -->
     <mt-header title="专辑&活动" fixed class="my-header">
+      <router-link to="/" slot="left">
+        <mt-button icon="back"></mt-button>
+      </router-link>
     </mt-header>
     <!-- 主内容 -->
     <div class="main">
@@ -23,7 +26,7 @@
   width: 100%;
   overflow: auto;
 }
-.album .main img{
+.album .main img {
   width: 100%;
 }
 </style>
@@ -35,9 +38,6 @@ export default {
     };
   },
   methods: {
-    didiback() {
-      window.history.go(-1);
-    },
   },
   mounted() {
     //获取主页传递的参数

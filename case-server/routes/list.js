@@ -148,40 +148,24 @@ router.post("/addhistoryword", (req, res) => {
     });
   })
 });
-// router.get("/scene",(req,res)=>{
-//   let scene=req.query.alt;
-//   console.log(scene);
-//   let sql="select cid,pic,visits,price,scene,title,manner,scene,color from bride_case_list where scene like ? ";
-//   pool.query(sql,[scene],(err,result)=>{
-//     if(err) console.log(err);
-//     if(result.length>0){
-//       res.send({message:"查询成功",code:200,results:result});
-//     }else{
-//       res.send({message:"查询失败",code:400});
-//     }
-//   })
-// })
+// 列表页选项卡查询
 router.get("/scene", (req, res) => {
   let arr = req.query.alter;
-  console.log(arr);
   let b = []
   arr.forEach(ele => {
     b.push(JSON.parse(ele))
   });
-  console.log(b);
   var scene, manner, price,price1,price2;
   b.forEach(elem => {
     scene = elem.scene;
     manner = elem.manner;
     price = elem.price
   });
-  console.log(price);
   if(price){
      price1= price.split('-')[0]
      price2 = price.split('-')[1]
   }
   var sql = `SELECT cid,pic,visits,price,scene,title,manner,scene,color FROM bride_case_list  WHERE scene='${scene}'  or manner= '${manner}'  or price BETWEEN '${price1}' AND '${price2}'`
-  console.log(sql);
   pool.query(sql, (err, result) => {
     if (err) throw err;
     if (result.length > 0) {

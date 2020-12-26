@@ -9,8 +9,10 @@
   "dependencies": {
     "axios": "^0.21.0",
     "core-js": "^3.6.5",
+    "cors": "^2.8.5",
     "mint-ui": "^2.2.13",
     "moment": "^2.29.1",
+    "mysql": "^2.18.1",
     "qs": "^6.9.4",
     "socket.io-client": "^3.0.3",
     "v-viewer": "^1.5.1",

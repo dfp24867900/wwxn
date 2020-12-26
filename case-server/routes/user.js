@@ -48,7 +48,6 @@ router.post('/register', (req, res) => {
 router.post('/login', (req, res) => {
   //获取用户名和密码
   var obj = req.body
-  console.log(obj)
   let username = obj.username;
   // let password = obj.password;
   let password = md5(obj.password);
@@ -87,7 +86,6 @@ router.get('/sitecollect', (req, res) => {
       results.forEach(element => {
         coll.push(element.pid);
       });
-      console.log(coll)
       if(coll.length>1){
         for(i=0;i<coll.length-1;i++){
           sq+=',?'

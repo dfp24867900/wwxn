@@ -23,7 +23,6 @@ router.get('/information',(req,res)=>{
   pool.query(sql,[id],(err,results)=>{
       if(err) throw err;
       res.send({code:200,message:'查询数据成功',results:results[0]})
-      // console.log(results)
   })
 });
 
